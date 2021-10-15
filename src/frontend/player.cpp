@@ -2,9 +2,9 @@
 
 #include "../../include/frontend/player.h"
 
+  // Function is called once at the start
 bool Player::OnUserCreate()
 {
-  // Called once at the start, so create things here
   playerX = ScreenWidth() / 2;
   playerY = ScreenHeight() / 2;
   playerSpeed = PLAYER_SPEED;
@@ -12,9 +12,9 @@ bool Player::OnUserCreate()
   return true;
 }
 
-bool Player::OnUserUpdate(float fElapsedTime)
+  // Function is called once every frame
+bool Player::OnUserUpdate(float fElapsedTime) 
 {
-  // called once per frame
   if(GetKey(olc::LEFT).bHeld){
     playerX -= playerSpeed * fElapsedTime;
   }
