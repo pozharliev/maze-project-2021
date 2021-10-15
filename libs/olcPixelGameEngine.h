@@ -194,7 +194,7 @@
 
 	Author
 	~~~~~~
-	David Barr, aka javidx9, ©OneLoneCoder 2018, 2019, 2020, 2021
+	David Barr, aka javidx9, ï¿½OneLoneCoder 2018, 2019, 2020, 2021
 */
 #pragma endregion
 
@@ -3037,7 +3037,7 @@ namespace olc
 		{
 			nLastFPS = nFrameCount;
 			fFrameTimer -= 1.0f;
-			std::string sTitle = "OneLoneCoder.com - Pixel Game Engine - " + sAppName + " - FPS: " + std::to_string(nFrameCount);
+			std::string sTitle = sAppName + " - FPS: " + std::to_string(nFrameCount);
 			platform->SetWindowTitle(sTitle);
 			nFrameCount = 0;
 		}
