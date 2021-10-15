@@ -2,7 +2,7 @@
 
 #include "../../libs/olcPixelGameEngine.h"
 
-#define PLAYER_SPEED 30
+#define PLAYER_SPEED 70.0f
 
 class Player : public olc::PixelGameEngine
 {
