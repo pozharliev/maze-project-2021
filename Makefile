@@ -1,3 +1,6 @@
+CC = g++
+CFLAGS = -g -w -Wall
+
 all: main run clean
 
 run: main
@@ -5,4 +8,4 @@ run: main
 main:
 
 clean:
-	rm *.exe
+	rm bin/*.exe *.o
