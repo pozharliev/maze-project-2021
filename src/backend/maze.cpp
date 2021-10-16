@@ -20,7 +20,7 @@
     }
 
     // There are 3 starting paths - Left, Right and Down-Right
-    m_PathWidth = MAZE_WIDTH;
+    m_PathWidth = MAZE_PATH_WIDTH;
 
     // Choose which point to start from
     int x = START_X;
@@ -34,6 +34,8 @@
     // where the point is
     // based on its x and y coordinates
     m_maze[y * m_MazeWidth + x] = VISITED;
+
+    m_VisitedCells = 1;
 
 }
 
