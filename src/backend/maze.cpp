@@ -1,133 +1,108 @@
 #include "../../include/backend/maze.h"
 
-#include <iostream>
 
-#include <random>
-#include <stack>
-#include <vector>
-
- Maze::Maze()
-{
-    m_MazeWidth = MAZE_WIDTH;
-    m_MazeHeight = MAZE_HEIGHT;
-
-    m_maze = new int[m_MazeWidth * m_MazeHeight];
-
-    // Iterates through the array and sets all values to 0
-    for (int i = 0; i < m_MazeWidth * m_MazeHeight; i++)
-    {
-        m_maze[i] = 0;
-    }
-
-    // There are 3 starting paths - Left, Right and Down-Right
-    m_PathWidth = MAZE_PATH_WIDTH;
-
-    // Choose which point to start from
-    int x = START_X;
-    int y = START_Y;
-
-    // Push the starting point (0,0)
-    m_Stack.push(std::make_pair(x, y));
-
-    // In the coordinate system, you can use
-    // y * height + x to determine
-    // where the point is
-    // based on its x and y coordinates
-    m_maze[y * m_MazeWidth + x] = VISITED;
-
-    m_VisitedCells = 1;
-
-}
-
-int Maze::offset(const int &x, const int &y) const
-{
-    return (m_Stack.top().second + y) * m_MazeWidth + (m_Stack.top().first + x);
-}
-
-void Maze::mazeInit()
-{
-    if (m_VisitedCells < m_MazeWidth * m_MazeHeight)
-    {
-        // Create a set of unvisited neighbours
-        std::vector<int> neighbours;
-
-        // North neighbour
-        if (m_Stack.top().second > 0 && (m_maze[offset(0, -1)] & VISITED) == 0)
-            neighbours.push_back(0);
-        // East neighbour
-        if (m_Stack.top().first < m_MazeWidth - 1 && (m_maze[offset(1, 0)] & VISITED) == 0)
-            neighbours.push_back(1);
-        // South neighbour
-        if (m_Stack.top().second < m_MazeHeight - 1 && (m_maze[offset(0, 1)] & VISITED) == 0)
-            neighbours.push_back(2);
-        // West neighbour
-        if (m_Stack.top().first > 0 && (m_maze[offset(-1, 0)] & VISITED) == 0)
-            neighbours.push_back(3);
-
-        // Are there any neighbours available?
-        if (!neighbours.empty())
+        Maze::Maze()
         {
-            // Choose one available neighbour at random
-            int next_dir = neighbours[std::rand() % neighbours.size()];
+            m_mWidth = MAZE_WIDTH;
+            m_mHeight = MAZE_HEIGHT;
 
-            // Create a path between the neighbour and the current cell
-            switch (next_dir)
+            maze = new char[m_mWidth * m_mHeight];
+
+            for(int i = 0;i < m_mWidth * m_mHeight; i++)
             {
-                case 0: // North
-                    m_maze[offset(0, -1)] |= VISITED | SOUTH;
-                    m_maze[offset(0,  0)] |= NORTH;
-                    m_Stack.push(std::make_pair((m_Stack.top().first + 0), (m_Stack.top().second - 1)));
-                    break;
+                maze[i] = '#';
+            }
 
-                case 1: // East
-                    m_maze[offset(+1, 0)] |= VISITED | WEST;
-                    m_maze[offset( 0, 0)] |= EAST;
-                    m_Stack.push(std::make_pair((m_Stack.top().first + 1), (m_Stack.top().second + 0)));
-                    break;
+            actions = {ACTIONS::UP, ACTIONS::RIGHT, ACTIONS::DOWN, ACTIONS::LEFT};
 
-                case 2: // South
-                    m_maze[offset(0, +1)] |= VISITED | NORTH;
-                    m_maze[offset(0,  0)] |= SOUTH;
-                    m_Stack.push(std::make_pair((m_Stack.top().first + 0), (m_Stack.top().second + 1)));
-                    break;
+            // 1 - stena
+            // 0 - put
+        }
 
-                case 3: // West
-                    m_maze[offset(-1, 0)] |= VISITED | EAST;
-                    m_maze[offset( 0, 0)] |= WEST;
-                    m_Stack.push(std::make_pair((m_Stack.top().first - 1), (m_Stack.top().second + 0)));
-                    break;
+        bool Maze::isInBound(const int& x, const int& y) const
+        {
+            if( x < 0 or x > m_mWidth) return false;
+            if( y < 0 or y > m_mHeight) return false;
+
+            return true;
+        }
+
+        int Maze::toIndex(const int& x, const int& y) const
+        {
+            return y * m_mWidth + x;
+        }
+
+        void Maze::Visit(int x, int y)
+        {
+            maze[toIndex(x, y)] = ' ';
+
+            auto rd = std::random_device {};
+            auto rng = std::default_random_engine {rd()};
+            std::shuffle(std::begin(actions), std::end(actions), rng);
+
+            for(int action: actions)
+            {
+                int dx = 0;
+                int dy = 0;
+
+                switch(action)
+                {
+                    case ACTIONS::UP : dy = -1;
+                        break;
+                    case ACTIONS::DOWN : dy = 1;
+                        break;
+                    case ACTIONS::RIGHT : dx = 1;
+                        break;
+                    case ACTIONS::LEFT : dx = -1;
+                        break;
+                }
+
+                int x2 = x + (dx << 1);
+                int y2 = y + (dy<<1);
+
+                if(isInBound(x2,y2))
+                {
+                    if(maze[toIndex(x2,y2)] == '#')
+                    {
+                        maze[toIndex(x2 - dx, y2 - dy)] = ' ';
+
+                        Visit(x2,y2);
+                    }
+                }
 
             }
 
-            m_VisitedCells++;
+
         }
-        else
+
+        void Maze::printGrid() const
         {
-            // No available neighbours so backtrack!
-            m_Stack.pop();
+            for(int y = 0; y < m_mHeight; y++)
+            {
+                for(int x = 0; x < m_mWidth + 1; x++)
+                {
+                    if(x * y == (m_mHeight - 1) * m_mWidth)
+                    {
+                        std::cout<<'e';
+                        break;
+                    }
+                    std::cout<<maze[toIndex(x,y)];
+                }
+                std::cout<<std::endl;
+            }
+            std::cout<<std::string(m_mHeight + 1, '#');
         }
-    }
 
-}
-
-void Maze::printMaze()
-{
-    for(int i = 0; i < m_MazeWidth * m_MazeHeight; i++)
-    {
-        std::cout<<m_maze[i];
-        if(i % m_MazeHeight == 0)
+        void Maze::initMaze()
         {
-            std::cout<<std::endl;
+            Visit(1, 1);
+            printGrid();
         }
 
-    }
 
-}
 
 int main()
 {
     Maze maze;
-    maze.mazeInit();
-    maze.printMaze();
+    maze.initMaze();
 }
-

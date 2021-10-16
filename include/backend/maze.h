@@ -1,39 +1,35 @@
-#pragma once
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <random>
 
-#include <stack>
-
-#define MAZE_WIDTH 50
-#define MAZE_HEIGHT 25
-#define MAZE_PATH_WIDTH 3
-#define START_Y 0
-#define START_X 0
+#define MAZE_HEIGHT 20
+#define MAZE_WIDTH 20
 
 class Maze
 {
-    public:
-        Maze();
-        void mazeInit();
-        void printMaze();
-
     private:
-        int offset(const int& x, const int& y) const;
+        char* maze;
 
-        int m_MazeWidth;
-        int m_MazeHeight;
-        int* m_maze;
-
-        enum
-        {
-            NORTH = 0x01,
-            EAST = 0x02,
-            SOUTH = 0x04,
-            WEST = 0x08,
-            VISITED = 0x10,
+        enum ACTIONS {
+            UP = 1,
+            RIGHT = 2,
+            DOWN = 3,
+            LEFT = 4,
         };
 
-        std::stack<std::pair<int, int>> m_Stack;
+        int m_mHeight;
+        int m_mWidth;
 
-        int m_VisitedCells;
-        int m_PathWidth;
+        std::vector<int> actions;
 
+    private:
+        bool isInBound(const int& x, const int& y) const;
+        int toIndex(const int& x, const int& y) const;
+        void Visit(int x, int y);
+        void printGrid() const;
+
+    public:
+        Maze();
+        void initMaze();
 };
