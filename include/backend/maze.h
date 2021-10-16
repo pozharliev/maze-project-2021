@@ -3,8 +3,8 @@
 #include <algorithm>
 #include <random>
 
-#define MAZE_HEIGHT 20
-#define MAZE_WIDTH 20
+#define MAZE_HEIGHT 10
+#define MAZE_WIDTH 10
 
 class Maze
 {
