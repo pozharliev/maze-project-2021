@@ -1,105 +1,100 @@
 #include "../../include/backend/maze.h"
 
 
-        Maze::Maze()
+Maze::Maze()
+{
+    m_mWidth = MAZE_WIDTH;
+    m_mHeight = MAZE_HEIGHT;
+
+    maze = new char[m_mWidth * m_mHeight];
+
+    for(int i = 0;i < m_mWidth * m_mHeight; i++)
+    {
+        maze[i] = '#';
+    }
+
+    actions = {ACTIONS::UP, ACTIONS::RIGHT, ACTIONS::DOWN, ACTIONS::LEFT};
+
+    // 1 - stena
+    // 0 - put
+}
+
+bool Maze::isInBound(const int& x, const int& y) const
+{
+    if( x < 0 or x > m_mWidth) return false;
+    if( y < 0 or y > m_mHeight) return false;
+
+    return true;
+}
+
+int Maze::toIndex(const int& x, const int& y) const
+{
+    return y * m_mWidth + x;
+}
+
+void Maze::Visit(int x, int y)
+{
+    maze[toIndex(x, y)] = ' ';
+
+    auto rd = std::random_device {};
+    auto rng = std::default_random_engine {rd()};
+    std::shuffle(std::begin(actions), std::end(actions), rng);
+
+    for(int action: actions)
+    {
+        int dx = 0;
+        int dy = 0;
+
+        switch(action)
         {
-            m_mWidth = MAZE_WIDTH;
-            m_mHeight = MAZE_HEIGHT;
+            case ACTIONS::UP : dy = -1;
+                break;
+            case ACTIONS::DOWN : dy = 1;
+                break;
+            case ACTIONS::RIGHT : dx = 1;
+                break;
+            case ACTIONS::LEFT : dx = -1;
+                break;
+        }
 
-            maze = new char[m_mWidth * m_mHeight];
+        int x2 = x + (dx << 1);
+        int y2 = y + (dy<<1);
 
-            for(int i = 0;i < m_mWidth * m_mHeight; i++)
+        if(isInBound(x2,y2))
+        {
+            if(maze[toIndex(x2,y2)] == '#')
             {
-                maze[i] = '#';
+                maze[toIndex(x2 - dx, y2 - dy)] = ' ';
+
+                Visit(x2,y2);
             }
-
-            actions = {ACTIONS::UP, ACTIONS::RIGHT, ACTIONS::DOWN, ACTIONS::LEFT};
-
-            // 1 - stena
-            // 0 - put
         }
+    }
+}
 
-        bool Maze::isInBound(const int& x, const int& y) const
+void Maze::printGrid() const
+{
+    for(int y = 0; y < m_mHeight; y++)
+    {
+        for(int x = 0; x < m_mWidth + 1; x++)
         {
-            if( x < 0 or x > m_mWidth) return false;
-            if( y < 0 or y > m_mHeight) return false;
-
-            return true;
-        }
-
-        int Maze::toIndex(const int& x, const int& y) const
-        {
-            return y * m_mWidth + x;
-        }
-
-        void Maze::Visit(int x, int y)
-        {
-            maze[toIndex(x, y)] = ' ';
-
-            auto rd = std::random_device {};
-            auto rng = std::default_random_engine {rd()};
-            std::shuffle(std::begin(actions), std::end(actions), rng);
-
-            for(int action: actions)
+            if(x * y == (m_mHeight - 1) * m_mWidth)
             {
-                int dx = 0;
-                int dy = 0;
-
-                switch(action)
-                {
-                    case ACTIONS::UP : dy = -1;
-                        break;
-                    case ACTIONS::DOWN : dy = 1;
-                        break;
-                    case ACTIONS::RIGHT : dx = 1;
-                        break;
-                    case ACTIONS::LEFT : dx = -1;
-                        break;
-                }
-
-                int x2 = x + (dx << 1);
-                int y2 = y + (dy<<1);
-
-                if(isInBound(x2,y2))
-                {
-                    if(maze[toIndex(x2,y2)] == '#')
-                    {
-                        maze[toIndex(x2 - dx, y2 - dy)] = ' ';
-
-                        Visit(x2,y2);
-                    }
-                }
-
+                std::cout<<'e';
+                break;
             }
-
-
+            std::cout<<maze[toIndex(x,y)];
         }
+        std::cout<<std::endl;
+    }
+    std::cout<<std::string(m_mHeight + 1, '#');
+}
 
-        void Maze::printGrid() const
-        {
-            for(int y = 0; y < m_mHeight; y++)
-            {
-                for(int x = 0; x < m_mWidth + 1; x++)
-                {
-                    if(x * y == (m_mHeight - 1) * m_mWidth)
-                    {
-                        std::cout<<'e';
-                        break;
-                    }
-                    std::cout<<maze[toIndex(x,y)];
-                }
-                std::cout<<std::endl;
-            }
-            std::cout<<std::string(m_mHeight + 1, '#');
-        }
-
-        void Maze::initMaze()
-        {
-            Visit(1, 1);
-            printGrid();
-        }
-
-
+void Maze::initMaze()
+{
+    Visit(1, 1);
+    printGrid();
+}
 
 int main()
 {

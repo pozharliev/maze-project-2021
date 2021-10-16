@@ -18,7 +18,7 @@ class Maze
             LEFT = 4,
         };
 
-        int m_mHeight;
+int m_mHeight;
         int m_mWidth;
 
         std::vector<int> actions;
