@@ -6,7 +6,7 @@ Maze::Maze()
     m_mWidth = MAZE_WIDTH;
     m_mHeight = MAZE_HEIGHT;
 
-    maze = new char[m_mWidth * m_mHeight];
+    maze = new char[(m_mWidth + 1) * m_mHeight];
 
     for(int i = 0;i < m_mWidth * m_mHeight; i++)
     {
@@ -36,8 +36,7 @@ void Maze::Visit(int x, int y)
 {
     maze[toIndex(x, y)] = ' ';
 
-    auto rd = std::random_device {};
-    auto rng = std::default_random_engine {rd()};
+    auto rng = std::default_random_engine {};
     std::shuffle(std::begin(actions), std::end(actions), rng);
 
     for(int action: actions)
@@ -72,13 +71,40 @@ void Maze::Visit(int x, int y)
     }
 }
 
+void Maze::checkMaze() {
+    for (int y = 0; y < m_mHeight + 1; y++)
+    {
+        for (int x = 0; x < m_mWidth + 1; x++)
+        {
+            maze[toIndex(x, y)] = maze[toIndex(x, y)];
+        }
+        for (int i = 0; i < m_mWidth; i++)
+        {
+            maze[toIndex(i, (m_mHeight))] = '#';
+        }
+    }
+
+
+    maze[toIndex(m_mWidth, m_mHeight)] = '#';
+
+
+}
+
+
+
 void Maze::printGrid() const
 {
-    for(int y = 0; y < m_mHeight; y++)
+    for(int y = 0; y < m_mHeight + 1; y++)
     {
         for(int x = 0; x < m_mWidth + 1; x++)
         {
-            if(x * y == (m_mHeight - 1) * m_mWidth)
+            if(x == 1 and y == 1)
+            {
+                std::cout<<'s';
+                continue;
+            }
+
+            if((x == (m_mWidth )) and  (y == (m_mHeight - 1)))
             {
                 std::cout<<'e';
                 break;
@@ -87,12 +113,12 @@ void Maze::printGrid() const
         }
         std::cout<<std::endl;
     }
-    std::cout<<std::string(m_mHeight + 1, '#');
 }
 
 void Maze::initMaze()
 {
     Visit(1, 1);
+    checkMaze();
     printGrid();
 }
 

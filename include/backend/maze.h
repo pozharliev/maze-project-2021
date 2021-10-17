@@ -4,7 +4,7 @@
 #include <random>
 
 #define MAZE_HEIGHT 10
-#define MAZE_WIDTH 10
+#define MAZE_WIDTH  10
 
 class Maze
 {
@@ -18,7 +18,7 @@ class Maze
             LEFT = 4,
         };
 
-int m_mHeight;
+        int m_mHeight;
         int m_mWidth;
 
         std::vector<int> actions;
@@ -28,6 +28,7 @@ int m_mHeight;
         int toIndex(const int& x, const int& y) const;
         void Visit(int x, int y);
         void printGrid() const;
+        void checkMaze();
 
     public:
         Maze();
