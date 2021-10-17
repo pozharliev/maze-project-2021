@@ -3,13 +3,10 @@
 #include <algorithm>
 #include <random>
 
-#define MAZE_HEIGHT 10
-#define MAZE_WIDTH  10
-
 class Maze
 {
     private:
-        char* maze;
+
 
         enum ACTIONS {
             UP = 1,
@@ -31,6 +28,9 @@ class Maze
         void checkMaze();
 
     public:
-        Maze();
+        Maze(int width, int height);
         void initMaze();
+
+    public:
+        char* maze;
 };

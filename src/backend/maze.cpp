@@ -1,10 +1,10 @@
 #include "../../include/backend/maze.h"
 
 
-Maze::Maze()
+Maze::Maze(int width, int height)
 {
-    m_mWidth = MAZE_WIDTH;
-    m_mHeight = MAZE_HEIGHT;
+    m_mWidth = width;
+    m_mHeight = height;
 
     maze = new char[(m_mWidth + 1) * m_mHeight];
 
@@ -14,6 +14,8 @@ Maze::Maze()
     }
 
     actions = {ACTIONS::UP, ACTIONS::RIGHT, ACTIONS::DOWN, ACTIONS::LEFT};
+
+    initMaze();
 }
 
 bool Maze::isInBound(const int& x, const int& y) const
