@@ -6,17 +6,12 @@
 class Maze
 {
     private:
-
-
         enum ACTIONS {
             UP = 1,
             RIGHT = 2,
             DOWN = 3,
             LEFT = 4,
         };
-
-        int m_mHeight;
-        int m_mWidth;
 
         std::vector<int> actions;
 
@@ -33,4 +28,7 @@ class Maze
 
     public:
         char* maze;
+
+        int m_mHeight;
+        int m_mWidth;
 };
