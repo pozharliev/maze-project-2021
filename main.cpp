@@ -6,7 +6,6 @@
 int main()
 {
     Player player;
-
-	if (player.Construct(256, 240, 4, 4))
-		player.Start();
+		if (player.Construct(384, 216, 5, 5))
+			player.Start();
 }
