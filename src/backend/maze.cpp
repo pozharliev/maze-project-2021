@@ -14,9 +14,6 @@ Maze::Maze()
     }
 
     actions = {ACTIONS::UP, ACTIONS::RIGHT, ACTIONS::DOWN, ACTIONS::LEFT};
-
-    // 1 - stena
-    // 0 - put
 }
 
 bool Maze::isInBound(const int& x, const int& y) const
@@ -83,11 +80,7 @@ void Maze::checkMaze() {
             maze[toIndex(i, (m_mHeight))] = '#';
         }
     }
-
-
     maze[toIndex(m_mWidth, m_mHeight)] = '#';
-
-
 }
 
 
@@ -120,10 +113,4 @@ void Maze::initMaze()
     Visit(1, 1);
     checkMaze();
     printGrid();
-}
-
-int main()
-{
-    Maze maze;
-    maze.initMaze();
 }
