@@ -7,6 +7,7 @@ class Map : public olc::PixelGameEngine
 {
 
     public:
+        Map();
         void initMap(int level);
 
     private:

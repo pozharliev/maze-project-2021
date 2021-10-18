@@ -10,5 +10,6 @@ bool GameManager::OnUserCreate()
 
 bool GameManager::OnUserUpdate(float fElapsedTime)
 {
+    m_Map.initMap(1);
     return true;
 }

@@ -1,11 +1,16 @@
 #pragma once
 
-#include "../../libs/olcPixelGameEngine.h"
-#include "../../libs/olcPGEX_TransformedView.h"
+#include "../frontend/map.h"
 
 
 class GameManager : public olc::PixelGameEngine
 {
+
+    public:
+        Map m_Map;
+
+    public:
+        GameManager();
 
     private:
         bool OnUserCreate() override;
