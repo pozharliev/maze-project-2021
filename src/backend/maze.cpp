@@ -99,7 +99,7 @@ void Maze::printGrid() const
                 continue;
             }
 
-            if((x == (m_mWidth )) and  (y == (m_mHeight - 1)))
+            if((x == (m_mWidth )) and (y == (m_mHeight - 1)))
             {
                 std::cout<<'e';
                 break;
