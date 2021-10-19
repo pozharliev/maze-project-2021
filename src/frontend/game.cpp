@@ -2,9 +2,12 @@
 #define OLC_PGEX_TRANSFORMEDVIEW
 #include "../../include/frontend/game.h"
 
+
   // Function called once at the start of the program
 bool Game::OnUserCreate()
 { 
+  cMap.initMap(1);
+
   tv = olc::TileTransformedView({ ScreenWidth(), ScreenHeight() }, { 1, 1 });
   object.pos = {3.0f, 3.0f};
 
@@ -98,8 +101,6 @@ bool Game::OnUserUpdate(float fElapsedTime)
   else
     tv.DrawRect(r.pos, r.size, olc::WHITE);
 
-  tv.DrawRect(border.pos,border.size, olc::WHITE);
-
   return true;
 }
 
@@ -182,4 +183,31 @@ void Game::movePlayer(olc::Key dir, float elapsedTime)
     default:
     break;
   }
+}
+
+
+Map::Map(){
+    initMap(1);
+}
+
+bool Map::OnUserCreate()
+{
+    border = {{84, 0}, {ScreenWidth() - 169.0f, ScreenHeight() - 1.0f}};
+    return true;
+}
+
+bool Map::OnUserUpdate(float fElapsedTime)
+{
+    initMap(1);
+    return true;
+}
+
+void Map::initMap(int level)
+{
+    drawBorder();
+}
+
+void Map::drawBorder()
+{
+    DrawRect(border.pos,border.size, olc::WHITE);
 }

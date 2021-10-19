@@ -6,8 +6,31 @@
 
 #define PLAYER_SPEED 60.0f
 
+class Map : public olc::PixelGameEngine
+{
+
+    public:
+        Map();
+        void initMap(int level);
+
+    private:
+        void drawBorder();
+        bool OnUserCreate() override;
+        bool OnUserUpdate(float fElapsedTime) override;
+    private:
+        struct rect{
+            olc::vf2d pos;
+            olc::vf2d size;
+        };
+        rect border;
+};
+
 class Game : public olc::PixelGameEngine
-{ 
+{
+
+  public:
+    Map cMap;
+
   private:
     olc::TileTransformedView tv;
     float playerX;
