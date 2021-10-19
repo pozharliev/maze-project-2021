@@ -1,118 +1,95 @@
-#include "../../include/backend/maze.h"
+//#include "../../include/backend/maze.h"
+#include <vector>
+#include <algorithm>
+#include <random>
+
+class Maze{
+    private:
+        char* maze;
+
+        int m_mWidth;
+        int m_mHeight;
+
+        enum SIDES {
+            RIGHT = 1,
+            DOWN = 2,
+            LEFT = 3,
+            UP = 4,
+        };
+
+        int m_x;
+        int m_y;
+
+        std::vector<std::pair<int, int>> visitedCells;
+
+        std::vector<int> actions = {SIDES::RIGHT, SIDES::DOWN, SIDES::LEFT, SIDES::UP};
+
+        int nextActionN = 0;
+
+        std::vector<std::pair<int, int>> neighbours;
 
 
-Maze::Maze(int width, int height)
-{
-    m_mWidth = width;
-    m_mHeight = height;
 
-    maze = new char[(m_mWidth + 1) * m_mHeight];
-
-    for(int i = 0;i < m_mWidth * m_mHeight; i++)
-    {
-        maze[i] = '#';
-    }
-
-    actions = {ACTIONS::UP, ACTIONS::RIGHT, ACTIONS::DOWN, ACTIONS::LEFT};
-
-    initMaze();
-}
-
-bool Maze::isInBound(const int& x, const int& y) const
-{
-    if( x < 0 or x > m_mWidth) return false;
-    if( y < 0 or y > m_mHeight) return false;
-
-    return true;
-}
-
-int Maze::toIndex(const int& x, const int& y) const
-{
-    return y * m_mWidth + x;
-}
-
-void Maze::Visit(int x, int y)
-{
-    maze[toIndex(x, y)] = ' ';
-
-    auto rng = std::default_random_engine {};
-    std::shuffle(std::begin(actions), std::end(actions), rng);
-
-    for(int action: actions)
-    {
-        int dx = 0;
-        int dy = 0;
-
-        switch(action)
+    public:
+        Maze(int width, int height)
         {
-            case ACTIONS::UP : dy = -1;
-                break;
-            case ACTIONS::DOWN : dy = 1;
-                break;
-            case ACTIONS::RIGHT : dx = 1;
-                break;
-            case ACTIONS::LEFT : dx = -1;
-                break;
+           m_mWidth = width;
+           m_mHeight = height;
+
+           maze = new char[m_mWidth * m_mHeight];
+
+           for(int i = 0; i < m_mWidth * m_mHeightl; i++)
+           {
+               maze[i] = '#';
+           }
+
+           m_x = 0;
+           m_y = 0;
         }
 
-        int x2 = x + (dx << 1);
-        int y2 = y + (dy<<1);
-
-        if(isInBound(x2,y2))
+        std::vector<std::pair<int, int>> getNeighbours(const int& x, const int& y) const
         {
-            if(maze[toIndex(x2,y2)] == '#')
-            {
-                maze[toIndex(x2 - dx, y2 - dy)] = ' ';
+            std::vector<std::pair<int, int>> availableNeighbours;
+            
+        }
 
-                Visit(x2,y2);
+
+        int toIndex(const int& x,const int& y) const
+        {
+            return y * m_mWidth + x;
+        }
+
+        bool isInBound(const int& x,const int& y) const
+        {
+            if (!( x > 0 and x < m_mWidth))  return false;
+            if (!( y > 0 and y < m_mHeight)) return false;
+
+            return true;
+        }
+
+        void initMaze()
+        {
+            int nVisitedCells = 1;
+
+            visitedCells.push_back(std::make_pair(m_x, m_y));
+
+            maze[toIndex(m_x, m_y)] = ' ';
+
+            while(visitedCells < m_mWidth * m_mHeight)
+            {
+                auto rd = std::random_device {};
+                auto rng = std::default_random_engine { rd ()};
+                std::shuffle(std::begin(actions), std::end(actions), rng);
+
+                int dx = 0;
+                int dy = 0;
+
+                int nextAction = actions[nextActionN];
+
+                if(nextAction == SIDES::RIGHT and isInBound())
+
+
             }
         }
-    }
-}
 
-void Maze::checkMaze() {
-    for (int y = 0; y < m_mHeight + 1; y++)
-    {
-        for (int x = 0; x < m_mWidth + 1; x++)
-        {
-            maze[toIndex(x, y)] = maze[toIndex(x, y)];
-        }
-        for (int i = 0; i < m_mWidth; i++)
-        {
-            maze[toIndex(i, (m_mHeight))] = '#';
-        }
-    }
-    maze[toIndex(m_mWidth, m_mHeight)] = '#';
-}
-
-
-
-void Maze::printGrid() const
-{
-    for(int y = 0; y < m_mHeight + 1; y++)
-    {
-        for(int x = 0; x < m_mWidth + 1; x++)
-        {
-            if(x == 1 and y == 1)
-            {
-                std::cout<<'s';
-                continue;
-            }
-
-            if((x == (m_mWidth )) and  (y == (m_mHeight - 1)))
-            {
-                std::cout<<'e';
-                break;
-            }
-            std::cout<<maze[toIndex(x,y)];
-        }
-        std::cout<<std::endl;
-    }
-}
-
-void Maze::initMaze()
-{
-    Visit(1, 1);
-    checkMaze();
-    printGrid();
-}
+};
