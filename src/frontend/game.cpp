@@ -6,7 +6,6 @@
   // Function called once at the start of the program
 bool Game::OnUserCreate()
 { 
-  cMap.initMap(1);
 
   tv = olc::TileTransformedView({ ScreenWidth(), ScreenHeight() }, { 1, 1 });
   object.pos = {3.0f, 3.0f};
@@ -14,6 +13,7 @@ bool Game::OnUserCreate()
   playerX = ScreenWidth() / 2;
   playerY = ScreenHeight() / 2;
   playerSpeed = PLAYER_SPEED;
+  playerRadius = 5.0f;
 
   WorldMap =
 		"#################################"
@@ -91,15 +91,17 @@ bool Game::OnUserUpdate(float fElapsedTime)
   }
   
   //Draw the player character
-  tv.DrawCircle(playerX, playerY, 5, olc::RED);
+  tv.DrawCircle(playerX, playerY, playerRadius, olc::RED);
   
-  rect r = { {100.0f, 100.0f}, {50.0f, 50.0f} };
-  rect border = {{84, 0}, {ScreenWidth() - 169.0f, ScreenHeight() - 1.0f}};
+  rect r = { {(ScreenWidth() / 2 - ScreenHeight() / 2), ScreenHeight() / 2 - 25.0f}, {6.0f, 50.0f} };
+  rect border = {{(ScreenWidth() / 2 - ScreenHeight() / 2), 0}, {ScreenHeight(), ScreenHeight() - 1.0f}};
 
   if(pointCollRect(playerPos, r))
     tv.DrawRect(r.pos, r.size, olc::YELLOW);
   else
     tv.DrawRect(r.pos, r.size, olc::WHITE);
+
+    tv.DrawRect(border.pos,border.size, olc::WHITE);
 
   return true;
 }
@@ -111,7 +113,7 @@ bool Game::pointCollRect(const olc::vf2d& p, const rect& r)
 
 void Game::getInput(float elapsedTime)
 {
-  if(GetKey(olc::LEFT).bHeld && playerX >= 0){
+  if(GetKey(olc::LEFT).bHeld && playerX >= (ScreenWidth() / 2 - ScreenHeight() / 2) + playerRadius + 0.4f){
     movePlayer(olc::LEFT, elapsedTime);
   }
   if(GetKey(olc::LEFT).bReleased){
@@ -183,31 +185,4 @@ void Game::movePlayer(olc::Key dir, float elapsedTime)
     default:
     break;
   }
-}
-
-
-Map::Map(){
-    initMap(1);
-}
-
-bool Map::OnUserCreate()
-{
-    border = {{84, 0}, {ScreenWidth() - 169.0f, ScreenHeight() - 1.0f}};
-    return true;
-}
-
-bool Map::OnUserUpdate(float fElapsedTime)
-{
-    initMap(1);
-    return true;
-}
-
-void Map::initMap(int level)
-{
-    drawBorder();
-}
-
-void Map::drawBorder()
-{
-    DrawRect(border.pos,border.size, olc::WHITE);
 }

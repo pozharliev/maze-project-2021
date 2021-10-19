@@ -5,8 +5,9 @@
 
 int main()
 {
+	olc::PixelGameEngine engine;
 	Game game;
-	
-	if (game.Construct(384, 216, 5, 5))
+
+	if (game.Construct(engine.ScreenWidth() * 1.5f - 46, engine.ScreenHeight() - 46, 5, 5))
 		game.Start();
 }
