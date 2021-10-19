@@ -7,14 +7,17 @@ all: main run
 run: main
 	./main
 
-main: map.o gameManager.o main.cpp
-	$(CC) $(CFLAGS) -o main.exe main.cpp gameManager.o $(LIBS)
+main: game.o main.cpp
+	$(CC) $(CFLAGS) -o main.exe main.cpp game.o $(LIBS)
 
-map.o: src/frontend/map.cpp include/frontend/map.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
-	$(CC) $(CFLAGS) -c src/frontend/map.cpp $(LIBS)
+# map.o: src/frontend/map.cpp include/frontend/game.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
+# 	$(CC) $(CFLAGS) -c src/frontend/map.cpp $(LIBS)
 
-gameManager.o: map.o src/backend/gameManager.cpp include/backend/gameManager.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
-	$(CC) $(CFLAGS) -c src/backend/gameManager.cpp map.o $(LIBS)
+# gameManager.o: map.o src/backend/gameManager.cpp include/backend/gameManager.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
+# 	$(CC) $(CFLAGS) -c src/backend/gameManager.cpp map.o $(LIBS)
+
+game.o: src/frontend/game.cpp include/frontend/game.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
+	$(CC) $(CFLAGS) -c src/frontend/game.cpp $(LIBS)
 
 maze.o: src/backend/maze.cpp include/backend/maze.h
 	$(CC) $(CFLAGS) -o maze.exe src/backend/maze.cpp

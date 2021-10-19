@@ -1,6 +1,6 @@
 #define OLC_PGE_APPLICATION
 #define OLC_PGEX_TRANSFORMEDVIEW
-#include "../../include/frontend/map.h"
+#include "../../include/frontend/game.h"
 
 Map::Map(){
     initMap(1);

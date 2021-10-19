@@ -1,9 +1,9 @@
 #define OLC_PGE_APPLICATION
 #define OLC_PGEX_TRANSFORMEDVIEW
-#include "../../include/frontend/player.h"
+#include "../../include/frontend/game.h"
 
   // Function called once at the start of the program
-bool Player::OnUserCreate()
+bool Game::OnUserCreate()
 { 
   tv = olc::TileTransformedView({ ScreenWidth(), ScreenHeight() }, { 1, 1 });
   object.pos = {3.0f, 3.0f};
@@ -53,7 +53,7 @@ bool Player::OnUserCreate()
 }
 
   // Function called once every frame
-bool Player::OnUserUpdate(float fElapsedTime)
+bool Game::OnUserUpdate(float fElapsedTime)
 {
   if (GetMouse(2).bPressed) tv.StartPan(GetMousePos());
 	if (GetMouse(2).bHeld) tv.UpdatePan(GetMousePos());
@@ -98,17 +98,17 @@ bool Player::OnUserUpdate(float fElapsedTime)
   else
     tv.DrawRect(r.pos, r.size, olc::WHITE);
 
-  tv.DrawRect(border.pos,border.size, olc::RED);
+  tv.DrawRect(border.pos,border.size, olc::WHITE);
 
   return true;
 }
 
-bool Player::pointCollRect(const olc::vf2d& p, const rect& r)
+bool Game::pointCollRect(const olc::vf2d& p, const rect& r)
 {
   return (p.x >= r.pos.x && p.y >= r.pos.y && p.x < r.pos.x + r.size.x && p.y < r.pos.y + r.size.y);
 }
 
-void Player::getInput(float elapsedTime)
+void Game::getInput(float elapsedTime)
 {
   if(GetKey(olc::LEFT).bHeld && playerX >= 0){
     movePlayer(olc::LEFT, elapsedTime);
@@ -143,7 +143,7 @@ void Player::getInput(float elapsedTime)
   }
 }
 
-void Player::movePlayer(olc::Key dir, float elapsedTime)
+void Game::movePlayer(olc::Key dir, float elapsedTime)
 {
   switch(dir)
   {

@@ -1,14 +1,12 @@
-#include "include/backend/gameManager.h"
+#include "include/frontend/game.h"
 #include <iostream>
 
 //GO BIG OR GO HOME
 
 int main()
 {
-
-	Map map;
-	GameManager gm;
+	Game game;
 	
-	if (gm.Construct(384, 216, 5, 5))
-		gm.Start();
+	if (game.Construct(384, 216, 5, 5))
+		game.Start();
 }
