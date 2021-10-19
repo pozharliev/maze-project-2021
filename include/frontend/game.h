@@ -6,7 +6,7 @@
 
 #define PLAYER_SPEED 60.0f
 
-class Player : public olc::PixelGameEngine
+class Game : public olc::PixelGameEngine
 { 
   private:
     olc::TileTransformedView tv;

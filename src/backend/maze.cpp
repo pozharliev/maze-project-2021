@@ -87,9 +87,9 @@ class Maze{
                 int nextAction = actions[nextActionN];
 
                 if(nextAction == SIDES::RIGHT and isInBound())
-
-
+                {
+                    // TODO Implement the search
+                }
+                }
             }
-        }
-
 };
