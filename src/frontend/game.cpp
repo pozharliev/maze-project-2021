@@ -14,6 +14,7 @@ bool Game::OnUserCreate()
   playerY = ScreenHeight() / 2;
   playerSpeed = PLAYER_SPEED;
   playerRadius = 5.0f;
+  menuEnabled = false;
 
   WorldMap =
 		"#################################"
@@ -101,7 +102,11 @@ bool Game::OnUserUpdate(float fElapsedTime)
   else
     tv.DrawRect(r.pos, r.size, olc::WHITE);
 
-    tv.DrawRect(border.pos,border.size, olc::WHITE);
+  tv.DrawRect(border.pos,border.size, olc::WHITE);
+
+  if(menuEnabled){
+    displayPauseMenu(menuEnabled);
+  }
 
   return true;
 }
@@ -139,6 +144,15 @@ void Game::getInput(float elapsedTime)
   }
   if(GetKey(olc::DOWN).bReleased){
     playerSpeed = PLAYER_SPEED;
+  }
+
+  if(GetKey(olc::ESCAPE).bPressed){
+    if(!menuEnabled){
+      menuEnabled = true;
+    }
+    else{
+      menuEnabled = false;
+    }
   }
 
   if(GetKey(olc::F4).bPressed){
@@ -185,4 +199,11 @@ void Game::movePlayer(olc::Key dir, float elapsedTime)
     default:
     break;
   }
+}
+
+bool Game::displayPauseMenu(bool menuEnabled){
+  Clear(olc::BLACK);
+  DrawString(ScreenWidth() / 2 - 32, ScreenHeight() / 2 - 16, "Continue");
+  DrawString(ScreenWidth() / 2 - 48, ScreenHeight() / 2 + 16, "Quit To Menu");
+  return true;
 }

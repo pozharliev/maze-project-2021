@@ -16,6 +16,7 @@ class Game : public olc::PixelGameEngine
     olc::vf2d playerPos;
     float playerSpeed;
     float playerRadius;
+    bool menuEnabled;
     struct rect{
       olc::vf2d pos;
       olc::vf2d size;
@@ -39,5 +40,7 @@ class Game : public olc::PixelGameEngine
     void getInput(float elapsedTime);
 
     void movePlayer(olc::Key dir, float elapsedTime);
+
+    bool displayPauseMenu(bool menuEnabled);
 
 };
