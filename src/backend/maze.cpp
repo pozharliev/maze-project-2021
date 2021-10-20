@@ -2,7 +2,7 @@
 #include <vector>
 #include <algorithm>
 #include <random>
-
+#include <iostream>
 class Maze{
     private:
         char* maze;
@@ -28,6 +28,10 @@ class Maze{
 
         std::vector<std::pair<int, int>> neighbours;
 
+        int nVisitedCells = 0;
+
+        std::vector<std::pair<int ,int>> stack;
+
 
 
     public:
@@ -38,18 +42,50 @@ class Maze{
 
            maze = new char[m_mWidth * m_mHeight];
 
-           for(int i = 0; i < m_mWidth * m_mHeightl; i++)
+           for(int i = 0; i < m_mWidth * m_mHeight; i++)
            {
                maze[i] = '#';
            }
 
-           m_x = 0;
-           m_y = 0;
+           m_x = 1;
+           m_y = 1;
         }
 
+        bool searchForAlreadyVisitedCells(const int& x, const int& y) const
+        {
+            for (auto pair: visitedCells)
+            {
+                if (pair.first == x and pair.second == y) return true;
+            }
+            return false;
+        }
+
+        // Wild India Starts Here
         std::vector<std::pair<int, int>> getNeighbours(const int& x, const int& y) const
         {
             std::vector<std::pair<int, int>> availableNeighbours;
+
+            if(isInBound(x + 1, y) and !searchForAlreadyVisitedCells(x + 1, y))
+            {
+                availableNeighbours.push_back(std::make_pair(x + 1, y));
+            }
+
+            if(isInBound(x - 1, y) and !searchForAlreadyVisitedCells(x - 1, y))
+            {
+                availableNeighbours.push_back(std::make_pair(x - 1, y));
+            }
+
+            if(isInBound(x, y + 1) and !searchForAlreadyVisitedCells(x, y + 1))
+            {
+                availableNeighbours.push_back(std::make_pair(x, y + 1));
+            }
+
+            if(isInBound(x, y - 1) and !searchForAlreadyVisitedCells(x ,y - 1))
+            {
+                availableNeighbours.push_back(std::make_pair(x, y - 1));
+            }
+
+            return availableNeighbours;
             
         }
 
@@ -69,27 +105,69 @@ class Maze{
 
         void initMaze()
         {
-            int nVisitedCells = 1;
+            nVisitedCells = 1;
 
             visitedCells.push_back(std::make_pair(m_x, m_y));
+            stack.push_back(std::make_pair(m_x, m_y));
 
             maze[toIndex(m_x, m_y)] = ' ';
 
-            while(visitedCells < m_mWidth * m_mHeight)
+            while(nVisitedCells <= m_mWidth * m_mHeight or ((m_x == m_mWidth - 1) and (m_y == m_mHeight - 1 )))
             {
-                auto rd = std::random_device {};
-                auto rng = std::default_random_engine { rd ()};
-                std::shuffle(std::begin(actions), std::end(actions), rng);
-
-                int dx = 0;
-                int dy = 0;
-
-                int nextAction = actions[nextActionN];
-
-                if(nextAction == SIDES::RIGHT and isInBound())
+                for(int y = 0; y < m_mHeight; y++)
                 {
-                    // TODO Implement the search
+                    for(int x = 0; x < m_mWidth; x++)
+                    {
+                        std::cout<<maze[toIndex(x, y)];
+                    }
+                    std::cout<<std::endl;
                 }
+                std::cout<<std::endl;
+
+                std::vector<std::pair<int,int>> neighbours = getNeighbours(stack[stack.size() - 1].first, stack[stack.size() - 1].second);
+
+                if(!(neighbours.empty()))
+                {
+                    std::random_device rd; // obtain a random number from hardware
+                    std::mt19937 gen(rd()); // seed the generator
+                    std::uniform_int_distribution<> distr(0, neighbours.size() - 1); // define the range
+
+                    auto nextCell = distr(gen);
+                    m_x = neighbours[nextCell].first;
+                    m_y = neighbours[nextCell].second;
+
+                    maze[toIndex(m_x, m_y)] = ' ';
+
+                    visitedCells.push_back(std::make_pair(m_x, m_y));
+                    stack.push_back(std::make_pair(m_x, m_y));
+
+                    nVisitedCells++;
+                }
+                else
+                {
+                    stack.pop_back();
                 }
             }
+        }
+    void printMaze()
+    {
+        for(int y = 0; y < m_mHeight; y++)
+        {
+            for(int x = 0; x < m_mWidth; x++)
+            {
+                std::cout<<maze[toIndex(x, y)];
+            }
+            std::cout<<std::endl;
+        }
+
+
+    }
 };
+
+int main()
+{
+    Maze maze(10, 10);
+    maze.initMaze();
+    maze.printMaze();
+}
+
