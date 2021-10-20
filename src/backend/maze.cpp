@@ -112,7 +112,7 @@ class Maze{
 
             maze[toIndex(m_x, m_y)] = ' ';
 
-            while(nVisitedCells <= m_mWidth * m_mHeight or ((m_x == m_mWidth - 1) and (m_y == m_mHeight - 1 )))
+            while(nVisitedCells <= m_mWidth * m_mHeight or ((m_x == m_mWidth) and (m_y == m_mHeight)))
             {
                 for(int y = 0; y < m_mHeight; y++)
                 {
@@ -137,6 +137,8 @@ class Maze{
                     m_y = neighbours[nextCell].second;
 
                     maze[toIndex(m_x, m_y)] = ' ';
+
+                    //TODO Make the algorithm go in a straight line until it cannot or until a certain range is 
 
                     visitedCells.push_back(std::make_pair(m_x, m_y));
                     stack.push_back(std::make_pair(m_x, m_y));
