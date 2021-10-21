@@ -16,6 +16,7 @@ bool Game::OnUserCreate()
   playerRadius = 5.0f;
   pauseMenuEnabled = false;
   mainMenuEnabled = true;
+  menuOption = 0;
 
   WorldMap =
 		"#################################"
@@ -216,11 +217,50 @@ bool Game::displayPauseMenu(bool pauseMenuEnabled){
 }
 
 bool Game::displayMainMenu(bool mainMenuEnabled){
+  std::string menuOptionsArr[3] = {"Start Game", "Options", "Quit Game"};
   Clear(olc::BLACK);
+  int spacing = -32;
 
-  // 1 letter = 4px
-  DrawString(ScreenWidth() / 2 - 40, ScreenHeight() / 2 - 32, "Start Game");
-  DrawString(ScreenWidth() / 2 - 28, ScreenHeight() / 2, "Options");
-  DrawString(ScreenWidth() / 2 - 36, ScreenHeight() / 2 + 32, "Quit Game");
+  for(int i = 0; i < 3; i++)
+  {
+    if(i == menuOption)
+    {
+      DrawString(ScreenWidth() / 2 - 40 - 24, ScreenHeight() / 2 + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
+    } else {
+      DrawString(ScreenWidth() / 2 - 40, ScreenHeight() / 2 + spacing, menuOptionsArr[i], olc::WHITE);
+    }
+
+    spacing += 32;
+  }
+  getMenuInput("main");
+  spacing = -32;
   return true;
+}
+
+void Game::getMenuInput(std::string menuType)
+{
+  if(menuType == "main")
+  {
+    if(GetKey(olc::DOWN).bPressed)
+    {
+      if(menuOption == 2)
+      {
+        menuOption = 0;
+      } else {
+      menuOption+= 1;
+      }
+    }
+
+    if(GetKey(olc::UP).bPressed)
+    {
+      if(menuOption == 0)
+      {
+        menuOption = 2;
+      } else {
+        menuOption -= 1;
+      }
+    }
+
+  }
+
 }

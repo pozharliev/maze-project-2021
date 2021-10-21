@@ -18,6 +18,7 @@ class Game : public olc::PixelGameEngine
     float playerRadius;
     bool pauseMenuEnabled;
     bool mainMenuEnabled;
+    int menuOption;
     struct rect{
       olc::vf2d pos;
       olc::vf2d size;
@@ -45,5 +46,7 @@ class Game : public olc::PixelGameEngine
     bool displayPauseMenu(bool pauseMenuEnabled);
 
     bool displayMainMenu(bool mainMenuEnabled);
+
+    void getMenuInput(std::string menuType);
 
 };
