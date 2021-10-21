@@ -16,7 +16,8 @@ class Game : public olc::PixelGameEngine
     olc::vf2d playerPos;
     float playerSpeed;
     float playerRadius;
-    bool menuEnabled;
+    bool pauseMenuEnabled;
+    bool mainMenuEnabled;
     struct rect{
       olc::vf2d pos;
       olc::vf2d size;
@@ -41,6 +42,8 @@ class Game : public olc::PixelGameEngine
 
     void movePlayer(olc::Key dir, float elapsedTime);
 
-    bool displayPauseMenu(bool menuEnabled);
+    bool displayPauseMenu(bool pauseMenuEnabled);
+
+    bool displayMainMenu(bool mainMenuEnabled);
 
 };

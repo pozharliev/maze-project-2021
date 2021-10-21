@@ -14,7 +14,8 @@ bool Game::OnUserCreate()
   playerY = ScreenHeight() / 2;
   playerSpeed = PLAYER_SPEED;
   playerRadius = 5.0f;
-  menuEnabled = false;
+  pauseMenuEnabled = false;
+  mainMenuEnabled = true;
 
   WorldMap =
 		"#################################"
@@ -104,8 +105,12 @@ bool Game::OnUserUpdate(float fElapsedTime)
 
   tv.DrawRect(border.pos,border.size, olc::WHITE);
 
-  if(menuEnabled){
-    displayPauseMenu(menuEnabled);
+  if(pauseMenuEnabled){
+    displayPauseMenu(pauseMenuEnabled);
+  }
+
+  if(mainMenuEnabled){
+    displayMainMenu(mainMenuEnabled);
   }
 
   return true;
@@ -147,11 +152,11 @@ void Game::getInput(float elapsedTime)
   }
 
   if(GetKey(olc::ESCAPE).bPressed){
-    if(!menuEnabled){
-      menuEnabled = true;
+    if(!pauseMenuEnabled){
+      pauseMenuEnabled = true;
     }
     else{
-      menuEnabled = false;
+      pauseMenuEnabled = false;
     }
   }
 
@@ -201,9 +206,21 @@ void Game::movePlayer(olc::Key dir, float elapsedTime)
   }
 }
 
-bool Game::displayPauseMenu(bool menuEnabled){
+bool Game::displayPauseMenu(bool pauseMenuEnabled){
   Clear(olc::BLACK);
+
+  // 1 letter = 4px
   DrawString(ScreenWidth() / 2 - 32, ScreenHeight() / 2 - 16, "Continue");
   DrawString(ScreenWidth() / 2 - 48, ScreenHeight() / 2 + 16, "Quit To Menu");
+  return true;
+}
+
+bool Game::displayMainMenu(bool mainMenuEnabled){
+  Clear(olc::BLACK);
+
+  // 1 letter = 4px
+  DrawString(ScreenWidth() / 2 - 40, ScreenHeight() / 2 - 32, "Start Game");
+  DrawString(ScreenWidth() / 2 - 28, ScreenHeight() / 2, "Options");
+  DrawString(ScreenWidth() / 2 - 36, ScreenHeight() / 2 + 32, "Quit Game");
   return true;
 }
