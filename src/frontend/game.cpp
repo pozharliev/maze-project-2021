@@ -107,11 +107,11 @@ bool Game::OnUserUpdate(float fElapsedTime)
   tv.DrawRect(border.pos,border.size, olc::WHITE);
 
   if(pauseMenuEnabled){
-    displayPauseMenu(pauseMenuEnabled);
+    displayPauseMenu();
   }
 
   if(mainMenuEnabled){
-    displayMainMenu(mainMenuEnabled);
+    displayMainMenu();
   }
 
   return true;
@@ -124,28 +124,28 @@ bool Game::pointCollRect(const olc::vf2d& p, const rect& r)
 
 void Game::getInput(float elapsedTime)
 {
-  if(GetKey(olc::LEFT).bHeld && playerX >= (ScreenWidth() / 2 - ScreenHeight() / 2) + playerRadius + 0.4f){
+  if(GetKey(olc::LEFT).bHeld && playerX >= (ScreenWidth() / 2 - ScreenHeight() / 2) + playerRadius + 0.4f && pauseMenuEnabled == false && mainMenuEnabled == false){
     movePlayer(olc::LEFT, elapsedTime);
   }
   if(GetKey(olc::LEFT).bReleased){
       playerSpeed = PLAYER_SPEED;
   }
 
-  if(GetKey(olc::RIGHT).bHeld  && playerX <= ScreenWidth()){
+  if(GetKey(olc::RIGHT).bHeld  && playerX <= ScreenWidth() && pauseMenuEnabled == false && mainMenuEnabled == false){
     movePlayer(olc::RIGHT, elapsedTime);
   }
   if(GetKey(olc::RIGHT).bReleased){
       playerSpeed = PLAYER_SPEED;
   }
 
-  if(GetKey(olc::UP).bHeld && playerY >= 0){
+  if(GetKey(olc::UP).bHeld && playerY >= 0 && pauseMenuEnabled == false && mainMenuEnabled == false){
     movePlayer(olc::UP, elapsedTime);
   }
   if(GetKey(olc::UP).bReleased){
     playerSpeed = PLAYER_SPEED;
   }
 
-  if(GetKey(olc::DOWN).bHeld && playerY <= ScreenHeight()){
+  if(GetKey(olc::DOWN).bHeld && playerY <= ScreenHeight() && pauseMenuEnabled == false && mainMenuEnabled == false){
     movePlayer(olc::DOWN, elapsedTime);
   }
   if(GetKey(olc::DOWN).bReleased){
@@ -207,16 +207,29 @@ void Game::movePlayer(olc::Key dir, float elapsedTime)
   }
 }
 
-bool Game::displayPauseMenu(bool pauseMenuEnabled){
+bool Game::displayPauseMenu(){
+  std::string menuOptionsArr[2] = {"Continue", "Quit To Menu"};
   Clear(olc::BLACK);
+  int vSpacing = -16;
 
-  // 1 letter = 4px
-  DrawString(ScreenWidth() / 2 - 32, ScreenHeight() / 2 - 16, "Continue");
-  DrawString(ScreenWidth() / 2 - 48, ScreenHeight() / 2 + 16, "Quit To Menu");
+  for(int i = 0; i < 2; i++)
+  {
+    if(i == menuOption)
+    {
+      DrawString(ScreenWidth() / 2 - 56, ScreenHeight() / 2 + vSpacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
+    } else {
+      DrawString(ScreenWidth() / 2 - 32, ScreenHeight() / 2 + vSpacing, menuOptionsArr[i], olc::WHITE);
+    }
+
+    vSpacing += 32;
+  }
+
+  getMenuInput("pause");
+  vSpacing = -16;
   return true;
 }
 
-bool Game::displayMainMenu(bool mainMenuEnabled){
+bool Game::displayMainMenu(){
   std::string menuOptionsArr[3] = {"Start Game", "Options", "Quit Game"};
   Clear(olc::BLACK);
   int spacing = -32;
@@ -225,7 +238,7 @@ bool Game::displayMainMenu(bool mainMenuEnabled){
   {
     if(i == menuOption)
     {
-      DrawString(ScreenWidth() / 2 - 40 - 24, ScreenHeight() / 2 + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
+      DrawString(ScreenWidth() / 2 - 64, ScreenHeight() / 2 + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
     } else {
       DrawString(ScreenWidth() / 2 - 40, ScreenHeight() / 2 + spacing, menuOptionsArr[i], olc::WHITE);
     }
@@ -258,6 +271,54 @@ void Game::getMenuInput(std::string menuType)
         menuOption = 2;
       } else {
         menuOption -= 1;
+      }
+    }
+
+    if(GetKey(olc::ENTER).bPressed)
+    {
+      if(menuOption == 0){
+        mainMenuEnabled = false;
+      }
+      if(menuOption == 1){
+        // settings
+      }
+      if(menuOption == 2){
+        exit(0);
+      }
+    }
+
+  }
+
+  if(menuType == "pause")
+  {
+    if(GetKey(olc::DOWN).bPressed)
+    {
+      if(menuOption == 1)
+      {
+        menuOption = 0;
+      } else {
+      menuOption+= 1;
+      }
+    }
+
+    if(GetKey(olc::UP).bPressed)
+    {
+      if(menuOption == 0)
+      {
+        menuOption = 1;
+      } else {
+        menuOption -= 1;
+      }
+    }
+
+    if(GetKey(olc::ENTER).bPressed)
+    {
+      if(menuOption == 0){
+        pauseMenuEnabled = false;
+      }
+      if(menuOption == 1){
+        mainMenuEnabled = true;
+        pauseMenuEnabled = false;
       }
     }
 

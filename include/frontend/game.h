@@ -43,9 +43,9 @@ class Game : public olc::PixelGameEngine
 
     void movePlayer(olc::Key dir, float elapsedTime);
 
-    bool displayPauseMenu(bool pauseMenuEnabled);
+    bool displayPauseMenu();
 
-    bool displayMainMenu(bool mainMenuEnabled);
+    bool displayMainMenu();
 
     void getMenuInput(std::string menuType);
 
