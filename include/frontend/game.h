@@ -19,6 +19,7 @@ class Game : public olc::PixelGameEngine
     bool pauseMenuEnabled;
     bool mainMenuEnabled;
     int menuOption;
+    bool gameStarted;
     struct rect{
       olc::vf2d pos;
       olc::vf2d size;
@@ -33,20 +34,46 @@ class Game : public olc::PixelGameEngine
     std::string WorldMap;
 
   public:
-    bool OnUserCreate() override;
 
-    bool OnUserUpdate(float fElapsedTime) override;
+    //↓Start of PixelGameEngine functions---------------↓
+
+      bool OnUserCreate() override;
+
+      bool OnUserUpdate(float fElapsedTime) override;
+
+    //↑End of PixelGameEngine functions-----------------↑
+
+
+
+    //↓Start of Game mechanic functions------------------------↓
+
+      bool startGame(float fElapsedTime);
+      
+      bool pointCollRect(const olc::vf2d& p, const rect& r);
+
+      void getInput(float elapsedTime);
+
+    //↑End of Game mechanic functions--------------------------↑
+
     
-    bool pointCollRect(const olc::vf2d& p, const rect& r);
 
-    void getInput(float elapsedTime);
+    //↓Start of Player functions-------------------------------------------↓
 
-    void movePlayer(olc::Key dir, float elapsedTime);
+      void movePlayer(olc::Key dir, float elapsedTime);
+      
+      void drawPlayer(float playerX, float playerY, float playerRadius);
 
-    bool displayPauseMenu();
+    //↑End of Player functions---------------------------------------------↑
 
-    bool displayMainMenu();
 
-    void getMenuInput(std::string menuType);
+      
+    //↓Start of Menu functions-------------------↓
 
+      bool displayPauseMenu();
+
+      bool displayMainMenu();
+
+      void getMenuInput(std::string menuType);
+
+    //↑End of Menu functions---------------------↑
 };
