@@ -17,7 +17,7 @@ private:
     int m_mHeight;
     int m_mWidth;
 
-    std::vector<int> actions;
+    std::vector<int> m_actions;
 
     int m_possibleWays;
 
@@ -25,8 +25,7 @@ private:
     bool isInBound(const int& x, const int& y) const;
     int toIndex(const int& x, const int& y) const;
     void Visit(int x, int y);
-    void printGrid() const;
-    void checkMaze();
+    void fixMaze();
 
 public:
     Maze(int width, int height);
