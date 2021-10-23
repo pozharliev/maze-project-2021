@@ -3,6 +3,8 @@
 #include "../../libs/olcPixelGameEngine.h"
 #include "../../libs/olcPGEX_TransformedView.h"
 #include <string>
+#include <fstream>
+
 
 #define PLAYER_SPEED 60.0f
 
@@ -21,6 +23,7 @@ class Game : public olc::PixelGameEngine
     bool optionsMenuEnabled;
     int menuOption;
     bool gameStarted;
+
     struct rect{
       olc::vf2d pos;
       olc::vf2d size;
@@ -79,4 +82,10 @@ class Game : public olc::PixelGameEngine
       void getMenuInput(std::string menuType);
 
     //↑End of Menu functions---------------------↑
+    public:
+    
+      bool fullScreen;
+      std::ofstream writeFile;
+      std::ifstream readFile;
+      std::string line;
 };

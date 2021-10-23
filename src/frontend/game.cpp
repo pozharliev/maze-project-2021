@@ -424,13 +424,22 @@
       if(GetKey(olc::ENTER).bPressed)
       {
         if(menuOption == 0){
-          // fullscreen
+          if(fullScreen == false){
+            writeFile.open ("saveFile.txt", std::ofstream::out | std::ofstream::trunc);
+            writeFile << "true";
+            writeFile.close();
+          }
+          else{
+            writeFile.open ("saveFile.txt", std::ofstream::out | std::ofstream::trunc);
+            writeFile << "false";
+            writeFile.close();
+          }
         }
         if(menuOption == 1){
           // sound
         }
         if(menuOption == 2){
-          exit(0);
+          // controls
         }
         if(menuOption == 3){
           optionsMenuEnabled = false;
