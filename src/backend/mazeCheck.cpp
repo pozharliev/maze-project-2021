@@ -111,7 +111,8 @@ void Checker::checkMaze()
             }
             if(m_nVisitedCells == m_possibleWays)
             {
-                std::cout<<std::endl<<"doesnt work kekw"<<std::endl;
+                Checker(m_mWidth, m_mHeight);
+                checkMaze();
                 break;
             }
         }
