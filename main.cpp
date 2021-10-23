@@ -8,7 +8,7 @@ int main()
 	olc::PixelGameEngine engine;
 	Game game;
 
-	game.readFile.open("saveFile.txt");
+	game.readFile.open("data/saveFile.save");
     if (game.readFile.is_open())
           {
             while ( getline (game.readFile, game.line) )
