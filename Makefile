@@ -20,7 +20,10 @@ game.o: src/frontend/game.cpp include/frontend/game.h libs/olcPixelGameEngine.h 
 	$(CC) $(CFLAGS) -c src/frontend/game.cpp $(LIBS)
 
 maze.o: src/backend/maze.cpp include/backend/maze.h
-	$(CC) $(CFLAGS) -o maze.exe src/backend/maze.cpp
+	$(CC) $(CFLAGS) -c src/backend/maze.cpp
+
+checker.o: maze.o src/backend/mazeCheck.cpp
+	$(CC) $(CFLAGS) -o actualMaze.exe src/backend/mazeCheck.cpp maze.o
 
 clean:
 	rm *.exe *.o

@@ -1,3 +1,4 @@
+#pragma once
 #include <iostream>
 #include <vector>
 #include <algorithm>
@@ -18,6 +19,8 @@ private:
 
     std::vector<int> actions;
 
+    int m_possibleWays;
+
 private:
     bool isInBound(const int& x, const int& y) const;
     int toIndex(const int& x, const int& y) const;
@@ -28,7 +31,11 @@ private:
 public:
     Maze(int width, int height);
     void initMaze();
+    int getWidth() const;
+    int getHeight() const;
+    int getPossibleWays() const;
 
 public:
     char* maze;
+
 };
