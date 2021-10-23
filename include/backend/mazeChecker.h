@@ -8,14 +8,16 @@ class Checker
 {
     public:
         Checker(int width, int height);
+        Maze* maze = NULL;
 
     public:
         void printMaze();
         void checkMaze();
+        int getWidth() const;
+        int getHeight() const;
+
 
     private:
-        Maze* maze = NULL;
-
         int m_mWidth;
         int m_mHeight;
 

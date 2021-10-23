@@ -125,11 +125,12 @@ void Checker::checkMaze()
     }
 }
 
-int main()
+int Checker::getWidth() const
 {
-    Checker checker(50, 50);
+    return m_mWidth;
+}
 
-    checker.checkMaze();
-    checker.printMaze();
-
+int Checker::getHeight() const
+{
+    return m_mHeight;
 }
