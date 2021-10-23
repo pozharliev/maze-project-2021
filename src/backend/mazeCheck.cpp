@@ -64,7 +64,7 @@ void Checker::printMaze()
     {
         for (int x = 0; x <= m_mWidth; x++)
         {
-            std::cout << maze->maze[toIndex(x, y)];
+            std::cout << checkedMaze[toIndex(x, y)];
         }
         std::cout << std::endl;
     }
@@ -107,6 +107,7 @@ void Checker::checkMaze()
 
             if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
             {
+                checkedMaze = maze->maze;
                 break;
             }
             if(m_nVisitedCells == m_possibleWays)
@@ -134,3 +135,4 @@ int Checker::getHeight() const
 {
     return m_mHeight;
 }
+

@@ -1,7 +1,6 @@
 #include <vector>
 #include <random>
 
-
 #include "maze.h"
 
 class Checker
@@ -20,6 +19,8 @@ class Checker
     private:
         int m_mWidth;
         int m_mHeight;
+
+        char* checkedMaze;
 
         int m_possibleWays ;
 
