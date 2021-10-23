@@ -1,6 +1,7 @@
 CC = g++ -std=c++17
 CFLAGS = -g -w -Wall
 LIBS = -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static
+LIBPATH = libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
 
 all: main run
 
@@ -16,7 +17,7 @@ main: game.o main.cpp
 # gameManager.o: map.o src/backend/gameManager.cpp include/backend/gameManager.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
 # 	$(CC) $(CFLAGS) -c src/backend/gameManager.cpp map.o $(LIBS)
 
-game.o: src/frontend/game.cpp include/frontend/game.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
+game.o: src/frontend/game.cpp include/frontend/game.h $(LIBPATH)
 	$(CC) $(CFLAGS) -c src/frontend/game.cpp $(LIBS)
 
 maze.o: src/backend/maze.cpp include/backend/maze.h
