@@ -17,6 +17,7 @@
     playerRadius = 5.0f;
     pauseMenuEnabled = false;
     mainMenuEnabled = true;
+    optionsMenuEnabled = false;
     menuOption = 0;
     gameStarted = false;
 
@@ -116,6 +117,10 @@
       displayMainMenu();
     }
 
+    if(optionsMenuEnabled){
+      displayOptionsMenu();
+    }
+
     return true;
   }
 
@@ -177,7 +182,7 @@
       playerSpeed = PLAYER_SPEED;
     }
 
-    if(GetKey(olc::ESCAPE).bPressed){
+    if(GetKey(olc::ESCAPE).bPressed && !mainMenuEnabled && !optionsMenuEnabled){
       if(!pauseMenuEnabled){
         pauseMenuEnabled = true;
       }
@@ -294,6 +299,28 @@
     return true;
   }
 
+  bool Game::displayOptionsMenu()
+  {
+    std::string menuOptionsArr[4] = {"Full Screen", "Sound", "Controls", "Back"};
+    Clear(olc::BLACK);
+    int spacing = -32;
+
+    for(int i = 0; i < 4; i++)
+    {
+      if(i == menuOption)
+      {
+        DrawString(ScreenWidth() / 2 - 64, ScreenHeight() / 2 + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
+      } else {
+        DrawString(ScreenWidth() / 2 - 40, ScreenHeight() / 2 + spacing, menuOptionsArr[i], olc::WHITE);
+      }
+
+      spacing += 32;
+    }
+    getMenuInput("options");
+    spacing = -32;
+    return true;
+  }
+
   void Game::getMenuInput(std::string menuType)
   {
     if(menuType == "main")
@@ -326,7 +353,9 @@
           menuOption = 0; // reset the selected option after quitting the menu
         }
         if(menuOption == 1){
-          // settings
+          optionsMenuEnabled = true;
+          mainMenuEnabled = false;
+          menuOption = 0;
         }
         if(menuOption == 2){
           exit(0);
@@ -368,6 +397,48 @@
           pauseMenuEnabled = false;
         }
       }
+    }
+    
+    if(menuType == "options")
+    {
+      if(GetKey(olc::DOWN).bPressed)
+      {
+        if(menuOption == 3)
+        {
+          menuOption = 0;
+        } else {
+          menuOption+= 1;
+        }
+      }
+
+      if(GetKey(olc::UP).bPressed)
+      {
+        if(menuOption == 0)
+        {
+          menuOption = 3;
+        } else {
+          menuOption -= 1;
+        }
+      }
+
+      if(GetKey(olc::ENTER).bPressed)
+      {
+        if(menuOption == 0){
+          // fullscreen
+        }
+        if(menuOption == 1){
+          // sound
+        }
+        if(menuOption == 2){
+          exit(0);
+        }
+        if(menuOption == 3){
+          optionsMenuEnabled = false;
+          mainMenuEnabled = true;
+          menuOption = 0;
+        }
+      }
+
     }
   }
 
