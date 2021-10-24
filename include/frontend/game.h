@@ -23,6 +23,7 @@ class Game : public olc::PixelGameEngine
     bool optionsMenuEnabled;
     int menuOption;
     bool canEdit;
+    bool canEdit2;
     bool gameStarted;
 
     struct rect{
