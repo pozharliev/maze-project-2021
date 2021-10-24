@@ -117,7 +117,7 @@
       displayMainMenu();
     }
 
-    if(optionsMenuEnabled){
+    if(optionsMenuEnabled && !mainMenuEnabled){
       displayOptionsMenu();
     }
 
@@ -309,7 +309,15 @@
     {
       if(i == menuOption)
       {
-        DrawString(ScreenWidth() / 2 - 64, ScreenHeight() / 2 + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
+        if(menuOptionsArr[i] == "Full Screen")
+        {
+          DrawString(ScreenWidth() / 2 - 64, ScreenHeight() / 2 + spacing, "-> " + menuOptionsArr[i] + ": " + (fullScreen == true ? "on" : "off"), olc::DARK_GREY);
+        } else {
+          DrawString(ScreenWidth() / 2 - 64, ScreenHeight() / 2 + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
+        }
+        
+      } else if(menuOptionsArr[i] == "Full Screen"){
+        DrawString(ScreenWidth() / 2 - 40, ScreenHeight() / 2 + spacing, menuOptionsArr[i] + ": " + (fullScreen == true ? "on" : "off"), olc::WHITE);
       } else {
         DrawString(ScreenWidth() / 2 - 40, ScreenHeight() / 2 + spacing, menuOptionsArr[i], olc::WHITE);
       }
@@ -317,6 +325,7 @@
       spacing += 32;
     }
     getMenuInput("options");
+    canEdit = true;
     spacing = -32;
     return true;
   }
@@ -325,6 +334,8 @@
   {
     if(menuType == "main")
     {
+      canEdit = false;
+
       if(GetKey(olc::DOWN).bPressed)
       {
         if(menuOption == 2)
@@ -353,15 +364,73 @@
           menuOption = 0; // reset the selected option after quitting the menu
         }
         if(menuOption == 1){
+          menuOption = 0;
           optionsMenuEnabled = true;
           mainMenuEnabled = false;
-          menuOption = 0;
         }
         if(menuOption == 2){
           exit(0);
         }
       }
 
+    }
+
+    if(menuType == "options")
+    {
+      if(GetKey(olc::DOWN).bPressed)
+      {
+        if(menuOption == 3)
+        {
+          menuOption = 0;
+        } else {
+          menuOption+= 1;
+        }
+      }
+
+      if(GetKey(olc::UP).bPressed)
+      {
+        if(menuOption == 0)
+        {
+          menuOption = 3;
+        } else {
+          menuOption -= 1;
+        }
+      }
+
+      if(GetKey(olc::ENTER).bPressed && canEdit)
+      {
+        if(menuOption == 0){
+          if(fullScreen == false){
+            writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
+            writeFile << "true";
+            writeFile.close();
+            std::cout<<"true";
+            fullScreen = true;
+          } else{
+            writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
+            writeFile << "false";
+            writeFile.close();
+            std::cout<<"false";
+            fullScreen = false;
+          }
+        }
+
+        if(menuOption == 1){
+          // sound
+          std::cout<<"sound";
+        }
+
+        if(menuOption == 2){
+          // controls
+          std::cout<<"controls";
+        }
+
+        if(menuOption == 3){
+          optionsMenuEnabled = false;
+          mainMenuEnabled = true;
+          menuOption = 0;
+        }
+      }
     }
 
     if(menuType == "pause")
@@ -399,56 +468,7 @@
       }
     }
     
-    if(menuType == "options")
-    {
-      if(GetKey(olc::DOWN).bPressed)
-      {
-        if(menuOption == 3)
-        {
-          menuOption = 0;
-        } else {
-          menuOption+= 1;
-        }
-      }
-
-      if(GetKey(olc::UP).bPressed)
-      {
-        if(menuOption == 0)
-        {
-          menuOption = 3;
-        } else {
-          menuOption -= 1;
-        }
-      }
-
-      if(GetKey(olc::ENTER).bPressed)
-      {
-        if(menuOption == 0){
-          if(fullScreen == false){
-            writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
-            writeFile << "true";
-            writeFile.close();
-          }
-          else{
-            writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
-            writeFile << "false";
-            writeFile.close();
-          }
-        }
-        if(menuOption == 1){
-          // sound
-        }
-        if(menuOption == 2){
-          // controls
-        }
-        if(menuOption == 3){
-          optionsMenuEnabled = false;
-          mainMenuEnabled = true;
-          menuOption = 0;
-        }
-      }
-
-    }
+    
   }
 
 //↑End of Menu functions---------------------------↑
