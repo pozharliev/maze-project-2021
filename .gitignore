@@ -10,3 +10,7 @@
 *.o
 *.exe
 *.h.gch
+
+
+# Save files
+data/saveFile.save
