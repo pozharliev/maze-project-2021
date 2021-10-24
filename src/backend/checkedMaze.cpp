@@ -1,5 +1,5 @@
 #include "../../include/backend/maze.h"
-#include "../../include/backend/mazeChecker.h"
+#include "../../include/backend/checkedMaze.h"
 
 CheckedMaze::CheckedMaze(int width, int height) {
     maze = new Maze(width, height);
@@ -151,4 +151,10 @@ int CheckedMaze::getWidth() const
 int CheckedMaze::getHeight() const
 {
     return m_mHeight;
+}
+
+int main()
+{
+    CheckedMaze checkedMaze(10,10);
+    checkedMaze.checkMaze();
 }

@@ -15,10 +15,10 @@ game.o: src/frontend/game.cpp include/frontend/game.h $(LIBPATH)
 	$(CC) $(CXXFLAGS) -c src/frontend/game.cpp $(LIBS)
 
 maze: uncheckedMaze.o mazeChecker.o
-	$(CC) $(CXXFLAGS) -o maze.exe maze.o mazeCheck.o
+	$(CC) $(CXXFLAGS) -o maze.exe maze.o checkedMaze.o
 
-mazeChecker.o: src/backend/mazeCheck.cpp
-	$(CC) $(CXXFLAGS) -c src/backend/mazeCheck.cpp
+mazeChecker.o: src/backend/checkedMaze.cpp
+	$(CC) $(CXXFLAGS) -c src/backend/checkedMaze.cpp
 
 uncheckedMaze.o: src/backend/maze.cpp include/backend/maze.h
 	$(CC) $(CXXFLAGS) -c src/backend/maze.cpp
