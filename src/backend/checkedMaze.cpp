@@ -84,7 +84,7 @@ void CheckedMaze::printMaze()
     {
         for (int x = 0; x <= m_mWidth; x++)
         {
-            std::cout << checkedMaze[toIndex(x, y)];
+            std::cout << maze->maze[toIndex(x, y)];
         }
         std::cout << std::endl;
     }
@@ -137,7 +137,7 @@ void CheckedMaze::checkMaze()
         }
         else
         {
-            maze->maze[toIndex(m_x, m_y)] = ' ';
+            maze->maze[toIndex(m_stack[m_stack.size() - 1].first, m_stack[m_stack.size() - 1].second)] = ' ';
             m_stack.pop_back();
         }
 
