@@ -7,7 +7,10 @@ CheckedMaze::CheckedMaze(int width, int height) {
     m_mWidth = maze->getWidth();
     m_mHeight = maze->getHeight();
     m_possibleWays = maze->getPossibleWays();
+
     checkedMaze = maze->maze;
+
+    mazeWithPath = new char[m_mWidth * m_mHeight];
 
     m_x = 1;
     m_y = 1;
@@ -77,9 +80,8 @@ void CheckedMaze::fixMaze()
     }
 }
 
-void CheckedMaze::printMaze()
+void CheckedMaze::printCheckedMaze()
 {
-    fixMaze();
     for (int y = 0; y <= m_mHeight; y++)
     {
         for (int x = 0; x <= m_mWidth; x++)
@@ -91,6 +93,30 @@ void CheckedMaze::printMaze()
     std::cout<<std::endl;
 }
 
+void CheckedMaze::printCheckedMazeWithPath()
+{
+    for (int y = 0; y <= m_mHeight; y++)
+    {
+        for (int x = 0; x <= m_mWidth; x++)
+        {
+            std::cout << mazeWithPath[toIndex(x, y)];
+        }
+        std::cout << std::endl;
+    }
+    std::cout<<std::endl;
+}
+
+void CheckedMaze::initMazeWithPath()
+{
+    for (int y = 0; y <= m_mHeight; y++)
+    {
+        for (int x = 0; x <= m_mWidth; x++)
+        {
+            mazeWithPath[toIndex(x, y)] = maze->maze[toIndex(x, y)];
+        }
+    }
+
+}
 
 
 
@@ -124,7 +150,10 @@ void CheckedMaze::checkMaze()
 
             if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
             {
-                printMaze();
+                initMazeWithPath();
+                fixMaze();
+                printCheckedMaze();
+                printCheckedMazeWithPath();
                 break;
             }
             if(m_nVisitedCells == m_possibleWays)
@@ -142,6 +171,7 @@ void CheckedMaze::checkMaze()
         }
 
     }
+    mazeWithPath = maze->maze;
 
 }
 
@@ -159,4 +189,5 @@ int main()
 {
     CheckedMaze checkedMaze(10,10);
     checkedMaze.checkMaze();
+
 }

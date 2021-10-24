@@ -8,9 +8,11 @@ class CheckedMaze
     public:
         CheckedMaze(int width, int height);
         char* checkedMaze;
+        char* mazeWithPath; // Checked maze but with an optimal path in it
 
     public:
-        void printMaze();
+        void printCheckedMazeWithPath();
+        void printCheckedMaze();
         void checkMaze();
         int getWidth() const;
         int getHeight() const;
@@ -38,4 +40,5 @@ class CheckedMaze
         bool searchForAlreadyVisitedCells(const int& x, const int& y) const;
         int toIndex(const int& x, const int& y) const;
         void fixMaze();
+        void initMazeWithPath();
 };
