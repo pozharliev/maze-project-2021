@@ -124,12 +124,14 @@ void CheckedMaze::checkMaze()
 
             if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
             {
+                printMaze();
                 break;
             }
             if(m_nVisitedCells == m_possibleWays)
             {
-                CheckedMaze(m_mWidth, m_mHeight);
-                checkMaze();
+                std::cout<<"wrong"<<std::endl;
+                CheckedMaze anotherMaze(m_mWidth, m_mHeight);
+                anotherMaze.checkMaze();
                 break;
             }
         }
@@ -140,7 +142,7 @@ void CheckedMaze::checkMaze()
         }
 
     }
-    printMaze();
+
 }
 
 int CheckedMaze::getWidth() const
