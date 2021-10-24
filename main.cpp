@@ -22,7 +22,6 @@ int main()
             }
             game.readFile.close();
           }
-    std::cout << game.fullScreen;
 
 	if (game.Construct(engine.ScreenWidth() * 1.5f - 46, engine.ScreenHeight() - 46, 5, 5, game.fullScreen))
 		game.Start();
