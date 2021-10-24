@@ -79,7 +79,7 @@ void CheckedMaze::fixMaze()
 
 void CheckedMaze::printMaze()
 {
-    fixMaze();
+    // fixMaze();
     for (int y = 0; y <= m_mHeight; y++)
     {
         for (int x = 0; x <= m_mWidth; x++)
