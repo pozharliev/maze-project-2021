@@ -21,13 +21,14 @@ class CheckedMaze
 
         // Used for debugging purposes
         void printCheckedMazeWithPath();
+        // Used for debugging purposes
         void printCheckedMaze();
-        /////////////////////////////
 
-        // Used for encapsulation
+        // Getter for width
         int getWidth() const;
+        // Getter for height
         int getHeight() const;
-        /////////////////////////
+
 
     private:
         Maze* maze = NULL;

@@ -19,7 +19,6 @@ CheckedMaze::CheckedMaze(int width, int height)
     m_nVisitedCells = 1;
 }
 
-// Checks if a coordinate is in the maze or outside of it
 bool CheckedMaze::isInBound(const int& x, const int& y) const
 {
     if (!(x > 0 and x < m_mWidth))  return false;
@@ -28,7 +27,6 @@ bool CheckedMaze::isInBound(const int& x, const int& y) const
     return true;
 }
 
-// Returns every not-checked-already neighbour of a cell
 std::vector<std::pair<int, int>> CheckedMaze::getNeighbours(const int& x, const int& y) const
 {
     std::vector<std::pair<int, int>> availableNeighbours;
@@ -55,7 +53,6 @@ std::vector<std::pair<int, int>> CheckedMaze::getNeighbours(const int& x, const 
     return availableNeighbours;
 }
 
-// Checks if a cell has been visited
 bool CheckedMaze::searchForAlreadyVisitedCells(const int& x, const int& y) const
 {
     for (auto pair : m_visitedCells)
@@ -65,13 +62,11 @@ bool CheckedMaze::searchForAlreadyVisitedCells(const int& x, const int& y) const
     return false;
 }
 
-// Converts 2D coordinates into 1D
 int CheckedMaze::toIndex(const int& x, const int& y) const
 {
     return y * m_mWidth + x;
 }
 
-// Copies the initial maze with its path into a new public variable
 void CheckedMaze::fixMaze()
 {
     for (int y = 0; y <= m_mHeight; y++)
@@ -97,8 +92,7 @@ void CheckedMaze::initMazeWithPath()
     }
 }
 
-// Checks if the maze is solvable or not
-// Marks the solution with '0'
+
 void CheckedMaze::checkMaze()
 {
     m_visitedCells.push_back(std::make_pair(m_x, m_y));
@@ -158,6 +152,7 @@ void CheckedMaze::checkMaze()
                 break;
             }
         }
+
         else
         {
             // Unmark the cell
@@ -166,11 +161,9 @@ void CheckedMaze::checkMaze()
             // Backtrack for a previous cell that has unchecked neighbours
             m_stack.pop_back();
         }
-
     }
 }
 
-// Used for encapsulation
 int CheckedMaze::getWidth() const
 {
     return m_mWidth;
@@ -180,7 +173,7 @@ int CheckedMaze::getHeight() const
 {
     return m_mHeight;
 }
-//////////////////////////
+
 
 // Used for debugging
 void CheckedMaze::printCheckedMaze()
@@ -208,7 +201,6 @@ void CheckedMaze::printCheckedMazeWithPath()
     }
     std::cout<<std::endl;
 }
-/////////////////////////////
 
 
 

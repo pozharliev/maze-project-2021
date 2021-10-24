@@ -8,7 +8,6 @@ Maze::Maze(int width, int height)
 
     maze = new char[(m_mWidth + 1) * m_mHeight];
 
-    
     // Set the whole maze to just walls
     for (int i = 0; i < m_mWidth * m_mHeight; i++)
     {
@@ -17,13 +16,10 @@ Maze::Maze(int width, int height)
 
     m_actions = { ACTIONS::UP, ACTIONS::RIGHT, ACTIONS::DOWN, ACTIONS::LEFT };
 
-    // Variable for every empty space in the maze
     m_possibleWays = 0;
     
     initMaze();
 }
-
-// Getters for encapsulation
 
 int Maze::getWidth() const
 {
@@ -39,9 +35,7 @@ int Maze::getPossibleWays() const
 {
     return m_possibleWays;
 }
-// End of getters
 
-// Check if the point is in the maze
 bool Maze::isInBound(const int& x, const int& y) const
 {
     if (x < 0 or x > m_mWidth) return false;
@@ -50,28 +44,36 @@ bool Maze::isInBound(const int& x, const int& y) const
     return true;
 }
 
-// Convert coordinates from (x, y) to coordinates in a 1D array
 int Maze::toIndex(const int& x, const int& y) const
 {
     return y * m_mWidth + x;
 }
 
-// Recursively check every coordinate in the maze
 void Maze::Visit(int x, int y)
 {
+    // Mark the cell as a path
     maze[toIndex(x, y)] = ' ';
 
     m_possibleWays++;
 
+    // Generate a random number
     auto rd = std::random_device {};
+
+    // Generate a seed for the random number
     auto rng = std::default_random_engine{rd()};
+
+    // Shuffle the actions vector based on the random numbers
     std::shuffle(std::begin(m_actions), std::end(m_actions), rng);
 
+
+    // Iterate over every action
     for (int action : m_actions)
     {
+        // Variables for offset
         int dx = 0;
         int dy = 0;
 
+        // Generate offset based on the path
         switch (action)
         {
             case ACTIONS::UP: dy = -1;
@@ -84,11 +86,14 @@ void Maze::Visit(int x, int y)
                 break;
         }
 
+        // Generate the next visited cells based on the offset
         int x2 = x + (dx << 1);
         int y2 = y + (dy << 1);
 
+        // If the next cells are in the maze
         if (isInBound(x2, y2))
         {
+            // Recursively check them and mark them
             if (maze[toIndex(x2, y2)] == '#')
             {
                 maze[toIndex(x2 - dx, y2 - dy)] = ' ';
@@ -100,7 +105,7 @@ void Maze::Visit(int x, int y)
     }
 }
 
-// Fix some errors in the maze that may have occurred in the process
+
 void Maze::fixMaze() {
     for (int y = 0; y < m_mHeight + 1; y++)
     {
