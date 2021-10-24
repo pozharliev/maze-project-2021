@@ -3,10 +3,10 @@
 
 #include "maze.h"
 
-class Checker
+class CheckedMaze
 {
     public:
-        Checker(int width, int height);
+        CheckedMaze(int width, int height);
         char* checkedMaze;
 
     public:
@@ -15,17 +15,13 @@ class Checker
         int getWidth() const;
         int getHeight() const;
 
-
     private:
         Maze* maze = NULL;
-        
+
         int m_mWidth;
         int m_mHeight;
 
         int m_possibleWays ;
-
-        int endpointX = m_mWidth;
-        int endpointY = m_mHeight - 1;
 
         int m_x;
         int m_y;
@@ -41,6 +37,5 @@ class Checker
         std::vector<std::pair<int, int>> getNeighbours(const int& x, const int& y) const;
         bool searchForAlreadyVisitedCells(const int& x, const int& y) const;
         int toIndex(const int& x, const int& y) const;
-
-
+        void fixMaze();
 };
