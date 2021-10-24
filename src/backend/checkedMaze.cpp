@@ -1,7 +1,8 @@
 #include "../../include/backend/maze.h"
 #include "../../include/backend/checkedMaze.h"
 
-CheckedMaze::CheckedMaze(int width, int height) {
+CheckedMaze::CheckedMaze(int width, int height)
+{
     maze = new Maze(width, height);
 
     m_mWidth = maze->getWidth();
@@ -18,6 +19,7 @@ CheckedMaze::CheckedMaze(int width, int height) {
     m_nVisitedCells = 1;
 }
 
+// Checks if a coordinate is in the maze or outside of it
 bool CheckedMaze::isInBound(const int& x, const int& y) const
 {
     if (!(x > 0 and x < m_mWidth))  return false;
@@ -26,6 +28,7 @@ bool CheckedMaze::isInBound(const int& x, const int& y) const
     return true;
 }
 
+// Returns every not-checked-already neighbour of a cell
 std::vector<std::pair<int, int>> CheckedMaze::getNeighbours(const int& x, const int& y) const
 {
     std::vector<std::pair<int, int>> availableNeighbours;
@@ -52,6 +55,7 @@ std::vector<std::pair<int, int>> CheckedMaze::getNeighbours(const int& x, const 
     return availableNeighbours;
 }
 
+// Checks if a cell has been visited
 bool CheckedMaze::searchForAlreadyVisitedCells(const int& x, const int& y) const
 {
     for (auto pair : m_visitedCells)
@@ -61,11 +65,13 @@ bool CheckedMaze::searchForAlreadyVisitedCells(const int& x, const int& y) const
     return false;
 }
 
+// Converts 2D coordinates into 1D
 int CheckedMaze::toIndex(const int& x, const int& y) const
 {
     return y * m_mWidth + x;
 }
 
+// Copies the initial maze with its path into a new public variable
 void CheckedMaze::fixMaze()
 {
     for (int y = 0; y <= m_mHeight; y++)
@@ -80,6 +86,103 @@ void CheckedMaze::fixMaze()
     }
 }
 
+void CheckedMaze::initMazeWithPath()
+{
+    for (int y = 0; y <= m_mHeight; y++)
+    {
+        for (int x = 0; x <= m_mWidth; x++)
+        {
+            mazeWithPath[toIndex(x, y)] = maze->maze[toIndex(x, y)];
+        }
+    }
+}
+
+// Checks if the maze is solvable or not
+// Marks the solution with '0'
+void CheckedMaze::checkMaze()
+{
+    m_visitedCells.push_back(std::make_pair(m_x, m_y));
+    m_stack.push_back(std::make_pair(m_x, m_y));
+
+    // Mark the path
+    maze->maze[toIndex(m_x, m_y)] = '0';
+
+    while (true)
+    {
+        // Get all available unchecked neighbours for the current cell
+        std::vector<std::pair<int, int >> neighbours = getNeighbours(m_stack[m_stack.size() - 1].first, m_stack[m_stack.size() - 1].second);
+
+        // If there are any unchecked neighbours
+        if (!neighbours.empty())
+        {
+            // Random number generator
+            std::random_device rd;
+
+            // Generate a seed for the rng
+            std::mt19937 gen(rd());
+
+            // Define a range for the random number
+            std::uniform_int_distribution<> distr(0, neighbours.size() - 1);
+
+            // Get a random cell from the available neighbours
+            auto nextCell = distr(gen);
+
+            // Set the current coordinates to the random cell's
+            m_x = neighbours[nextCell].first;
+            m_y = neighbours[nextCell].second;
+
+            // Mark the cell as a part of the solution
+            maze->maze[toIndex(m_x, m_y)] = '0';
+
+            m_visitedCells.push_back(std::make_pair(m_x, m_y));
+            m_stack.push_back(std::make_pair(m_x, m_y));
+
+            m_nVisitedCells++;
+
+            // The path arrives at the end of the maze
+            if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
+            {
+                initMazeWithPath();
+                fixMaze();
+                printCheckedMaze();
+                printCheckedMazeWithPath();
+                break;
+            }
+
+            // There is no solution to the maze
+            if(m_nVisitedCells == m_possibleWays)
+            {
+                // Generate another maze and repeat the process until there is a solvable maze
+                CheckedMaze anotherMaze(m_mWidth, m_mHeight);
+                anotherMaze.checkMaze();
+                break;
+            }
+        }
+        else
+        {
+            // Unmark the cell
+            maze->maze[toIndex(m_stack[m_stack.size() - 1].first, m_stack[m_stack.size() - 1].second)] = ' ';
+
+            // Backtrack for a previous cell that has unchecked neighbours
+            m_stack.pop_back();
+        }
+
+    }
+}
+
+// Used for encapsulation
+int CheckedMaze::getWidth() const
+{
+    return m_mWidth;
+}
+
+int CheckedMaze::getHeight() const
+{
+    return m_mHeight;
+}
+//////////////////////////
+
+// Used for debugging
 void CheckedMaze::printCheckedMaze()
 {
     for (int y = 0; y <= m_mHeight; y++)
@@ -105,89 +208,12 @@ void CheckedMaze::printCheckedMazeWithPath()
     }
     std::cout<<std::endl;
 }
-
-void CheckedMaze::initMazeWithPath()
-{
-    for (int y = 0; y <= m_mHeight; y++)
-    {
-        for (int x = 0; x <= m_mWidth; x++)
-        {
-            mazeWithPath[toIndex(x, y)] = maze->maze[toIndex(x, y)];
-        }
-    }
-
-}
+/////////////////////////////
 
 
-
-void CheckedMaze::checkMaze()
-{
-    m_visitedCells.push_back(std::make_pair(m_x, m_y));
-    m_stack.push_back(std::make_pair(m_x, m_y));
-
-    maze->maze[toIndex(m_x, m_y)] = '0';
-
-    while (true)
-    {
-
-        std::vector<std::pair<int, int >> neighbours = getNeighbours(m_stack[m_stack.size() - 1].first, m_stack[m_stack.size() - 1].second);
-
-        if (!neighbours.empty())
-        {
-            std::random_device rd; // obtain a random number from hardware
-            std::mt19937 gen(rd()); // seed the generator
-            std::uniform_int_distribution<> distr(0, neighbours.size() - 1); // define the range
-
-            auto nextCell = distr(gen);
-            m_x = neighbours[nextCell].first;
-            m_y = neighbours[nextCell].second;
-
-            maze->maze[toIndex(m_x, m_y)] = '0';
-
-            m_visitedCells.push_back(std::make_pair(m_x, m_y));
-            m_stack.push_back(std::make_pair(m_x, m_y));
-            m_nVisitedCells++;
-
-            if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
-            {
-                initMazeWithPath();
-                fixMaze();
-                printCheckedMaze();
-                printCheckedMazeWithPath();
-                break;
-            }
-            if(m_nVisitedCells == m_possibleWays)
-            {
-                std::cout<<"wrong"<<std::endl;
-                CheckedMaze anotherMaze(m_mWidth, m_mHeight);
-                anotherMaze.checkMaze();
-                break;
-            }
-        }
-        else
-        {
-            maze->maze[toIndex(m_stack[m_stack.size() - 1].first, m_stack[m_stack.size() - 1].second)] = ' ';
-            m_stack.pop_back();
-        }
-
-    }
-    mazeWithPath = maze->maze;
-
-}
-
-int CheckedMaze::getWidth() const
-{
-    return m_mWidth;
-}
-
-int CheckedMaze::getHeight() const
-{
-    return m_mHeight;
-}
 
 int main()
 {
     CheckedMaze checkedMaze(10,10);
     checkedMaze.checkMaze();
-
 }

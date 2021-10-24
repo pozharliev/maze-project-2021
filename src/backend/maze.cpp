@@ -100,6 +100,7 @@ void Maze::Visit(int x, int y)
     }
 }
 
+// Fix some errors in the maze that may have occurred in the process
 void Maze::fixMaze() {
     for (int y = 0; y < m_mHeight + 1; y++)
     {
