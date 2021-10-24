@@ -63,12 +63,34 @@
 
   bool Game::OnUserUpdate(float fElapsedTime)
   {
+    Clear(olc::BLACK);
     
     if (GetMouse(2).bPressed) tv.StartPan(GetMousePos());
     if (GetMouse(2).bHeld) tv.UpdatePan(GetMousePos());
     if (GetMouse(2).bReleased) tv.EndPan(GetMousePos());
     if (GetMouseWheel() > 0) tv.ZoomAtScreenPos(2.0f, GetMousePos());
     if (GetMouseWheel() < 0) tv.ZoomAtScreenPos(0.5f, GetMousePos());
+
+    rect r = { {(ScreenWidth() / 2 - ScreenHeight() / 2), ScreenHeight() / 2 - 25.0f}, {6.0f, 50.0f} };
+    rect borderTop = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 10}, {ScreenWidth() /1.17f, ScreenHeight() / 16}};
+    rect borderBottom = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() /1.17f, ScreenHeight() / 16}};
+    rect borderTopLeft = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 6.25f}, {ScreenWidth() / 28, ScreenHeight() / 4}};
+    rect borderBottomLeft = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() / 28, - ScreenHeight() / 4}};
+    rect borderTopRight = {{(ScreenWidth() * 1.1763f - ScreenHeight() / 2), ScreenHeight() / 6.25f}, {ScreenWidth() / 28, ScreenHeight() / 4}};
+    rect borderBottomRight = {{(ScreenWidth() * 1.1763f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() / 28, - ScreenHeight() / 4}};
+    
+    tv.DrawRect(borderTop.pos,borderTop.size, olc::WHITE);
+    tv.DrawRect(borderBottom.pos,borderBottom.size, olc::WHITE);
+    tv.DrawRect(borderTopLeft.pos,borderTopLeft.size, olc::WHITE);
+    tv.DrawRect(borderBottomLeft.pos,borderBottomLeft.size, olc::WHITE);
+    tv.DrawRect(borderTopRight.pos,borderTopRight.size, olc::WHITE);
+    tv.DrawRect(borderBottomRight.pos,borderBottomRight.size, olc::WHITE);
+
+    if(pointCollRect(playerPos, r))
+      tv.DrawRect(r.pos, r.size, olc::BLANK);
+    else
+      tv.DrawRect(r.pos, r.size, olc::BLANK);
+
 
     if(gameStarted)
     {
@@ -99,15 +121,6 @@
     
     //Draw the player character
     
-    rect r = { {(ScreenWidth() / 2 - ScreenHeight() / 2), ScreenHeight() / 2 - 25.0f}, {6.0f, 50.0f} };
-    rect border = {{(ScreenWidth() / 2 - ScreenHeight() / 2), 0}, {ScreenHeight(), ScreenHeight() - 1.0f}};
-
-    if(pointCollRect(playerPos, r))
-      tv.DrawRect(r.pos, r.size, olc::YELLOW);
-    else
-      tv.DrawRect(r.pos, r.size, olc::WHITE);
-
-    tv.DrawRect(border.pos,border.size, olc::WHITE);
 
     if(pauseMenuEnabled){
       displayPauseMenu();
@@ -141,7 +154,6 @@
     getInput(fElapsedTime);
 
     playerPos = {playerX, playerY};
-    Clear(olc::BLACK);
     
     drawPlayer(playerX, playerY, playerRadius);
     return true;
@@ -295,6 +307,7 @@
       spacing += 32;
     }
     getMenuInput("main");
+    canEdit2 = true;
     spacing = -32;
     return true;
   }
@@ -358,7 +371,7 @@
 
       if(GetKey(olc::ENTER).bPressed)
       {
-        if(menuOption == 0){
+        if(menuOption == 0 && canEdit2){
           mainMenuEnabled = false;
           gameStarted = true;
           menuOption = 0; // reset the selected option after quitting the menu
@@ -406,12 +419,14 @@
             writeFile.close();
             std::cout<<"true";
             fullScreen = true;
+            exit(0);
           } else{
             writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
             writeFile << "false";
             writeFile.close();
             std::cout<<"false";
             fullScreen = false;
+            exit(0);
           }
         }
 
@@ -435,6 +450,8 @@
 
     if(menuType == "pause")
     {
+      canEdit2 = false;
+      
       if(GetKey(olc::DOWN).bPressed)
       {
         if(menuOption == 1)
@@ -462,8 +479,10 @@
           menuOption = 0; // reset the selected option after quitting the menu
         }
         if(menuOption == 1){
+          optionsMenuEnabled = false;
           mainMenuEnabled = true;
           pauseMenuEnabled = false;
+          menuOption = 0;
         }
       }
     }
