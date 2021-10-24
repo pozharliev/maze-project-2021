@@ -425,12 +425,12 @@
       {
         if(menuOption == 0){
           if(fullScreen == false){
-            writeFile.open ("saveFile.txt", std::ofstream::out | std::ofstream::trunc);
+            writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
             writeFile << "true";
             writeFile.close();
           }
           else{
-            writeFile.open ("saveFile.txt", std::ofstream::out | std::ofstream::trunc);
+            writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
             writeFile << "false";
             writeFile.close();
           }
