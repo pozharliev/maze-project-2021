@@ -7,7 +7,7 @@ class Checker
 {
     public:
         Checker(int width, int height);
-        Maze* maze = NULL;
+        char* checkedMaze;
 
     public:
         void printMaze();
@@ -17,10 +17,10 @@ class Checker
 
 
     private:
+        Maze* maze = NULL;
+        
         int m_mWidth;
         int m_mHeight;
-
-        char* checkedMaze;
 
         int m_possibleWays ;
 
