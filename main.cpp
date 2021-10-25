@@ -8,10 +8,10 @@ int main()
 	olc::PixelGameEngine engine;
 	Game game;
 
-	game.readFile.open("data/saveFile.save");
-    if (game.readFile.is_open())
+	game.saveFile.open("docs/saveFile.save");
+    if (game.saveFile.is_open())
           {
-            while ( getline (game.readFile, game.line) )
+            while ( getline (game.saveFile, game.line) )
             {
               if(game.line == "true"){
                 game.fullScreen = true;
@@ -20,7 +20,7 @@ int main()
                 game.fullScreen = false;
               }
             }
-            game.readFile.close();
+            game.saveFile.close();
           }
 
 	if (game.Construct(engine.ScreenWidth() * 1.5f - 46, engine.ScreenHeight() - 46, 5, 5, game.fullScreen))

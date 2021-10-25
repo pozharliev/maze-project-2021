@@ -22,8 +22,8 @@ class Game : public olc::PixelGameEngine
     bool mainMenuEnabled;
     bool optionsMenuEnabled;
     int menuOption;
-    bool canEdit;
-    bool canEdit2;
+    bool optionsMenuEdit;
+    bool mainMenuEdit;
     bool gameStarted;
 
     struct rect{
@@ -87,7 +87,6 @@ class Game : public olc::PixelGameEngine
     public:
     
       bool fullScreen;
-      std::ofstream writeFile;
-      std::ifstream readFile;
+      std::fstream saveFile;
       std::string line;
 };

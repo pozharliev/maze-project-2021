@@ -307,7 +307,7 @@
       spacing += 32;
     }
     getMenuInput("main");
-    canEdit2 = true;
+    mainMenuEdit = true;
     spacing = -32;
     return true;
   }
@@ -338,7 +338,7 @@
       spacing += 32;
     }
     getMenuInput("options");
-    canEdit = true;
+    optionsMenuEdit = true;
     spacing = -32;
     return true;
   }
@@ -347,7 +347,7 @@
   {
     if(menuType == "main")
     {
-      canEdit = false;
+      optionsMenuEdit = false;
 
       if(GetKey(olc::DOWN).bPressed)
       {
@@ -371,7 +371,7 @@
 
       if(GetKey(olc::ENTER).bPressed)
       {
-        if(menuOption == 0 && canEdit2){
+        if(menuOption == 0 && mainMenuEdit){
           mainMenuEnabled = false;
           gameStarted = true;
           menuOption = 0; // reset the selected option after quitting the menu
@@ -410,20 +410,20 @@
         }
       }
 
-      if(GetKey(olc::ENTER).bPressed && canEdit)
+      if(GetKey(olc::ENTER).bPressed && optionsMenuEdit)
       {
         if(menuOption == 0){
           if(fullScreen == false){
-            writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
-            writeFile << "true";
-            writeFile.close();
+            saveFile.open ("docs/saveFile.save", std::ofstream::out | std::ofstream::trunc);
+            saveFile << "true";
+            saveFile.close();
             std::cout<<"true";
             fullScreen = true;
             exit(0);
           } else{
-            writeFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
-            writeFile << "false";
-            writeFile.close();
+            saveFile.open ("docs/saveFile.save", std::ofstream::out | std::ofstream::trunc);
+            saveFile << "false";
+            saveFile.close();
             std::cout<<"false";
             fullScreen = false;
             exit(0);
@@ -450,7 +450,7 @@
 
     if(menuType == "pause")
     {
-      canEdit2 = false;
+      mainMenuEdit = false;
       
       if(GetKey(olc::DOWN).bPressed)
       {
