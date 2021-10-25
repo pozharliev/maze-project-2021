@@ -11,10 +11,10 @@
     tv = olc::TileTransformedView({ ScreenWidth(), ScreenHeight() }, { 1, 1 });
     object.pos = {3.0f, 3.0f};
 
-    playerX = ScreenWidth() / 2;
-    playerY = ScreenHeight() / 2;
-    playerSpeed = PLAYER_SPEED;
-    playerRadius = 5.0f;
+    // playerX = ScreenWidth() / 2;
+    // playerY = ScreenHeight() / 2;
+    // playerSpeed = PLAYER_SPEED;
+    // playerRadius = 5.0f;
     pauseMenuEnabled = false;
     mainMenuEnabled = true;
     optionsMenuEnabled = false;
@@ -71,20 +71,20 @@
     if (GetMouseWheel() > 0) tv.ZoomAtScreenPos(2.0f, GetMousePos());
     if (GetMouseWheel() < 0) tv.ZoomAtScreenPos(0.5f, GetMousePos());
 
-    rect r = { {(ScreenWidth() / 2 - ScreenHeight() / 2), ScreenHeight() / 2 - 25.0f}, {6.0f, 50.0f} };
-    rect borderTop = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 10}, {ScreenWidth() /1.17f, ScreenHeight() / 16}};
-    rect borderBottom = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() /1.17f, ScreenHeight() / 16}};
-    rect borderTopLeft = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 6.25f}, {ScreenWidth() / 28, ScreenHeight() / 4}};
-    rect borderBottomLeft = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() / 28, - ScreenHeight() / 4}};
-    rect borderTopRight = {{(ScreenWidth() * 1.1763f - ScreenHeight() / 2), ScreenHeight() / 6.25f}, {ScreenWidth() / 28, ScreenHeight() / 4}};
-    rect borderBottomRight = {{(ScreenWidth() * 1.1763f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() / 28, - ScreenHeight() / 4}};
+    // rect r = { {(ScreenWidth() / 2 - ScreenHeight() / 2), ScreenHeight() / 2 - 25.0f}, {6.0f, 50.0f} };
+    // rect borderTop = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 10}, {ScreenWidth() /1.17f, ScreenHeight() / 16}};
+    // rect borderBottom = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() /1.17f, ScreenHeight() / 16}};
+    // rect borderTopLeft = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 6.25f}, {ScreenWidth() / 28, ScreenHeight() / 4}};
+    // rect borderBottomLeft = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() / 28, - ScreenHeight() / 4}};
+    // rect borderTopRight = {{(ScreenWidth() * 1.1763f - ScreenHeight() / 2), ScreenHeight() / 6.25f}, {ScreenWidth() / 28, ScreenHeight() / 4}};
+    // rect borderBottomRight = {{(ScreenWidth() * 1.1763f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() / 28, - ScreenHeight() / 4}};
     
-    tv.DrawRect(borderTop.pos,borderTop.size, olc::WHITE);
-    tv.DrawRect(borderBottom.pos,borderBottom.size, olc::WHITE);
-    tv.DrawRect(borderTopLeft.pos,borderTopLeft.size, olc::WHITE);
-    tv.DrawRect(borderBottomLeft.pos,borderBottomLeft.size, olc::WHITE);
-    tv.DrawRect(borderTopRight.pos,borderTopRight.size, olc::WHITE);
-    tv.DrawRect(borderBottomRight.pos,borderBottomRight.size, olc::WHITE);
+    // tv.DrawRect(borderTop.pos,borderTop.size, olc::WHITE);
+    // tv.DrawRect(borderBottom.pos,borderBottom.size, olc::WHITE);
+    // tv.DrawRect(borderTopLeft.pos,borderTopLeft.size, olc::WHITE);
+    // tv.DrawRect(borderBottomLeft.pos,borderBottomLeft.size, olc::WHITE);
+    // tv.DrawRect(borderTopRight.pos,borderTopRight.size, olc::WHITE);
+    // tv.DrawRect(borderBottomRight.pos,borderBottomRight.size, olc::WHITE);
 
     if(pointCollRect(playerPos, r))
       tv.DrawRect(r.pos, r.size, olc::BLANK);
