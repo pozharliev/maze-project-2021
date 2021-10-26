@@ -3,52 +3,50 @@
 
 ## Test Plan
 
-                  In this document you can find information about:
+                          In this document you can find information about:
 
-                  1. Parts of the program that will be tested..
-                  2. Project making time and criteria..........
-                  3. Testing strategy..........................
-                  4. Risks.....................................
-                  5. A list of tasks that will need to be done.
+                           1. Parts of the program that will be tested..
+                           2. Project making time and criteria..........
+                           3. Testing strategy..........................
+                           4. Risks.....................................
+                           5. A list of tasks that will need to be done.
+---
+                                          To be tested
 
-To be tested:
+- 	Path finding algorithm
 
-•	Path finding algorithm
+- 	Game mechanics and graphics
 
-•	Game mechanics and graphics
+- 	Main menu of the game
+---
+                                      Deadline and criteria
 
-•	Main menu of the game
+    Start of the project:
 
-Deadline and criteria:
+    - 15.10.2021
 
-Start of the project:
+    Start expectations:
 
-15.10.2021
+    - Make sure the game algorithm is working
 
-Start expectations:
+    End of the project:
 
-Make sure the game algorithm is working
+    - 10.11.2021
 
-End of the project:
+    End expectations:
 
-10.11.2021
+    - Run the whole game without any bugs and problems
+---
+                                      Strategy for testing
+   - Check multiple times everything the developers have make is working properly. 
+    Reassure everything is working properly after every new added peace of the game. 
+    Give special attention to the high priority parts of the program.
+---
+                                             Risks
 
-End expectations:
+-   There might be problems with game engine, game mechanics, 
+    figuring out the main algorithm for the game.
 
-Run the whole game without any bugs and problems
-
-Strategy for testing:
-
-Check multiple times everything the developers have make is working properly. Reassure everything is working properly after every new added peace of the game. Give special attention to the high priority parts of the program.
-
-Risks:
-
-There might be problems with game engine, game mechanics, figuring out the main algorithm for the game.
-
-To do:
-
-Figure out the main game algorithm, make a design for the game, create a main menu, figure out the character and game mechanics and more.
-
-
-
-  
+---
+                                             To do
+- Figure out the main game algorithm, make a design for the game, create a main menu,   figure out the character and game mechanics and more.
