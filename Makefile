@@ -1,46 +1,51 @@
-CC = g++ -std=c++17
+CXX = g++ -std=c++17
 CXXFLAGS = -g -w -Wall
+
 LIBS = -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static
 LIBPATH = libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
 
-all: main run
+EXECUTABLE = main.exe
+MAIN = main.cpp
 
-run: main
-	./main
+SRC = src
+INCLUDE = include
+FE = frontend
+BE = backend
 
-main: libs lobby player main.cpp
-	$(CC) $(CXXFLAGS) -o main.exe main.cpp lobby.o player.o $(LIBS)
 
-# game.o: src/frontend/game.cpp include/frontend/game.h $(LIBPATH)
-# 	$(CC) $(CXXFLAGS) -c src/frontend/game.cpp $(LIBS)
+all: main
 
-libs: include/backend/libs.h
-	$(CC) $(CXXFLAGS) -c include/backend/libs.h
+main: lobby player $(MAIN)
+	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) lobby.o player.o $(LIBS)
+	./$(EXECUTABLE)
 
-lobby: src/frontend/Lobby.cpp include/frontend/Lobby.h
-	$(CC) $(CXXFLAGS) -c src/frontend/Lobby.cpp
+lobby: $(SRC)/$(FE)/Lobby.cpp $(INCLUDE)/$(FE)/Lobby.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Lobby.cpp
 
-player: src/frontend/Player.cpp include/frontend/Player.h
-	$(CC) $(CXXFLAGS) -c src/frontend/Player.cpp
+player: $(SRC)/$(FE)/Player.cpp $(INCLUDE)/$(FE)/Player.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Player.cpp
 
-# gameManager: libs lobby player src/frontend/gameManager.cpp include/frontend/gameManager.h
-# 	$(CC) $(CXXFLAGS) -c src/frontend/gameManager.cpp
+maze: uncheckedMaze mazeChecker
+	$(CXX) $(CXXFLAGS) -o maze.exe maze.o checkedMaze.o
+	./maze
 
-maze: uncheckedMaze.o mazeChecker.o
-	$(CC) $(CXXFLAGS) -o maze.exe maze.o checkedMaze.o
+mazeChecker: $(SRC)/$(BE)/checkedMaze.cpp $(INCLUDE)/$(BE)/checkedMaze.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/checkedMaze.cpp
 
-mazeChecker.o: src/backend/checkedMaze.cpp
-	$(CC) $(CXXFLAGS) -c src/backend/checkedMaze.cpp
-
-uncheckedMaze.o: src/backend/maze.cpp include/backend/maze.h
-	$(CC) $(CXXFLAGS) -c src/backend/maze.cpp
+uncheckedMaze: $(SRC)/$(BE)/maze.cpp $(INCLUDE)/$(BE)/maze.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/maze.cpp
 
 clean:
 	rm *.exe *.o
 
 # map.o: src/frontend/map.cpp include/frontend/game.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
-# 	$(CC) $(CXXFLAGS) -c src/frontend/map.cpp $(LIBS)
+# 	$(CXX) $(CXXFLAGS) -c src/frontend/map.cpp $(LIBS)
 
 # gameManager.o: map.o src/backend/gameManager.cpp include/backend/gameManager.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
-# 	$(CC) $(CXXFLAGS) -c src/backend/gameManager.cpp map.o $(LIBS)
+# 	$(CXX) $(CXXFLAGS) -c src/backend/gameManager.cpp map.o $(LIBS)
 
+# gameManager: libs lobby player src/frontend/gameManager.cpp include/frontend/gameManager.h
+# 	$(CXX) $(CXXFLAGS) -c src/frontend/gameManager.cpp
+
+# game.o: src/frontend/game.cpp include/frontend/game.h $(LIBPATH)
+# 	$(CXX) $(CXXFLAGS) -c src/frontend/game.cpp $(LIBS)
