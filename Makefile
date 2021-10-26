@@ -12,7 +12,6 @@ INCLUDE = include
 FE = frontend
 BE = backend
 
-
 all: main
 
 main: lobby player $(MAIN)
@@ -34,6 +33,9 @@ mazeChecker: $(SRC)/$(BE)/checkedMaze.cpp $(INCLUDE)/$(BE)/checkedMaze.h
 
 uncheckedMaze: $(SRC)/$(BE)/maze.cpp $(INCLUDE)/$(BE)/maze.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/maze.cpp
+
+logger: src/logger/logger.cpp include/logger/logger.h
+	$(CXX) $(CXXFLAGS) -o logger.exe src/logger/logger.cpp
 
 clean:
 	rm *.exe *.o
