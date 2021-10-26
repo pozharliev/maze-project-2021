@@ -21,8 +21,21 @@ To be tested:
 
 Deadline and criteria:
 
-Start of the project	Start expectations	End of the project	End expectations
-15.10.2021	Make sure the game algorithm is working	10.11.2021	Run the whole game without any bugs and problems
+Start of the project:
+
+15.10.2021
+
+Start expectations:
+
+Make sure the game algorithm is working
+
+End of the project:
+
+10.11.2021
+
+End expectations:
+
+Run the whole game without any bugs and problems
 
 Strategy for testing:
 
