@@ -4,7 +4,7 @@
 
 #define PLAYER_SPEED 60.0f
 
-class Player : public olc::PixelGameEngine{
+class Player{
 
     public:
         float playerX;
@@ -15,7 +15,7 @@ class Player : public olc::PixelGameEngine{
 
     public:
 
-        void movePlayer(olc::Key dir, float elapsedTime);
+        void movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime);
       
         void drawPlayer(olc::PixelGameEngine* engine);
 

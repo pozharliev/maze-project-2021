@@ -1,6 +1,6 @@
 #include "../../include/frontend/Player.h"
 
-void Player::movePlayer(olc::Key dir, float elapsedTime)
+void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime)
   {
     switch(dir)
     {

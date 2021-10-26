@@ -2,7 +2,7 @@
 
 #include "../backend/libs.h"
 
-class Lobby : public olc::PixelGameEngine
+class Lobby
 {
     public:
     struct rect{
@@ -11,5 +11,5 @@ class Lobby : public olc::PixelGameEngine
     };
 
     public:
-        void drawLobby();
+        void drawLobby(olc::PixelGameEngine* engine);
 };

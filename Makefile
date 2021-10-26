@@ -14,9 +14,12 @@ BE = backend
 
 all: main
 
-main: lobby player $(MAIN)
-	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) lobby.o player.o $(LIBS)
+main: menu lobby player $(MAIN)
+	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) mainMenu.o lobby.o player.o $(LIBS)
 	./$(EXECUTABLE)
+
+menu: $(SRC)/$(FE)/mainMenu.cpp $(INCLUDE)/$(FE)/mainMenu.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/mainMenu.cpp
 
 lobby: $(SRC)/$(FE)/Lobby.cpp $(INCLUDE)/$(FE)/Lobby.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Lobby.cpp
