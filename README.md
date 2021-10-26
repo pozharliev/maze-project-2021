@@ -1,56 +1,52 @@
-CXX = g++ -std=c++17
-CXXFLAGS = -g -w -Wall
+![Vavylon Logo](public/VAVYLON_LOGO_BIG_NOBG.png)
+# Team VAVYLØN
 
-LIBS = -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static
-LIBPATH = libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
+## Test Plan
 
-EXECUTABLE = main.exe
-MAIN = main.cpp
+                          In this document you can find information about:
 
-SRC = src
-INCLUDE = include
-FE = frontend
-BE = backend
+                           1. Parts of the program that will be tested..
+                           2. Project making time and criteria..........
+                           3. Testing strategy..........................
+                           4. Risks.....................................
+                           5. A list of tasks that will need to be done.
+---
+                                          To be tested
 
-all: main
+- 	Path finding algorithm
 
-main: menu lobby player $(MAIN)
-	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) mainMenu.o lobby.o player.o $(LIBS)
-	./$(EXECUTABLE)
+- 	Game mechanics and graphics
 
-menu: $(SRC)/$(FE)/mainMenu.cpp $(INCLUDE)/$(FE)/mainMenu.h
-	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/mainMenu.cpp
+- 	Main menu of the game
+---
+                                      Deadline and criteria
 
-lobby: $(SRC)/$(FE)/Lobby.cpp $(INCLUDE)/$(FE)/Lobby.h
-	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Lobby.cpp
+    Start of the project:
 
-player: $(SRC)/$(FE)/Player.cpp $(INCLUDE)/$(FE)/Player.h
-	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Player.cpp
+    - 15.10.2021
 
-maze: uncheckedMaze mazeChecker
-	$(CXX) $(CXXFLAGS) -o maze.exe maze.o checkedMaze.o
-	./maze
+    Start expectations:
 
-mazeChecker: $(SRC)/$(BE)/checkedMaze.cpp $(INCLUDE)/$(BE)/checkedMaze.h
-	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/checkedMaze.cpp
+    - Make sure the game algorithm is working
 
-uncheckedMaze: $(SRC)/$(BE)/maze.cpp $(INCLUDE)/$(BE)/maze.h
-	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/maze.cpp
+    End of the project:
 
-logger: src/logger/logger.cpp include/logger/logger.h
-	$(CXX) $(CXXFLAGS) -o logger.exe src/logger/logger.cpp
+    - 10.11.2021
 
-clean:
-	rm *.exe *.o
+    End expectations:
 
-# map.o: src/frontend/map.cpp include/frontend/game.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
-# 	$(CXX) $(CXXFLAGS) -c src/frontend/map.cpp $(LIBS)
+    - Run the whole game without any bugs and problems
+---
+                                      Strategy for testing
+   - Check multiple times everything the developers have make is working properly. 
+    Reassure everything is working properly after every new added peace of the game. 
+    Give special attention to the high priority parts of the program.
+---
+                                             Risks
 
-# gameManager.o: map.o src/backend/gameManager.cpp include/backend/gameManager.h libs/olcPixelGameEngine.h libs/olcPGEX_TransformedView.h
-# 	$(CXX) $(CXXFLAGS) -c src/backend/gameManager.cpp map.o $(LIBS)
+-   There might be problems with game engine, game mechanics, 
+    figuring out the main algorithm for the game.
 
-# gameManager: libs lobby player src/frontend/gameManager.cpp include/frontend/gameManager.h
-# 	$(CXX) $(CXXFLAGS) -c src/frontend/gameManager.cpp
-
-# game.o: src/frontend/game.cpp include/frontend/game.h $(LIBPATH)
-# 	$(CXX) $(CXXFLAGS) -c src/frontend/game.cpp $(LIBS)
+---
+                                             To do
+- Figure out the main game algorithm, make a design for the game, create a main menu,   figure out the character and game mechanics and more.
