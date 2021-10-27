@@ -4,7 +4,9 @@ Logger::Logger()
 {
     initLogFile();
 
-    initTime();
+    std::time_t t = std::time(0);
+
+    m_time = std::localtime(&t);
 };
 
 void Logger::initLogFile()
@@ -22,12 +24,6 @@ void Logger::initLogFile()
     }
 }
 
-void Logger::initTime()
-{
-    std::time_t t = std::time(0);
-
-    m_time = std::localtime(&t);
-}
 
 std::string Logger::getTime() const
 {
@@ -45,15 +41,21 @@ std::string Logger::getTime() const
 
 void Logger::Info(const std::string& info) const
 {
-    std::cout<<"Info";
+    std::cout << getTime()
+              << " " << "[" << "Info" << "]"
+              << " " << info << std::endl;
 }
 
 void Logger::Warning(const std::string& warning) const
 {
-    std::cout<<"Warning";
+    std::cout << getTime()
+              << " " << "[" << "Warning" << "]"
+              << " " << warning << std::endl;
 }
 
 void Logger::Error(const std::string& error) const
 {
-    std::cout<<"Error";
+    std::cout << getTime()
+              << " " << "[" << "Error" << "]"
+              << " " << error << std::endl;
 }

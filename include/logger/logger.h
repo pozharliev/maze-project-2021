@@ -3,6 +3,8 @@
 #include <fstream>
 #include <iostream>
 #include <ctime>
+#include <string>
+#include <map>
 
 class Logger
 {
@@ -13,9 +15,14 @@ class Logger
         void Error(const std::string& error) const;
 
     public:
-        enum Info{};
-        enum Warning{};
-        enum Error{};
+        std::map<std::string, std::string> InfoLog
+        {
+            {"MAZE_INITIALIZED", "Initializing a new maze."},
+            {"MAZE_UNSOLVABLE",  "The maze was unsolvable."},
+            {"MAZE_SOLVING",     "Trying to solve the new maze."},
+        };
+        std::map<std::string, std::string> WarningLog;
+        std::map<std::string, std::string> ErrorLog;
 
 
     private:
@@ -25,6 +32,5 @@ class Logger
 
     private:
         void initLogFile();
-        void initTime();
         std::string getTime() const;
 };
