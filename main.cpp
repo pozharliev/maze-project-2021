@@ -12,9 +12,6 @@ class GameManager : public olc::PixelGameEngine{
     MainMenu* mainMenu;
     Player* player;
     Lobby* lobby;
-    bool fullScreen;
-    std::fstream saveFile;
-    std::string line;
 
   public:
     GameManager()
@@ -132,21 +129,21 @@ int main()
   olc::PixelGameEngine engine;
 	GameManager gameManager;
 
-	 gameManager.saveFile.open("data/saveFile.save");
-     if (gameManager.saveFile.is_open())
-           {
-             while ( getline (gameManager.saveFile, gameManager.line) )
-             {
-               if(gameManager.line == "true"){
-                 gameManager.fullScreen = true;
-               }
-               else{
-                 gameManager.fullScreen = false;
-               }
-             }
-             gameManager.saveFile.close();
-           }
+	gameManager.mainMenu->saveFile.open("data/saveFile.save");
+    if (gameManager.mainMenu->saveFile.is_open())
+    {
+      while ( getline (gameManager.mainMenu->saveFile, gameManager.mainMenu->line) )
+      {
+        if(gameManager.mainMenu->line == "true"){
+          gameManager.mainMenu->fullScreen = true;
+        }
+        else{
+          gameManager.mainMenu->fullScreen = false;
+        }
+      }
+      gameManager.mainMenu->saveFile.close();
+    }
 
-	if (gameManager.Construct(engine.ScreenWidth() * 1.5f - 46, engine.ScreenHeight() - 46, 5, 5))
+	if (gameManager.Construct(engine.ScreenWidth() * 1.5f - 46, engine.ScreenHeight() - 46, 5, 5, gameManager.mainMenu->fullScreen))
 		gameManager.Start();
 }

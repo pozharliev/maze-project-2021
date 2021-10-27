@@ -85,7 +85,6 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
 
         if(engine->GetKey(olc::DOWN).bPressed)
         {
-            std::cout<<"down";
           if(menuOption == 2)
           {
             menuOption = 0;
@@ -148,12 +147,21 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
         {
           if(menuOption == 0)
           {
-            saveFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
-            saveFile << fullScreen ? "false" : "true";
-            saveFile.close();
-            std::cout<<!fullScreen;
-            fullScreen = !fullScreen;
-            exit(0);
+            if(fullScreen == false)
+            {
+              saveFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
+              saveFile << "true";
+              saveFile.close();
+              fullScreen = true;
+              exit(0);
+            } else
+            {
+              saveFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
+              saveFile << "false";
+              saveFile.close();
+              fullScreen = false;
+              exit(0);
+            }
           }
 
           if(menuOption == 1){
