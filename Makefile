@@ -14,8 +14,8 @@ BE = backend
 
 all: main
 
-main: menu lobby player $(MAIN)
-	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) mainMenu.o lobby.o player.o $(LIBS)
+main: menu lobby uncheckedMaze mazeChecker room player $(MAIN)
+	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) mainMenu.o lobby.o maze.o checkedMaze.o room.o player.o $(LIBS)
 	./$(EXECUTABLE)
 
 menu: $(SRC)/$(FE)/mainMenu.cpp $(INCLUDE)/$(FE)/mainMenu.h
@@ -24,12 +24,14 @@ menu: $(SRC)/$(FE)/mainMenu.cpp $(INCLUDE)/$(FE)/mainMenu.h
 lobby: $(SRC)/$(FE)/Lobby.cpp $(INCLUDE)/$(FE)/Lobby.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Lobby.cpp
 
+room: $(SRC)/$(FE)/room.cpp $(INCLUDE)/$(FE)/room.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/room.cpp
+
 player: $(SRC)/$(FE)/Player.cpp $(INCLUDE)/$(FE)/Player.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Player.cpp
 
 maze: uncheckedMaze mazeChecker
 	$(CXX) $(CXXFLAGS) -o maze.exe maze.o checkedMaze.o
-	./maze
 
 mazeChecker: $(SRC)/$(BE)/checkedMaze.cpp $(INCLUDE)/$(BE)/checkedMaze.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/checkedMaze.cpp

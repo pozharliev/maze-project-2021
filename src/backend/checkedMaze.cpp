@@ -201,11 +201,3 @@ void CheckedMaze::printCheckedMazeWithPath()
     }
     std::cout<<std::endl;
 }
-
-
-
-int main()
-{
-    CheckedMaze checkedMaze(10,10);
-    checkedMaze.checkMaze();
-}

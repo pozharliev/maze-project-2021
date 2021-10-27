@@ -2,23 +2,30 @@
 #include "libs/olcPixelGameEngine.h"
 #include "include/frontend/mainMenu.h"
 #include "include/frontend/Lobby.h"
+#include "include/frontend/room.h"
 #include "include/frontend/Player.h"
 // #include "include/frontend/GameManager.h"
 #include <iostream>
 
 class GameManager : public olc::PixelGameEngine{
 
+  private:
+    bool generatedMaze = false;
+
+
   public:
     MainMenu* mainMenu;
     Player* player;
     Lobby* lobby;
+    Room* room;
 
   public:
     GameManager()
     {
-        mainMenu = new MainMenu;
-        player = new Player;
-        lobby = new Lobby;
+      mainMenu = new MainMenu;
+      player = new Player;
+      lobby = new Lobby;
+      room = new Room(14, 14);
     }
 
   private:
@@ -70,6 +77,14 @@ class GameManager : public olc::PixelGameEngine{
       player->playerPos = {player->playerX, player->playerY};
 
       player->drawPlayer(this);
+
+      //If go into hall generate Room
+      if(!generatedMaze)
+      {
+        room->generateRoom();
+      }
+      generatedMaze = true;
+
     }
 
     void getInput(float elapsedTime)
