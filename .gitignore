@@ -13,6 +13,7 @@
 
 # Save files
 data/saveFile.save
+data/rawMazeData.maze
 
 # Log files
 logs/logs.log

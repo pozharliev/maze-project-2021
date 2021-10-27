@@ -4,21 +4,20 @@
 
 #define PLAYER_SPEED 60.0f
 
-class Player{
+class Player
+{
 
-    public:
-        float playerX;
-        float playerY;
-        olc::vf2d playerPos;
-        float playerSpeed;
-        float playerRadius;
+public:
+    float playerX;
+    float playerY;
+    olc::vf2d playerPos;
+    float playerSpeed;
+    float playerRadius;
 
-    public:
+public:
+    void movePlayer(olc::PixelGameEngine *engine, olc::Key dir, float elapsedTime);
 
-        void movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime);
-      
-        void drawPlayer(olc::PixelGameEngine* engine);
+    void drawPlayer(olc::PixelGameEngine *engine);
 
-        void getInput();
-
+    void getInput();
 };

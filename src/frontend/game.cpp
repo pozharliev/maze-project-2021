@@ -71,7 +71,7 @@
     if (GetMouseWheel() > 0) tv.ZoomAtScreenPos(2.0f, GetMousePos());
     if (GetMouseWheel() < 0) tv.ZoomAtScreenPos(0.5f, GetMousePos());
 
-    // rect r = { {(ScreenWidth() / 2 - ScreenHeight() / 2), ScreenHeight() / 2 - 25.0f}, {6.0f, 50.0f} };
+    rect r = { {(ScreenWidth() / 2 - ScreenHeight() / 2), ScreenHeight() / 2 - 25.0f}, {6.0f, 50.0f} };
     // rect borderTop = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 10}, {ScreenWidth() /1.17f, ScreenHeight() / 16}};
     // rect borderBottom = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 1.2f}, {ScreenWidth() /1.17f, ScreenHeight() / 16}};
     // rect borderTopLeft = {{(ScreenWidth() / 2.8f - ScreenHeight() / 2), ScreenHeight() / 6.25f}, {ScreenWidth() / 28, ScreenHeight() / 4}};

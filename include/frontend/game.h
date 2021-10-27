@@ -13,11 +13,11 @@ class Game : public olc::PixelGameEngine
 
   private:
     olc::TileTransformedView tv;
-    // float playerX;
-    // float playerY;
-    // olc::vf2d playerPos;
-    // float playerSpeed;
-    // float playerRadius;
+    float playerX;
+    float playerY;
+    olc::vf2d playerPos;
+    float playerSpeed;
+    float playerRadius;
     bool pauseMenuEnabled;
     bool mainMenuEnabled;
     bool optionsMenuEnabled;
