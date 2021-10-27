@@ -43,20 +43,84 @@ class GameManager : public olc::PixelGameEngine{
     bool OnUserUpdate(float fElapsedTime) override
     {
 
-        if(mainMenu->mainMenuEnabled){
-          mainMenu->displayMainMenu(this);
-        }
+      Clear(olc::BLACK);
 
-        if(mainMenu->pauseMenuEnabled){
-          mainMenu->displayPauseMenu(this);
-        }
+      if(mainMenu->gameStarted)
+      {
+        startGame(fElapsedTime);
+      }
 
-        if(mainMenu->optionsMenuEnabled && mainMenu->mainMenuEnabled == false){
-          mainMenu->displayOptionsMenu(this);
-        }
+
+      if(mainMenu->mainMenuEnabled){
+        mainMenu->displayMainMenu(this);
+      }
+
+      if(mainMenu->pauseMenuEnabled){
+        mainMenu->displayPauseMenu(this);
+      }
+      
+      if(mainMenu->optionsMenuEnabled && mainMenu->mainMenuEnabled == false){
+        mainMenu->displayOptionsMenu(this);
+      }
     
       return true;
     }
+
+    bool startGame(float fElapsedTime)
+    {
+      getInput(fElapsedTime);
+
+      player->playerPos = {player->playerX, player->playerY};
+
+      player->drawPlayer(this);
+    }
+
+    void getInput(float elapsedTime)
+    {
+      if(this->GetKey(olc::LEFT).bHeld && player->playerX >= (this->ScreenWidth() / 2 - this->ScreenHeight() / 2) + 0.5f + 0.4f && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false){
+        player->movePlayer(this, olc::LEFT, elapsedTime);
+      }
+
+      if(this->GetKey(olc::LEFT).bReleased){
+          player->playerSpeed = PLAYER_SPEED;
+      }
+
+      if(this->GetKey(olc::RIGHT).bHeld  && player->playerX <= this->ScreenWidth() && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false){
+        player->movePlayer(this, olc::RIGHT, elapsedTime);
+      }
+      if(GetKey(olc::RIGHT).bReleased){
+        player->playerSpeed = PLAYER_SPEED;
+      }
+
+      if(this->GetKey(olc::UP).bHeld && player->playerY >= 0 && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false){
+        player->movePlayer(this, olc::UP, elapsedTime);
+      }
+      if(GetKey(olc::UP).bReleased){
+        player->playerSpeed = PLAYER_SPEED;
+      }
+
+      if(GetKey(olc::DOWN).bHeld && player->playerY <= ScreenHeight() && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false){
+        player->movePlayer(this, olc::DOWN, elapsedTime);
+      }
+      if(GetKey(olc::DOWN).bReleased){
+        player->playerSpeed = PLAYER_SPEED;
+      }
+
+      if(GetKey(olc::ESCAPE).bPressed && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled){
+        if(!mainMenu->pauseMenuEnabled){
+          mainMenu->pauseMenuEnabled = true;
+        }
+        else{
+          mainMenu->pauseMenuEnabled = false;
+        }
+      }
+
+      if(this->GetKey(olc::F4).bPressed){
+        exit(0);
+      }
+    }
+
+
 
 };
 
@@ -68,20 +132,20 @@ int main()
   olc::PixelGameEngine engine;
 	GameManager gameManager;
 
-	// game.saveFile.open("docs/saveFile.save");
-  //   if (game.saveFile.is_open())
-  //         {
-  //           while ( getline (game.saveFile, game.line) )
-  //           {
-  //             if(game.line == "true"){
-  //               game.fullScreen = true;
-  //             }
-  //             else{
-  //               game.fullScreen = false;
-  //             }
-  //           }
-  //           game.saveFile.close();
-  //         }
+	 gameManager.saveFile.open("data/saveFile.save");
+     if (gameManager.saveFile.is_open())
+           {
+             while ( getline (gameManager.saveFile, gameManager.line) )
+             {
+               if(gameManager.line == "true"){
+                 gameManager.fullScreen = true;
+               }
+               else{
+                 gameManager.fullScreen = false;
+               }
+             }
+             gameManager.saveFile.close();
+           }
 
 	if (gameManager.Construct(engine.ScreenWidth() * 1.5f - 46, engine.ScreenHeight() - 46, 5, 5))
 		gameManager.Start();

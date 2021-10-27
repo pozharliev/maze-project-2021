@@ -146,22 +146,14 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
 
         if(engine->GetKey(olc::ENTER).bPressed && optionsMenuEdit)
         {
-          if(menuOption == 0){
-            if(fullScreen == false){
-              saveFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
-              saveFile << "true";
-              saveFile.close();
-              std::cout<<"true";
-              fullScreen = true;
-              exit(0);
-            } else{
-              saveFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
-              saveFile << "false";
-              saveFile.close();
-              std::cout<<"false";
-              fullScreen = false;
-              exit(0);
-            }
+          if(menuOption == 0)
+          {
+            saveFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
+            saveFile << fullScreen ? "false" : "true";
+            saveFile.close();
+            std::cout<<!fullScreen;
+            fullScreen = !fullScreen;
+            exit(0);
           }
 
           if(menuOption == 1){
