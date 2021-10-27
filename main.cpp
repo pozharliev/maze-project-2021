@@ -54,7 +54,6 @@ class GameManager : public olc::PixelGameEngine{
         startGame(fElapsedTime);
       }
 
-
       if(mainMenu->mainMenuEnabled){
         mainMenu->displayMainMenu(this);
       }
