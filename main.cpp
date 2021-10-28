@@ -12,6 +12,7 @@ class GameManager : public olc::PixelGameEngine
 
 private:
   bool generatedMaze = false;
+  bool inMaze = false;
   struct rect2
   {
     olc::vf2d pos;
@@ -58,6 +59,10 @@ private:
     if (mainMenu->gameStarted)
     {
       startGame(fElapsedTime);
+      if(inMaze)
+      {
+        room->DrawRoom(this);
+      }
     }
 
     if (mainMenu->mainMenuEnabled)
@@ -102,6 +107,7 @@ private:
       if (!generatedMaze)
       {
         room->generateRoom();
+        inMaze = true;
       }
       generatedMaze = true;
     }
