@@ -16,6 +16,8 @@ class CheckedMaze
         // Checked maze but with an optimal path in it
         char* mazeWithPath;
 
+        char* reversedMaze;
+
     public:
         // Checks if the maze is solvable or not
         // Marks the solution with '0'
@@ -25,6 +27,8 @@ class CheckedMaze
         void printCheckedMazeWithPath();
         // Used for debugging purposes
         void printCheckedMaze();
+        // Used for debugging purposes
+        void printReversedMaze();
 
         // Getter for width
         int getWidth() const;
@@ -72,4 +76,7 @@ class CheckedMaze
 
         // Copies the initial maze with its path into a new public variable
         void initMazeWithPath();
+
+        // Copies the checked maze and reverses it
+        void initReversedMaze();
 };

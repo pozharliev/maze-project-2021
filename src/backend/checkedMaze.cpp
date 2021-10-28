@@ -13,6 +13,8 @@ CheckedMaze::CheckedMaze(int width, int height)
 
     mazeWithPath = new char[m_mWidth * m_mHeight];
 
+    reversedMaze = new char[m_mWidth * m_mHeight];
+
     m_x = 1;
     m_y = 1;
 
@@ -92,6 +94,19 @@ void CheckedMaze::initMazeWithPath()
     }
 }
 
+void CheckedMaze::initReversedMaze()
+{
+    for (int y = 0; y <= m_mHeight; y++)
+    {
+        for (int x = 0; x <= m_mWidth; x++)
+        {
+            reversedMaze[toIndex(x, y)] = maze->maze[toIndex(x, y)];
+        }
+    }
+
+    std::reverse(reversedMaze, reversedMaze + ((getHeight() + 1) * ((getWidth()) + 1) - getHeight()));
+
+}
 
 void CheckedMaze::checkMaze()
 {
@@ -138,8 +153,10 @@ void CheckedMaze::checkMaze()
             {
                 initMazeWithPath();
                 fixMaze();
+                initReversedMaze();
                 printCheckedMaze();
                 printCheckedMazeWithPath();
+                printReversedMaze();
                 break;
             }
 
@@ -196,6 +213,19 @@ void CheckedMaze::printCheckedMazeWithPath()
         for (int x = 0; x <= m_mWidth; x++)
         {
             std::cout << mazeWithPath[toIndex(x, y)];
+        }
+        std::cout << std::endl;
+    }
+    std::cout<<std::endl;
+}
+
+void CheckedMaze::printReversedMaze()
+{
+    for (int y = 0; y <= m_mHeight; y++)
+    {
+        for (int x = 0; x <= m_mWidth; x++)
+        {
+            std::cout << reversedMaze[toIndex(x, y)];
         }
         std::cout << std::endl;
     }

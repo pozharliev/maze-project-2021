@@ -59,3 +59,9 @@ void Logger::Error(const std::string& error) const
               << " " << "[" << "Error" << "]"
               << " " << error << std::endl;
 }
+
+int main()
+{
+    Logger logger;
+    logger.Info(MAZE_INITIALIZED);
+}
