@@ -31,7 +31,7 @@ void Lobby::initLobby()
 
 void Lobby::hallCollision(olc::PixelGameEngine* engine, Player* player, Room* room)
 {
-    rect roomLeft = {{0, engine->ScreenHeight() / 2.4f}, {10.0f, 33.0f}};
+    rect roomLeft = {{0, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
 
     if (pointCollRect(player->playerPos, roomLeft))
     {
@@ -39,6 +39,7 @@ void Lobby::hallCollision(olc::PixelGameEngine* engine, Player* player, Room* ro
 
         //If go into hall generate Room
         room->generateRoom();
+        room->DrawRoom(engine, player);
     }
 
     else

@@ -37,6 +37,7 @@ void Room::generateRoom()
 
 void Room::DrawRoom(olc::PixelGameEngine* engine, Player* player)
 {
+    engine->Clear(olc::BLACK);
     auto getTile = [&](int x, int y)
     {
         if (x >= 0 && x < mazeWidth && y >= 0 && y < mazeHeight)
