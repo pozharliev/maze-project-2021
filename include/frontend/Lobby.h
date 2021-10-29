@@ -4,6 +4,18 @@
 
 class Lobby
 {
+
+private:
+  int lobbyWidth;
+  int lobbyHeight;
+  std::string lobbyRawData;
+
+  int tileWidth;
+  int tileHeight;
+
+  int visibleTilesX;
+  int visibleTilesY;
+
 public:
   struct rect
   {
@@ -15,4 +27,7 @@ public:
 
 public:
   void drawLobby(olc::PixelGameEngine *engine);
+
+private:
+  void initLobby();
 };

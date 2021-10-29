@@ -2,6 +2,7 @@
 
 #include "../backend/libs.h"
 #include "../backend/checkedMaze.h"
+#include "../frontend/Player.h"
 
 class Room
 {
@@ -10,8 +11,8 @@ class Room
         int mazeWidth, mazeHeight;
         CheckedMaze* roomMaze;
 
-        int tileWidth;
-        int tileHeight;
+        float playerPosX;
+        float playerPosY;
         
 
     public:
@@ -19,11 +20,14 @@ class Room
         std::fstream rawMazeData;
         std::string line;
 
+        int tileWidth;
+        int tileHeight;
+
         int visibleTilesX;
         int visibleTilesY;
 
-        float CameraPosX;
-	    float CameraPosY;
+        float cameraPosX;
+	    float cameraPosY;
         float offsetX;
         float offsetY;
 
@@ -33,5 +37,5 @@ class Room
     public:
         void generateRoom();
 
-        void DrawRoom(olc::PixelGameEngine* engine);
+        void DrawRoom(olc::PixelGameEngine* engine, Player* player);
 };

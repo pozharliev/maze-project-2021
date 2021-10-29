@@ -129,7 +129,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
           {
             menuOption = 0;
           } else {
-            menuOption+= 1;
+            menuOption += 1;
           }
         }
 
@@ -191,8 +191,10 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
           if(menuOption == 1)
           {
             menuOption = 0;
-          } else {
-          menuOption+= 1;
+          } 
+          else if(menuOption == 0)
+          {
+            menuOption = 1;
           }
         }
 
@@ -201,8 +203,10 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
           if(menuOption == 0)
           {
             menuOption = 1;
-          } else {
-            menuOption -= 1;
+          } 
+          else if(menuOption == 1)
+          {
+            menuOption = 0;
           }
         }
 
@@ -210,10 +214,10 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
         {
           if(menuOption == 0){
             pauseMenuEnabled = false;
+            mainMenuEnabled = true;
             menuOption = 0; // reset the selected option after quitting the menu
           }
           if(menuOption == 1){
-            optionsMenuEnabled = false;
             mainMenuEnabled = true;
             pauseMenuEnabled = false;
             menuOption = 0;

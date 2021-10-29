@@ -1,9 +1,9 @@
 #define OLC_PGE_APPLICATION
 #include "libs/olcPixelGameEngine.h"
 #include "include/frontend/mainMenu.h"
-#include "include/frontend/Lobby.h"
+#include "include/frontend/lobby.h"
 #include "include/frontend/room.h"
-#include "include/frontend/Player.h"
+#include "include/frontend/player.h"
 // #include "include/frontend/GameManager.h"
 #include <iostream>
 
@@ -37,8 +37,8 @@ public:
 private:
   bool OnUserCreate() override
   {
-    player->playerX = ScreenWidth() / 2;
-    player->playerY = ScreenHeight() / 2;
+    player->playerX = 0;
+    player->playerY = 0;
     player->playerRadius = 5.0f;
     player->playerPos = {player->playerX, player->playerY};
 
@@ -58,11 +58,7 @@ private:
 
     if (mainMenu->gameStarted)
     {
-      startGame(fElapsedTime);
-      if(inMaze)
-      {
-        room->DrawRoom(this);
-      }
+      Game(fElapsedTime);
     }
 
     if (mainMenu->mainMenuEnabled)
@@ -83,47 +79,25 @@ private:
     return true;
   }
 
-  bool startGame(float fElapsedTime)
+  bool Game(float fElapsedTime)
   {
     getInput(fElapsedTime);
+
+    lobby->drawLobby(this);
 
     player->playerPos = {player->playerX, player->playerY};
 
     player->drawPlayer(this);
+
     if (mainMenu->mainMenuEnabled)
     {
       mainMenu->displayMainMenu(this);
     }
-
-    lobby->drawLobby(this);
-
-    rect2 roomLeft = {{0, this->ScreenHeight() / 2.4f}, {10.0f, 33.0f}};
-
-    if (pointCollRect(player->playerPos, roomLeft))
-    {
-      DrawRect(roomLeft.pos, roomLeft.size, olc::RED);
-
-      //If go into hall generate Room
-      if (!generatedMaze)
-      {
-        room->generateRoom();
-        inMaze = true;
-      }
-      generatedMaze = true;
-    }
-
-    else
-      DrawRect(roomLeft.pos, roomLeft.size, olc::WHITE);
-  }
-
-  bool pointCollRect(const olc::vf2d &p, const rect2 &r)
-  {
-    return (p.x >= r.pos.x && p.y >= r.pos.y && p.x < r.pos.x + r.size.x && p.y < r.pos.y + r.size.y);
   }
 
   void getInput(float elapsedTime)
   {
-    if (this->GetKey(olc::LEFT).bHeld && player->playerX >= 0 && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
     {
       player->movePlayer(this, olc::LEFT, elapsedTime);
     }
@@ -133,7 +107,7 @@ private:
       player->playerSpeed = PLAYER_SPEED;
     }
 
-    if (this->GetKey(olc::RIGHT).bHeld && player->playerX <= this->ScreenWidth() && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::RIGHT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
     {
       player->movePlayer(this, olc::RIGHT, elapsedTime);
     }
@@ -142,7 +116,7 @@ private:
       player->playerSpeed = PLAYER_SPEED;
     }
 
-    if (this->GetKey(olc::UP).bHeld && player->playerY >= 0 && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::UP).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
     {
       player->movePlayer(this, olc::UP, elapsedTime);
     }
@@ -151,7 +125,7 @@ private:
       player->playerSpeed = PLAYER_SPEED;
     }
 
-    if (GetKey(olc::DOWN).bHeld && player->playerY <= ScreenHeight() && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (GetKey(olc::DOWN).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
     {
       player->movePlayer(this, olc::DOWN, elapsedTime);
     }
@@ -170,11 +144,6 @@ private:
       {
         mainMenu->pauseMenuEnabled = false;
       }
-    }
-
-    if (this->GetKey(olc::F4).bPressed)
-    {
-      exit(0);
     }
   }
 };

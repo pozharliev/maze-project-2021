@@ -21,14 +21,14 @@ main: menu lobby uncheckedMaze mazeChecker room player $(MAIN)
 menu: $(SRC)/$(FE)/mainMenu.cpp $(INCLUDE)/$(FE)/mainMenu.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/mainMenu.cpp
 
-lobby: $(SRC)/$(FE)/Lobby.cpp $(INCLUDE)/$(FE)/Lobby.h
-	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Lobby.cpp
+lobby: $(SRC)/$(FE)/lobby.cpp $(INCLUDE)/$(FE)/lobby.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/lobby.cpp
 
 room: $(SRC)/$(FE)/room.cpp $(INCLUDE)/$(FE)/room.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/room.cpp
 
-player: $(SRC)/$(FE)/Player.cpp $(INCLUDE)/$(FE)/Player.h
-	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/Player.cpp
+player: $(SRC)/$(FE)/player.cpp $(INCLUDE)/$(FE)/player.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/player.cpp
 
 maze: uncheckedMaze mazeChecker
 	$(CXX) $(CXXFLAGS) -o maze.exe maze.o checkedMaze.o

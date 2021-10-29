@@ -883,7 +883,7 @@ namespace olc
 		virtual ~PixelGameEngine();
 	public:
 		olc::rcode Construct(int32_t screen_w, int32_t screen_h, int32_t pixel_w, int32_t pixel_h,
-			bool full_screen = false, bool vsync = true, bool cohesion = false);
+			bool full_screen = false, bool vsync = false, bool cohesion = false);
 		olc::rcode Start();
 
 	public: // User Override Interfaces

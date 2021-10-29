@@ -1,4 +1,4 @@
-#include "../../include/frontend/Player.h"
+#include "../../include/frontend/player.h"
 
 void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime)
   {
