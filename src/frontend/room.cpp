@@ -35,7 +35,7 @@ void Room::generateRoom()
     rawMazeData.close();
 }
 
-void Room:: DrawRoom(olc::PixelGameEngine* engine, Player* player)
+void Room::DrawRoom(olc::PixelGameEngine* engine, Player* player)
 {
     auto getTile = [&](int x, int y)
     {
@@ -84,8 +84,4 @@ void Room:: DrawRoom(olc::PixelGameEngine* engine, Player* player)
             }
         }
     }
-    
 }
-
-//# - 1
-//" " - 0

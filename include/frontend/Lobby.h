@@ -1,6 +1,8 @@
 #pragma once
 
 #include "../backend/libs.h"
+#include "../frontend/Player.h"
+#include "../frontend/room.h"
 
 class Lobby
 {
@@ -26,8 +28,13 @@ public:
   rect r;
 
 public:
-  void drawLobby(olc::PixelGameEngine *engine);
+  void drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room);
+
 
 private:
   void initLobby();
+
+  void hallCollision(olc::PixelGameEngine* engine, Player* player, Room* room);
+
+  bool pointCollRect(const olc::vf2d &p, const rect &r);
 };

@@ -31,9 +31,6 @@ class Room
         float offsetX;
         float offsetY;
 
-
-
-
     public:
         void generateRoom();
 

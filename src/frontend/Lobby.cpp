@@ -27,7 +27,30 @@ void Lobby::initLobby()
     tileHeight = 11;
 }
 
-void Lobby::drawLobby(olc::PixelGameEngine *engine)
+//Draw the hall collision
+
+void Lobby::hallCollision(olc::PixelGameEngine* engine, Player* player, Room* room)
+{
+    rect roomLeft = {{0, engine->ScreenHeight() / 2.4f}, {10.0f, 33.0f}};
+
+    if (pointCollRect(player->playerPos, roomLeft))
+    {
+        engine->DrawRect(roomLeft.pos, roomLeft.size, olc::RED);
+
+        //If go into hall generate Room
+        room->generateRoom();
+    }
+
+    else
+        engine->DrawRect(roomLeft.pos, roomLeft.size, olc::WHITE);
+}
+
+bool Lobby::pointCollRect(const olc::vf2d &p, const rect &r)
+{
+    return (p.x >= r.pos.x && p.y >= r.pos.y && p.x < r.pos.x + r.size.x && p.y < r.pos.y + r.size.y);
+}
+
+void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
 {
 
     auto getTile = [&](int x, int y)
@@ -62,5 +85,5 @@ void Lobby::drawLobby(olc::PixelGameEngine *engine)
         }
     }
 
-
+    hallCollision(engine, player, room);
 }

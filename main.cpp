@@ -10,15 +10,6 @@
 class GameManager : public olc::PixelGameEngine
 {
 
-private:
-  bool generatedMaze = false;
-  bool inMaze = false;
-  struct rect2
-  {
-    olc::vf2d pos;
-    olc::vf2d size;
-  };
-
 public:
   MainMenu *mainMenu;
   Player *player;
@@ -83,7 +74,7 @@ private:
   {
     getInput(fElapsedTime);
 
-    lobby->drawLobby(this);
+    lobby->drawLobby(this, player, room);
 
     player->playerPos = {player->playerX, player->playerY};
 
