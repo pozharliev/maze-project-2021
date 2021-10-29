@@ -88,11 +88,6 @@ private:
     player->playerPos = {player->playerX, player->playerY};
 
     player->drawPlayer(this);
-
-    if (mainMenu->mainMenuEnabled)
-    {
-      mainMenu->displayMainMenu(this);
-    }
   }
 
   void getInput(float elapsedTime)
