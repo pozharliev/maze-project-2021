@@ -26,6 +26,7 @@ public:
   };
 
   rect r;
+  bool inMaze;
 
 public:
   void drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room);
@@ -34,7 +35,7 @@ public:
 private:
   void initLobby();
 
-  void hallCollision(olc::PixelGameEngine* engine, Player* player, Room* room);
+  bool hallCollision(Player* player, rect roomLeft);
 
   bool pointCollRect(const olc::vf2d &p, const rect &r);
 };

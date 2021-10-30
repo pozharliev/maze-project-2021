@@ -29,21 +29,9 @@ void Lobby::initLobby()
 
 //Draw the hall collision
 
-void Lobby::hallCollision(olc::PixelGameEngine* engine, Player* player, Room* room)
+bool Lobby::hallCollision(Player* player, rect roomLeft)
 {
-    rect roomLeft = {{0, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
-
-    if (pointCollRect(player->playerPos, roomLeft))
-    {
-        engine->DrawRect(roomLeft.pos, roomLeft.size, olc::RED);
-
-        //If go into hall generate Room
-        room->generateRoom();
-        room->DrawRoom(engine, player);
-    }
-
-    else
-        engine->DrawRect(roomLeft.pos, roomLeft.size, olc::WHITE);
+    return pointCollRect(player->playerPos, roomLeft);
 }
 
 bool Lobby::pointCollRect(const olc::vf2d &p, const rect &r)
@@ -53,38 +41,50 @@ bool Lobby::pointCollRect(const olc::vf2d &p, const rect &r)
 
 void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
 {
-
     auto getTile = [&](int x, int y)
     {
         if (x >= 0 && x < lobbyWidth && y >= 0 && y < lobbyWidth)
 			return lobbyRawData[y * lobbyWidth + x];
     };
 
-    initLobby();
-
-    visibleTilesX = engine->ScreenWidth() / tileWidth;
-    visibleTilesY = engine->ScreenHeight() / tileHeight;
-
-    for(int x = 0; x < visibleTilesX; x++)
+    if(inMaze)
     {
-        for(int y = 0; y < visibleTilesY; y++)
+        room->generateRoom();
+        room->DrawRoom(engine, player);
+    }
+    else
+    {
+        initLobby();
+        visibleTilesX = engine->ScreenWidth() / tileWidth;
+        visibleTilesY = engine->ScreenHeight() / tileHeight;
+
+        for(int x = 0; x < visibleTilesX; x++)
         {
-            char currentTile = getTile(x, y);
-            switch(currentTile)
+            for(int y = 0; y < visibleTilesY; y++)
             {
-                case '.':
-                    engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::BLACK);
-                    break;
-                
-                case '#':
-                    engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::RED);
-                    break;
-                
-                default:
-                    break;
+                char currentTile = getTile(x, y);
+                switch(currentTile)
+                {
+                    case '.':
+                        engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::BLACK);
+                        break;
+                    
+                    case '#':
+                        engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::RED);
+                        break;
+                    
+                    default:
+                        break;
+                }
             }
         }
-    }
 
-    hallCollision(engine, player, room);
+        rect roomLeft = {{0, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
+        engine->DrawRect(roomLeft.pos, roomLeft.size, olc::RED);
+
+        if(hallCollision(player, roomLeft))
+        {
+            inMaze = true;
+        }
+    }
 }

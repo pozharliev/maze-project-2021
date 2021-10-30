@@ -28,16 +28,19 @@ public:
 private:
   bool OnUserCreate() override
   {
-    player->playerX = 0;
-    player->playerY = 0;
+    player->playerX = ScreenWidth() / 2;
+    player->playerY = ScreenHeight() / 2;
     player->playerRadius = 5.0f;
     player->playerPos = {player->playerX, player->playerY};
+    player->playerSpeed = 60.0f;
 
     mainMenu->mainMenuEnabled = true;
     mainMenu->pauseMenuEnabled = false;
     mainMenu->optionsMenuEnabled = false;
     mainMenu->menuOption = 0;
     mainMenu->gameStarted = false;
+
+    lobby->inMaze = false;
 
     return true;
   }
@@ -90,7 +93,7 @@ private:
 
     if (this->GetKey(olc::LEFT).bReleased)
     {
-      player->playerSpeed = PLAYER_SPEED;
+      player->playerSpeed = 60;
     }
 
     if (this->GetKey(olc::RIGHT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
@@ -99,7 +102,7 @@ private:
     }
     if (GetKey(olc::RIGHT).bReleased)
     {
-      player->playerSpeed = PLAYER_SPEED;
+      player->playerSpeed = 60;
     }
 
     if (this->GetKey(olc::UP).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
@@ -108,7 +111,7 @@ private:
     }
     if (GetKey(olc::UP).bReleased)
     {
-      player->playerSpeed = PLAYER_SPEED;
+      player->playerSpeed = 60;
     }
 
     if (GetKey(olc::DOWN).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
@@ -117,7 +120,7 @@ private:
     }
     if (GetKey(olc::DOWN).bReleased)
     {
-      player->playerSpeed = PLAYER_SPEED;
+      player->playerSpeed = 60;
     }
 
     if (GetKey(olc::ESCAPE).bPressed && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled)

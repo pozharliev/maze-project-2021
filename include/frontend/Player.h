@@ -2,8 +2,6 @@
 
 #include "../backend/libs.h"
 
-#define PLAYER_SPEED 60.0f
-
 class Player
 {
 
