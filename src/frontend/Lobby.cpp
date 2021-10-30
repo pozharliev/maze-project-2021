@@ -49,7 +49,6 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
 
     if(inMaze)
     {
-        room->generateRoom();
         room->DrawRoom(engine, player);
     }
     else

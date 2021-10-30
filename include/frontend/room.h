@@ -31,8 +31,10 @@ class Room
         float offsetX;
         float offsetY;
 
-    public:
+    private:
         void generateRoom();
+    
+    public:
 
         void DrawRoom(olc::PixelGameEngine* engine, Player* player);
 };

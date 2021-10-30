@@ -2,6 +2,7 @@
 
 void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime)
   {
+
     switch(dir)
     {
       case olc::LEFT: 

@@ -22,7 +22,7 @@ public:
     mainMenu = new MainMenu;
     player = new Player;
     lobby = new Lobby;
-    room = new Room(14, 14);
+    room = new Room(20, 10);
   }
 
 private:

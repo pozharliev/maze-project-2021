@@ -4,12 +4,14 @@ Room::Room(int mWidth, int mHeight)
 {
     mazeWidth = mWidth;
     mazeHeight = mHeight;
-    tileWidth = 16;
-    tileHeight = 16;
+    tileWidth = 13;
+    tileHeight = 13;
     offsetX = 0.0f;
     offsetY = 0.0f;
 
     roomMaze = new CheckedMaze(mazeWidth, mazeHeight);
+
+    generateRoom();
 }
 
 void Room::generateRoom()
@@ -37,52 +39,31 @@ void Room::generateRoom()
 
 void Room::DrawRoom(olc::PixelGameEngine* engine, Player* player)
 {
-    engine->Clear(olc::BLACK);
+    
     auto getTile = [&](int x, int y)
     {
-        if (x >= 0 && x < mazeWidth && y >= 0 && y < mazeHeight)
-				return roomMaze->checkedMaze[y * mazeWidth + x];
+		return roomMaze->checkedMaze[y * mazeWidth + x];
     };
 
-    cameraPosX = player->playerX;
-    cameraPosY = player->playerY;
-
-    //Number of tiles visible for the player
-    visibleTilesX = engine->ScreenWidth() / tileWidth;
-    visibleTilesY = engine->ScreenHeight() / tileHeight;
-
-    offsetX = cameraPosX - (float)visibleTilesX / 2.0f;
-    offsetY = cameraPosY - (float)visibleTilesY / 2.0f;
-
-
-    //Offset the maze based on the player position
-    if(offsetX < 0) offsetX = 0;
-    if(offsetY < 0) offsetY = 0;
-
-    if (offsetX > mazeWidth - visibleTilesX) offsetX = mazeWidth - visibleTilesX;
-	if (offsetY > mazeHeight - visibleTilesY) offsetY = mazeHeight - visibleTilesY;
-
-
     //Draw the Maze
-    for(int x = 0; x < visibleTilesX; x++)
-    {
-        for(int y = 0; y < visibleTilesY; y++)
+    for(int x = 0; x <= mazeWidth; x++)
         {
-            char currentTile = getTile(x + offsetX, y + offsetY);
-
-            switch(currentTile)
+            for(int y = 0; y <= mazeHeight; y++)
             {
-                case ' ':
-                    engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::BLACK);
-                    break;
-
-                case '#':
-                    engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::RED);
-                    break;
-
-                default:
-                    break;
+                char currentTile = getTile(x, y);
+                switch(currentTile)
+                {
+                    case ' ':
+                        engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::BLACK);
+                        break;
+                    
+                    case '#':
+                        engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::RED);
+                        break;
+                    
+                    default:
+                        break;
+                }
             }
         }
-    }
 }
