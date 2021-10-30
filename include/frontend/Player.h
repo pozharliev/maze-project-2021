@@ -8,7 +8,7 @@ class Player
 public:
     float playerX;
     float playerY;
-    float newPlayerPosX
+    float newPlayerPosX;
     float newPlayerPosY;
     olc::vf2d playerPos;
     float playerSpeed;
