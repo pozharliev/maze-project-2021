@@ -1,7 +1,7 @@
 #pragma once
 
 #include "../backend/libs.h"
-#include "../frontend/Player.h"
+#include "../frontend/player.h"
 #include "../frontend/room.h"
 
 class Lobby
@@ -18,6 +18,9 @@ private:
   int visibleTilesX;
   int visibleTilesY;
 
+  int mazePlayerPosX;
+  int mazePlayerPosY;
+
 public:
   struct rect
   {
@@ -28,8 +31,10 @@ public:
   rect r;
   bool inMaze;
   olc::Sprite *lobbyRoom;
+  bool firstMazeEnter;
 
 public:
+  char getTile(int x, int y);
   void drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room);
 
 

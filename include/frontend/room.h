@@ -2,7 +2,6 @@
 
 #include "../backend/libs.h"
 #include "../backend/checkedMaze.h"
-#include "../frontend/Player.h"
 
 class Room
 {
@@ -35,6 +34,6 @@ class Room
         void generateRoom();
     
     public:
-
-        void DrawRoom(olc::PixelGameEngine* engine, Player* player);
+        char getTile(int x, int y);
+        void DrawRoom(olc::PixelGameEngine* engine);
 };

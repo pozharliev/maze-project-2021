@@ -25,6 +25,8 @@ void Lobby::initLobby()
 
     tileWidth = 11;
     tileHeight = 11;
+
+    bool firstMazeEnter = true;
 }
 
 //Draw the hall collision
@@ -39,17 +41,25 @@ bool Lobby::pointCollRect(const olc::vf2d &p, const rect &r)
     return (p.x >= r.pos.x && p.y >= r.pos.y && p.x < r.pos.x + r.size.x && p.y < r.pos.y + r.size.y);
 }
 
+char Lobby::getTile(int x, int y)
+{
+    if (x >= 0 && x < lobbyWidth && y >= 0 && y < lobbyWidth)
+		return lobbyRawData[y * lobbyWidth + x];
+}
+
 void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
 {
-    auto getTile = [&](int x, int y)
-    {
-        if (x >= 0 && x < lobbyWidth && y >= 0 && y < lobbyWidth)
-			return lobbyRawData[y * lobbyWidth + x];
-    };
 
     if(inMaze)
     {
-        room->DrawRoom(engine, player);
+        room->DrawRoom(engine);
+        if(firstMazeEnter)
+        {
+            std::cout<<"gay";
+            player->playerX = engine->ScreenWidth();
+            player->playerY = engine->ScreenHeight();
+            firstMazeEnter = false;
+        }
     }
     else
     {
