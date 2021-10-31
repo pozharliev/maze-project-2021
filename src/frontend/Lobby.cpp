@@ -78,6 +78,8 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
             }
         }
 
+        engine->DrawSprite(0, 0, lobbyRoom);
+
         rect roomLeft = {{0, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
         engine->DrawRect(roomLeft.pos, roomLeft.size, olc::RED);
 

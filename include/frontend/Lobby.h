@@ -27,6 +27,7 @@ public:
 
   rect r;
   bool inMaze;
+  olc::Sprite *lobbyRoom;
 
 public:
   void drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room);

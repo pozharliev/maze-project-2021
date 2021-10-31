@@ -17,6 +17,7 @@ class MainMenu
         bool optionsMenuEdit;
         bool mainMenuEdit;
         bool gameStarted;
+        bool anyKeyPressed;
 
     public:
 
@@ -28,4 +29,5 @@ class MainMenu
 
         void getMenuInput(olc::PixelGameEngine* engine, std::string menuType);
 
+        bool pressAnyKey(olc::PixelGameEngine* engine);
 };

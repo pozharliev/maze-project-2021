@@ -1,5 +1,13 @@
 #include "../../include/frontend/mainMenu.h"
 
+bool MainMenu::pressAnyKey(olc::PixelGameEngine* engine){
+  engine->DrawString(engine->ScreenWidth()/2 - 56, engine->ScreenHeight()/2, "Press X to continue", olc::WHITE);
+  if(engine->GetKey(olc::X).bPressed){
+    anyKeyPressed = true;
+  }
+  return true;
+}
+
 bool MainMenu::displayPauseMenu(olc::PixelGameEngine* engine)
     {
       std::string menuOptionsArr[2] = {"Continue", "Quit To Menu"};

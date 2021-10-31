@@ -39,8 +39,10 @@ private:
     mainMenu->optionsMenuEnabled = false;
     mainMenu->menuOption = 0;
     mainMenu->gameStarted = false;
+    mainMenu->anyKeyPressed = false;
 
     lobby->inMaze = false;
+    lobby->lobbyRoom = new olc::Sprite("public/lobby.png");
 
     return true;
   }
@@ -55,19 +57,26 @@ private:
       Game(fElapsedTime);
     }
 
-    if (mainMenu->mainMenuEnabled)
+    if(mainMenu->anyKeyPressed)
     {
-      mainMenu->displayMainMenu(this);
-    }
+      if (mainMenu->mainMenuEnabled)
+      {
+        mainMenu->displayMainMenu(this);
+      }
 
-    if (mainMenu->pauseMenuEnabled)
-    {
-      mainMenu->displayPauseMenu(this);
-    }
+      if (mainMenu->pauseMenuEnabled)
+      {
+        mainMenu->displayPauseMenu(this);
+      }
 
-    if (mainMenu->optionsMenuEnabled && mainMenu->mainMenuEnabled == false)
+      if (mainMenu->optionsMenuEnabled && mainMenu->mainMenuEnabled == false)
+      {
+        mainMenu->displayOptionsMenu(this);
+      }
+    }
+    else
     {
-      mainMenu->displayOptionsMenu(this);
+      mainMenu->pressAnyKey(this);
     }
 
     return true;
