@@ -12,10 +12,12 @@ public:
     float newPlayerPosY;
     olc::vf2d playerPos;
     float playerSpeed;
+    float playerVelX;
+    float playerVelY;
     float playerRadius;
 
 public:
-    void movePlayer(olc::PixelGameEngine *engine, olc::Key dir, float elapsedTime);
+    void movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime);
 
     void drawPlayer(olc::PixelGameEngine *engine);
 

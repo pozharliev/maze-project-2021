@@ -4,7 +4,7 @@
 #include "include/frontend/lobby.h"
 #include "include/frontend/room.h"
 #include "include/frontend/player.h"
-// #include "include/frontend/GameManager.h"
+#include "include/backend/collisions.h"
 #include <iostream>
 
 class GameManager : public olc::PixelGameEngine
@@ -15,6 +15,7 @@ public:
   Player *player;
   Lobby *lobby;
   Room *room;
+  Collisions *collisions;
 
 public:
   GameManager()
@@ -22,7 +23,8 @@ public:
     mainMenu = new MainMenu;
     player = new Player;
     lobby = new Lobby;
-    room = new Room(20, 10);
+    room = new Room(24, 12);
+    collisions = new Collisions;
   }
 
 private:
@@ -33,6 +35,8 @@ private:
     player->playerRadius = 5.0f;
     player->playerPos = {player->playerX, player->playerY};
     player->playerSpeed = 60.0f;
+    player->playerVelX = 0.0f;
+    player->playerVelY = 0.0f;
 
     mainMenu->mainMenuEnabled = true;
     mainMenu->pauseMenuEnabled = false;
@@ -80,6 +84,8 @@ private:
     lobby->drawLobby(this, player, room);
 
     player->playerPos = {player->playerX, player->playerY};
+
+    collisions->checkCollisions(player, lobby, room);
 
     player->drawPlayer(this);
   }

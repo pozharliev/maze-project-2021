@@ -37,14 +37,14 @@ void Room::generateRoom()
     rawMazeData.close();
 }
 
-void Room::DrawRoom(olc::PixelGameEngine* engine, Player* player)
+char Room::getTile(int x, int y)
+{
+    return roomMaze->checkedMaze[y * mazeWidth + x];
+}
+
+void Room::DrawRoom(olc::PixelGameEngine* engine)
 {
     
-    auto getTile = [&](int x, int y)
-    {
-		return roomMaze->checkedMaze[y * mazeWidth + x];
-    };
-
     //Draw the Maze
     for(int x = 0; x <= mazeWidth; x++)
         {
