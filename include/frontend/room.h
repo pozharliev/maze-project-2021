@@ -30,10 +30,13 @@ class Room
         float offsetX;
         float offsetY;
 
+        olc::Sprite *mazeTile;
+
     private:
         void generateRoom();
     
     public:
+        ~Room();
         char getTile(int x, int y);
         void DrawRoom(olc::PixelGameEngine* engine);
 };

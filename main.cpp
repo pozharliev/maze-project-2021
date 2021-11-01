@@ -53,6 +53,8 @@ private:
     lobby->inMaze = false;
     lobby->lobbyRoom = new olc::Sprite("public/lobby.png");
 
+    room->mazeTile = new olc::Sprite("public/tile.png");
+
     return true;
   }
 

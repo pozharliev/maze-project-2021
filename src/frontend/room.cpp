@@ -1,5 +1,10 @@
 #include "../../include/frontend/room.h"
 
+Room::~Room()
+{
+    delete mazeTile;
+}
+
 Room::Room(int mWidth, int mHeight)
 {
     mazeWidth = mWidth;
@@ -46,6 +51,26 @@ void Room::DrawRoom(olc::PixelGameEngine* engine)
 {
     
     //Draw the Maze
+    // for(int x = 0; x <= mazeWidth; x++)
+    //     {
+    //         for(int y = 0; y <= mazeHeight; y++)
+    //         {
+    //             char currentTile = getTile(x, y);
+    //             switch(currentTile)
+    //             {
+    //                 case ' ':
+    //                     break;
+                    
+    //                 case '#':
+    //                     engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::Pixel(147,128,112));
+    //                     break;
+                    
+    //                 default:
+    //                     break;
+    //             }
+    //         }
+    //     }
+
     for(int x = 0; x <= mazeWidth; x++)
         {
             for(int y = 0; y <= mazeHeight; y++)
@@ -54,11 +79,11 @@ void Room::DrawRoom(olc::PixelGameEngine* engine)
                 switch(currentTile)
                 {
                     case ' ':
-                        engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::BLACK);
+                        // engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::BLANK);
+                        engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
                         break;
                     
                     case '#':
-                        engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::RED);
                         break;
                     
                     default:
