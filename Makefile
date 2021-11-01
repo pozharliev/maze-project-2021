@@ -43,8 +43,5 @@ mazeChecker: $(SRC)/$(BE)/checkedMaze.cpp $(INCLUDE)/$(BE)/checkedMaze.h
 uncheckedMaze: $(SRC)/$(BE)/maze.cpp $(INCLUDE)/$(BE)/maze.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/maze.cpp
 
-logger: $(SRC)/$(LOG)/logger.cpp $(INCLUDE)/$(LOG)/logger.h
-	$(CXX) $(CXXFLAGS) -o logger.exe $(SRC)/$(LOG)/logger.cpp
-
 clean:
 	rm *.exe *.o
