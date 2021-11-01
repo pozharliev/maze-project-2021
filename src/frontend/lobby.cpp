@@ -1,5 +1,10 @@
 #include "../../include/frontend/lobby.h"
 
+Lobby::~Lobby()
+{
+    delete lobbyRoom;
+}
+
 void Lobby::initLobby()
 {
     lobbyWidth = 32;
@@ -67,26 +72,26 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
         visibleTilesX = engine->ScreenWidth() / tileWidth;
         visibleTilesY = engine->ScreenHeight() / tileHeight;
 
-        for(int x = 0; x < visibleTilesX; x++)
-        {
-            for(int y = 0; y < visibleTilesY; y++)
-            {
-                char currentTile = getTile(x, y);
-                switch(currentTile)
-                {
-                    case '.':
-                        engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::BLACK);
-                        break;
+        // for(int x = 0; x < visibleTilesX; x++)
+        // {
+        //     for(int y = 0; y < visibleTilesY; y++)
+        //     {
+        //         char currentTile = getTile(x, y);
+        //         switch(currentTile)
+        //         {
+        //             case '.':
+        //                 engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::BLACK);
+        //                 break;
                     
-                    case '#':
-                        engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::RED);
-                        break;
+        //             case '#':
+        //                 engine->FillRect(x * tileWidth, y * tileHeight, (x + 1) * tileWidth, (y + 1) * tileHeight, olc::RED);
+        //                 break;
                     
-                    default:
-                        break;
-                }
-            }
-        }
+        //             default:
+        //                 break;
+        //         }
+        //     }
+        // }
 
         engine->DrawSprite(0, 0, lobbyRoom);
 

@@ -33,7 +33,9 @@ public:
   olc::Sprite *lobbyRoom;
   bool firstMazeEnter;
 
+
 public:
+  ~Lobby();
   char getTile(int x, int y);
   void drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room);
 

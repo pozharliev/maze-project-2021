@@ -30,6 +30,7 @@ public:
 private:
   bool OnUserCreate() override
   {
+    player->innitPlayer();
     player->playerX = ScreenWidth() / 2;
     player->playerY = ScreenHeight() / 2;
     player->playerRadius = 5.0f;
