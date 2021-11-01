@@ -1,5 +1,13 @@
 #include "../../include/frontend/playerAnimator.h"
 
+PlayerAnimator::~PlayerAnimator()
+{
+    delete mPlayerAnimSprites.playerUp;
+    delete mPlayerAnimSprites.playerDown;
+    delete mPlayerAnimSprites.playerLeft;
+    delete mPlayerAnimSprites.playerRight;
+}
+
 void PlayerAnimator::setParams(float interval, int totalWidth, int totalHeight, int tileCountX, int tileCountY, int totalTileCount)
 {
     mInterval = interval;
@@ -10,6 +18,11 @@ void PlayerAnimator::setParams(float interval, int totalWidth, int totalHeight, 
 	mTotalTileCount = totalTileCount;
     currentTime = 0.0f;
     currentTile = 0;
+
+    mPlayerAnimSprites.playerUp = new olc::Sprite("public/Player_Up_Anim.png");
+    mPlayerAnimSprites.playerDown = new olc::Sprite("public/Player_Down_Anim.png");
+    mPlayerAnimSprites.playerLeft = new olc::Sprite("public/Player_Left_Anim.png");
+    mPlayerAnimSprites.playerRight = new olc::Sprite("public/Player_Right_Anim.png");
 
 }
 

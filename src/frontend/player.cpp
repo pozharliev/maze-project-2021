@@ -1,20 +1,14 @@
 #include "../../include/frontend/player.h"
 
-Player::~Player()
-{
-  delete playerSprite;
-  delete playerDecal;
-}
-
 void Player::innitPlayer()
 {
   playerAnimator = new PlayerAnimator;
-  playerSprite = new olc::Sprite("public/Player_Anim_Spritesheet.png");
-  playerDecal = new olc::Decal(playerSprite);
+  currentAnimSprite = new olc::Sprite("public/Player_Up_Anim.png");
+  currentAnim = new olc::Decal(currentAnimSprite);
   animationData.sourceSize = {0.0f, 0.0f};
   animationData.sourcePos = {0.0f, 0.0f};
 
-  playerAnimator->setParams(0.125f, playerSprite->width, playerSprite->height, 12, 4, 48);
+  playerAnimator->setParams(0.07f, currentAnimSprite->width, currentAnimSprite->height, 12, 1, 12);
 }
 
 void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime)
@@ -22,21 +16,25 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
     switch(dir)
     {
       case olc::LEFT:
+        currentAnim = new olc::Decal(playerAnimator->mPlayerAnimSprites.playerLeft);
         playerVelX = -playerSpeed;
         playerX += playerVelX * elapsedTime;
         break;
 
       case olc::RIGHT:
+        currentAnim = new olc::Decal(playerAnimator->mPlayerAnimSprites.playerRight);
         playerVelX = playerSpeed;
         playerX += playerVelX * elapsedTime;
         break;
 
       case olc::UP:
+        currentAnim = new olc::Decal(playerAnimator->mPlayerAnimSprites.playerUp);
         playerVelY = -playerSpeed;
         playerY += playerVelY * elapsedTime;
         break;
 
       case olc::DOWN:
+        currentAnim = new olc::Decal(playerAnimator->mPlayerAnimSprites.playerDown);
         playerVelY = playerSpeed;
         playerY += playerVelY * elapsedTime;
         break;
@@ -54,5 +52,5 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
 void Player::drawPlayer(olc::PixelGameEngine* engine)
   {
     olc::vf2d playerSpriteSize = {31.75f, 31.25f};
-    engine->DrawPartialDecal(playerPos, playerSpriteSize, playerDecal, animationData.sourcePos, animationData.sourceSize);
+    engine->DrawPartialDecal(playerPos, playerSpriteSize, currentAnim, animationData.sourcePos, animationData.sourceSize);
   }

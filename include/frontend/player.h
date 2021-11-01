@@ -19,8 +19,8 @@ public:
 
 private:
     PlayerAnimator* playerAnimator;
-    olc::Sprite* playerSprite;
-    olc::Decal* playerDecal;
+    olc::Sprite* currentAnimSprite;
+    olc::Decal* currentAnim;
     PlayerAnimator::AnimationData animationData;
 
 public:
