@@ -1,5 +1,9 @@
 #define OLC_PGE_APPLICATION
 #include "libs/olcPixelGameEngine.h"
+
+#define OLC_PGEX_ANIMSPR
+#include "libs/olcPGEX_AnimatedSprite.h"
+
 #include "include/frontend/mainMenu.h"
 #include "include/frontend/lobby.h"
 #include "include/frontend/room.h"
@@ -97,7 +101,7 @@ private:
 
     collisions->checkCollisions(player, lobby, room);
 
-    player->drawPlayer(this);
+    player->drawPlayer(this, fElapsedTime);
   }
 
   void getInput(float elapsedTime)
@@ -110,6 +114,7 @@ private:
     if (this->GetKey(olc::LEFT).bReleased)
     {
       player->playerSpeed = 60;
+      player->Animator->SetState("leftIdle");
     }
 
     if (this->GetKey(olc::RIGHT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
@@ -119,6 +124,7 @@ private:
     if (GetKey(olc::RIGHT).bReleased)
     {
       player->playerSpeed = 60;
+      player->Animator->SetState("rightIdle");
     }
 
     if (this->GetKey(olc::UP).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
@@ -128,6 +134,7 @@ private:
     if (GetKey(olc::UP).bReleased)
     {
       player->playerSpeed = 60;
+      player->Animator->SetState("upIdle");
     }
 
     if (GetKey(olc::DOWN).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
@@ -137,6 +144,7 @@ private:
     if (GetKey(olc::DOWN).bReleased)
     {
       player->playerSpeed = 60;
+      player->Animator->SetState("downIdle");
     }
 
     if (GetKey(olc::ESCAPE).bPressed && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled)

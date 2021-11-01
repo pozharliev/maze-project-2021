@@ -1,7 +1,6 @@
 #pragma once
 
 #include "../backend/libs.h"
-#include "playerAnimator.h"
 
 class Player
 {
@@ -17,11 +16,15 @@ public:
     float playerVelY;
     float playerRadius;
 
+    olc::Renderable* playerAnimSpritesheet;
+    olc::AnimatedSprite* Animator;
+
 private:
-    PlayerAnimator* playerAnimator;
-    olc::Sprite* currentAnimSprite;
-    olc::Decal* currentAnim;
-    PlayerAnimator::AnimationData animationData;
+    // PlayerAnimator* playerAnimator;
+    // olc::Sprite* currentAnimSprite;
+    // olc::Decal* currentAnim;
+    // PlayerAnimator::AnimationData animationData;
+    void setUpAnimations();
 
 public:
 
@@ -31,7 +34,7 @@ public:
 
     void movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime);
 
-    void drawPlayer(olc::PixelGameEngine *engine);
+    void drawPlayer(olc::PixelGameEngine *engine, float elapsedTime);
 
     void getInput();
 };

@@ -61,8 +61,7 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
         if(firstMazeEnter)
         {
             std::cout<<"gay";
-            player->playerX = engine->ScreenWidth();
-            player->playerY = engine->ScreenHeight();
+            player->playerPos = {engine->ScreenWidth(), engine->ScreenHeight()};
             firstMazeEnter = false;
         }
     }
