@@ -1,7 +1,13 @@
 #include "../../include/frontend/mainMenu.h"
 
+MainMenu::~MainMenu(){
+  delete welcomeLogo;
+  delete welcomeLogoDecal;
+}
+
 bool MainMenu::pressAnyKey(olc::PixelGameEngine* engine){
-  engine->DrawString(engine->ScreenWidth()/2 - 56, engine->ScreenHeight()/2, "Press X to continue", olc::WHITE);
+  engine->DrawDecal({engine->ScreenWidth()/6.2f, engine->ScreenHeight()/5}, welcomeLogoDecal, {0.12f, 0.12f});
+  engine->DrawString(engine->ScreenWidth()/2 - 76, engine->ScreenHeight()/1.2f, "Press X to continue", olc::WHITE, 1);
   if(engine->GetKey(olc::X).bPressed){
     anyKeyPressed = true;
   }

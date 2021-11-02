@@ -18,8 +18,11 @@ class MainMenu
         bool mainMenuEdit;
         bool gameStarted;
         bool anyKeyPressed;
+        olc::Sprite* welcomeLogo;
+        olc::Decal* welcomeLogoDecal;
 
     public:
+        ~MainMenu();
 
         bool displayPauseMenu(olc::PixelGameEngine* engine);
 

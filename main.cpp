@@ -49,6 +49,8 @@ private:
     mainMenu->menuOption = 0;
     mainMenu->gameStarted = false;
     mainMenu->anyKeyPressed = false;
+    mainMenu->welcomeLogo = new olc::Sprite("public/VAVYLON_LOGO_BIG_NOBG.png");
+    mainMenu->welcomeLogoDecal = new olc::Decal(mainMenu->welcomeLogo);
 
     lobby->inMaze = false;
     lobby->lobbyRoom = new olc::Sprite("public/lobby.png");
@@ -103,7 +105,9 @@ private:
 
     collisions->checkCollisions(player, lobby, room);
 
-    player->drawPlayer(this, fElapsedTime);
+    if(!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled){
+      player->drawPlayer(this, fElapsedTime);
+    }
   }
 
   void getInput(float elapsedTime)
