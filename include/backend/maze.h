@@ -10,6 +10,8 @@ class Maze
     public:
         Maze(int width, int height);
 
+        ~Maze();
+
         // Initializer for the maze
         void initMaze();
 

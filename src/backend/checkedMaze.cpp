@@ -231,3 +231,16 @@ void CheckedMaze::printReversedMaze()
     }
     std::cout<<std::endl;
 }
+
+CheckedMaze::~CheckedMaze()
+{
+    delete maze;
+    delete[] mazeWithPath;
+    delete[] reversedMaze;
+}
+
+int main()
+{
+    CheckedMaze maze(20, 20);
+    maze.checkMaze();
+}

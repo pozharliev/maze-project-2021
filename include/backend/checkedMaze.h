@@ -10,6 +10,8 @@ class CheckedMaze
     public:
         CheckedMaze(int width, int height);
 
+        ~CheckedMaze();
+
         // Solvable checked maze returned by the program
         char* checkedMaze;
 

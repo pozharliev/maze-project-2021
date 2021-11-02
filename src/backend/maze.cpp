@@ -127,3 +127,8 @@ void Maze::initMaze()
     fixMaze();
 }
 
+Maze::~Maze()
+{
+    delete[] maze;
+}
+
