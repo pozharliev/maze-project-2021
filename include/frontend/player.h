@@ -4,7 +4,6 @@
 
 class Player
 {
-
 public:
     float playerX;
     float playerY;
@@ -15,6 +14,13 @@ public:
     float playerVelX;
     float playerVelY;
     float playerRadius;
+    enum PLAYER_DIRS{
+        UP,
+        DOWN,
+        LEFT,
+        RIGHT
+    };
+    PLAYER_DIRS playerDir;
 
     olc::Renderable* playerAnimSpritesheet;
     olc::AnimatedSprite* Animator;
@@ -24,6 +30,7 @@ private:
     // olc::Sprite* currentAnimSprite;
     // olc::Decal* currentAnim;
     // PlayerAnimator::AnimationData animationData;
+
     void setUpAnimations();
 
 public:

@@ -97,24 +97,28 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
         playerVelX = -playerSpeed;
         playerX += playerVelX * elapsedTime;
         Animator->SetState("left");
+        playerDir = PLAYER_DIRS::LEFT;
         break;
 
       case olc::RIGHT:
         playerVelX = playerSpeed;
         playerX += playerVelX * elapsedTime;
         Animator->SetState("right");
+        playerDir = PLAYER_DIRS::RIGHT;
         break;
 
       case olc::UP:
         playerVelY = -playerSpeed;
         playerY += playerVelY * elapsedTime;
         Animator->SetState("up");
+        playerDir = PLAYER_DIRS::UP;
         break;
 
       case olc::DOWN:
         playerVelY = playerSpeed;
         playerY += playerVelY * elapsedTime;
         Animator->SetState("down");
+        playerDir = PLAYER_DIRS::DOWN;
         break;
 
       default:
