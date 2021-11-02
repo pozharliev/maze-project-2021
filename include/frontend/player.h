@@ -21,6 +21,7 @@ public:
         RIGHT
     };
     PLAYER_DIRS playerDir;
+    bool firstPlayerMove;
 
     olc::Renderable* playerAnimSpritesheet;
     olc::AnimatedSprite* Animator;

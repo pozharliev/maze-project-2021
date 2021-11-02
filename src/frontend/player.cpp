@@ -2,6 +2,7 @@
 
 void Player::innitPlayer()
 {
+  firstPlayerMove = true;
   playerAnimSpritesheet = new olc::Renderable();
   playerAnimSpritesheet->Load("public/Player_Anim_Spritesheet.png");
   Animator = new olc::AnimatedSprite();
@@ -94,6 +95,7 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
     switch(dir)
     {
       case olc::LEFT:
+        firstPlayerMove = false;
         playerVelX = -playerSpeed;
         playerX += playerVelX * elapsedTime;
         Animator->SetState("left");
@@ -101,6 +103,7 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
         break;
 
       case olc::RIGHT:
+        firstPlayerMove = false;
         playerVelX = playerSpeed;
         playerX += playerVelX * elapsedTime;
         Animator->SetState("right");
@@ -108,6 +111,7 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
         break;
 
       case olc::UP:
+        firstPlayerMove = false;
         playerVelY = -playerSpeed;
         playerY += playerVelY * elapsedTime;
         Animator->SetState("up");
@@ -115,6 +119,7 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
         break;
 
       case olc::DOWN:
+        firstPlayerMove = false;
         playerVelY = playerSpeed;
         playerY += playerVelY * elapsedTime;
         Animator->SetState("down");
