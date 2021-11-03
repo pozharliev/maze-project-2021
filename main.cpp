@@ -54,6 +54,8 @@ private:
 
     lobby->inMaze = false;
     lobby->lobbyRoom = new olc::Sprite("public/lobby.png");
+    lobby->lobbyForegroundSprite = new olc::Sprite("public/foreGroundLobby.png");
+    lobby->lobbyForeground = new olc::Decal(lobby->lobbyForegroundSprite);
 
     room->runeSprite = new olc::Sprite("public/rune.png");
     room->rune = new olc::Decal(room->runeSprite);
@@ -75,7 +77,7 @@ private:
       Game(fElapsedTime);
     }
 
-    if(mainMenu->anyKeyPressed)
+    if (mainMenu->anyKeyPressed)
     {
       if (mainMenu->mainMenuEnabled)
       {
@@ -104,19 +106,19 @@ private:
   {
     getInput(fElapsedTime);
 
-    if(!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled){
-      lobby->drawLobby(this, player, room);
-    }
-
-    player->playerPos = {player->playerX, player->playerY};
-
-    if(!player->firstPlayerMove)
+    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled)
     {
-      collisions->checkCollisions(player, lobby, room);
-    }
-
-    if(!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled){
+      lobby->drawLobby(this, player, room);
+      player->playerPos = {player->playerX, player->playerY};
+      if (!player->firstPlayerMove)
+      {
+        collisions->checkCollisions(player, lobby, room);
+      }
       player->drawPlayer(this, fElapsedTime);
+      if(!lobby->inMaze)
+      {
+        lobby->drawLobbyForeground(this);
+      }
     }
   }
 

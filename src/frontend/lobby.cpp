@@ -3,6 +3,7 @@
 Lobby::~Lobby()
 {
     delete lobbyRoom;
+    delete lobbyForeground;
 }
 
 void Lobby::initLobby()
@@ -124,4 +125,9 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
             inRightMaze = true;
         }
     }
+}
+
+void Lobby::drawLobbyForeground(olc::PixelGameEngine* engine)
+{
+    engine->DrawDecal({0, 0}, lobbyForeground);
 }

@@ -31,6 +31,8 @@ public:
   rect r;
   bool inMaze;
   olc::Sprite *lobbyRoom;
+  olc::Sprite *lobbyForegroundSprite;
+  olc::Decal *lobbyForeground;
   bool leftMazeEnter;
   bool rightMazeEnter;
   bool inLeftMaze;
@@ -39,8 +41,10 @@ public:
 public:
   ~Lobby();
   char getTile(int x, int y);
+
   void drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room);
 
+  void drawLobbyForeground(olc::PixelGameEngine* engine);
 
 private:
   void initLobby();
