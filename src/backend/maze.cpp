@@ -107,7 +107,7 @@ void Maze::Visit(int x, int y)
 
 
 void Maze::fixMaze() {
-    for (int y = 0; y < m_mHeight + 1; y++)
+    for (int y = 0; y < m_mHeight; y++)
     {
         for (int x = 0; x < m_mWidth; x++)
         {
