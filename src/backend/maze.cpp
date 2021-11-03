@@ -109,13 +109,9 @@ void Maze::Visit(int x, int y)
 void Maze::fixMaze() {
     for (int y = 0; y < m_mHeight + 1; y++)
     {
-        for (int x = 0; x < m_mWidth + 1; x++)
+        for (int x = 0; x < m_mWidth; x++)
         {
-            maze[toIndex(x, y)] = maze[toIndex(x, y)];
-        }
-        for (int i = 0; i < m_mWidth; i++)
-        {
-            maze[toIndex(i, (m_mHeight))] = '#';
+            maze[toIndex(x, (m_mHeight))] = '#';
         }
     }
     maze[toIndex(m_mWidth, m_mHeight)] = '#';
