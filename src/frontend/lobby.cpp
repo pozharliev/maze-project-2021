@@ -92,13 +92,13 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
         //     }
         // }
 
-        engine->DrawSprite(0, 0, lobbyRoom);
-
         rect roomLeft = {{-10.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
-        engine->DrawRect(roomLeft.pos, roomLeft.size, olc::RED);
+        engine->DrawRect(roomLeft.pos, roomLeft.size, olc::BLANK);
 
         rect roomRight = {{engine->ScreenWidth() - 1.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
-        engine->DrawRect(roomRight.pos, roomRight.size, olc::RED);
+        engine->DrawRect(roomRight.pos, roomRight.size, olc::BLANK);
+
+        engine->DrawSprite(0, 0, lobbyRoom);
 
         if(hallCollision(player, roomLeft))
         {
