@@ -17,13 +17,13 @@ void Player::innitPlayer()
 
 void Player::setUpAnimations()
 {
-  Animator->AddState("upIdle", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 0}} );
+  Animator->AddState("upIdle", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 0}} );
 
-  Animator->AddState("downIdle", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 32}} );
+  Animator->AddState("downIdle", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 32}} );
 
-  Animator->AddState("leftIdle", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 64}} );
+  Animator->AddState("leftIdle", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 64}} );
 
-  Animator->AddState("rightIdle", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 96}} );
+  Animator->AddState("rightIdle", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 96}} );
 
   Animator->AddState("up", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
     {0,0},
@@ -40,7 +40,7 @@ void Player::setUpAnimations()
     {352, 0}
   });
 
-  Animator->AddState("down", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
+  Animator->AddState("down", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
     {0,32},
     {32, 32},
     {64, 32},
@@ -55,7 +55,7 @@ void Player::setUpAnimations()
     {352, 32}
   });
 
-  Animator->AddState("left", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
+  Animator->AddState("left", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
     {0,64},
     {32, 64},
     {64, 64},
@@ -70,7 +70,7 @@ void Player::setUpAnimations()
     {352, 64}
   });
 
-  Animator->AddState("right", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
+  Animator->AddState("right", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
     {0, 96},
     {32, 96},
     {64, 96},
