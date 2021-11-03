@@ -57,6 +57,8 @@ private:
 
     room->mazeTile = new olc::Sprite("public/tile.png");
 
+    collisions->colliding = false;
+
     return true;
   }
 
@@ -103,7 +105,10 @@ private:
 
     player->playerPos = {player->playerX, player->playerY};
 
-    collisions->checkCollisions(player, lobby, room);
+    if(!player->firstPlayerMove)
+    {
+      collisions->checkCollisions(player, lobby, room);
+    }
 
     if(!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled){
       player->drawPlayer(this, fElapsedTime);
@@ -112,7 +117,7 @@ private:
 
   void getInput(float elapsedTime)
   {
-    if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::LEFT)
     {
       player->movePlayer(this, olc::LEFT, elapsedTime);
     }
@@ -123,7 +128,7 @@ private:
       player->Animator->SetState("leftIdle");
     }
 
-    if (this->GetKey(olc::RIGHT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::RIGHT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::RIGHT)
     {
       player->movePlayer(this, olc::RIGHT, elapsedTime);
     }
@@ -133,7 +138,7 @@ private:
       player->Animator->SetState("rightIdle");
     }
 
-    if (this->GetKey(olc::UP).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::UP).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::UP)
     {
       player->movePlayer(this, olc::UP, elapsedTime);
     }
@@ -143,7 +148,7 @@ private:
       player->Animator->SetState("upIdle");
     }
 
-    if (GetKey(olc::DOWN).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (GetKey(olc::DOWN).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::DOWN)
     {
       player->movePlayer(this, olc::DOWN, elapsedTime);
     }
