@@ -6,7 +6,7 @@ Maze::Maze(int width, int height)
     m_mWidth = width;
     m_mHeight = height;
 
-    maze = new char[(m_mWidth) * m_mHeight];
+    maze = new char[m_mWidth  * m_mHeight];
 
     // Set the whole maze to just walls
     for (int i = 0; i < m_mWidth * m_mHeight; i++)
@@ -105,22 +105,9 @@ void Maze::Visit(int x, int y)
     }
 }
 
-
-void Maze::fixMaze() {
-    for (int y = 0; y < m_mHeight; y++)
-    {
-        for (int x = 0; x < m_mWidth; x++)
-        {
-            maze[toIndex(x, (m_mHeight))] = '#';
-        }
-    }
-    maze[toIndex(m_mWidth, m_mHeight)] = '#';
-}
-
 void Maze::initMaze()
 {
     Visit(1, 1);
-    fixMaze();
 }
 
 Maze::~Maze()
