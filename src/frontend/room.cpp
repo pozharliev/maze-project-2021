@@ -3,6 +3,8 @@
 Room::~Room()
 {
     delete mazeTile;
+    delete runeSprite;
+    delete rune;
 }
 
 Room::Room(int mWidth, int mHeight)
@@ -11,10 +13,10 @@ Room::Room(int mWidth, int mHeight)
     mazeHeight = mHeight;
     tileWidth = 13;
     tileHeight = 13;
-    offsetX = 0.0f;
-    offsetY = 0.0f;
 
     roomMaze = new CheckedMaze(mazeWidth, mazeHeight);
+
+    mazeTile = new olc::Sprite("public/tile.png");
 
     generateRoom();
 }
@@ -72,23 +74,38 @@ void Room::DrawRoom(olc::PixelGameEngine* engine)
     //     }
 
     for(int x = 0; x <= mazeWidth; x++)
+    {
+        for(int y = 0; y <= mazeHeight; y++)
         {
-            for(int y = 0; y <= mazeHeight; y++)
+            char currentTile = getTile(x, y);
+            switch(currentTile)
             {
-                char currentTile = getTile(x, y);
-                switch(currentTile)
-                {
-                    case ' ':
-                        // engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::BLANK);
-                        engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
-                        break;
+                case ' ':
+                    // engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::BLANK);
+                    engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
+                    break;
                     
-                    case '#':
-                        break;
+                case '#':
+                    break;
                     
-                    default:
-                        break;
-                }
+                default:
+                    break;
             }
+
+            if(x == mazeWidth - 1 && y == mazeHeight - 1)
+            {
+                engine->DrawDecal({x*tileWidth, y*tileHeight}, runeTile);
+            }
+
+            if(x == mazeWidth - 1 && y == mazeHeight - 1)
+            {
+                engine->DrawDecal({x*tileWidth + 1.5f, y*tileHeight}, rune, {0.55f, 0.55f});
+            }
+            
+
         }
+    }
+
+
+
 }

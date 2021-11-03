@@ -55,7 +55,10 @@ private:
     lobby->inMaze = false;
     lobby->lobbyRoom = new olc::Sprite("public/lobby.png");
 
-    room->mazeTile = new olc::Sprite("public/tile.png");
+    room->runeSprite = new olc::Sprite("public/rune.png");
+    room->rune = new olc::Decal(room->runeSprite);
+    room->runeTileSprite = new olc::Sprite("public/rune_tile.png");
+    room->runeTile = new olc::Decal(room->runeTileSprite);
 
     collisions->colliding = false;
 

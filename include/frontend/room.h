@@ -12,7 +12,7 @@ class Room
 
         float playerPosX;
         float playerPosY;
-        
+        olc::Sprite* mazeTile;
 
     public:
         Room(int mWidth, int mHeight);
@@ -22,16 +22,13 @@ class Room
         int tileWidth;
         int tileHeight;
 
-        int visibleTilesX;
-        int visibleTilesY;
+        olc::Sprite* runeSprite;
+        olc::Decal* rune;
 
-        float cameraPosX;
-	    float cameraPosY;
-        float offsetX;
-        float offsetY;
+        olc::Sprite* runeTileSprite;
+        olc::Decal* runeTile;
 
-        olc::Sprite *mazeTile;
-
+        
     private:
         void generateRoom();
     
