@@ -6,7 +6,7 @@ Maze::Maze(int width, int height)
     m_mWidth = width;
     m_mHeight = height;
 
-    maze = new char[(m_mWidth + 1) * m_mHeight];
+    maze = new char[(m_mWidth) * m_mHeight];
 
     // Set the whole maze to just walls
     for (int i = 0; i < m_mWidth * m_mHeight; i++)

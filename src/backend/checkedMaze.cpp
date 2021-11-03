@@ -239,8 +239,8 @@ CheckedMaze::~CheckedMaze()
     delete[] reversedMaze;
 }
 
-//int main()
-//{
-//    CheckedMaze maze(20, 20);
-//    maze.checkMaze();
-//}
+int main()
+{
+    CheckedMaze maze(20, 20);
+    maze.checkMaze();
+}

@@ -34,6 +34,9 @@ player: $(SRC)/$(FE)/player.cpp $(INCLUDE)/$(FE)/player.h
 collisions: $(SRC)/$(BE)/collisions.cpp $(INCLUDE)/$(BE)/collisions.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/collisions.cpp
 
+maze: uncheckedMaze mazeChecker
+	$(CXX) $(CXXFLAGS) -o maze.exe maze.o checkedMaze.o
+
 mazeChecker: $(SRC)/$(BE)/checkedMaze.cpp $(INCLUDE)/$(BE)/checkedMaze.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/checkedMaze.cpp
 
