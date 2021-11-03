@@ -18,7 +18,8 @@ public:
         UP,
         DOWN,
         LEFT,
-        RIGHT
+        RIGHT,
+        NONE
     };
     PLAYER_DIRS playerDir;
     bool firstPlayerMove;

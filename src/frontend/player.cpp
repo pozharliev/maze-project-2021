@@ -138,6 +138,5 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
 void Player::drawPlayer(olc::PixelGameEngine* engine, float elapsedTime)
   {
     //olc::vf2d playerSize = {25.0f, 25.0f};
-    engine->FillCircle(playerX, playerY, 4, olc::Pixel(123, 108, 95));
     Animator->Draw(elapsedTime, {playerX-11.0f, playerY-22.0f});
   }

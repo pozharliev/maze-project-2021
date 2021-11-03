@@ -31,7 +31,8 @@ public:
   rect r;
   bool inMaze;
   olc::Sprite *lobbyRoom;
-  bool firstMazeEnter;
+  bool leftMazeEnter;
+  bool rightMazeEnter;
 
 
 public:

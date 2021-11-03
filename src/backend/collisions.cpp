@@ -10,7 +10,9 @@ void Collisions::checkCollisions(Player* player, Lobby* lobby, Room* room)
             {
                 player->playerX = (int)player->newPlayerPosX + 1;
                 player->playerVelX = 0;
-            }
+                colliding = true;
+                lastCollisionDir = player->PLAYER_DIRS::LEFT;
+            } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
         if(player->playerDir == player->PLAYER_DIRS::RIGHT)
@@ -19,7 +21,9 @@ void Collisions::checkCollisions(Player* player, Lobby* lobby, Room* room)
             {
                 player->playerX = (int)player->newPlayerPosX;
                 player->playerVelX = 0;
-            }
+                colliding = true;
+                lastCollisionDir = player->PLAYER_DIRS::RIGHT;
+            } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
         if(player->playerDir == player->PLAYER_DIRS::UP)
@@ -28,7 +32,9 @@ void Collisions::checkCollisions(Player* player, Lobby* lobby, Room* room)
             {
                 player->playerY = (int)player->newPlayerPosY + 1;
                 player->playerVelY = 0;
-            }
+                colliding = true;
+                lastCollisionDir = player->PLAYER_DIRS::UP;
+            } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
         if(player->playerDir == player->PLAYER_DIRS::DOWN && !player->firstPlayerMove)
@@ -37,7 +43,9 @@ void Collisions::checkCollisions(Player* player, Lobby* lobby, Room* room)
             {
                 player->playerY = (int)player->newPlayerPosY;
                 player->playerVelY = 0;
-            }
+                colliding = true;
+                lastCollisionDir = player->PLAYER_DIRS::DOWN;
+            } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
     }
 

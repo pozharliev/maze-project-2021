@@ -49,11 +49,15 @@ private:
     mainMenu->menuOption = 0;
     mainMenu->gameStarted = false;
     mainMenu->anyKeyPressed = false;
+    mainMenu->welcomeLogo = new olc::Sprite("public/VAVYLON_LOGO_BIG_NOBG.png");
+    mainMenu->welcomeLogoDecal = new olc::Decal(mainMenu->welcomeLogo);
 
     lobby->inMaze = false;
     lobby->lobbyRoom = new olc::Sprite("public/lobby.png");
 
     room->mazeTile = new olc::Sprite("public/tile.png");
+
+    collisions->colliding = false;
 
     return true;
   }
@@ -101,14 +105,19 @@ private:
 
     player->playerPos = {player->playerX, player->playerY};
 
-    collisions->checkCollisions(player, lobby, room);
+    if(!player->firstPlayerMove)
+    {
+      collisions->checkCollisions(player, lobby, room);
+    }
 
-    player->drawPlayer(this, fElapsedTime);
+    if(!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled){
+      player->drawPlayer(this, fElapsedTime);
+    }
   }
 
   void getInput(float elapsedTime)
   {
-    if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::LEFT)
     {
       player->movePlayer(this, olc::LEFT, elapsedTime);
     }
@@ -119,7 +128,7 @@ private:
       player->Animator->SetState("leftIdle");
     }
 
-    if (this->GetKey(olc::RIGHT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::RIGHT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::RIGHT)
     {
       player->movePlayer(this, olc::RIGHT, elapsedTime);
     }
@@ -129,7 +138,7 @@ private:
       player->Animator->SetState("rightIdle");
     }
 
-    if (this->GetKey(olc::UP).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (this->GetKey(olc::UP).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::UP)
     {
       player->movePlayer(this, olc::UP, elapsedTime);
     }
@@ -139,7 +148,7 @@ private:
       player->Animator->SetState("upIdle");
     }
 
-    if (GetKey(olc::DOWN).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false)
+    if (GetKey(olc::DOWN).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::DOWN)
     {
       player->movePlayer(this, olc::DOWN, elapsedTime);
     }
