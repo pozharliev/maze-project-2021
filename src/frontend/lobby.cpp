@@ -21,18 +21,20 @@ void Lobby::initLobby()
 	lobbyRawData += "................................";
 	lobbyRawData += "................................";
 	lobbyRawData += "................................";
+	lobbyRawData += "................................";
 	lobbyRawData += "#####......................#####";
 	lobbyRawData += "....#......................#....";
 	lobbyRawData += "....#......................#....";
 	lobbyRawData += "....#......................#....";
 	lobbyRawData += "....########################....";
-	lobbyRawData += "................................";
 
     tileWidth = 11;
     tileHeight = 11;
 
-    bool leftMazeEnter = false;
-    bool rightMazeEnter = false;
+    leftMazeEnter = false;
+    rightMazeEnter = false;
+    inLeftMaze = false;
+    inRightMaze = false;
 }
 
 //Draw the hall collision
@@ -58,11 +60,23 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
 
     if(inMaze)
     {
-        room->DrawRoom(engine);
-        if(!leftMazeEnter)
+        if(inLeftMaze)
         {
-            player->playerX = abs(player->playerX - engine->ScreenWidth());
-            leftMazeEnter = true;
+            room->DrawRoom(engine, "left");
+            if(!leftMazeEnter)
+            {
+                player->playerX = abs(player->playerX - engine->ScreenWidth());
+                leftMazeEnter = true;
+            }
+        }
+        if(inRightMaze)
+        {
+            room->DrawRoom(engine, "right");
+            if(!rightMazeEnter)
+            {
+                player->playerX = abs(player->playerX - engine->ScreenWidth());
+                rightMazeEnter = true;
+            }
         }
     }
     else
@@ -93,16 +107,21 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
         // }
 
         rect roomLeft = {{-10.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
-        engine->DrawRect(roomLeft.pos, roomLeft.size, olc::BLANK);
 
         rect roomRight = {{engine->ScreenWidth() - 1.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
-        engine->DrawRect(roomRight.pos, roomRight.size, olc::BLANK);
 
         engine->DrawSprite(0, 0, lobbyRoom);
 
         if(hallCollision(player, roomLeft))
         {
             inMaze = true;
+            inLeftMaze = true;
+        }
+
+        if(hallCollision(player, roomRight))
+        {
+            inMaze = true;
+            inRightMaze = true;
         }
     }
 }

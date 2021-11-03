@@ -33,7 +33,8 @@ public:
   olc::Sprite *lobbyRoom;
   bool leftMazeEnter;
   bool rightMazeEnter;
-
+  bool inLeftMaze;
+  bool inRightMaze;
 
 public:
   ~Lobby();

@@ -8,7 +8,8 @@ class Room
 
     private:
         int mazeWidth, mazeHeight;
-        CheckedMaze* roomMaze;
+        CheckedMaze* rightMaze;
+        CheckedMaze* leftMaze;
 
         float playerPosX;
         float playerPosY;
@@ -34,6 +35,6 @@ class Room
     
     public:
         ~Room();
-        char getTile(int x, int y);
-        void DrawRoom(olc::PixelGameEngine* engine);
+        char getTile(std::string mazeOrientation, int x, int y);
+        void DrawRoom(olc::PixelGameEngine* engine, std::string mazeOrientation);
 };

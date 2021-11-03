@@ -104,7 +104,9 @@ private:
   {
     getInput(fElapsedTime);
 
-    lobby->drawLobby(this, player, room);
+    if(!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled){
+      lobby->drawLobby(this, player, room);
+    }
 
     player->playerPos = {player->playerX, player->playerY};
 
