@@ -8,8 +8,7 @@ class Room
 
     private:
         int mazeWidth, mazeHeight;
-        CheckedMaze* rightMaze;
-        CheckedMaze* leftMaze;
+        CheckedMaze* maze;
 
         float playerPosX;
         float playerPosY;

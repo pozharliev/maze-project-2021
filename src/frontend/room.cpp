@@ -2,6 +2,7 @@
 
 Room::~Room()
 {
+    delete[] maze;
     delete mazeTile;
     delete runeSprite;
     delete rune;
@@ -14,27 +15,46 @@ Room::Room(int mWidth, int mHeight)
     tileWidth = 13;
     tileHeight = 13;
 
-    leftMaze = new CheckedMaze(mazeWidth, mazeHeight);
-    rightMaze = new CheckedMaze(mazeWidth, mazeHeight);
+    maze = new CheckedMaze(mazeWidth, mazeHeight);
 
     mazeTile = new olc::Sprite("public/tile.png");
 
+    for (int x = 0; x < mazeWidth; x++)
+    {
+        for (int y = 0; y < mazeHeight; y++)
+        {
+            std::cout<<maze->reversedMaze[y * mazeWidth + x];
+        }
+        std::cout<<std::endl;
+    }
+
+    for (int x = 0; x < mazeWidth; x++)
+    {
+        for (int y = 0; y < mazeHeight; y++)
+        {
+            std::cout<<maze->checkedMaze[y * mazeWidth + x];
+        }
+        std::cout<<std::endl;
+    }
+
     generateRoom();
+    
 }
 
 void Room::generateRoom()
 {
+
     rawMazeData.open("data/leftRawMazeData.maze", std::ofstream::out);
 
-    for (int i = 0; i <= mazeHeight; i++)
+    for (int i = 0; i < mazeHeight; i++)
     {
-        for (int j = 0; j <= mazeWidth; j++)
+        for (int j = 0; j < mazeWidth; j++)
         {
-            if (leftMaze->reversedMaze[i * mazeWidth + j] == '#')
+            if (maze->reversedMaze[i * mazeWidth + j] == '#')
             {
                 rawMazeData << "1";
             }
-            else if (leftMaze->reversedMaze[i * mazeWidth + j] == ' ')
+            else if (maze->reversedMaze[i * mazeWidth + j] == ' ')
             {
                 rawMazeData << "0";
             }
@@ -48,13 +68,13 @@ void Room::generateRoom()
 
     for (int i = 0; i <= mazeHeight; i++)
     {
-        for (int j = 0; j <= mazeWidth; j++)
+        for (int j = 0; j < mazeWidth; j++)
         {
-            if (rightMaze->checkedMaze[i * mazeWidth + j] == '#')
+            if (maze->checkedMaze[i * mazeWidth + j] == '#')
             {
                 rawMazeData << "1";
             }
-            else if (rightMaze->checkedMaze[i * mazeWidth + j] == ' ')
+            else if (maze->checkedMaze[i * mazeWidth + j] == ' ')
             {
                 rawMazeData << "0";
             }
@@ -67,13 +87,11 @@ void Room::generateRoom()
 
 char Room::getTile(std::string mazeOrientation, int x, int y)
 {
-    return (mazeOrientation == "left") ? leftMaze->reversedMaze[y * mazeWidth + x] : rightMaze->checkedMaze[y * mazeWidth + x];
+    return (mazeOrientation == "left") ? maze->reversedMaze[y * mazeWidth + x] : maze->checkedMaze[y * mazeWidth + x];
 }
 
 void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 {
-
-    leftMaze->printReversedMaze();
 
     //Draw the Maze
     // for(int x = 0; x <= mazeWidth; x++)
@@ -97,9 +115,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
     //     }
     if (mazeOrientation == "left")
     {
-        for (int x = 0; x <= mazeWidth; x++)
+        for (int x = 0; x < mazeWidth; x++)
         {
-            for (int y = 0; y <= mazeHeight; y++)
+            for (int y = 0; y < mazeHeight; y++)
             {
                 char currentTile = getTile("left", x, y);
                 switch (currentTile)
@@ -130,9 +148,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
     }
     else
     {
-        for (int x = 0; x <= mazeWidth; x++)
+        for (int x = 0; x < mazeWidth; x++)
         {
-            for (int y = 0; y <= mazeHeight; y++)
+            for (int y = 0; y < mazeHeight; y++)
             {
                 char currentTile = getTile("right", x, y);
                 switch (currentTile)
