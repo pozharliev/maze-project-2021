@@ -2,10 +2,15 @@
 
 Room::~Room()
 {
-    delete[] maze;
+    delete[] rightMaze;
+    delete[] leftMaze;
     delete mazeTile;
     delete runeSprite;
     delete rune;
+    delete runeTileSprite;
+    delete runeTile;
+    delete scroll;
+    delete scrollDecal;
 }
 
 Room::Room(int mWidth, int mHeight)
@@ -15,8 +20,10 @@ Room::Room(int mWidth, int mHeight)
     tileWidth = 13;
     tileHeight = 13;
 
-    maze = new CheckedMaze(mazeWidth, mazeHeight);
-    maze->checkMaze();
+    rightMaze = new CheckedMaze(mazeWidth, mazeHeight);
+    rightMaze->checkMaze();
+    leftMaze = new CheckedMaze(mazeWidth, mazeHeight);
+    leftMaze->checkMaze();
 
     mazeTile = new olc::Sprite("public/tile.png");
 
@@ -33,11 +40,11 @@ void Room::generateRoom()
     {
         for (int j = 0; j <= mazeWidth; j++)
         {
-            if (maze->reversedMaze[i * mazeWidth + j] == '#')
+            if (leftMaze->checkedMaze[i * mazeWidth + j] == '#')
             {
                 rawMazeData << "1";
             }
-            else if (maze->reversedMaze[i * mazeWidth + j] == ' ')
+            else if (leftMaze->checkedMaze[i * mazeWidth + j] == ' ')
             {
                 rawMazeData << "0";
             }
@@ -53,11 +60,11 @@ void Room::generateRoom()
     {
         for (int j = 0; j <= mazeWidth; j++)
         {
-            if (maze->checkedMaze[i * mazeWidth + j] == '#')
+            if (rightMaze->checkedMaze[i * mazeWidth + j] == '#')
             {
                 rawMazeData << "1";
             }
-            else if (maze->checkedMaze[i * mazeWidth + j] == ' ')
+            else if (rightMaze->checkedMaze[i * mazeWidth + j] == ' ')
             {
                 rawMazeData << "0";
             }
@@ -70,7 +77,7 @@ void Room::generateRoom()
 
 char Room::getTile(std::string mazeOrientation, int x, int y)
 {
-    return (mazeOrientation == "left") ? maze->reversedMaze[y * mazeWidth + x] : maze->checkedMaze[y * mazeWidth + x];
+    return (mazeOrientation == "left") ? leftMaze->checkedMaze[y * mazeWidth + x] : rightMaze->checkedMaze[y * mazeWidth + x];
 }
 
 void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
@@ -91,6 +98,21 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     break;
 
                 case '#':
+                    break;
+
+                case 'P':
+                    engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
+                    engine->DrawDecal({x * tileWidth, y * tileHeight}, scrollDecal, {0.25f, 0.25f});
+                    break;
+
+                case 'D':
+                    engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
+                    engine->DrawDecal({x * tileWidth, y * tileHeight}, scrollDecal, {0.25f, 0.25f});
+                    break;
+
+                case 'S':
+                    engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
+                    engine->DrawDecal({x * tileWidth, y * tileHeight}, scrollDecal, {0.25f, 0.25f});
                     break;
 
                 default:

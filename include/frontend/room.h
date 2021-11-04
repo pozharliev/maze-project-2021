@@ -8,7 +8,8 @@ class Room
 
     private:
         int mazeWidth, mazeHeight;
-        CheckedMaze* maze;
+        CheckedMaze* leftMaze;
+        CheckedMaze* rightMaze;
 
         float playerPosX;
         float playerPosY;
@@ -28,7 +29,9 @@ class Room
         olc::Sprite* runeTileSprite;
         olc::Decal* runeTile;
 
-        
+        olc::Sprite* scroll;
+        olc::Decal* scrollDecal;
+
     private:
         void generateRoom();
     
