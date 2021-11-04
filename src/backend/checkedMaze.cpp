@@ -21,6 +21,99 @@ CheckedMaze::CheckedMaze(int width, int height)
     m_nVisitedCells = 1;
 }
 
+//void CheckedMaze::fillChanceGenerator(std::vector<bool>& pathVector,
+//                          std::vector<bool>& speedVector,
+//                          std::vector<bool>& dashVector
+//)
+//{
+//    std::fill(pathVector.begin(), pathVector.begin() + PATH_SCROLL_CHANCE / 10, true);
+//    std::fill(pathVector.begin() + PATH_SCROLL_CHANCE / 10, pathVector.end(), false);
+//
+//    std::fill(speedVector.begin(), speedVector.begin() + SPEED_SCROLL_CHANCE / 10, true);
+//    std::fill(speedVector.begin() + SPEED_SCROLL_CHANCE / 10, speedVector.end(), false);
+//
+//    std::fill(dashVector.begin(), dashVector.begin() + DASH_SCROLL_CHANCE / 10, true);
+//    std::fill(dashVector.begin() + DASH_SCROLL_CHANCE / 10, dashVector.end(), false);
+//}
+//
+//void CheckedMaze::shuffleGenerators(std::vector<bool>& pathVector,
+//                       std::vector<bool>& speedVector,
+//                       std::vector<bool>& dashVector
+//)
+//{
+//    auto rd = std::random_device {};
+//    auto rng = std::default_random_engine { rd() };
+//    std::shuffle(pathVector.begin(), pathVector.end(), rng);
+//    std::shuffle(speedVector.begin(), speedVector.end(), rng);
+//    std::shuffle(dashVector.begin(), dashVector.end(), rng);
+//}
+
+//void CheckedMaze::enrichMaze(char *maze, int width, int height) {
+//    fillChanceGenerator(pathScrollChance, speedScrollChance, dashScrollChance);
+//    shuffleGenerators(pathScrollChance, speedScrollChance, dashScrollChance);
+//
+//    std::random_device rd;
+//
+//    // Generate a seed for the rng
+//    std::mt19937 gen(rd());
+//
+//    // Define a range for the random number
+//    std::uniform_int_distribution<> mazeY(0, height);
+//    std::uniform_int_distribution<> mazeX(0, width);
+//
+//    auto cellX = mazeX(gen);
+//    auto cellY = mazeY(gen);
+//
+//    if(pathScrollChance[0])
+//    {
+//        if (maze[cellX * width + cellY] != '#' and
+//            maze[cellX * width + cellY] != 'S' and
+//            maze[cellX * width + cellY] != 'D')
+//        {
+//            maze[cellX * width + cellY] = 'P';
+//        }
+//        else
+//        {
+//            enrichMaze(maze, width, height);
+//        }
+//    }
+//
+//    cellX = mazeX(gen);
+//    cellY = mazeY(gen);
+//
+//    if(speedScrollChance[0])
+//    {
+//        if (maze[cellX * width + cellY] != '#' and
+//            maze[cellX * width + cellY] != 'P' and
+//            maze[cellX * width + cellY] != 'D')
+//        {
+//            maze[cellX * width + cellY] = 'S';
+//        }
+//        else
+//        {
+//            enrichMaze(maze, width, height);
+//        }
+//    }
+//
+//    cellX = mazeX(gen);
+//    cellY = mazeY(gen);
+//
+//    if(dashScrollChance[0])
+//    {
+//        if (maze[cellX * width + cellY] != '#' and
+//            maze[cellX * width + cellY] != 'P' and
+//            maze[cellX * width + cellY] != 'S')
+//        {
+//            maze[cellX * width + cellY] = 'D';
+//        }
+//        else
+//        {
+//            enrichMaze(maze, width, height);
+//        }
+//    }
+//}
+
+
 bool CheckedMaze::isInBound(const int& x, const int& y) const
 {
     if (!(x > 0 and x < m_mWidth))  return false;
@@ -154,6 +247,7 @@ void CheckedMaze::checkMaze()
                 initMazeWithPath();
                 fixMaze();
                 initReversedMaze();
+//                enrichMaze(maze->maze, m_mWidth, m_mHeight);
                 printCheckedMaze();
                 printCheckedMazeWithPath();
                 printReversedMaze();
@@ -238,8 +332,8 @@ CheckedMaze::~CheckedMaze()
     delete[] mazeWithPath;
     delete[] reversedMaze;
 }
-// int main()
-// {
-//     CheckedMaze m(20, 20);
-//     m.checkMaze();
-// }
+ int main()
+ {
+     CheckedMaze m(20, 20);
+     m.checkMaze();
+ }
