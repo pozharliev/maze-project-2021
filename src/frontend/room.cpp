@@ -38,7 +38,6 @@ void Room::generateRoom()
             {
                 rawMazeData << "0";
             }
-            std::cout << leftMaze->reversedMaze[i * mazeWidth + j];
         }
         rawMazeData << '\n';
     }
@@ -73,6 +72,8 @@ char Room::getTile(std::string mazeOrientation, int x, int y)
 
 void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 {
+
+    leftMaze->printReversedMaze();
 
     //Draw the Maze
     // for(int x = 0; x <= mazeWidth; x++)

@@ -11,9 +11,9 @@ void Lobby::initLobby()
     lobbyWidth = 32;
     lobbyHeight = 17;
 
-    lobbyRawData += "................................";
-    lobbyRawData += "................................";
-	lobbyRawData += "....########################....";
+    lobbyRawData += ".............######.............";
+    lobbyRawData += ".............#....#.............";
+	lobbyRawData += "....##########....##########....";
 	lobbyRawData += "....#......................#....";
 	lobbyRawData += "....#......................#....";
 	lobbyRawData += "....#......................#....";
@@ -110,8 +110,13 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
         rect roomLeft = {{-10.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
 
         rect roomRight = {{engine->ScreenWidth() - 1.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
+        
+        rect stairCase = {{engine->ScreenWidth() / 2.30f, 5.0f}, {43.0f, 10.0f}};
+
 
         engine->DrawSprite(0, 0, lobbyRoom);
+
+        engine->DrawRect(stairCase.pos, stairCase.size, olc::RED);
 
         if(hallCollision(player, roomLeft))
         {

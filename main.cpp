@@ -21,6 +21,10 @@ public:
   Room *room;
   Collisions *collisions;
 
+  olc::Sprite* cutsceneSprite;
+  olc::Decal* cutscene;
+  bool inCutscene;
+
 public:
   GameManager()
   {
@@ -34,6 +38,10 @@ public:
 private:
   bool OnUserCreate() override
   {
+    cutsceneSprite = new olc::Sprite("public/Cutscene.png");
+    cutscene = new olc::Decal(cutsceneSprite);
+    inCutscene = false;
+
     player->innitPlayer();
     player->playerX = ScreenWidth() / 2;
     player->playerY = ScreenHeight() / 2;
@@ -74,7 +82,14 @@ private:
 
     if (mainMenu->gameStarted)
     {
-      Game(fElapsedTime);
+      if(!inCutscene)
+      {
+        Game(fElapsedTime);
+      }
+      else
+      {
+        Cutscene(fElapsedTime);
+      }
     }
 
     if (mainMenu->anyKeyPressed)
@@ -102,7 +117,7 @@ private:
     return true;
   }
 
-  bool Game(float fElapsedTime)
+  void Game(float fElapsedTime)
   {
     getInput(fElapsedTime);
 
@@ -120,6 +135,24 @@ private:
         lobby->drawLobbyForeground(this);
       }
     }
+  }
+
+  void Cutscene(float fElapsedTime)
+  {
+    getInput(fElapsedTime);
+
+    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled)
+    {
+      DrawDecal({0.0f - player->playerX, 0.0f - player->playerY}, cutscene);
+      player->playerPos = {player->playerX, player->playerY};
+      player->playerSpeed = 30.0f;
+      // if (!player->firstPlayerMove)
+      // {
+      //   collisions->checkCollisions(player, lobby, room);
+      // }
+      player->drawPlayer(this, fElapsedTime);
+    }
+    
   }
 
   void getInput(float elapsedTime)
