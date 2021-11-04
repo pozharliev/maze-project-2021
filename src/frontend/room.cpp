@@ -11,6 +11,8 @@ Room::~Room()
     delete runeTile;
     delete scroll;
     delete scrollDecal;
+    delete scrollAnimSpritesheet;
+    delete scrollAnimator;
 }
 
 Room::Room(int mWidth, int mHeight)
@@ -29,6 +31,29 @@ Room::Room(int mWidth, int mHeight)
 
     generateRoom();
     
+}
+
+void Room::setUpScrollAnimations()
+{
+    scrollAnimSpritesheet = new olc::Renderable();
+    scrollAnimSpritesheet->Load("public/Scroll_Anim_Spritesheet.png");
+    scrollAnimator = new olc::AnimatedSprite();
+    scrollAnimator->mode = olc::AnimatedSprite::SPRITE_MODE::SINGLE;
+    scrollAnimator->type = olc::AnimatedSprite::SPRITE_TYPE::DECAL;
+    scrollAnimator->spriteSheet = scrollAnimSpritesheet;
+    scrollAnimator->SetSpriteSize({25, 25});
+    scrollAnimator->SetSpriteScale(0.50f);
+
+    scrollAnimator->AddState("idle", 0.20f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{ 
+        {0, 0},
+        {25, 0},
+        {50, 0},
+        {75, 0},
+        {100, 0},
+        {125, 0}
+    });
+
+    scrollAnimator->SetState("idle");
 }
 
 void Room::generateRoom()
@@ -102,17 +127,17 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 
                 case 'P':
                     engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
-                    engine->DrawDecal({x * tileWidth, y * tileHeight}, scrollDecal, {0.25f, 0.25f});
+                    scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                     break;
 
                 case 'D':
                     engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
-                    engine->DrawDecal({x * tileWidth, y * tileHeight}, scrollDecal, {0.25f, 0.25f});
+                    scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                     break;
 
                 case 'S':
                     engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
-                    engine->DrawDecal({x * tileWidth, y * tileHeight}, scrollDecal, {0.25f, 0.25f});
+                    scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                     break;
 
                 default:
@@ -138,7 +163,7 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
             for (int y = 0; y < mazeHeight; y++)
             {
                 char currentTile = getTile("right", x, y);
-                switch (currentTile)
+                  switch (currentTile)
                 {
                 case ' ':
                     // engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::BLANK);
@@ -146,6 +171,21 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     break;
 
                 case '#':
+                    break;
+
+                case 'P':
+                    engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
+                    scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
+                    break;
+
+                case 'D':
+                    engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
+                    scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
+                    break;
+
+                case 'S':
+                    engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
+                    scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                     break;
 
                 default:

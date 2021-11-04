@@ -71,6 +71,7 @@ private:
     room->runeTile = new olc::Decal(room->runeTileSprite);
     room->scroll = new olc::Sprite("public/scroll.png");
     room->scrollDecal = new olc::Decal(room->scroll);
+    room->setUpScrollAnimations();
 
     collisions->colliding = false;
 

@@ -15,6 +15,7 @@ class Room
         float playerPosY;
         olc::Sprite* mazeTile;
 
+
     public:
         Room(int mWidth, int mHeight);
         std::fstream rawMazeData;
@@ -31,12 +32,15 @@ class Room
 
         olc::Sprite* scroll;
         olc::Decal* scrollDecal;
+        olc::Renderable* scrollAnimSpritesheet;
+        olc::AnimatedSprite* scrollAnimator;
 
     private:
         void generateRoom();
     
     public:
         ~Room();
+        void setUpScrollAnimations();
         char getTile(std::string mazeOrientation, int x, int y);
         void DrawRoom(olc::PixelGameEngine* engine, std::string mazeOrientation);
 };
