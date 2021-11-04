@@ -46,10 +46,10 @@ public:
 
   void drawLobbyForeground(olc::PixelGameEngine* engine);
 
-private:
-  void initLobby();
-
   bool hallCollision(Player* player, rect roomLeft);
 
   bool pointCollRect(const olc::vf2d &p, const rect &r);
+
+private:
+  void initLobby();
 };

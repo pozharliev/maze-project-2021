@@ -11,5 +11,5 @@ class Collisions
         Player::PLAYER_DIRS lastCollisionDir;
         
     public:
-        void checkCollisions(Player* player, Lobby* lobby, Room* room);
+        void checkCollisions(olc::PixelGameEngine* engine, Player* player, Lobby* lobby, Room* room);
 };

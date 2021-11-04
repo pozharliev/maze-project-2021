@@ -66,7 +66,7 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
             room->DrawRoom(engine, "left");
             if(!leftMazeEnter)
             {
-                player->playerX = abs(player->playerX - engine->ScreenWidth());
+                player->playerX = abs(player->playerX - engine->ScreenWidth() + 15.0f);
                 leftMazeEnter = true;
             }
         }
@@ -75,7 +75,7 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
             room->DrawRoom(engine, "right");
             if(!rightMazeEnter)
             {
-                player->playerX = abs(player->playerX - engine->ScreenWidth());
+                player->playerX = abs(player->playerX - engine->ScreenWidth() + 15.0f);
                 rightMazeEnter = true;
             }
         }

@@ -124,11 +124,11 @@ private:
     if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled)
     {
       lobby->drawLobby(this, player, room);
-      player->playerPos = {player->playerX, player->playerY};
       if (!player->firstPlayerMove)
       {
-        collisions->checkCollisions(player, lobby, room);
+        collisions->checkCollisions(this, player, lobby, room);
       }
+      player->playerPos = {player->playerX, player->playerY};
       player->drawPlayer(this, fElapsedTime);
       if(!lobby->inMaze)
       {

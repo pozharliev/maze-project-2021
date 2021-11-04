@@ -1,6 +1,6 @@
 #include "../../include/backend/collisions.h"
 
-void Collisions::checkCollisions(Player* player, Lobby* lobby, Room* room)
+void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, Lobby* lobby, Room* room)
 {
     if(!lobby->inMaze)
     {
@@ -47,6 +47,31 @@ void Collisions::checkCollisions(Player* player, Lobby* lobby, Room* room)
                 lastCollisionDir = player->PLAYER_DIRS::DOWN;
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
+    }
+
+    if(lobby->inMaze)
+    {
+        Lobby::rect roomLeftBack = {{engine->ScreenWidth() -1.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
+        Lobby::rect roomRightBack = {{0.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
+        if(lobby->inLeftMaze)
+        {
+            if(lobby->hallCollision(player, roomLeftBack))
+            {
+                player->playerX = 15.0f;
+                lobby->inMaze = false;
+                lobby->inLeftMaze = false;
+            }
+        }
+        else
+        {
+            if(lobby->hallCollision(player, roomRightBack))
+            {
+                lobby->inMaze = false;
+                lobby->inRightMaze = false;
+                player->playerX = engine->ScreenWidth() - 15.0f;
+            }
+        }
+
     }
 
 };

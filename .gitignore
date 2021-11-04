@@ -15,7 +15,7 @@
 data/saveFile.save
 data/rawMazeData.maze
 data/leftRawMazeData.maze
-data/leftRawMazeData.maze
+data/rightRawMazeData.maze
 
 # Log files
 logs/logs.log
