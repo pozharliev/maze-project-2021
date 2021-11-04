@@ -64,9 +64,9 @@ class CheckedMaze
         // Stack used for backtracking in the process of solving the maze
         std::vector<std::pair<int, int>> m_stack;
 
-//        std::vector<bool> pathScrollChance(10);
-//        std::vector<bool> speedScrollChance(10);
-//        std::vector<bool> dashScrollChance(10);
+        std::vector<bool> pathScrollChance;
+        std::vector<bool> speedScrollChance;
+        std::vector<bool> dashScrollChance;
 
     private:
 
@@ -91,13 +91,13 @@ class CheckedMaze
         // Copies the checked maze and reverses it
         void initReversedMaze();
 
-//        void fillChanceGenerator(std::vector<bool>& pathVector,
-//                                 std::vector<bool>& speedVector,
-//                                 std::vector<bool>& dashVector);
-//
-//        void shuffleGenerators(std::vector<bool>& pathVector,
-//                               std::vector<bool>& speedVector,
-//                               std::vector<bool>& dashVector);
-//
-//        void enrichMaze(char* maze, int width, int height);
+        void fillChanceGenerator(std::vector<bool>& pathVector,
+                                 std::vector<bool>& speedVector,
+                                 std::vector<bool>& dashVector);
+
+        void shuffleGenerators(std::vector<bool>& pathVector,
+                               std::vector<bool>& speedVector,
+                               std::vector<bool>& dashVector);
+
+        void enrichMaze(char* maze, int width, int height);
 };
