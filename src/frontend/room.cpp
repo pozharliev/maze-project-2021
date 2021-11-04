@@ -16,26 +16,9 @@ Room::Room(int mWidth, int mHeight)
     tileHeight = 13;
 
     maze = new CheckedMaze(mazeWidth, mazeHeight);
+    maze->checkMaze();
 
     mazeTile = new olc::Sprite("public/tile.png");
-
-    for (int x = 0; x < mazeWidth; x++)
-    {
-        for (int y = 0; y < mazeHeight; y++)
-        {
-            std::cout<<maze->reversedMaze[y * mazeWidth + x];
-        }
-        std::cout<<std::endl;
-    }
-
-    for (int x = 0; x < mazeWidth; x++)
-    {
-        for (int y = 0; y < mazeHeight; y++)
-        {
-            std::cout<<maze->checkedMaze[y * mazeWidth + x];
-        }
-        std::cout<<std::endl;
-    }
 
     generateRoom();
     
@@ -46,9 +29,9 @@ void Room::generateRoom()
 
     rawMazeData.open("data/leftRawMazeData.maze", std::ofstream::out);
 
-    for (int i = 0; i < mazeHeight; i++)
+    for (int i = 0; i <= mazeHeight; i++)
     {
-        for (int j = 0; j < mazeWidth; j++)
+        for (int j = 0; j <= mazeWidth; j++)
         {
             if (maze->reversedMaze[i * mazeWidth + j] == '#')
             {
@@ -68,7 +51,7 @@ void Room::generateRoom()
 
     for (int i = 0; i <= mazeHeight; i++)
     {
-        for (int j = 0; j < mazeWidth; j++)
+        for (int j = 0; j <= mazeWidth; j++)
         {
             if (maze->checkedMaze[i * mazeWidth + j] == '#')
             {
@@ -93,31 +76,11 @@ char Room::getTile(std::string mazeOrientation, int x, int y)
 void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 {
 
-    //Draw the Maze
-    // for(int x = 0; x <= mazeWidth; x++)
-    //     {
-    //         for(int y = 0; y <= mazeHeight; y++)
-    //         {
-    //             char currentTile = getTile(x, y);
-    //             switch(currentTile)
-    //             {
-    //                 case ' ':
-    //                     break;
-
-    //                 case '#':
-    //                     engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::Pixel(147,128,112));
-    //                     break;
-
-    //                 default:
-    //                     break;
-    //             }
-    //         }
-    //     }
     if (mazeOrientation == "left")
     {
-        for (int x = 0; x < mazeWidth; x++)
+        for (int x = 0; x <= mazeWidth; x++)
         {
-            for (int y = 0; y < mazeHeight; y++)
+            for (int y = 0; y <= mazeHeight; y++)
             {
                 char currentTile = getTile("left", x, y);
                 switch (currentTile)
@@ -134,12 +97,12 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     break;
                 }
 
-                if (x == mazeWidth - 1 && y == mazeHeight - 1)
+                if (x == 1 && y == mazeHeight - 1)
                 {
                     engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
                 }
 
-                if (x == mazeWidth - 1 && y == mazeHeight - 1)
+                if (x == 1 && y == mazeHeight - 1)
                 {
                     engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f});
                 }
