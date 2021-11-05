@@ -26,32 +26,32 @@ void CheckedMaze::fillChanceGenerator(std::vector<bool>& pathVector,
                                       std::vector<bool>& dashVector
 )
 {
-    for (int i = 0; i < PATH_SCROLL_CHANCE / 10; i++)
+    for(int i = 0; i < PATH_SCROLL_CHANCE / 10; i++)
     {
         pathVector.push_back(true);
     }
 
-    for (int i = PATH_SCROLL_CHANCE / 10; i < 10; i++)
+    for(int i = PATH_SCROLL_CHANCE / 10; i < 10; i++)
     {
         pathVector.push_back(false);
     }
 
-    for (int i = 0; i < SPEED_SCROLL_CHANCE / 10; i++)
+    for(int i = 0; i < SPEED_SCROLL_CHANCE / 10; i++)
     {
         speedVector.push_back(true);
     }
 
-    for (int i = SPEED_SCROLL_CHANCE / 10; i < 10; i++)
+    for(int i = SPEED_SCROLL_CHANCE / 10; i < 10; i++)
     {
         speedVector.push_back(false);
     }
 
-    for (int i = 0; i < DASH_SCROLL_CHANCE / 10; i++)
+    for(int i = 0; i < DASH_SCROLL_CHANCE / 10; i++)
     {
         dashVector.push_back(true);
     }
 
-    for (int i = DASH_SCROLL_CHANCE / 10; i < 10; i++)
+    for(int i = DASH_SCROLL_CHANCE / 10; i < 10; i++)
     {
         dashVector.push_back(false);
     }
@@ -63,16 +63,14 @@ void CheckedMaze::shuffleGenerators(std::vector<bool>& pathVector,
                                     std::vector<bool>& dashVector
 )
 {
-    auto rd = std::random_device{};
-    auto rng = std::default_random_engine{ rd() };
+    auto rd = std::random_device {};
+    auto rng = std::default_random_engine { rd() };
     std::shuffle(pathVector.begin(), pathVector.end(), rng);
     std::shuffle(speedVector.begin(), speedVector.end(), rng);
     std::shuffle(dashVector.begin(), dashVector.end(), rng);
-
-
 }
 
-void CheckedMaze::enrichMaze() {
+void CheckedMaze::enrichMaze(char *maze, int width, int height) {
     fillChanceGenerator(pathScrollChance, speedScrollChance, dashScrollChance);
     shuffleGenerators(pathScrollChance, speedScrollChance, dashScrollChance);
 
@@ -82,83 +80,59 @@ void CheckedMaze::enrichMaze() {
     std::mt19937 gen(rd());
 
     // Define a range for the random number
-    std::uniform_int_distribution<> mazeY(0, m_mHeight - 1);
-    std::uniform_int_distribution<> mazeX(0, m_mWidth - 1);
-
-    path:
+    std::uniform_int_distribution<> mazeY(0, height - 1);
+    std::uniform_int_distribution<> mazeX(0, width - 1);
 
     auto cellX = mazeX(gen);
     auto cellY = mazeY(gen);
 
-    if (pathScrollChance[0])
+    if(pathScrollChance[0])
     {
-        if (maze->maze[cellX * m_mWidth + cellY] != '#' and
-            maze->maze[cellX * m_mWidth + cellY] != 'S' and
-            maze->maze[cellX * m_mWidth + cellY] != 'D')
+        if (maze[cellX * width + cellY] != '#' and
+            maze[cellX * width + cellY] != 'S' and
+            maze[cellX * width + cellY] != 'D')
         {
-            maze->maze[cellX * m_mWidth + cellY] = 'P';
+            maze[cellX * width + cellY] = 'P';
         }
         else
         {
-            goto path;
+            enrichMaze(maze, width, height);
         }
     }
-
-    speed:
 
     cellX = mazeX(gen);
     cellY = mazeY(gen);
 
-    if (speedScrollChance[0])
+    if(speedScrollChance[0])
     {
-        if (maze->maze[cellX * m_mWidth + cellY] != '#' and
-            maze->maze[cellX * m_mWidth + cellY] != 'P' and
-            maze->maze[cellX * m_mWidth + cellY] != 'D')
+        if (maze[cellX * width + cellY] != '#' and
+            maze[cellX * width + cellY] != 'P' and
+            maze[cellX * width + cellY] != 'D')
         {
-            maze->maze[cellX * m_mWidth + cellY] = 'S';
+            maze[cellX * width + cellY] = 'S';
         }
         else
         {
-            goto speed;
+            enrichMaze(maze, width, height);
         }
     }
-
-    dash:
 
     cellX = mazeX(gen);
     cellY = mazeY(gen);
 
-    if (dashScrollChance[0])
+    if(dashScrollChance[0])
     {
-        if (maze->maze[cellX * m_mWidth + cellY] != '#' and
-            maze->maze[cellX * m_mWidth + cellY] != 'P' and
-            maze->maze[cellX * m_mWidth + cellY] != 'S')
+        if (maze[cellX * width + cellY] != '#' and
+            maze[cellX * width + cellY] != 'P' and
+            maze[cellX * width + cellY] != 'S')
         {
-            maze->maze[cellX * m_mWidth + cellY] = 'D';
+            maze[cellX * width + cellY] = 'D';
         }
         else
         {
-            goto dash;
+            enrichMaze(maze, width, height);
         }
     }
-    for (auto e: pathScrollChance)
-    {
-        std::cout<<e<<" ";
-    }
-    std::cout<<std::endl;
-
-    for(auto e: speedScrollChance)
-    {
-        std::cout<<e<<" ";
-    }
-    std::cout<<std::endl;
-
-    for(auto e: dashScrollChance)
-    {
-        std::cout<<e<<" ";
-    }
-    std::cout<<std::endl;
-
 }
 
 
@@ -216,7 +190,7 @@ void CheckedMaze::fixMaze()
     {
         for (int x = 0; x < m_mWidth; x++)
         {
-            if (checkedMaze[toIndex(x, y)] == '0')
+            if(checkedMaze[toIndex(x, y)] == '0')
             {
                 checkedMaze[toIndex(x, y)] = ' ';
             }
@@ -290,12 +264,12 @@ void CheckedMaze::checkMaze()
             m_nVisitedCells++;
 
             // The path arrives at the end of the maze
-            if ((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
+            if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
             {
                 initMazeWithPath();
                 fixMaze();
                 initReversedMaze();
-                enrichMaze();
+                enrichMaze(maze->maze, m_mWidth, m_mHeight);
                 printCheckedMaze();
                 printCheckedMazeWithPath();
                 printReversedMaze();
@@ -303,7 +277,7 @@ void CheckedMaze::checkMaze()
             }
 
             // There is no solution to the maze
-            if (m_nVisitedCells == m_possibleWays)
+            if(m_nVisitedCells == m_possibleWays)
             {
                 // Generate another maze and repeat the process until there is a solvable maze
                 CheckedMaze anotherMaze(m_mWidth, m_mHeight);
@@ -345,7 +319,7 @@ void CheckedMaze::printCheckedMaze()
         }
         std::cout << std::endl;
     }
-    std::cout << std::endl;
+    std::cout<<std::endl;
 }
 
 void CheckedMaze::printCheckedMazeWithPath()
@@ -358,12 +332,12 @@ void CheckedMaze::printCheckedMazeWithPath()
         }
         std::cout << std::endl;
     }
-    std::cout << std::endl;
+    std::cout<<std::endl;
 }
 
 void CheckedMaze::printReversedMaze()
 {
-    for (int y = 0; y < m_mHeight; y++)
+    for (int y = 0; y <m_mHeight; y++)
     {
         for (int x = 0; x < m_mWidth; x++)
         {
@@ -371,7 +345,7 @@ void CheckedMaze::printReversedMaze()
         }
         std::cout << std::endl;
     }
-    std::cout << std::endl;
+    std::cout<<std::endl;
 }
 
 CheckedMaze::~CheckedMaze()
@@ -380,8 +354,8 @@ CheckedMaze::~CheckedMaze()
     delete[] mazeWithPath;
     delete[] reversedMaze;
 }
-//   int main()
-//   {
-//       CheckedMaze m(20, 20);
-//       m.checkMaze();
-//   }
+//int main()
+//{
+//    CheckedMaze m(20, 20);
+//    m.checkMaze();
+//}

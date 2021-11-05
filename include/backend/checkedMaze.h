@@ -3,6 +3,7 @@
 #include <vector>
 #include <random>
 
+
 #define PATH_SCROLL_CHANCE 20
 #define SPEED_SCROLL_CHANCE 40
 #define DASH_SCROLL_CHANCE 70
@@ -98,5 +99,5 @@ private:
                            std::vector<bool>& speedVector,
                            std::vector<bool>& dashVector);
 
-    void enrichMaze();
+    void enrichMaze(char* maze, int width, int height);
 };
