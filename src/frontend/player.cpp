@@ -3,14 +3,20 @@
 void Player::innitPlayer()
 {
   firstPlayerMove = true;
+  dashing = false;
   playerAnimSpritesheet = new olc::Renderable();
-  playerAnimSpritesheet->Load("public/Player_Anim_Spritesheet.png");
+  playerAnimSpritesheet->Load("public/Player_Anim_New_Spritesheet.png");
   Animator = new olc::AnimatedSprite();
   Animator->mode = olc::AnimatedSprite::SPRITE_MODE::SINGLE;
   Animator->type = olc::AnimatedSprite::SPRITE_TYPE::DECAL;
   Animator->spriteSheet = playerAnimSpritesheet;
   Animator->SetSpriteSize({32, 32});
   Animator->SetSpriteScale(0.75f);
+
+  playerInv.dashScroll = true;
+  playerInv.speedScroll = false;
+  playerInv.pathScroll = false;
+  playerInv.runes = 0;
 
   setUpAnimations();
 }
@@ -85,6 +91,22 @@ void Player::setUpAnimations()
     {352, 96}
   });
 
+    Animator->AddState("dashUp", 0.07f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
+    {64, 128},
+  });
+
+  Animator->AddState("dashDown", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
+    {64, 160},
+  });
+
+  Animator->AddState("dashLeft", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
+    {224, 192},
+  });
+
+  Animator->AddState("dashRight", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{
+    {224, 224},
+  });
+
   Animator->SetState("upIdle");
 
 }
@@ -98,7 +120,10 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
         firstPlayerMove = false;
         playerVelX = -playerSpeed;
         playerX += playerVelX * elapsedTime;
-        Animator->SetState("left");
+        if(!dashing)
+        {
+          Animator->SetState("left");
+        }
         playerDir = PLAYER_DIRS::LEFT;
         break;
 
@@ -106,7 +131,10 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
         firstPlayerMove = false;
         playerVelX = playerSpeed;
         playerX += playerVelX * elapsedTime;
-        Animator->SetState("right");
+        if(!dashing)
+        {
+          Animator->SetState("right");
+        }
         playerDir = PLAYER_DIRS::RIGHT;
         break;
 
@@ -114,7 +142,10 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
         firstPlayerMove = false;
         playerVelY = -playerSpeed;
         playerY += playerVelY * elapsedTime;
-        Animator->SetState("up");
+        if(!dashing)
+        {
+          Animator->SetState("up");
+        }
         playerDir = PLAYER_DIRS::UP;
         break;
 
@@ -122,7 +153,10 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
         firstPlayerMove = false;
         playerVelY = playerSpeed;
         playerY += playerVelY * elapsedTime;
-        Animator->SetState("down");
+        if(!dashing)
+        {
+          Animator->SetState("down");
+        }
         playerDir = PLAYER_DIRS::DOWN;
         break;
 

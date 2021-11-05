@@ -160,9 +160,21 @@ private:
 
   void getInput(float elapsedTime)
   {
+    //If the input is left arrow
     if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::LEFT)
     {
       player->movePlayer(this, olc::LEFT, elapsedTime);
+
+      if(this->GetKey(olc::SHIFT).bPressed && player->playerInv.dashScroll == true)
+      {
+        player->dashing = true;
+        player->playerX -= 10.0f;
+        player->Animator->SetState("dashLeft");
+      }
+      if(this->GetKey(olc::SHIFT).bReleased && player->playerInv.dashScroll == true)
+      {
+        player->dashing = false;
+      }
     }
 
     if (this->GetKey(olc::LEFT).bReleased)
@@ -171,35 +183,78 @@ private:
       player->Animator->SetState("leftIdle");
     }
 
+    //If the input is right arrow
     if (this->GetKey(olc::RIGHT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::RIGHT)
     {
       player->movePlayer(this, olc::RIGHT, elapsedTime);
+
+      if(this->GetKey(olc::SHIFT).bPressed && player->playerInv.dashScroll == true)
+      {
+        player->dashing = true;
+        player->playerX += 10.0f;
+        player->Animator->SetState("dashRight");
+      }
+      if(this->GetKey(olc::SHIFT).bReleased && player->playerInv.dashScroll == true)
+      {
+        player->dashing = false;
+      }
     }
+
     if (GetKey(olc::RIGHT).bReleased)
     {
       player->playerSpeed = 60;
       player->Animator->SetState("rightIdle");
     }
 
+    //If the input is up arrow
     if (this->GetKey(olc::UP).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::UP)
     {
       player->movePlayer(this, olc::UP, elapsedTime);
+
+      if(this->GetKey(olc::SHIFT).bPressed && player->playerInv.dashScroll == true)
+      {
+        player->dashing = true;
+        player->playerY -= 10.0f;
+        player->Animator->SetState("dashUp");
+      }
+
+      if(this->GetKey(olc::SHIFT).bReleased && player->playerInv.dashScroll == true)
+      {
+        player->dashing = false;
+      }
     }
+
     if (GetKey(olc::UP).bReleased)
     {
       player->playerSpeed = 60;
       player->Animator->SetState("upIdle");
     }
 
+    //If the input is down arrow
     if (GetKey(olc::DOWN).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::DOWN)
     {
       player->movePlayer(this, olc::DOWN, elapsedTime);
+
+      if(this->GetKey(olc::SHIFT).bPressed && player->playerInv.dashScroll == true)
+      {
+        player->dashing = true;
+        player->playerY += 10.0f;
+        player->Animator->SetState("dashDown");
+      }
+
+      if(this->GetKey(olc::SHIFT).bReleased && player->playerInv.dashScroll == true)
+      {
+        player->dashing = false;
+      }
+
     }
+
     if (GetKey(olc::DOWN).bReleased)
     {
       player->playerSpeed = 60;
       player->Animator->SetState("downIdle");
     }
+
 
     if (GetKey(olc::ESCAPE).bPressed && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled)
     {
@@ -212,7 +267,9 @@ private:
         mainMenu->pauseMenuEnabled = false;
       }
     }
+
   }
+
 };
 
 //GO BIG OR GO HOME

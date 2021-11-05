@@ -23,6 +23,14 @@ public:
     };
     PLAYER_DIRS playerDir;
     bool firstPlayerMove;
+    bool dashing;
+    struct inventory{
+        bool speedScroll;
+        bool dashScroll;
+        bool pathScroll;
+        int runes;
+    };
+    inventory playerInv;
 
     olc::Renderable* playerAnimSpritesheet;
     olc::AnimatedSprite* Animator;
