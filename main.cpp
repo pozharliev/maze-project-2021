@@ -4,6 +4,9 @@
 #define OLC_PGEX_ANIMSPR
 #include "libs/olcPGEX_AnimatedSprite.h"
 
+#define CUTE_SOUND_IMPLEMENTATION
+#include "libs/cute_sound.h"
+
 #include "include/frontend/mainMenu.h"
 #include "include/frontend/lobby.h"
 #include "include/frontend/room.h"
@@ -59,6 +62,9 @@ private:
     mainMenu->anyKeyPressed = false;
     mainMenu->welcomeLogo = new olc::Sprite("public/VAVYLON_LOGO_BIG_NOBG.png");
     mainMenu->welcomeLogoDecal = new olc::Decal(mainMenu->welcomeLogo);
+    mainMenu->soundContext = cs_make_context(0, 1000, 1, 1, NULL);
+    mainMenu->menuHoverLoad = cs_load_wav("public/sfx/mainMenuHoverSFX.wav");
+    mainMenu->menuHoverSFX = cs_make_playing_sound(&mainMenu->menuHoverLoad);
 
     lobby->inMaze = false;
     lobby->lobbyRoom = new olc::Sprite("public/lobby.png");

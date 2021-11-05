@@ -3,6 +3,7 @@
 MainMenu::~MainMenu(){
   delete welcomeLogo;
   delete welcomeLogoDecal;
+  cs_shutdown_context(soundContext);
 }
 
 bool MainMenu::pressAnyKey(olc::PixelGameEngine* engine){
@@ -99,6 +100,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
 
         if(engine->GetKey(olc::DOWN).bPressed)
         {
+          cs_insert_sound(soundContext, &menuHoverSFX);
           if(menuOption == 2)
           {
             menuOption = 0;

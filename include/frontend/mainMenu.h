@@ -20,6 +20,9 @@ class MainMenu
         bool anyKeyPressed;
         olc::Sprite* welcomeLogo;
         olc::Decal* welcomeLogoDecal;
+        cs_context_t* soundContext;
+        cs_loaded_sound_t menuHoverLoad;
+        cs_playing_sound_t menuHoverSFX;
 
     public:
         ~MainMenu();
