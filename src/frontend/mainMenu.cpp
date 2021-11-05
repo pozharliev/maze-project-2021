@@ -3,12 +3,15 @@
 MainMenu::~MainMenu(){
   delete welcomeLogo;
   delete welcomeLogoDecal;
+  delete[] selectPath;
+  delete[] hoverPath;
 }
 
 bool MainMenu::pressAnyKey(olc::PixelGameEngine* engine){
   engine->DrawDecal({engine->ScreenWidth()/6.2f, engine->ScreenHeight()/5}, welcomeLogoDecal, {0.12f, 0.12f});
   engine->DrawString(engine->ScreenWidth()/2 - 76, engine->ScreenHeight()/1.2f, "Press X to continue", olc::WHITE, 1);
   if(engine->GetKey(olc::X).bPressed){
+    PlaySound(selectPath, NULL, SND_ASYNC);
     anyKeyPressed = true;
   }
   return true;
@@ -93,52 +96,64 @@ bool MainMenu::displayOptionsMenu(olc::PixelGameEngine* engine)
 
 void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
 {
-    if(menuType == "main")
+  if (menuType == "main")
+  {
+    optionsMenuEdit = false;
+
+    if (engine->GetKey(olc::DOWN).bPressed)
     {
-        optionsMenuEdit = false;
+      PlaySound(hoverPath, NULL, SND_ASYNC);
 
-        if(engine->GetKey(olc::DOWN).bPressed)
-        {
-          if(menuOption == 2)
-          {
-            menuOption = 0;
-          } else {
-            menuOption+= 1;
-          }
-        }
+      if (menuOption == 2)
+      {
+        menuOption = 0;
+      }
+      else
+      {
+        menuOption += 1;
+      }
+    }
 
-        if(engine->GetKey(olc::UP).bPressed)
-        {
-          if(menuOption == 0)
-          {
-            menuOption = 2;
-          } else {
-            menuOption -= 1;
-          }
-        }
+    if (engine->GetKey(olc::UP).bPressed)
+    {
+      PlaySound(hoverPath, NULL, SND_ASYNC);
+      if (menuOption == 0)
+      {
+        menuOption = 2;
+      }
+      else
+      {
+        menuOption -= 1;
+      }
+    }
 
-        if(engine->GetKey(olc::ENTER).bPressed)
-        {
-          if(menuOption == 0 && mainMenuEdit){
-            mainMenuEnabled = false;
-            gameStarted = true;
-            menuOption = 0; // reset the selected option after quitting the menu
-          }
-          if(menuOption == 1){
-            menuOption = 0;
-            optionsMenuEnabled = true;
-            mainMenuEnabled = false;
-          }
-          if(menuOption == 2){
-            exit(0);
-          }
-        }
+    if (engine->GetKey(olc::ENTER).bPressed)
+    {
+      PlaySound(selectPath, NULL, SND_ASYNC);
+      if (menuOption == 0 && mainMenuEdit)
+      {
+        mainMenuEnabled = false;
+        gameStarted = true;
+        menuOption = 0; // reset the selected option after quitting the menu
+      }
+      if (menuOption == 1)
+      {
+        menuOption = 0;
+        optionsMenuEnabled = true;
+        mainMenuEnabled = false;
+      }
+      if (menuOption == 2)
+      {
+        exit(0);
+      }
+    }
     }
 
     if(menuType == "options")
     {
         if(engine->GetKey(olc::DOWN).bPressed)
         {
+          PlaySound(hoverPath, NULL, SND_ASYNC);
           if(menuOption == 3)
           {
             menuOption = 0;
@@ -149,6 +164,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
 
         if(engine->GetKey(olc::UP).bPressed)
         {
+          PlaySound(hoverPath, NULL, SND_ASYNC);
           if(menuOption == 0)
           {
             menuOption = 3;
@@ -159,6 +175,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
 
         if(engine->GetKey(olc::ENTER).bPressed && optionsMenuEdit)
         {
+          PlaySound(selectPath, NULL, SND_ASYNC);
           if(menuOption == 0)
           {
             if(fullScreen == false)
@@ -202,6 +219,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
         
         if(engine->GetKey(olc::DOWN).bPressed)
         {
+          PlaySound(hoverPath, NULL, SND_ASYNC);
           if(menuOption == 1)
           {
             menuOption = 0;
@@ -214,6 +232,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
 
         if(engine->GetKey(olc::UP).bPressed)
         {
+          PlaySound(hoverPath, NULL, SND_ASYNC);
           if(menuOption == 0)
           {
             menuOption = 1;
@@ -226,6 +245,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
 
         if(engine->GetKey(olc::ENTER).bPressed)
         {
+          PlaySound(selectPath, NULL, SND_ASYNC);
           if(menuOption == 0){
             pauseMenuEnabled = false;
             mainMenuEnabled = true;

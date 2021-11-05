@@ -8,8 +8,9 @@ class MainMenu
         bool fullScreen;
         std::fstream saveFile;
         std::string line;
+        LPCSTR selectPath;
+        LPCSTR hoverPath;
 
-    
     public:
         bool pauseMenuEnabled;
         bool mainMenuEnabled;

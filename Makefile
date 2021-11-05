@@ -1,7 +1,7 @@
 CXX = g++ -std=c++17
 CXXFLAGS = -g -w -Wall
 
-LIBS = -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static
+LIBS = -luser32 -lgdi32 -lopengl32 -lgdiplus -lShlwapi -ldwmapi -lstdc++fs -static -lwinmm
 LIBPATH = libs/olcPixelGameEngine.h libs/olcPGEX_AnimatedSprite.h libs/olcPGEX_TransformedView.h
 
 EXECUTABLE = main.exe

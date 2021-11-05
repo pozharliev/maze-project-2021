@@ -5,3 +5,6 @@
 
 #include "olcPixelGameEngine.h"
 #include "olcPGEX_TransformedView.h"
+
+#include <Windows.h>
+#include <wchar.h>

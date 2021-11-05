@@ -59,6 +59,8 @@ private:
     mainMenu->anyKeyPressed = false;
     mainMenu->welcomeLogo = new olc::Sprite("public/VAVYLON_LOGO_BIG_NOBG.png");
     mainMenu->welcomeLogoDecal = new olc::Decal(mainMenu->welcomeLogo);
+    mainMenu->selectPath = "public/sfx/mainMenuSelectSFX.wav";
+    mainMenu->hoverPath = "public/sfx/mainMenuHoverSFX.wav";
 
     lobby->inMaze = false;
     lobby->lobbyRoom = new olc::Sprite("public/lobby.png");
