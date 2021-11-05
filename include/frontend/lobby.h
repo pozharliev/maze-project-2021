@@ -37,6 +37,11 @@ public:
   bool rightMazeEnter;
   bool inLeftMaze;
   bool inRightMaze;
+  enum MAZE_TYPE{
+    LEFT,
+    RIGHT
+  };
+  MAZE_TYPE currentMaze;
 
 public:
   ~Lobby();

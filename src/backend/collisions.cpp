@@ -51,6 +51,8 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
 
     if(lobby->inMaze)
     {
+        mazeOrientation = (lobby->currentMaze == Lobby::MAZE_TYPE::LEFT) ? "left" : "right";
+
         Lobby::rect roomLeftBack = {{engine->ScreenWidth() -1.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
         Lobby::rect roomRightBack = {{0.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
         if(lobby->inLeftMaze)
@@ -71,6 +73,42 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                 player->playerX = engine->ScreenWidth() - 15.0f;
             }
         }
+
+        if(player->playerDir == player->PLAYER_DIRS::LEFT)
+        {
+            if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13) + 0.4f) != ' ')
+            {
+                //End game
+            } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
+        }
+
+        if(player->playerDir == player->PLAYER_DIRS::RIGHT)
+        {
+            if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.6f, (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.6f, (int)(player->newPlayerPosY / 13) + 0.4f) != ' ')
+            {
+                //End game
+            } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
+        }
+
+        if(player->playerDir == player->PLAYER_DIRS::UP)
+        {
+            if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.4f, (int)(player->newPlayerPosY / 13)) != ' ')
+            {
+                //End game
+            } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
+        }
+
+        if(player->playerDir == player->PLAYER_DIRS::DOWN && !player->firstPlayerMove)
+        {
+            if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.0f, (int)(player->newPlayerPosY / 13) + 0.5f) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.4f, (int)(player->newPlayerPosY / 13) + 0.6f) != ' ')
+            {
+                //End game
+            } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
+        }
+        
+
+        
+
 
     }
 

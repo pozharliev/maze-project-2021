@@ -9,6 +9,7 @@ class Collisions
     public:
         bool colliding;
         Player::PLAYER_DIRS lastCollisionDir;
+        std::string mazeOrientation;
         
     public:
         void checkCollisions(olc::PixelGameEngine* engine, Player* player, Lobby* lobby, Room* room);
