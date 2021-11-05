@@ -76,6 +76,7 @@ private:
     room->setUpScrollAnimations();
 
     collisions->colliding = false;
+    collisions->gameEnded = false;
 
     return true;
   }
@@ -101,17 +102,22 @@ private:
     {
       if (mainMenu->mainMenuEnabled)
       {
-        mainMenu->displayMainMenu(this);
+        mainMenu->displayMainMenu(this, collisions);
       }
 
       if (mainMenu->pauseMenuEnabled)
       {
-        mainMenu->displayPauseMenu(this);
+        mainMenu->displayPauseMenu(this, collisions);
       }
 
-      if (mainMenu->optionsMenuEnabled && mainMenu->mainMenuEnabled == false)
+      if (mainMenu->optionsMenuEnabled && !mainMenu->mainMenuEnabled)
       {
-        mainMenu->displayOptionsMenu(this);
+        mainMenu->displayOptionsMenu(this, collisions);
+      }
+
+      if (collisions->gameEnded && !mainMenu->pauseMenuEnabled)
+      {
+        mainMenu->displayLoseMenu(this, collisions);
       }
     }
     else
@@ -126,7 +132,7 @@ private:
   {
     getInput(fElapsedTime);
 
-    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled)
+    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !collisions->gameEnded)
     {
       lobby->drawLobby(this, player, room);
       if (!player->firstPlayerMove)
@@ -258,7 +264,7 @@ private:
     }
 
 
-    if (GetKey(olc::ESCAPE).bPressed && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled)
+    if (GetKey(olc::ESCAPE).bPressed && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !collisions->gameEnded)
     {
       if (!mainMenu->pauseMenuEnabled)
       {

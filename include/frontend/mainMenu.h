@@ -1,6 +1,7 @@
 #pragma once
 
 #include "../backend/libs.h"
+#include "../backend/collisions.h"
 
 class MainMenu
 {
@@ -26,13 +27,15 @@ class MainMenu
     public:
         ~MainMenu();
 
-        bool displayPauseMenu(olc::PixelGameEngine* engine);
+        bool displayPauseMenu(olc::PixelGameEngine* engine, Collisions* collisions);
 
-        bool displayMainMenu(olc::PixelGameEngine* engine);
+        bool displayMainMenu(olc::PixelGameEngine* engine, Collisions* collisions);
 
-        bool displayOptionsMenu(olc::PixelGameEngine* engine);
+        bool displayOptionsMenu(olc::PixelGameEngine* engine, Collisions* collisions);
 
-        void getMenuInput(olc::PixelGameEngine* engine, std::string menuType);
+        bool displayLoseMenu(olc::PixelGameEngine *engine, Collisions* collisions);
+
+        void getMenuInput(olc::PixelGameEngine* engine, std::string menuType, Collisions* collisions);
 
         bool pressAnyKey(olc::PixelGameEngine* engine);
 };

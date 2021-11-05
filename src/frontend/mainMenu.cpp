@@ -17,30 +17,30 @@ bool MainMenu::pressAnyKey(olc::PixelGameEngine* engine){
   return true;
 }
 
-bool MainMenu::displayPauseMenu(olc::PixelGameEngine* engine)
+bool MainMenu::displayPauseMenu(olc::PixelGameEngine* engine, Collisions* collisions)
     {
       std::string menuOptionsArr[2] = {"Continue", "Quit To Menu"};
       engine->Clear(olc::BLACK);
-      int vSpacing = -16;
+      int spacing = -16;
 
       for(int i = 0; i < 2; i++)
       {
         if(i == menuOption)
         {
-          engine->DrawString(engine->ScreenWidth() / 2 - 56, engine->ScreenHeight() / 2 + vSpacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
+          engine->DrawString(engine->ScreenWidth() / 2 - 56, engine->ScreenHeight() / 2 + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
         } else {
-          engine->DrawString(engine->ScreenWidth() / 2 - 32, engine->ScreenHeight() / 2 + vSpacing, menuOptionsArr[i], olc::WHITE);
+          engine->DrawString(engine->ScreenWidth() / 2 - 32, engine->ScreenHeight() / 2 + spacing, menuOptionsArr[i], olc::WHITE);
         }
 
-        vSpacing += 32;
+        spacing += 32;
       }
 
-      getMenuInput(engine, "pause");
-      vSpacing = -16;
+      getMenuInput(engine, "pause", collisions);
+      spacing = -16;
       return true;
     }
 
-bool MainMenu::displayMainMenu(olc::PixelGameEngine* engine)
+bool MainMenu::displayMainMenu(olc::PixelGameEngine* engine, Collisions* collisions)
   {
     std::string menuOptionsArr[3] = {"Start Game", "Options", "Quit Game"};
     engine->Clear(olc::BLACK);
@@ -57,13 +57,13 @@ bool MainMenu::displayMainMenu(olc::PixelGameEngine* engine)
 
       spacing += 32;
     }
-    getMenuInput(engine, "main");
+    getMenuInput(engine, "main", collisions);
     mainMenuEdit = true;
     spacing = -32;
     return true;
   }
 
-bool MainMenu::displayOptionsMenu(olc::PixelGameEngine* engine)
+bool MainMenu::displayOptionsMenu(olc::PixelGameEngine* engine, Collisions* collisions)
   {
     std::string menuOptionsArr[4] = {"Full Screen", "Sound", "Controls", "Back"};
     engine->Clear(olc::BLACK);
@@ -88,13 +88,37 @@ bool MainMenu::displayOptionsMenu(olc::PixelGameEngine* engine)
 
       spacing += 32;
     }
-    getMenuInput(engine, "options");
+    getMenuInput(engine, "options", collisions);
     optionsMenuEdit = true;
     spacing = -32;
     return true;
   }
 
-void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
+  bool MainMenu::displayLoseMenu(olc::PixelGameEngine* engine, Collisions* collisions)
+  {
+    std::string menuOptionsArr[2] = {"Back to main menu", "    Quit Game"};
+    engine->Clear(olc::BLACK);
+    engine->DrawString(engine->ScreenWidth() / 2 - 72.0f, engine->ScreenWidth() / 8, "You died!", olc::RED, 2);
+    int spacing = -32;
+
+    for(int i = 0; i < 2; i++)
+    {
+      if(i == menuOption)
+        {
+          engine->DrawString(engine->ScreenWidth() / 2 - 92, engine->ScreenHeight() / 1.3f + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
+        } else {
+          engine->DrawString(engine->ScreenWidth() / 2 - 68, engine->ScreenHeight() / 1.3f+ spacing, menuOptionsArr[i], olc::WHITE);
+        }
+
+        spacing += 32;
+    }
+    getMenuInput(engine, "lose", collisions);
+    optionsMenuEdit = true;
+    spacing = -32;
+    return true;
+  }
+
+void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, Collisions* collisions)
 {
   if (menuType == "main")
   {
@@ -255,6 +279,50 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType)
             mainMenuEnabled = true;
             pauseMenuEnabled = false;
             menuOption = 0;
+          }
+        }
+    }
+
+    if(menuType == "lose")
+    {
+        mainMenuEdit = false;
+        
+        if(engine->GetKey(olc::DOWN).bPressed)
+        {
+          PlaySound(hoverPath, NULL, SND_ASYNC);
+          if(menuOption == 1)
+          {
+            menuOption = 0;
+          } 
+          else if(menuOption == 0)
+          {
+            menuOption = 1;
+          }
+        }
+
+        if(engine->GetKey(olc::UP).bPressed)
+        {
+          PlaySound(hoverPath, NULL, SND_ASYNC);
+          if(menuOption == 0)
+          {
+            menuOption = 1;
+          } 
+          else if(menuOption == 1)
+          {
+            menuOption = 0;
+          }
+        }
+
+        if(engine->GetKey(olc::ENTER).bPressed)
+        {
+          PlaySound(selectPath, NULL, SND_ASYNC);
+          if(menuOption == 0){
+            collisions->gameEnded = false;
+            mainMenuEnabled = true;
+            menuOption = 0;
+          }
+          if(menuOption == 1){
+            exit(0);
           }
         }
     }

@@ -10,6 +10,7 @@ class Collisions
         bool colliding;
         Player::PLAYER_DIRS lastCollisionDir;
         std::string mazeOrientation;
+        bool gameEnded;
         
     public:
         void checkCollisions(olc::PixelGameEngine* engine, Player* player, Lobby* lobby, Room* room);

@@ -78,7 +78,7 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
         {
             if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13) + 0.4f) != ' ')
             {
-                //End game
+                gameEnded = true;
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
@@ -86,7 +86,7 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
         {
             if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.6f, (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.6f, (int)(player->newPlayerPosY / 13) + 0.4f) != ' ')
             {
-                //End game
+                gameEnded = true;
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
@@ -94,7 +94,7 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
         {
             if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.4f, (int)(player->newPlayerPosY / 13)) != ' ')
             {
-                //End game
+                gameEnded = true;
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
@@ -102,7 +102,7 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
         {
             if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.0f, (int)(player->newPlayerPosY / 13) + 0.5f) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.4f, (int)(player->newPlayerPosY / 13) + 0.6f) != ' ')
             {
-                //End game
+                gameEnded = true;
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
         
