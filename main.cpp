@@ -165,9 +165,16 @@ private:
     //Left here for debugging purposes
     if(this->GetKey(olc::G).bPressed)
     {
+      if(currentFloor == floorCount-1)
+      {
+        //Win
+        exit(0);
+      }
+      else
+      {
       currentFloor++;
-      delete floors.at(currentFloor -1)->room;
       delete floors.at(currentFloor -1);
+      }
     }
 
     //If the input is left arrow
