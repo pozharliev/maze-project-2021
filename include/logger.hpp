@@ -14,33 +14,34 @@
 class Logger
 {
     public:
-        Logger();
+        inline Logger();
 
         void initLogFile();
 
-        void Info(const std::string& info);
-        void Warning(const std::string& warning);
-        void Error(const std::string& error);
+        inline void Info(const std::string& info);
+        inline void Warning(const std::string& warning);
+        inline void Error(const std::string& error);
 
     private:
         std::ofstream m_log;
         std::tm* m_time;
 
     private:
-        std::string getTime() const;
-        std::string getLogs(const std::string& type, const std::string& message) const;
+        inline std::string getTime() const;
+        inline std::string getLogs(const std::string& type, const std::string& message) const;
 };
 
-Logger::Logger()
+inline Logger::Logger()
 {
     std::time_t t = std::time(0);
 
     m_time = std::localtime(&t);
 };
 
-void Logger::initLogFile()
+inline void Logger::initLogFile()
 {
-    m_log.open("logs/logs.log", std::ios::out | std::ios::trunc);
+    std::string filename = "logs/logs.log";
+    m_log.open(filename.c_str(), std::fstream::out | std::fstream::app);
 
     if(m_log.is_open())
     {
@@ -53,12 +54,12 @@ void Logger::initLogFile()
     }
 }
 
-std::string Logger::getLogs(const std::string& type, const std::string& message) const
+inline std::string Logger::getLogs(const std::string& type, const std::string& message) const
 {
     return getTime() + " " + "[" + type + "]" + " " + message + "\n";
 }
 
-std::string Logger::getTime() const
+inline std::string Logger::getTime() const
 {
     using namespace std;
 
@@ -72,19 +73,17 @@ std::string Logger::getTime() const
            + "]";
 }
 
-void Logger::Info(const std::string& info)
+inline void Logger::Info(const std::string& info)
 {
-    std::cout << "vlizam";
     m_log << getLogs("Info", info);
-    std::cout<< "izlizam";
 }
 
-void Logger::Warning(const std::string& warning)
+inline void Logger::Warning(const std::string& warning)
 {
     m_log << getLogs("Warning", warning);
 }
 
-void Logger::Error(const std::string& error)
+inline void Logger::Error(const std::string& error)
 {
     m_log << getLogs("Error", error);
 }

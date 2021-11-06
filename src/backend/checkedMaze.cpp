@@ -20,11 +20,9 @@ CheckedMaze::CheckedMaze(int width, int height)
 
     m_nVisitedCells = 1;
 
-    logger = new Logger();
+    logger.initLogFile();
 
-    logger->initLogFile();
-
-    logger->Info(MAZE_INITIALIZED);
+    logger.Info(MAZE_INITIALIZED);
 }
 
 void CheckedMaze::fillChanceGenerator(std::vector<bool>& pathVector,
@@ -76,7 +74,7 @@ void CheckedMaze::shuffleGenerators(std::vector<bool>& pathVector,
     std::shuffle(dashVector.begin(), dashVector.end(), rng);
 }
 
-void CheckedMaze::enrichMaze(char *maze, int width, int height) {
+void CheckedMaze::enrichMaze() {
     fillChanceGenerator(pathScrollChance, speedScrollChance, dashScrollChance);
     shuffleGenerators(pathScrollChance, speedScrollChance, dashScrollChance);
 
@@ -86,23 +84,23 @@ void CheckedMaze::enrichMaze(char *maze, int width, int height) {
     std::mt19937 gen(rd());
 
     // Define a range for the random number
-    std::uniform_int_distribution<> mazeY(0, height - 1);
-    std::uniform_int_distribution<> mazeX(0, width - 1);
+    std::uniform_int_distribution<> mazeY(0, m_mHeight);
+    std::uniform_int_distribution<> mazeX(0, m_mWidth);
 
     auto cellX = mazeX(gen);
     auto cellY = mazeY(gen);
 
     if(pathScrollChance[0])
     {
-        if (maze[cellX * width + cellY] != '#' and
-            maze[cellX * width + cellY] != 'S' and
-            maze[cellX * width + cellY] != 'D')
+        if (maze->maze[cellX * m_mWidth + cellY] != '#' and
+            maze->maze[cellX * m_mWidth + cellY] != 'S' and
+            maze->maze[cellX * m_mWidth + cellY] != 'D')
         {
-            maze[cellX * width + cellY] = 'P';
+            maze->maze[cellX * m_mWidth + cellY] = 'P';
         }
         else
         {
-            enrichMaze(maze, width, height);
+            enrichMaze();
         }
     }
 
@@ -111,15 +109,15 @@ void CheckedMaze::enrichMaze(char *maze, int width, int height) {
 
     if(speedScrollChance[0])
     {
-        if (maze[cellX * width + cellY] != '#' and
-            maze[cellX * width + cellY] != 'P' and
-            maze[cellX * width + cellY] != 'D')
+        if (maze->maze[cellX * m_mWidth + cellY] != '#' and
+            maze->maze[cellX * m_mWidth + cellY] != 'P' and
+            maze->maze[cellX * m_mWidth + cellY] != 'D')
         {
-            maze[cellX * width + cellY] = 'S';
+            maze->maze[cellX * m_mWidth + cellY] = 'S';
         }
         else
         {
-            enrichMaze(maze, width, height);
+            enrichMaze();
         }
     }
 
@@ -128,15 +126,15 @@ void CheckedMaze::enrichMaze(char *maze, int width, int height) {
 
     if(dashScrollChance[0])
     {
-        if (maze[cellX * width + cellY] != '#' and
-            maze[cellX * width + cellY] != 'P' and
-            maze[cellX * width + cellY] != 'S')
+        if (maze->maze[cellX * m_mWidth + cellY] != '#' and
+            maze->maze[cellX * m_mWidth + cellY] != 'P' and
+            maze->maze[cellX * m_mWidth + cellY] != 'S')
         {
-            maze[cellX * width + cellY] = 'D';
+            maze->maze[cellX * m_mWidth + cellY] = 'D';
         }
         else
         {
-            enrichMaze(maze, width, height);
+            enrichMaze();
         }
     }
 }
@@ -231,7 +229,7 @@ void CheckedMaze::initReversedMaze()
 
 void CheckedMaze::checkMaze()
 {
-    logger->Info(MAZE_SOLVING);
+    logger.Info(MAZE_SOLVING);
     m_visitedCells.push_back(std::make_pair(m_x, m_y));
     m_stack.push_back(std::make_pair(m_x, m_y));
 
@@ -273,11 +271,11 @@ void CheckedMaze::checkMaze()
             // The path arrives at the end of the maze
             if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
             {
-                logger->Info(MAZE_SOLVABLE);
+                logger.Info(MAZE_SOLVABLE);
                 initMazeWithPath();
                 fixMaze();
                 initReversedMaze();
-                enrichMaze(maze->maze, m_mWidth, m_mHeight);
+                enrichMaze();
                 printCheckedMaze();
                 printCheckedMazeWithPath();
                 printReversedMaze();
@@ -287,7 +285,7 @@ void CheckedMaze::checkMaze()
             // There is no solution to the maze
             if(m_nVisitedCells == m_possibleWays)
             {
-                logger->Warning(MAZE_UNSOLVABLE);
+                logger.Warning(MAZE_UNSOLVABLE);
                 // Generate another maze and repeat the process until there is a solvable maze
                 CheckedMaze anotherMaze(m_mWidth, m_mHeight);
                 anotherMaze.checkMaze();
@@ -362,9 +360,4 @@ CheckedMaze::~CheckedMaze()
     delete maze;
     delete[] mazeWithPath;
     delete[] reversedMaze;
-}
-int main()
-{
-    CheckedMaze m(20, 20);
-    m.checkMaze();
 }

@@ -36,6 +36,7 @@ collisions: $(SRC)/$(BE)/collisions.cpp $(INCLUDE)/$(BE)/collisions.h
 
 maze: uncheckedMaze mazeChecker
 	$(CXX) $(CXXFLAGS) -o maze.exe maze.o checkedMaze.o
+	./maze.exe
 
 mazeChecker: $(SRC)/$(BE)/checkedMaze.cpp $(INCLUDE)/$(BE)/checkedMaze.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/checkedMaze.cpp

@@ -26,7 +26,7 @@ class CheckedMaze
 public:
     CheckedMaze(int width, int height);
 
-    Logger* logger = NULL;
+    Logger logger;
 
     ~CheckedMaze();
 
@@ -119,5 +119,5 @@ private:
                            std::vector<bool>& speedVector,
                            std::vector<bool>& dashVector);
 
-    void enrichMaze(char* maze, int width, int height);
+    void enrichMaze();
 };
