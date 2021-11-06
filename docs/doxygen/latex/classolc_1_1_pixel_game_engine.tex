@@ -1,0 +1,343 @@
+\hypertarget{classolc_1_1_pixel_game_engine}{}\doxysection{olc\+::Pixel\+Game\+Engine Class Reference}
+\label{classolc_1_1_pixel_game_engine}\index{olc::PixelGameEngine@{olc::PixelGameEngine}}
+Inheritance diagram for olc\+::Pixel\+Game\+Engine\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classolc_1_1_pixel_game_engine}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_af1a9cf3b38dda2071b7ec18868ee1ccd}\label{classolc_1_1_pixel_game_engine_af1a9cf3b38dda2071b7ec18868ee1ccd}} 
+olc\+::rcode {\bfseries Construct} (int32\+\_\+t screen\+\_\+w, int32\+\_\+t screen\+\_\+h, int32\+\_\+t pixel\+\_\+w, int32\+\_\+t pixel\+\_\+h, bool full\+\_\+screen=false, bool vsync=false, bool cohesion=false)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a8e8848aa1c743a1ec2cdaa14c87e5cde}\label{classolc_1_1_pixel_game_engine_a8e8848aa1c743a1ec2cdaa14c87e5cde}} 
+olc\+::rcode {\bfseries Start} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a6a33b6ff7cd23dfd05b34416865fb5c3}\label{classolc_1_1_pixel_game_engine_a6a33b6ff7cd23dfd05b34416865fb5c3}} 
+virtual bool {\bfseries On\+User\+Create} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_af9379a3db341b0acb410ea543e30fdd1}\label{classolc_1_1_pixel_game_engine_af9379a3db341b0acb410ea543e30fdd1}} 
+virtual bool {\bfseries On\+User\+Update} (float f\+Elapsed\+Time)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ad4fbf979865fb1f08250ea379f2de669}\label{classolc_1_1_pixel_game_engine_ad4fbf979865fb1f08250ea379f2de669}} 
+virtual bool {\bfseries On\+User\+Destroy} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a92192402b5d499ab8b230dfb9393f3b7}\label{classolc_1_1_pixel_game_engine_a92192402b5d499ab8b230dfb9393f3b7}} 
+bool {\bfseries Is\+Focused} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a27cb4cb68d5e1ca7df8014d66221269e}\label{classolc_1_1_pixel_game_engine_a27cb4cb68d5e1ca7df8014d66221269e}} 
+\mbox{\hyperlink{structolc_1_1_h_w_button}{HWButton}} {\bfseries Get\+Key} (Key k) const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_abdf9f5d70c9e24ab9358a8dd07474105}\label{classolc_1_1_pixel_game_engine_abdf9f5d70c9e24ab9358a8dd07474105}} 
+\mbox{\hyperlink{structolc_1_1_h_w_button}{HWButton}} {\bfseries Get\+Mouse} (uint32\+\_\+t b) const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a2ec1d2a1f3777338fb4388c620344a34}\label{classolc_1_1_pixel_game_engine_a2ec1d2a1f3777338fb4388c620344a34}} 
+int32\+\_\+t {\bfseries Get\+MouseX} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a8dde80c07547240f5e72b4f2fcd89668}\label{classolc_1_1_pixel_game_engine_a8dde80c07547240f5e72b4f2fcd89668}} 
+int32\+\_\+t {\bfseries Get\+MouseY} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a9640286e4a7cd03c6f545b1df7373269}\label{classolc_1_1_pixel_game_engine_a9640286e4a7cd03c6f545b1df7373269}} 
+int32\+\_\+t {\bfseries Get\+Mouse\+Wheel} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a833d48cf4fa3a8f437abd5ed7653cc32}\label{classolc_1_1_pixel_game_engine_a833d48cf4fa3a8f437abd5ed7653cc32}} 
+const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \& {\bfseries Get\+Window\+Mouse} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a8730f3281b17428235ace7036ae030ac}\label{classolc_1_1_pixel_game_engine_a8730f3281b17428235ace7036ae030ac}} 
+const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \& {\bfseries Get\+Mouse\+Pos} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aa3b458d05eab503d9918cfd2d383a45c}\label{classolc_1_1_pixel_game_engine_aa3b458d05eab503d9918cfd2d383a45c}} 
+int32\+\_\+t {\bfseries Screen\+Width} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_abbbee4578ffa6b844c04c1af363052af}\label{classolc_1_1_pixel_game_engine_abbbee4578ffa6b844c04c1af363052af}} 
+int32\+\_\+t {\bfseries Screen\+Height} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a45d918f65f5fee13e654878d8271326b}\label{classolc_1_1_pixel_game_engine_a45d918f65f5fee13e654878d8271326b}} 
+int32\+\_\+t {\bfseries Get\+Draw\+Target\+Width} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a4ee3dbff01900d71e62bfe499b1c83c3}\label{classolc_1_1_pixel_game_engine_a4ee3dbff01900d71e62bfe499b1c83c3}} 
+int32\+\_\+t {\bfseries Get\+Draw\+Target\+Height} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a50d4a776f146662b586a51a1a887584c}\label{classolc_1_1_pixel_game_engine_a50d4a776f146662b586a51a1a887584c}} 
+\mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$ {\bfseries Get\+Draw\+Target} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_abd403468f57f7665d56e202da8de8e76}\label{classolc_1_1_pixel_game_engine_abd403468f57f7665d56e202da8de8e76}} 
+void {\bfseries Set\+Screen\+Size} (int w, int h)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a70b6a145d7ab0c8857000a72ce4d4a70}\label{classolc_1_1_pixel_game_engine_a70b6a145d7ab0c8857000a72ce4d4a70}} 
+void {\bfseries Set\+Draw\+Target} (\mbox{\hyperlink{classolc_1_1_sprite}{Sprite}} $\ast$target)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a89d27938d71d49b42a20307444147697}\label{classolc_1_1_pixel_game_engine_a89d27938d71d49b42a20307444147697}} 
+uint32\+\_\+t {\bfseries Get\+FPS} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_af881473291c52d849dbef155e359b27c}\label{classolc_1_1_pixel_game_engine_af881473291c52d849dbef155e359b27c}} 
+float {\bfseries Get\+Elapsed\+Time} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a09ce081826dc9dc4103e8998de0697f7}\label{classolc_1_1_pixel_game_engine_a09ce081826dc9dc4103e8998de0697f7}} 
+const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \& {\bfseries Get\+Window\+Size} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_af491deb40a70a3b1ea89778ef35cfe92}\label{classolc_1_1_pixel_game_engine_af491deb40a70a3b1ea89778ef35cfe92}} 
+const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \& {\bfseries Get\+Pixel\+Size} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a92436f307c7ca4cc62af7ef7b81ad584}\label{classolc_1_1_pixel_game_engine_a92436f307c7ca4cc62af7ef7b81ad584}} 
+const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \& {\bfseries Get\+Screen\+Pixel\+Size} () const
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a5842c1087a70c95a7ff96d53f28b7bab}\label{classolc_1_1_pixel_game_engine_a5842c1087a70c95a7ff96d53f28b7bab}} 
+void {\bfseries Set\+Draw\+Target} (uint8\+\_\+t layer)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a1e3453e2a118596fa04a961f66c6fd46}\label{classolc_1_1_pixel_game_engine_a1e3453e2a118596fa04a961f66c6fd46}} 
+void {\bfseries Enable\+Layer} (uint8\+\_\+t layer, bool b)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a0e1ddc993ef65dfe00f2bbcf59e535ad}\label{classolc_1_1_pixel_game_engine_a0e1ddc993ef65dfe00f2bbcf59e535ad}} 
+void {\bfseries Set\+Layer\+Offset} (uint8\+\_\+t layer, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&offset)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a9fed21eddcebeb743472d8b9eb1e3ece}\label{classolc_1_1_pixel_game_engine_a9fed21eddcebeb743472d8b9eb1e3ece}} 
+void {\bfseries Set\+Layer\+Offset} (uint8\+\_\+t layer, float x, float y)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_af8fbe005b4069ed1de8e0347b72ebc30}\label{classolc_1_1_pixel_game_engine_af8fbe005b4069ed1de8e0347b72ebc30}} 
+void {\bfseries Set\+Layer\+Scale} (uint8\+\_\+t layer, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a409825b0147e25c0d4c05fb0aa1f6273}\label{classolc_1_1_pixel_game_engine_a409825b0147e25c0d4c05fb0aa1f6273}} 
+void {\bfseries Set\+Layer\+Scale} (uint8\+\_\+t layer, float x, float y)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a7d7c04245161782d5f5c48d3d62ff7a7}\label{classolc_1_1_pixel_game_engine_a7d7c04245161782d5f5c48d3d62ff7a7}} 
+void {\bfseries Set\+Layer\+Tint} (uint8\+\_\+t layer, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a40a88ddb3800e59121f05b06fd64dbfd}\label{classolc_1_1_pixel_game_engine_a40a88ddb3800e59121f05b06fd64dbfd}} 
+void {\bfseries Set\+Layer\+Custom\+Render\+Function} (uint8\+\_\+t layer, std\+::function$<$ void()$>$ f)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a25b1d7ca807d0881684483f87071dcd3}\label{classolc_1_1_pixel_game_engine_a25b1d7ca807d0881684483f87071dcd3}} 
+std\+::vector$<$ \mbox{\hyperlink{structolc_1_1_layer_desc}{Layer\+Desc}} $>$ \& {\bfseries Get\+Layers} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ae15ffa0503e2893aad7001aa2f5769b7}\label{classolc_1_1_pixel_game_engine_ae15ffa0503e2893aad7001aa2f5769b7}} 
+uint32\+\_\+t {\bfseries Create\+Layer} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ae4a3d1aaa40761986389966ab927ef32}\label{classolc_1_1_pixel_game_engine_ae4a3d1aaa40761986389966ab927ef32}} 
+void {\bfseries Set\+Pixel\+Mode} (Pixel\+::\+Mode m)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ad4f95a449dc09a2650ec771e6fa83049}\label{classolc_1_1_pixel_game_engine_ad4f95a449dc09a2650ec771e6fa83049}} 
+Pixel\+::\+Mode {\bfseries Get\+Pixel\+Mode} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a9aa31ae4e1735efa72f3ea17fb51b2ef}\label{classolc_1_1_pixel_game_engine_a9aa31ae4e1735efa72f3ea17fb51b2ef}} 
+void {\bfseries Set\+Pixel\+Mode} (std\+::function$<$ \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}}(const int x, const int y, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&p\+Source, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&p\+Dest)$>$ pixel\+Mode)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ab0726b7758bc1bf7f7de30369076b8e7}\label{classolc_1_1_pixel_game_engine_ab0726b7758bc1bf7f7de30369076b8e7}} 
+void {\bfseries Set\+Pixel\+Blend} (float f\+Blend)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a95ab046b4b0843565bddd0e009a25569}\label{classolc_1_1_pixel_game_engine_a95ab046b4b0843565bddd0e009a25569}} 
+virtual bool {\bfseries Draw} (int32\+\_\+t x, int32\+\_\+t y, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ad7bd70d2c3d0bc5bbb0991fa4695a4e9}\label{classolc_1_1_pixel_game_engine_ad7bd70d2c3d0bc5bbb0991fa4695a4e9}} 
+bool {\bfseries Draw} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a131877968123c843374f079814503d22}\label{classolc_1_1_pixel_game_engine_a131877968123c843374f079814503d22}} 
+void {\bfseries Draw\+Line} (int32\+\_\+t x1, int32\+\_\+t y1, int32\+\_\+t x2, int32\+\_\+t y2, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE, uint32\+\_\+t pattern=0x\+FFFFFFFF)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ac24457d32db7d8acf0661c6de57be7a8}\label{classolc_1_1_pixel_game_engine_ac24457d32db7d8acf0661c6de57be7a8}} 
+void {\bfseries Draw\+Line} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos1, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos2, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE, uint32\+\_\+t pattern=0x\+FFFFFFFF)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a2ce3e34fd633acdc22b8dc2c8d25f86c}\label{classolc_1_1_pixel_game_engine_a2ce3e34fd633acdc22b8dc2c8d25f86c}} 
+void {\bfseries Draw\+Circle} (int32\+\_\+t x, int32\+\_\+t y, int32\+\_\+t radius, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE, uint8\+\_\+t mask=0x\+FF)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a0016377c9188719462724f523b3a6334}\label{classolc_1_1_pixel_game_engine_a0016377c9188719462724f523b3a6334}} 
+void {\bfseries Draw\+Circle} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, int32\+\_\+t radius, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE, uint8\+\_\+t mask=0x\+FF)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a483f56606fbbf3ab4850554491a853bd}\label{classolc_1_1_pixel_game_engine_a483f56606fbbf3ab4850554491a853bd}} 
+void {\bfseries Fill\+Circle} (int32\+\_\+t x, int32\+\_\+t y, int32\+\_\+t radius, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a169b1c8ca3116ac2338785b8ffe87954}\label{classolc_1_1_pixel_game_engine_a169b1c8ca3116ac2338785b8ffe87954}} 
+void {\bfseries Fill\+Circle} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, int32\+\_\+t radius, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a220f523e520e317f5656c4d3df777163}\label{classolc_1_1_pixel_game_engine_a220f523e520e317f5656c4d3df777163}} 
+void {\bfseries Draw\+Rect} (int32\+\_\+t x, int32\+\_\+t y, int32\+\_\+t w, int32\+\_\+t h, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ac8536bf173a396cf78f952ab66fe6156}\label{classolc_1_1_pixel_game_engine_ac8536bf173a396cf78f952ab66fe6156}} 
+void {\bfseries Draw\+Rect} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&size, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a6b5e218bb4360f27a470f9e821721331}\label{classolc_1_1_pixel_game_engine_a6b5e218bb4360f27a470f9e821721331}} 
+void {\bfseries Fill\+Rect} (int32\+\_\+t x, int32\+\_\+t y, int32\+\_\+t w, int32\+\_\+t h, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ae225f7027e20fe0f45a8190a992981cc}\label{classolc_1_1_pixel_game_engine_ae225f7027e20fe0f45a8190a992981cc}} 
+void {\bfseries Fill\+Rect} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&size, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a2bddba9e808a8702f6af354007302c16}\label{classolc_1_1_pixel_game_engine_a2bddba9e808a8702f6af354007302c16}} 
+void {\bfseries Draw\+Triangle} (int32\+\_\+t x1, int32\+\_\+t y1, int32\+\_\+t x2, int32\+\_\+t y2, int32\+\_\+t x3, int32\+\_\+t y3, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aafe21db2127f56670b5f5f089adced71}\label{classolc_1_1_pixel_game_engine_aafe21db2127f56670b5f5f089adced71}} 
+void {\bfseries Draw\+Triangle} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos1, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos2, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos3, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ad31abffe6c4d0b864b8f7762c33b7a7d}\label{classolc_1_1_pixel_game_engine_ad31abffe6c4d0b864b8f7762c33b7a7d}} 
+void {\bfseries Fill\+Triangle} (int32\+\_\+t x1, int32\+\_\+t y1, int32\+\_\+t x2, int32\+\_\+t y2, int32\+\_\+t x3, int32\+\_\+t y3, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a091224d5937210726d25c8cdeb4a951e}\label{classolc_1_1_pixel_game_engine_a091224d5937210726d25c8cdeb4a951e}} 
+void {\bfseries Fill\+Triangle} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos1, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos2, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos3, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a5bae460b03f2837e39fdee3a0bbb6f99}\label{classolc_1_1_pixel_game_engine_a5bae460b03f2837e39fdee3a0bbb6f99}} 
+void {\bfseries Draw\+Sprite} (int32\+\_\+t x, int32\+\_\+t y, \mbox{\hyperlink{classolc_1_1_sprite}{Sprite}} $\ast$sprite, uint32\+\_\+t scale=1, uint8\+\_\+t flip=olc\+::\+Sprite\+::\+NONE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_adcf00714f6f13ed5ad256e2102084177}\label{classolc_1_1_pixel_game_engine_adcf00714f6f13ed5ad256e2102084177}} 
+void {\bfseries Draw\+Sprite} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, \mbox{\hyperlink{classolc_1_1_sprite}{Sprite}} $\ast$sprite, uint32\+\_\+t scale=1, uint8\+\_\+t flip=olc\+::\+Sprite\+::\+NONE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ab777dd885946b2dba5e8bef894c6868c}\label{classolc_1_1_pixel_game_engine_ab777dd885946b2dba5e8bef894c6868c}} 
+void {\bfseries Draw\+Partial\+Sprite} (int32\+\_\+t x, int32\+\_\+t y, \mbox{\hyperlink{classolc_1_1_sprite}{Sprite}} $\ast$sprite, int32\+\_\+t ox, int32\+\_\+t oy, int32\+\_\+t w, int32\+\_\+t h, uint32\+\_\+t scale=1, uint8\+\_\+t flip=olc\+::\+Sprite\+::\+NONE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aecfcfec384cf4eb56ab89f92df4ff288}\label{classolc_1_1_pixel_game_engine_aecfcfec384cf4eb56ab89f92df4ff288}} 
+void {\bfseries Draw\+Partial\+Sprite} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, \mbox{\hyperlink{classolc_1_1_sprite}{Sprite}} $\ast$sprite, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&sourcepos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&size, uint32\+\_\+t scale=1, uint8\+\_\+t flip=olc\+::\+Sprite\+::\+NONE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ac29d79dedde0b2187f9f9ccbbc33fd0b}\label{classolc_1_1_pixel_game_engine_ac29d79dedde0b2187f9f9ccbbc33fd0b}} 
+void {\bfseries Draw\+String} (int32\+\_\+t x, int32\+\_\+t y, const std\+::string \&s\+Text, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} col=olc\+::\+WHITE, uint32\+\_\+t scale=1)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ae099b13b38e5b02ffd31ad34a703cee5}\label{classolc_1_1_pixel_game_engine_ae099b13b38e5b02ffd31ad34a703cee5}} 
+void {\bfseries Draw\+String} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, const std\+::string \&s\+Text, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} col=olc\+::\+WHITE, uint32\+\_\+t scale=1)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aa70121ffb85733f8ea2e7e5d0b4b311b}\label{classolc_1_1_pixel_game_engine_aa70121ffb85733f8ea2e7e5d0b4b311b}} 
+\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} {\bfseries Get\+Text\+Size} (const std\+::string \&s)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a1ddca999be34411764bb12d2a15cc021}\label{classolc_1_1_pixel_game_engine_a1ddca999be34411764bb12d2a15cc021}} 
+void {\bfseries Draw\+String\+Prop} (int32\+\_\+t x, int32\+\_\+t y, const std\+::string \&s\+Text, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} col=olc\+::\+WHITE, uint32\+\_\+t scale=1)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a161ef8177257c371741d12cbc4818cf6}\label{classolc_1_1_pixel_game_engine_a161ef8177257c371741d12cbc4818cf6}} 
+void {\bfseries Draw\+String\+Prop} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, const std\+::string \&s\+Text, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} col=olc\+::\+WHITE, uint32\+\_\+t scale=1)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ab282eddb9b8fe14d01311c8613f79e84}\label{classolc_1_1_pixel_game_engine_ab282eddb9b8fe14d01311c8613f79e84}} 
+\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} {\bfseries Get\+Text\+Size\+Prop} (const std\+::string \&s)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a27ee96acff2c74d47f0cb78493aac756}\label{classolc_1_1_pixel_game_engine_a27ee96acff2c74d47f0cb78493aac756}} 
+void {\bfseries Set\+Decal\+Mode} (const olc\+::\+Decal\+Mode \&mode)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a5b676590555cab61db67804417c6f25f}\label{classolc_1_1_pixel_game_engine_a5b676590555cab61db67804417c6f25f}} 
+void {\bfseries Draw\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, \mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale=\{ 1.\+0f, 1.\+0f \}, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a8bae37cf84b215e9e0416f058241aeba}\label{classolc_1_1_pixel_game_engine_a8bae37cf84b215e9e0416f058241aeba}} 
+void {\bfseries Draw\+Partial\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, \mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+size, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale=\{ 1.\+0f, 1.\+0f \}, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a1b757070353b8f9238c229e42d33bbb5}\label{classolc_1_1_pixel_game_engine_a1b757070353b8f9238c229e42d33bbb5}} 
+void {\bfseries Draw\+Partial\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&size, \mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+size, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a26d7073d87bb19f15d5ade6bb58e8e2d}\label{classolc_1_1_pixel_game_engine_a26d7073d87bb19f15d5ade6bb58e8e2d}} 
+void {\bfseries Draw\+Explicit\+Decal} (\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} $\ast$pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} $\ast$uv, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} $\ast$col, uint32\+\_\+t elements=4)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a65098b403a403c45041599893429b550}\label{classolc_1_1_pixel_game_engine_a65098b403a403c45041599893429b550}} 
+void {\bfseries Draw\+Warped\+Decal} (\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}}(\&pos)\mbox{[}4\mbox{]}, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ae6cc4bd274522bf9ac36054eda6c95ac}\label{classolc_1_1_pixel_game_engine_ae6cc4bd274522bf9ac36054eda6c95ac}} 
+void {\bfseries Draw\+Warped\+Decal} (\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} $\ast$pos, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a5174456bbdaace7cde233889f7ad6d72}\label{classolc_1_1_pixel_game_engine_a5174456bbdaace7cde233889f7ad6d72}} 
+void {\bfseries Draw\+Warped\+Decal} (\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const std\+::array$<$ \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}}, 4 $>$ \&pos, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a78be0709345710435fdaef7bc14f5fb3}\label{classolc_1_1_pixel_game_engine_a78be0709345710435fdaef7bc14f5fb3}} 
+void {\bfseries Draw\+Partial\+Warped\+Decal} (\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}}(\&pos)\mbox{[}4\mbox{]}, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+size, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a5993da382c8e661655386a41ae874270}\label{classolc_1_1_pixel_game_engine_a5993da382c8e661655386a41ae874270}} 
+void {\bfseries Draw\+Partial\+Warped\+Decal} (\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} $\ast$pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+size, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aaccd68c61d88b13ffe1e93493f2a5b35}\label{classolc_1_1_pixel_game_engine_aaccd68c61d88b13ffe1e93493f2a5b35}} 
+void {\bfseries Draw\+Partial\+Warped\+Decal} (\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const std\+::array$<$ \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}}, 4 $>$ \&pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+size, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ab9af9b6726271e83dd7e4b24583b4236}\label{classolc_1_1_pixel_game_engine_ab9af9b6726271e83dd7e4b24583b4236}} 
+void {\bfseries Draw\+Rotated\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, \mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const float f\+Angle, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&center=\{ 0.\+0f, 0.\+0f \}, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale=\{ 1.\+0f, 1.\+0f \}, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aad3107bbad34e5792a9a35629e1fdbd0}\label{classolc_1_1_pixel_game_engine_aad3107bbad34e5792a9a35629e1fdbd0}} 
+void {\bfseries Draw\+Partial\+Rotated\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, \mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const float f\+Angle, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&center, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&source\+\_\+size, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale=\{ 1.\+0f, 1.\+0f \}, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} \&tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a689d1828a93292702070b97fb14f5644}\label{classolc_1_1_pixel_game_engine_a689d1828a93292702070b97fb14f5644}} 
+void {\bfseries Draw\+String\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, const std\+::string \&s\+Text, const \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} col=olc\+::\+WHITE, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale=\{ 1.\+0f, 1.\+0f \})
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a7392273f15fc09b3659b112564aa0dfa}\label{classolc_1_1_pixel_game_engine_a7392273f15fc09b3659b112564aa0dfa}} 
+void {\bfseries Draw\+String\+Prop\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, const std\+::string \&s\+Text, const \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} col=olc\+::\+WHITE, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale=\{ 1.\+0f, 1.\+0f \})
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a02a26bca44e04f075f517bdae6ac0e9d}\label{classolc_1_1_pixel_game_engine_a02a26bca44e04f075f517bdae6ac0e9d}} 
+void {\bfseries Fill\+Rect\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&size, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} col=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a11d9ed8762b81e0bd6bbe4349255b1e8}\label{classolc_1_1_pixel_game_engine_a11d9ed8762b81e0bd6bbe4349255b1e8}} 
+void {\bfseries Gradient\+Fill\+Rect\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&size, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} col\+TL, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} col\+BL, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} col\+BR, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} col\+TR)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a40a7754338ea7b388ffa2383958d1f0b}\label{classolc_1_1_pixel_game_engine_a40a7754338ea7b388ffa2383958d1f0b}} 
+void {\bfseries Draw\+Polygon\+Decal} (\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$decal, const std\+::vector$<$ \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} $>$ \&pos, const std\+::vector$<$ \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} $>$ \&uv, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aa0711a4a1abfd5fb5fbb48dc7159e693}\label{classolc_1_1_pixel_game_engine_aa0711a4a1abfd5fb5fbb48dc7159e693}} 
+void {\bfseries Draw\+Line\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos1, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos2, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aa5e1d886af2aba2958b996f265070810}\label{classolc_1_1_pixel_game_engine_aa5e1d886af2aba2958b996f265070810}} 
+void {\bfseries Draw\+Rotated\+String\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, const std\+::string \&s\+Text, const float f\+Angle, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&center=\{ 0.\+0f, 0.\+0f \}, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} col=olc\+::\+WHITE, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale=\{ 1.\+0f, 1.\+0f \})
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aff4127335d2bd14dd787edfac8399afc}\label{classolc_1_1_pixel_game_engine_aff4127335d2bd14dd787edfac8399afc}} 
+void {\bfseries Draw\+Rotated\+String\+Prop\+Decal} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&pos, const std\+::string \&s\+Text, const float f\+Angle, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&center=\{ 0.\+0f, 0.\+0f \}, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} col=olc\+::\+WHITE, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale=\{ 1.\+0f, 1.\+0f \})
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aeb70b40809815fab4e1017e25c7ab161}\label{classolc_1_1_pixel_game_engine_aeb70b40809815fab4e1017e25c7ab161}} 
+void {\bfseries Clear} (\mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aed9a3f6bd349e091728a329ee42932bf}\label{classolc_1_1_pixel_game_engine_aed9a3f6bd349e091728a329ee42932bf}} 
+void {\bfseries Clear\+Buffer} (\mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p, bool b\+Depth=true)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_addf1db797f818a54af079f3f047b61f2}\label{classolc_1_1_pixel_game_engine_addf1db797f818a54af079f3f047b61f2}} 
+\mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$ {\bfseries Get\+Font\+Sprite} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a6e10d8fae75e26dea03b0b447667a308}\label{classolc_1_1_pixel_game_engine_a6e10d8fae75e26dea03b0b447667a308}} 
+void {\bfseries olc\+\_\+\+Update\+Mouse} (int32\+\_\+t x, int32\+\_\+t y)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aa33ea5e40d4577e3c44fcf4a26cecadd}\label{classolc_1_1_pixel_game_engine_aa33ea5e40d4577e3c44fcf4a26cecadd}} 
+void {\bfseries olc\+\_\+\+Update\+Mouse\+Wheel} (int32\+\_\+t delta)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a4f0dae00f21f8d71d4544d50593234c3}\label{classolc_1_1_pixel_game_engine_a4f0dae00f21f8d71d4544d50593234c3}} 
+void {\bfseries olc\+\_\+\+Update\+Window\+Size} (int32\+\_\+t x, int32\+\_\+t y)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_af1cd38cf0df2e7c3ab53bee66ec63771}\label{classolc_1_1_pixel_game_engine_af1cd38cf0df2e7c3ab53bee66ec63771}} 
+void {\bfseries olc\+\_\+\+Update\+Viewport} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a117eedbe1e9366fe2bf402334beb9692}\label{classolc_1_1_pixel_game_engine_a117eedbe1e9366fe2bf402334beb9692}} 
+void {\bfseries olc\+\_\+\+Construct\+Font\+Sheet} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a0018131435f88bb5de406fd11ee54058}\label{classolc_1_1_pixel_game_engine_a0018131435f88bb5de406fd11ee54058}} 
+void {\bfseries olc\+\_\+\+Core\+Update} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_aa19aafa028a7e2eaaf7b2235a9bd2256}\label{classolc_1_1_pixel_game_engine_aa19aafa028a7e2eaaf7b2235a9bd2256}} 
+void {\bfseries olc\+\_\+\+Prepare\+Engine} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a59645c08376a7d4e58673919f3bd0dfb}\label{classolc_1_1_pixel_game_engine_a59645c08376a7d4e58673919f3bd0dfb}} 
+void {\bfseries olc\+\_\+\+Update\+Mouse\+State} (int32\+\_\+t button, bool state)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a61fde81846a9ef7f8fcf63080e6d350b}\label{classolc_1_1_pixel_game_engine_a61fde81846a9ef7f8fcf63080e6d350b}} 
+void {\bfseries olc\+\_\+\+Update\+Key\+State} (int32\+\_\+t key, bool state)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_ab3150ba487188e64940c294998fa38d3}\label{classolc_1_1_pixel_game_engine_ab3150ba487188e64940c294998fa38d3}} 
+void {\bfseries olc\+\_\+\+Update\+Mouse\+Focus} (bool state)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a7343712504f23f86c8490646ffc50e7f}\label{classolc_1_1_pixel_game_engine_a7343712504f23f86c8490646ffc50e7f}} 
+void {\bfseries olc\+\_\+\+Update\+Key\+Focus} (bool state)
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a2da1f2ebbc1a5fbdbf52890e6ac707b1}\label{classolc_1_1_pixel_game_engine_a2da1f2ebbc1a5fbdbf52890e6ac707b1}} 
+void {\bfseries olc\+\_\+\+Terminate} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a417b6cd564ccad1d878ae51cfdd3be8e}\label{classolc_1_1_pixel_game_engine_a417b6cd564ccad1d878ae51cfdd3be8e}} 
+void {\bfseries olc\+\_\+\+Reanimate} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a7b0f41bc4b4258a5c4fa1742b41d15e3}\label{classolc_1_1_pixel_game_engine_a7b0f41bc4b4258a5c4fa1742b41d15e3}} 
+bool {\bfseries olc\+\_\+\+Is\+Running} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a7afa0b57c65bd5d9a54c602afd4fe756}\label{classolc_1_1_pixel_game_engine_a7afa0b57c65bd5d9a54c602afd4fe756}} 
+virtual void {\bfseries olc\+\_\+\+Configure\+System} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a49a2ead57239e1595cc555effd3e3a2b}\label{classolc_1_1_pixel_game_engine_a49a2ead57239e1595cc555effd3e3a2b}} 
+void {\bfseries pgex\+\_\+\+Register} (\mbox{\hyperlink{classolc_1_1_p_g_e_x}{olc\+::\+PGEX}} $\ast$pgex)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a02d0f9c50770aa38aea1448f62d3604f}\label{classolc_1_1_pixel_game_engine_a02d0f9c50770aa38aea1448f62d3604f}} 
+std\+::string {\bfseries s\+App\+Name}
+\end{DoxyCompactItemize}
+\doxysubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_pixel_game_engine_a98fcee28f1a645fe0a29f6b6e6a5d7bb}\label{classolc_1_1_pixel_game_engine_a98fcee28f1a645fe0a29f6b6e6a5d7bb}} 
+class {\bfseries PGEX}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+libs/olc\+Pixel\+Game\+Engine.\+h\end{DoxyCompactItemize}

@@ -1,0 +1,98 @@
+\hypertarget{game_8h_source}{}\doxysection{game.\+h}
+\label{game_8h_source}\index{include/frontend/game.h@{include/frontend/game.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../../libs/olcPixelGameEngine.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../../libs/olcPGEX\_TransformedView.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define PLAYER\_SPEED 60.0f}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{keyword}{class }\mbox{\hyperlink{class_game}{Game}} : \textcolor{keyword}{public} olc::PixelGameEngine}
+\DoxyCodeLine{12 \{}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14   \textcolor{keyword}{private}:}
+\DoxyCodeLine{15     olc::TileTransformedView tv;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{float} playerX;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{float} playerY;}
+\DoxyCodeLine{18     olc::vf2d playerPos;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{float} playerSpeed;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{float} playerRadius;}
+\DoxyCodeLine{21     \textcolor{keywordtype}{bool} pauseMenuEnabled;}
+\DoxyCodeLine{22     \textcolor{keywordtype}{bool} mainMenuEnabled;}
+\DoxyCodeLine{23     \textcolor{keywordtype}{bool} optionsMenuEnabled;}
+\DoxyCodeLine{24     \textcolor{keywordtype}{int} menuOption;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{bool} optionsMenuEdit;}
+\DoxyCodeLine{26     \textcolor{keywordtype}{bool} mainMenuEdit;}
+\DoxyCodeLine{27     \textcolor{keywordtype}{bool} gameStarted;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_game_1_1rect}{rect}}\{}
+\DoxyCodeLine{30       olc::vf2d pos;}
+\DoxyCodeLine{31       olc::vf2d size;}
+\DoxyCodeLine{32     \};}
+\DoxyCodeLine{33     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_game_1_1world_obj}{worldObj}}\{}
+\DoxyCodeLine{34       olc::vf2d pos;}
+\DoxyCodeLine{35       olc::vf2d vel;}
+\DoxyCodeLine{36       \textcolor{keywordtype}{float} radius;}
+\DoxyCodeLine{37     \};}
+\DoxyCodeLine{38     \mbox{\hyperlink{struct_game_1_1world_obj}{worldObj}} object;}
+\DoxyCodeLine{39     olc::vi2d worldSize;}
+\DoxyCodeLine{40     std::string WorldMap;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42   \textcolor{keyword}{public}:}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{comment}{//↓Start of PixelGameEngine functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/↓}}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46       \textcolor{keywordtype}{bool} OnUserCreate() \textcolor{keyword}{override};}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48       \textcolor{keywordtype}{bool} OnUserUpdate(\textcolor{keywordtype}{float} fElapsedTime) \textcolor{keyword}{override};}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{comment}{//↑End of PixelGameEngine functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/↑}}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{comment}{//↓Start of Game mechanic functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/↓}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56       \textcolor{keywordtype}{bool} startGame(\textcolor{keywordtype}{float} fElapsedTime);}
+\DoxyCodeLine{57       }
+\DoxyCodeLine{58       \textcolor{keywordtype}{bool} pointCollRect(\textcolor{keyword}{const} olc::vf2d\& p, \textcolor{keyword}{const} \mbox{\hyperlink{struct_game_1_1rect}{rect}}\& r);}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60       \textcolor{keywordtype}{void} getInput(\textcolor{keywordtype}{float} elapsedTime);}
+\DoxyCodeLine{61 }
+\DoxyCodeLine{62     \textcolor{comment}{//↑End of Game mechanic functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/↑}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64     }
+\DoxyCodeLine{65 }
+\DoxyCodeLine{66     \textcolor{comment}{//↓Start of Player functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/↓}}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{68       \textcolor{comment}{// void movePlayer(olc::Key dir, float elapsedTime);}}
+\DoxyCodeLine{69       }
+\DoxyCodeLine{70       \textcolor{comment}{// void drawPlayer(float playerX, float playerY, float playerRadius);}}
+\DoxyCodeLine{71 }
+\DoxyCodeLine{72     \textcolor{comment}{//↑End of Player functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/↑}}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75       }
+\DoxyCodeLine{76     \textcolor{comment}{//↓Start of Menu functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/↓}}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78       \textcolor{keywordtype}{bool} displayPauseMenu();}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80       \textcolor{keywordtype}{bool} displayMainMenu();}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82       \textcolor{keywordtype}{bool} displayOptionsMenu();}
+\DoxyCodeLine{83 }
+\DoxyCodeLine{84       \textcolor{keywordtype}{void} getMenuInput(std::string menuType);}
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     \textcolor{comment}{//↑End of Menu functions-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/↑}}
+\DoxyCodeLine{87     \textcolor{keyword}{public}:}
+\DoxyCodeLine{88     }
+\DoxyCodeLine{89       \textcolor{keywordtype}{bool} fullScreen;}
+\DoxyCodeLine{90       std::fstream saveFile;}
+\DoxyCodeLine{91       std::string line;}
+\DoxyCodeLine{92 \};}
+
+\end{DoxyCode}

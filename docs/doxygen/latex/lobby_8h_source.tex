@@ -1,0 +1,66 @@
+\hypertarget{lobby_8h_source}{}\doxysection{lobby.\+h}
+\label{lobby_8h_source}\index{include/frontend/lobby.h@{include/frontend/lobby.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../backend/libs.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../frontend/player.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../frontend/room.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_lobby}{Lobby}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11   \textcolor{keywordtype}{int} lobbyWidth;}
+\DoxyCodeLine{12   \textcolor{keywordtype}{int} lobbyHeight;}
+\DoxyCodeLine{13   std::string lobbyRawData;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15   \textcolor{keywordtype}{int} tileWidth;}
+\DoxyCodeLine{16   \textcolor{keywordtype}{int} tileHeight;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18   \textcolor{keywordtype}{int} visibleTilesX;}
+\DoxyCodeLine{19   \textcolor{keywordtype}{int} visibleTilesY;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21   \textcolor{keywordtype}{int} mazePlayerPosX;}
+\DoxyCodeLine{22   \textcolor{keywordtype}{int} mazePlayerPosY;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25   \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lobby_1_1rect}{rect}}}
+\DoxyCodeLine{26   \{}
+\DoxyCodeLine{27     olc::vf2d pos;}
+\DoxyCodeLine{28     olc::vf2d size;}
+\DoxyCodeLine{29   \};}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31   \mbox{\hyperlink{struct_lobby_1_1rect}{rect}} r;}
+\DoxyCodeLine{32   \textcolor{keywordtype}{bool} inMaze;}
+\DoxyCodeLine{33   olc::Sprite *lobbyRoom;}
+\DoxyCodeLine{34   olc::Sprite *lobbyForegroundSprite;}
+\DoxyCodeLine{35   olc::Decal *lobbyForeground;}
+\DoxyCodeLine{36   \textcolor{keywordtype}{bool} leftMazeEnter;}
+\DoxyCodeLine{37   \textcolor{keywordtype}{bool} rightMazeEnter;}
+\DoxyCodeLine{38   \textcolor{keywordtype}{bool} inLeftMaze;}
+\DoxyCodeLine{39   \textcolor{keywordtype}{bool} inRightMaze;}
+\DoxyCodeLine{40   \textcolor{keyword}{enum} MAZE\_TYPE\{}
+\DoxyCodeLine{41     LEFT,}
+\DoxyCodeLine{42     RIGHT}
+\DoxyCodeLine{43   \};}
+\DoxyCodeLine{44   MAZE\_TYPE currentMaze;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{public}:}
+\DoxyCodeLine{47   \mbox{\hyperlink{class_lobby}{\string~Lobby}}();}
+\DoxyCodeLine{48   \textcolor{keywordtype}{char} getTile(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50   \textcolor{keywordtype}{void} drawLobby(olc::PixelGameEngine* engine, \mbox{\hyperlink{class_player}{Player}}* player, \mbox{\hyperlink{class_room}{Room}}* room);}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52   \textcolor{keywordtype}{void} drawLobbyForeground(olc::PixelGameEngine* engine);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54   \textcolor{keywordtype}{bool} hallCollision(\mbox{\hyperlink{class_player}{Player}}* player, rect roomLeft);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56   \textcolor{keywordtype}{bool} pointCollRect(\textcolor{keyword}{const} olc::vf2d \&p, \textcolor{keyword}{const} rect \&r);}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58 \textcolor{keyword}{private}:}
+\DoxyCodeLine{59   \textcolor{keywordtype}{void} initLobby();}
+\DoxyCodeLine{60 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,94 @@
+\hypertarget{logger_8hpp_source}{}\doxysection{logger.\+hpp}
+\label{logger_8hpp_source}\index{include/logger.hpp@{include/logger.hpp}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#define MAZE\_INITIALIZED "{}Initializing a new maze."{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#define MAZE\_UNSOLVABLE  "{}The maze was unsolvable."{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#define MAZE\_SOLVING     "{}Trying to solve the new maze."{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#define MAZE\_SOLVABLE    "{}The maze was solvable"{}}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#include <fstream>}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{10 \textcolor{preprocessor}{\#include <ctime>}}
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include <string>}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include <map>}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_logger}{Logger}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16     \textcolor{keyword}{public}:}
+\DoxyCodeLine{17         \mbox{\hyperlink{class_logger}{Logger}}();}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19         \textcolor{keywordtype}{void} initLogFile();}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21         \textcolor{keywordtype}{void} Info(\textcolor{keyword}{const} std::string\& info);}
+\DoxyCodeLine{22         \textcolor{keywordtype}{void} Warning(\textcolor{keyword}{const} std::string\& warning);}
+\DoxyCodeLine{23         \textcolor{keywordtype}{void} Error(\textcolor{keyword}{const} std::string\& error);}
+\DoxyCodeLine{24 }
+\DoxyCodeLine{25     \textcolor{keyword}{private}:}
+\DoxyCodeLine{26         std::ofstream m\_log;}
+\DoxyCodeLine{27         std::tm* m\_time;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keyword}{private}:}
+\DoxyCodeLine{30         std::string getTime() \textcolor{keyword}{const};}
+\DoxyCodeLine{31         std::string getLogs(\textcolor{keyword}{const} std::string\& type, \textcolor{keyword}{const} std::string\& message) \textcolor{keyword}{const};}
+\DoxyCodeLine{32 \};}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34 Logger::Logger()}
+\DoxyCodeLine{35 \{}
+\DoxyCodeLine{36     std::time\_t t = std::time(0);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     m\_time = std::localtime(\&t);}
+\DoxyCodeLine{39 \};}
+\DoxyCodeLine{40 }
+\DoxyCodeLine{41 \textcolor{keywordtype}{void} Logger::initLogFile()}
+\DoxyCodeLine{42 \{}
+\DoxyCodeLine{43     m\_log.open(\textcolor{stringliteral}{"{}logs/logs.log"{}}, std::ios::out | std::ios::app);}
+\DoxyCodeLine{44 }
+\DoxyCodeLine{45     \textcolor{keywordflow}{if}(m\_log.is\_open())}
+\DoxyCodeLine{46     \{}
+\DoxyCodeLine{47         std::cout<<\textcolor{stringliteral}{"{}Opened the log file"{}}<<std::endl;}
+\DoxyCodeLine{48     \}}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordflow}{else}}
+\DoxyCodeLine{51     \{}
+\DoxyCodeLine{52         std::cout<<\textcolor{stringliteral}{"{}Couldn't open the log file"{}}<<std::endl;}
+\DoxyCodeLine{53     \}}
+\DoxyCodeLine{54 \}}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56 std::string Logger::getLogs(\textcolor{keyword}{const} std::string\& type, \textcolor{keyword}{const} std::string\& message)\textcolor{keyword}{ const}}
+\DoxyCodeLine{57 \textcolor{keyword}{}\{}
+\DoxyCodeLine{58     \textcolor{keywordflow}{return} getTime() + \textcolor{stringliteral}{"{} "{}} + \textcolor{stringliteral}{"{}["{}} + type + \textcolor{stringliteral}{"{}]"{}} + \textcolor{stringliteral}{"{} "{}} + message + \textcolor{stringliteral}{"{}\(\backslash\)n"{}};}
+\DoxyCodeLine{59 \}}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61 std::string Logger::getTime()\textcolor{keyword}{ const}}
+\DoxyCodeLine{62 \textcolor{keyword}{}\{}
+\DoxyCodeLine{63     \textcolor{keyword}{using namespace }std;}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{65     \textcolor{keywordflow}{return} \textcolor{stringliteral}{"{}["{}} +}
+\DoxyCodeLine{66            to\_string(m\_time-\/>tm\_mday) + \textcolor{stringliteral}{"{}-\/"{}} +}
+\DoxyCodeLine{67            to\_string((m\_time-\/>tm\_mon) + 1) + \textcolor{stringliteral}{"{}-\/"{}} +}
+\DoxyCodeLine{68            to\_string((m\_time-\/>tm\_year) + 1900) + \textcolor{stringliteral}{"{} "{}} +}
+\DoxyCodeLine{69            to\_string(m\_time-\/>tm\_hour) + \textcolor{stringliteral}{"{}:"{}} +}
+\DoxyCodeLine{70            to\_string(m\_time-\/>tm\_min) + \textcolor{stringliteral}{"{}:"{}} +}
+\DoxyCodeLine{71            to\_string(m\_time-\/>tm\_sec)}
+\DoxyCodeLine{72            + \textcolor{stringliteral}{"{}]"{}};}
+\DoxyCodeLine{73 \}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 \textcolor{keywordtype}{void} Logger::Info(\textcolor{keyword}{const} std::string\& info)}
+\DoxyCodeLine{76 \{}
+\DoxyCodeLine{77     m\_log << getLogs(\textcolor{stringliteral}{"{}Info"{}}, info);}
+\DoxyCodeLine{78 \}}
+\DoxyCodeLine{79 }
+\DoxyCodeLine{80 \textcolor{keywordtype}{void} Logger::Warning(\textcolor{keyword}{const} std::string\& warning)}
+\DoxyCodeLine{81 \{}
+\DoxyCodeLine{82     m\_log << getLogs(\textcolor{stringliteral}{"{}Warning"{}}, warning);}
+\DoxyCodeLine{83 \}}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85 \textcolor{keywordtype}{void} Logger::Error(\textcolor{keyword}{const} std::string\& error)}
+\DoxyCodeLine{86 \{}
+\DoxyCodeLine{87     m\_log << getLogs(\textcolor{stringliteral}{"{}Error"{}}, error);}
+\DoxyCodeLine{88 \}}
+
+\end{DoxyCode}

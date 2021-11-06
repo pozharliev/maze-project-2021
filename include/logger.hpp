@@ -40,7 +40,7 @@ Logger::Logger()
 
 void Logger::initLogFile()
 {
-    m_log.open("logs/logs.log", std::ios::out | std::ios::app);
+    m_log.open("logs/logs.log", std::ios::out | std::ios::trunc);
 
     if(m_log.is_open())
     {
@@ -74,7 +74,9 @@ std::string Logger::getTime() const
 
 void Logger::Info(const std::string& info)
 {
+    std::cout << "vlizam";
     m_log << getLogs("Info", info);
+    std::cout<< "izlizam";
 }
 
 void Logger::Warning(const std::string& warning)

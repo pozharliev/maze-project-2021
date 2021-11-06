@@ -1,0 +1,87 @@
+\hypertarget{classolc_1_1_sprite}{}\doxysection{olc\+::Sprite Class Reference}
+\label{classolc_1_1_sprite}\index{olc::Sprite@{olc::Sprite}}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a78b7f14903f9f0bb536b66c37f3139cf}\label{classolc_1_1_sprite_a78b7f14903f9f0bb536b66c37f3139cf}} 
+enum {\bfseries Mode} \{ {\bfseries NORMAL}
+, {\bfseries PERIODIC}
+ \}
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_ad0d1976d2060997f5cd99eb284a5dc24}\label{classolc_1_1_sprite_ad0d1976d2060997f5cd99eb284a5dc24}} 
+enum {\bfseries Flip} \{ {\bfseries NONE} = 0
+, {\bfseries HORIZ} = 1
+, {\bfseries VERT} = 2
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_ad8ce71f2399a2721aff9234390a18b8e}\label{classolc_1_1_sprite_ad8ce71f2399a2721aff9234390a18b8e}} 
+{\bfseries Sprite} (const std\+::string \&s\+Image\+File, \mbox{\hyperlink{classolc_1_1_resource_pack}{olc\+::\+Resource\+Pack}} $\ast$pack=nullptr)
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a3e452a040fc2680228b1e6a7b6b9890e}\label{classolc_1_1_sprite_a3e452a040fc2680228b1e6a7b6b9890e}} 
+{\bfseries Sprite} (int32\+\_\+t w, int32\+\_\+t h)
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a5b0190890ed98560125b2ae4db9a7d9f}\label{classolc_1_1_sprite_a5b0190890ed98560125b2ae4db9a7d9f}} 
+{\bfseries Sprite} (const \mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} \&)=delete
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_adc277c0342733a4aa8dcdc9152326fec}\label{classolc_1_1_sprite_adc277c0342733a4aa8dcdc9152326fec}} 
+olc\+::rcode {\bfseries Load\+From\+File} (const std\+::string \&s\+Image\+File, \mbox{\hyperlink{classolc_1_1_resource_pack}{olc\+::\+Resource\+Pack}} $\ast$pack=nullptr)
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a78f4fcf41780cfc547f21e5a0dea03a2}\label{classolc_1_1_sprite_a78f4fcf41780cfc547f21e5a0dea03a2}} 
+void {\bfseries Set\+Sample\+Mode} (olc\+::\+Sprite\+::\+Mode mode=olc\+::\+Sprite\+::\+Mode\+::\+NORMAL)
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a7e1f8169c9822f1ed94f0212d3f8d6f6}\label{classolc_1_1_sprite_a7e1f8169c9822f1ed94f0212d3f8d6f6}} 
+\mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} {\bfseries Get\+Pixel} (int32\+\_\+t x, int32\+\_\+t y) const
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a294389e93a95c8307f1260d7cacaf9ba}\label{classolc_1_1_sprite_a294389e93a95c8307f1260d7cacaf9ba}} 
+bool {\bfseries Set\+Pixel} (int32\+\_\+t x, int32\+\_\+t y, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p)
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a1a05e4ffd8d8b24b99ab511279b342cf}\label{classolc_1_1_sprite_a1a05e4ffd8d8b24b99ab511279b342cf}} 
+\mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} {\bfseries Get\+Pixel} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&a) const
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_ae7b8af09a29793ab16b7b813c8b0d26d}\label{classolc_1_1_sprite_ae7b8af09a29793ab16b7b813c8b0d26d}} 
+bool {\bfseries Set\+Pixel} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&a, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} p)
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a902192f81ab42420921992a7288aab48}\label{classolc_1_1_sprite_a902192f81ab42420921992a7288aab48}} 
+\mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} {\bfseries Sample} (float x, float y) const
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a5e28024237453fb56c32f37d6996443d}\label{classolc_1_1_sprite_a5e28024237453fb56c32f37d6996443d}} 
+\mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} {\bfseries Sample\+BL} (float u, float v) const
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a738086f5b093e65ff7dcf41a055326c8}\label{classolc_1_1_sprite_a738086f5b093e65ff7dcf41a055326c8}} 
+\mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} $\ast$ {\bfseries Get\+Data} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a4e67f902ce6cfae6920bfe1d8af766b5}\label{classolc_1_1_sprite_a4e67f902ce6cfae6920bfe1d8af766b5}} 
+\mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$ {\bfseries Duplicate} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a2abe18f8fe5ed1642d4e69103cbd3f08}\label{classolc_1_1_sprite_a2abe18f8fe5ed1642d4e69103cbd3f08}} 
+\mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$ {\bfseries Duplicate} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&v\+Pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&v\+Size)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_af055800e63204ae372ca0812e6926230}\label{classolc_1_1_sprite_af055800e63204ae372ca0812e6926230}} 
+int32\+\_\+t {\bfseries width} = 0
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_ab05010cb1a5ff6c36267d0050d568d96}\label{classolc_1_1_sprite_ab05010cb1a5ff6c36267d0050d568d96}} 
+int32\+\_\+t {\bfseries height} = 0
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_adb41a2041dfe14de9605dabcd905db60}\label{classolc_1_1_sprite_adb41a2041dfe14de9605dabcd905db60}} 
+std\+::vector$<$ \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} $>$ {\bfseries p\+Col\+Data}
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_ab9182b86e829467f454c7ef630ebc9fb}\label{classolc_1_1_sprite_ab9182b86e829467f454c7ef630ebc9fb}} 
+Mode {\bfseries mode\+Sample} = Mode\+::\+NORMAL
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_sprite_a023da26661031ebf7a276cafd9a43902}\label{classolc_1_1_sprite_a023da26661031ebf7a276cafd9a43902}} 
+static std\+::unique\+\_\+ptr$<$ \mbox{\hyperlink{classolc_1_1_image_loader}{olc\+::\+Image\+Loader}} $>$ {\bfseries loader}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+libs/olc\+Pixel\+Game\+Engine.\+h\end{DoxyCompactItemize}

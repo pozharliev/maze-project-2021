@@ -8,12 +8,25 @@
 #define SPEED_SCROLL_CHANCE 40
 #define DASH_SCROLL_CHANCE 70
 
+#include "../logger.hpp"
 #include "maze.h"
+
+/**
+ * @file checkedMaze.h
+ *
+ * @brief Declaration of the CheckedMaze class
+ */
+
+/**
+ * @brief The CheckedMaze is responsible for checking if the generated maze is correct, formatting the maze, and enriching it with runes.
+ */
 
 class CheckedMaze
 {
 public:
     CheckedMaze(int width, int height);
+
+    Logger* logger = NULL;
 
     ~CheckedMaze();
 
@@ -26,8 +39,15 @@ public:
     char* reversedMaze;
 
 public:
-    // Checks if the maze is solvable or not
-    // Marks the solution with '0'
+ /**
+ * @brief Recursively checks if the maze is solvable, and if it is not, generates a new one. 
+ *
+ * The function 
+ *
+ * @param accList list& the list of account
+ *                objects created by getAccounts()
+ * @return void
+ */
     void checkMaze();
 
     // Used for debugging purposes
@@ -44,16 +64,16 @@ public:
 
 
 private:
-    Maze* maze = NULL;
+    Maze* maze = NULL; //!< @brief Maze class-variable, used for providing a generated maze.
 
-    int m_mWidth;
-    int m_mHeight;
+    int m_mWidth; //!< @brief Width of the Maze
+    int m_mHeight; //!< @brief Height of the Maze
 
-    int m_possibleWays;
+    int m_possibleWays; //!< @brief Every cell that is not a wall.
 
     // Current coordinates
-    int m_x;
-    int m_y;
+    int m_x; 
+    int m_y; 
 
     // Number of already visited cells
     int m_nVisitedCells;

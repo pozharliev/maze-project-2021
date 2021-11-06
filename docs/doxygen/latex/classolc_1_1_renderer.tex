@@ -1,0 +1,61 @@
+\hypertarget{classolc_1_1_renderer}{}\doxysection{olc\+::Renderer Class Reference}
+\label{classolc_1_1_renderer}\index{olc::Renderer@{olc::Renderer}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a7d97cab172e59d23a2587f636c9b12b7}\label{classolc_1_1_renderer_a7d97cab172e59d23a2587f636c9b12b7}} 
+virtual void {\bfseries Prepare\+Device} ()=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a28c87db87f8fd9b0f356db5d01499992}\label{classolc_1_1_renderer_a28c87db87f8fd9b0f356db5d01499992}} 
+virtual olc\+::rcode {\bfseries Create\+Device} (std\+::vector$<$ void $\ast$ $>$ params, bool b\+Full\+Screen, bool b\+VSYNC)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a3a59a195cc380f89e5f9cc98b6fda2c7}\label{classolc_1_1_renderer_a3a59a195cc380f89e5f9cc98b6fda2c7}} 
+virtual olc\+::rcode {\bfseries Destroy\+Device} ()=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a660f3ca709b2a2fcec1d1cba1a4cfd18}\label{classolc_1_1_renderer_a660f3ca709b2a2fcec1d1cba1a4cfd18}} 
+virtual void {\bfseries Display\+Frame} ()=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a04c56d76c76ab50f5f06b9b537e9d98d}\label{classolc_1_1_renderer_a04c56d76c76ab50f5f06b9b537e9d98d}} 
+virtual void {\bfseries Prepare\+Drawing} ()=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_aebfc5a561c54b88f16a0b3d855eedaa1}\label{classolc_1_1_renderer_aebfc5a561c54b88f16a0b3d855eedaa1}} 
+virtual void {\bfseries Set\+Decal\+Mode} (const olc\+::\+Decal\+Mode \&mode)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a3eccca504615e72d1f40acd03ffce89f}\label{classolc_1_1_renderer_a3eccca504615e72d1f40acd03ffce89f}} 
+virtual void {\bfseries Draw\+Layer\+Quad} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&offset, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} \&scale, const \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} tint)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_ac567df937350bffb2eae3e647ccc10d5}\label{classolc_1_1_renderer_ac567df937350bffb2eae3e647ccc10d5}} 
+virtual void {\bfseries Draw\+Decal} (const \mbox{\hyperlink{structolc_1_1_decal_instance}{olc\+::\+Decal\+Instance}} \&decal)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_aeac898aaf282d09a9cd848303de57bea}\label{classolc_1_1_renderer_aeac898aaf282d09a9cd848303de57bea}} 
+virtual uint32\+\_\+t {\bfseries Create\+Texture} (const uint32\+\_\+t width, const uint32\+\_\+t height, const bool filtered=false, const bool clamp=true)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a1512e2939b94f6fdb58bbf152ac0e4e5}\label{classolc_1_1_renderer_a1512e2939b94f6fdb58bbf152ac0e4e5}} 
+virtual void {\bfseries Update\+Texture} (uint32\+\_\+t id, \mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$spr)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_aa0e93a7d9ff6f25e9b154b2c8c86d44d}\label{classolc_1_1_renderer_aa0e93a7d9ff6f25e9b154b2c8c86d44d}} 
+virtual void {\bfseries Read\+Texture} (uint32\+\_\+t id, \mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$spr)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_aec8e86eb7a104fb0bc8f9fe51318f1a0}\label{classolc_1_1_renderer_aec8e86eb7a104fb0bc8f9fe51318f1a0}} 
+virtual uint32\+\_\+t {\bfseries Delete\+Texture} (const uint32\+\_\+t id)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a0a87094df3c911860a0eec9a8bb3b060}\label{classolc_1_1_renderer_a0a87094df3c911860a0eec9a8bb3b060}} 
+virtual void {\bfseries Apply\+Texture} (uint32\+\_\+t id)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_abc873336dd8f9079dc26f92ce0f95748}\label{classolc_1_1_renderer_abc873336dd8f9079dc26f92ce0f95748}} 
+virtual void {\bfseries Update\+Viewport} (const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&pos, const \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} \&size)=0
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a921406bc341efd881ca510c64cebdc26}\label{classolc_1_1_renderer_a921406bc341efd881ca510c64cebdc26}} 
+virtual void {\bfseries Clear\+Buffer} (\mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} p, bool b\+Depth)=0
+\end{DoxyCompactItemize}
+\doxysubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_renderer_a89f800c14ab1b070408c17e2589e02a1}\label{classolc_1_1_renderer_a89f800c14ab1b070408c17e2589e02a1}} 
+static \mbox{\hyperlink{classolc_1_1_pixel_game_engine}{olc\+::\+Pixel\+Game\+Engine}} $\ast$ {\bfseries ptr\+PGE}
+\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+libs/olc\+Pixel\+Game\+Engine.\+h\end{DoxyCompactItemize}

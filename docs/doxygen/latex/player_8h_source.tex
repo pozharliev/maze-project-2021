@@ -1,0 +1,63 @@
+\hypertarget{player_8h_source}{}\doxysection{player.\+h}
+\label{player_8h_source}\index{include/frontend/player.h@{include/frontend/player.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../backend/libs.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5 \textcolor{keyword}{class }\mbox{\hyperlink{class_player}{Player}}}
+\DoxyCodeLine{6 \{}
+\DoxyCodeLine{7 \textcolor{keyword}{public}:}
+\DoxyCodeLine{8     \textcolor{keywordtype}{float} playerX;}
+\DoxyCodeLine{9     \textcolor{keywordtype}{float} playerY;}
+\DoxyCodeLine{10     \textcolor{keywordtype}{float} newPlayerPosX;}
+\DoxyCodeLine{11     \textcolor{keywordtype}{float} newPlayerPosY;}
+\DoxyCodeLine{12     olc::vf2d playerPos;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{float} playerSpeed;}
+\DoxyCodeLine{14     \textcolor{keywordtype}{float} playerVelX;}
+\DoxyCodeLine{15     \textcolor{keywordtype}{float} playerVelY;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{float} playerRadius;}
+\DoxyCodeLine{17     \textcolor{keyword}{enum} PLAYER\_DIRS\{}
+\DoxyCodeLine{18         UP,}
+\DoxyCodeLine{19         DOWN,}
+\DoxyCodeLine{20         LEFT,}
+\DoxyCodeLine{21         RIGHT,}
+\DoxyCodeLine{22         NONE}
+\DoxyCodeLine{23     \};}
+\DoxyCodeLine{24     PLAYER\_DIRS playerDir;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{bool} firstPlayerMove;}
+\DoxyCodeLine{26     \textcolor{keywordtype}{bool} dashing;}
+\DoxyCodeLine{27     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_player_1_1inventory}{inventory}}\{}
+\DoxyCodeLine{28         \textcolor{keywordtype}{bool} speedScroll;}
+\DoxyCodeLine{29         \textcolor{keywordtype}{bool} dashScroll;}
+\DoxyCodeLine{30         \textcolor{keywordtype}{bool} pathScroll;}
+\DoxyCodeLine{31         \textcolor{keywordtype}{int} runes;}
+\DoxyCodeLine{32     \};}
+\DoxyCodeLine{33     \mbox{\hyperlink{struct_player_1_1inventory}{inventory}} playerInv;}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     olc::Renderable* playerAnimSpritesheet;}
+\DoxyCodeLine{36     olc::AnimatedSprite* Animator;}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38 \textcolor{keyword}{private}:}
+\DoxyCodeLine{39     \textcolor{comment}{// PlayerAnimator* playerAnimator;}}
+\DoxyCodeLine{40     \textcolor{comment}{// olc::Sprite* currentAnimSprite;}}
+\DoxyCodeLine{41     \textcolor{comment}{// olc::Decal* currentAnim;}}
+\DoxyCodeLine{42     \textcolor{comment}{// PlayerAnimator::AnimationData animationData;}}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} setUpAnimations();}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46 \textcolor{keyword}{public}:}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \mbox{\hyperlink{class_player}{\string~Player}}();}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{void} innitPlayer();}
+\DoxyCodeLine{51 }
+\DoxyCodeLine{52     \textcolor{keywordtype}{void} movePlayer(olc::PixelGameEngine* engine, olc::Key dir, \textcolor{keywordtype}{float} elapsedTime);}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keywordtype}{void} drawPlayer(olc::PixelGameEngine *engine, \textcolor{keywordtype}{float} elapsedTime);}
+\DoxyCodeLine{55 }
+\DoxyCodeLine{56     \textcolor{keywordtype}{void} getInput();}
+\DoxyCodeLine{57 \};}
+
+\end{DoxyCode}
