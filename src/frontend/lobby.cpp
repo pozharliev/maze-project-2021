@@ -1,5 +1,18 @@
 #include "../../include/frontend/lobby.h"
 
+Lobby::Lobby(int count)
+{
+    thisLobbyCount = count;
+    room = new Room(24, 12);
+    room->runeSprite = new olc::Sprite("public/rune.png");
+    room->rune = new olc::Decal(room->runeSprite);
+    room->runeTileSprite = new olc::Sprite("public/rune_tile.png");
+    room->runeTile = new olc::Decal(room->runeTileSprite);
+    room->scroll = new olc::Sprite("public/scroll.png");
+    room->scrollDecal = new olc::Decal(room->scroll);
+    room->setUpScrollAnimations();
+}
+
 Lobby::~Lobby()
 {
     delete lobbyRoom;
@@ -56,7 +69,7 @@ char Lobby::getTile(int x, int y)
 		return lobbyRawData[y * lobbyWidth + x];
 }
 
-void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room)
+void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player)
 {
 
     if(inMaze)
