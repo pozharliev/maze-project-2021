@@ -1,5 +1,4 @@
-![Vavylon Logo](public/VAVYLON_LOGO_BIG_NOBG.png)
-# Team VAVYLØN
+![Vavylon Logo](public/VAVYLON_LOGO_MEDIUM_BLACK.png)
 
 # Setup
 ### Dependancies

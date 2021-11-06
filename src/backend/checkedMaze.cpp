@@ -1,5 +1,13 @@
 #include "../../include/backend/maze.h"
 #include "../../include/backend/checkedMaze.h"
+
+/**
+ * @file checkedMaze.cpp
+ *
+ * @brief Definition of the CheckedMaze class.
+ */
+
+
 CheckedMaze::CheckedMaze(int width, int height)
 {
     maze = new Maze(width, height);
@@ -302,4 +310,9 @@ CheckedMaze::~CheckedMaze()
     delete maze;
     delete[] mazeWithPath;
     delete[] reversedMaze;
+}
+int main()
+{
+    CheckedMaze ch(20, 20);
+    ch.checkMaze();
 }

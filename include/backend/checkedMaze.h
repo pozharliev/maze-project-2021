@@ -14,7 +14,7 @@
 /**
  * @file checkedMaze.h
  *
- * @brief Declaration of the CheckedMaze class
+ * @brief Declaration of the CheckedMaze class.
  */
 
 /**
@@ -25,8 +25,6 @@ class CheckedMaze
 {
 public:
     CheckedMaze(int width, int height);
-
-    Logger logger;
 
     ~CheckedMaze();
 
@@ -39,15 +37,25 @@ public:
     char* reversedMaze;
 
 public:
- /**
- * @brief Recursively checks if the maze is solvable, and if it is not, generates a new one. 
- *
- * The function 
- *
- * @param accList list& the list of account
- *                objects created by getAccounts()
- * @return void
- */
+     /**
+     * @brief Recursively checks if the maze is solvable, and if it is not, generates a new one.
+     *
+     * The function recursively checks a coordinate, that is not a wall,
+     * then chooses a random neighbour that has not been visited yet,
+     * and repeats the process until it gets to the end of the maze. \n
+     * If there isn't a neighbour that is unchecked,
+     * backtracks to a coordinate that has any unvisited neighbour(s) left. \n
+     * Else if there aren't any unchecked cells it generates a new maze
+     * and repeats the process, until there is a solvable maze.
+     *
+     * @param[in] maze
+     *
+     * @param[out] checkedMaze,
+     *             mazeWithPath,
+      *            reversedMaze
+     *
+     * @return void
+     **/
     void checkMaze();
 
     // Used for debugging purposes
@@ -57,17 +65,28 @@ public:
     // Used for debugging purposes
     void printReversedMaze();
 
-    // Getter for width
+     /**
+     * @brief Returns the width of the maze.
+     *
+     * @return int
+     **/
     int getWidth() const;
-    // Getter for height
+
+    /**
+    * @brief Returns the height of the maze.
+    *
+    * @return int
+    **/
     int getHeight() const;
 
 
 private:
     Maze* maze = NULL; //!< @brief Maze class-variable, used for providing a generated maze.
 
-    int m_mWidth; //!< @brief Width of the Maze
-    int m_mHeight; //!< @brief Height of the Maze
+    Logger logger;
+
+    int m_mWidth; //!< @brief Width of the Maze.
+    int m_mHeight; //!< @brief Height of the Maze.
 
     int m_possibleWays; //!< @brief Every cell that is not a wall.
 
@@ -78,28 +97,58 @@ private:
     // Number of already visited cells
     int m_nVisitedCells;
 
-    // Every cell that has already been visited
-    std::vector<std::pair<int, int>> m_visitedCells;
+    std::vector<std::pair<int, int>> m_visitedCells; //!< @brief Stores every already-visited cell.
 
-    // Stack used for backtracking in the process of solving the maze
-    std::vector<std::pair<int, int>> m_stack;
+    std::vector<std::pair<int, int>> m_stack; //!< @brief Vector used like a std::stack variable, used for backtracking.
 
     std::vector<bool> pathScrollChance;
     std::vector<bool> speedScrollChance;
     std::vector<bool> dashScrollChance;
 
 private:
-
-    // Checks if a coordinate is in the maze or outside of it
+     /**
+     * @brief Checks if a coordinate is in or outside the maze.
+     *
+     * @param x The x axis
+     * @param y The y axis
+     *
+     * @return bool
+     * */
     bool isInBound(const int& x, const int& y) const;
 
-    // Returns every not-checked-already neighbour of a cell
+    /**
+    * @brief Checks every unvisited, in-bound neighbour and returns a vector of all of the neighbour(s).
+    *
+    * @param x The x axis of the coordinate.
+    * @param y The y axis of the coordinate.
+    *
+    * @return std::vector<std::pair<int, int>> neighbours
+    *
+    **/
     std::vector<std::pair<int, int>> getNeighbours(const int& x, const int& y) const;
 
-    // Checks if a cell has been visited
+    /**
+    * @brief Checks if a cell has been visited or not.
+    *
+    * @param x The x axis of the coordinate.
+    * @param y The y axis of the coordinate.
+    *
+    * @return bool
+    *
+    **/
     bool searchForAlreadyVisitedCells(const int& x, const int& y) const;
 
-    // Converts 2D coordinates into 1D
+    /**
+    * @brief Converts 2D to 1D coordinates
+    *
+    * @note Takes coordinates in (x,y) format and returns (z) format.
+    *
+    * @param x The x axis of the coordinate.
+    * @param y The y axis of the coordinate.
+    *
+    * @return int
+    *
+    **/
     int toIndex(const int& x, const int& y) const;
 
     // Removes the markings in the maze and replaces them with '0'
