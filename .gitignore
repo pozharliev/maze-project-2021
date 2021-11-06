@@ -21,4 +21,4 @@ data/rightRawMazeData.maze
 logs/logs.log
 
 # Doxygen files
-docs/doxygen
+docs/doxygen/*
