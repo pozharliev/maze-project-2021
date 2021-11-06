@@ -20,9 +20,17 @@ CheckedMaze::CheckedMaze(int width, int height)
 
     m_nVisitedCells = 1;
 
+<<<<<<< HEAD
     logger.initLogFile();
 
     logger.Info(MAZE_INITIALIZED);
+=======
+    // logger = new Logger();
+
+    // logger->initLogFile();
+
+    // logger->Info(MAZE_INITIALIZED);
+>>>>>>> f35d0db4130594328791ec07052201f7442408c7
 }
 
 void CheckedMaze::fillChanceGenerator(std::vector<bool>& pathVector,
@@ -229,7 +237,11 @@ void CheckedMaze::initReversedMaze()
 
 void CheckedMaze::checkMaze()
 {
+<<<<<<< HEAD
     logger.Info(MAZE_SOLVING);
+=======
+    //logger->Info(MAZE_SOLVING);
+>>>>>>> f35d0db4130594328791ec07052201f7442408c7
     m_visitedCells.push_back(std::make_pair(m_x, m_y));
     m_stack.push_back(std::make_pair(m_x, m_y));
 
@@ -271,7 +283,11 @@ void CheckedMaze::checkMaze()
             // The path arrives at the end of the maze
             if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
             {
+<<<<<<< HEAD
                 logger.Info(MAZE_SOLVABLE);
+=======
+                //logger->Info(MAZE_SOLVABLE);
+>>>>>>> f35d0db4130594328791ec07052201f7442408c7
                 initMazeWithPath();
                 fixMaze();
                 initReversedMaze();
@@ -285,7 +301,11 @@ void CheckedMaze::checkMaze()
             // There is no solution to the maze
             if(m_nVisitedCells == m_possibleWays)
             {
+<<<<<<< HEAD
                 logger.Warning(MAZE_UNSOLVABLE);
+=======
+                //logger->Warning(MAZE_UNSOLVABLE);
+>>>>>>> f35d0db4130594328791ec07052201f7442408c7
                 // Generate another maze and repeat the process until there is a solvable maze
                 CheckedMaze anotherMaze(m_mWidth, m_mHeight);
                 anotherMaze.checkMaze();

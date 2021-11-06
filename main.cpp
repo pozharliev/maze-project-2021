@@ -6,10 +6,10 @@
 
 #include "include/frontend/mainMenu.h"
 #include "include/frontend/lobby.h"
-#include "include/frontend/room.h"
 #include "include/frontend/player.h"
 #include "include/backend/collisions.h"
 #include <iostream>
+#include <vector>
 
 class GameManager : public olc::PixelGameEngine
 {
@@ -17,10 +17,10 @@ class GameManager : public olc::PixelGameEngine
 public:
   MainMenu *mainMenu;
   Player *player;
-  Lobby *lobby;
-  Room *room;
   Collisions *collisions;
-
+  std::vector<Lobby*> floors;
+  int floorCount;
+  int currentFloor;
   olc::Sprite* cutsceneSprite;
   olc::Decal* cutscene;
   bool inCutscene;
@@ -30,8 +30,8 @@ public:
   {
     mainMenu = new MainMenu;
     player = new Player;
-    lobby = new Lobby;
-    room = new Room(24, 12);
+    //lobby = new Lobby;
+    floorCount = 2;
     collisions = new Collisions;
   }
 
@@ -59,21 +59,16 @@ private:
     mainMenu->anyKeyPressed = false;
     mainMenu->welcomeLogo = new olc::Sprite("public/VAVYLON_LOGO_BIG_NOBG.png");
     mainMenu->welcomeLogoDecal = new olc::Decal(mainMenu->welcomeLogo);
-    mainMenu->selectPath = "public/sfx/mainMenuSelectSFX.wav";
-    mainMenu->hoverPath = "public/sfx/mainMenuHoverSFX.wav";
 
-    lobby->inMaze = false;
-    lobby->lobbyRoom = new olc::Sprite("public/lobby.png");
-    lobby->lobbyForegroundSprite = new olc::Sprite("public/foreGroundLobby.png");
-    lobby->lobbyForeground = new olc::Decal(lobby->lobbyForegroundSprite);
-
-    room->runeSprite = new olc::Sprite("public/rune.png");
-    room->rune = new olc::Decal(room->runeSprite);
-    room->runeTileSprite = new olc::Sprite("public/rune_tile.png");
-    room->runeTile = new olc::Decal(room->runeTileSprite);
-    room->scroll = new olc::Sprite("public/scroll.png");
-    room->scrollDecal = new olc::Decal(room->scroll);
-    room->setUpScrollAnimations();
+    for(int i = 0; i < floorCount; i++)
+    {
+      floors.push_back(new Lobby(i));
+      floors.at(i)->inMaze = false;
+      floors.at(i)->lobbyRoom = new olc::Sprite("public/lobby.png");
+      floors.at(i)->lobbyForegroundSprite = new olc::Sprite("public/foreGroundLobby.png");
+      floors.at(i)->lobbyForeground = new olc::Decal(floors.at(i)->lobbyForegroundSprite);
+    }
+    currentFloor = 0;
 
     collisions->colliding = false;
     collisions->gameEnded = false;
@@ -83,7 +78,6 @@ private:
 
   bool OnUserUpdate(float fElapsedTime) override
   {
-
     Clear(olc::BLACK);
 
     if (mainMenu->gameStarted)
@@ -116,9 +110,9 @@ private:
       }
 
       if (collisions->gameEnded && !mainMenu->pauseMenuEnabled)
-      {
-        mainMenu->displayLoseMenu(this, collisions);
-      }
+       {
+         mainMenu->displayLoseMenu(this, collisions);
+       }
     }
     else
     {
@@ -134,16 +128,16 @@ private:
 
     if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !collisions->gameEnded)
     {
-      lobby->drawLobby(this, player, room);
+      floors.at(currentFloor)->drawLobby(this, player);
       if (!player->firstPlayerMove)
       {
-        collisions->checkCollisions(this, player, lobby, room);
+        collisions->checkCollisions(this, player, floors.at(currentFloor), floors.at(currentFloor)->room);
       }
       player->playerPos = {player->playerX, player->playerY};
       player->drawPlayer(this, fElapsedTime);
-      if(!lobby->inMaze)
+      if(!floors.at(currentFloor)->inMaze)
       {
-        lobby->drawLobbyForeground(this);
+        floors.at(currentFloor)->drawLobbyForeground(this);
       }
     }
   }
@@ -168,6 +162,14 @@ private:
 
   void getInput(float elapsedTime)
   {
+    //Left here for debugging purposes
+    if(this->GetKey(olc::G).bPressed)
+    {
+      currentFloor++;
+      delete floors.at(currentFloor -1)->room;
+      delete floors.at(currentFloor -1);
+    }
+
     //If the input is left arrow
     if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::LEFT)
     {

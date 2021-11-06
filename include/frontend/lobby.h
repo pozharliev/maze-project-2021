@@ -22,6 +22,11 @@ private:
   int mazePlayerPosY;
 
 public:
+
+  Room* room;
+
+  int thisLobbyCount;
+
   struct rect
   {
     olc::vf2d pos;
@@ -44,10 +49,11 @@ public:
   MAZE_TYPE currentMaze;
 
 public:
+  Lobby(int count);
   ~Lobby();
   char getTile(int x, int y);
 
-  void drawLobby(olc::PixelGameEngine* engine, Player* player, Room* room);
+  void drawLobby(olc::PixelGameEngine* engine, Player* player);
 
   void drawLobbyForeground(olc::PixelGameEngine* engine);
 

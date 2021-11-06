@@ -1,3 +1,4 @@
+
 #pragma once
 
 #define MAZE_INITIALIZED "Initializing a new maze."

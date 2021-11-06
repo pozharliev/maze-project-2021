@@ -25,7 +25,7 @@ class CheckedMaze
 {
 public:
     CheckedMaze(int width, int height);
-
+    
     Logger logger;
 
     ~CheckedMaze();
