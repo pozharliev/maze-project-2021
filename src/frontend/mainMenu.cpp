@@ -3,15 +3,13 @@
 MainMenu::~MainMenu(){
   delete welcomeLogo;
   delete welcomeLogoDecal;
-  delete[] selectPath;
-  delete[] hoverPath;
 }
 
 bool MainMenu::pressAnyKey(olc::PixelGameEngine* engine){
   engine->DrawDecal({engine->ScreenWidth()/6.2f, engine->ScreenHeight()/5}, welcomeLogoDecal, {0.12f, 0.12f});
   engine->DrawString(engine->ScreenWidth()/2 - 76, engine->ScreenHeight()/1.2f, "Press X to continue", olc::WHITE, 1);
   if(engine->GetKey(olc::X).bPressed){
-    PlaySound(selectPath, NULL, SND_ASYNC);
+    PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
     anyKeyPressed = true;
   }
   return true;
@@ -126,7 +124,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
     if (engine->GetKey(olc::DOWN).bPressed)
     {
-      PlaySound(hoverPath, NULL, SND_ASYNC);
+      PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
 
       if (menuOption == 2)
       {
@@ -140,7 +138,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
     if (engine->GetKey(olc::UP).bPressed)
     {
-      PlaySound(hoverPath, NULL, SND_ASYNC);
+      PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
       if (menuOption == 0)
       {
         menuOption = 2;
@@ -153,7 +151,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
     if (engine->GetKey(olc::ENTER).bPressed)
     {
-      PlaySound(selectPath, NULL, SND_ASYNC);
+      PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
       if (menuOption == 0 && mainMenuEdit)
       {
         mainMenuEnabled = false;
@@ -177,7 +175,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
     {
         if(engine->GetKey(olc::DOWN).bPressed)
         {
-          PlaySound(hoverPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 3)
           {
             menuOption = 0;
@@ -188,7 +186,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
         if(engine->GetKey(olc::UP).bPressed)
         {
-          PlaySound(hoverPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 0)
           {
             menuOption = 3;
@@ -199,7 +197,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
         if(engine->GetKey(olc::ENTER).bPressed && optionsMenuEdit)
         {
-          PlaySound(selectPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 0)
           {
             if(fullScreen == false)
@@ -243,7 +241,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
         
         if(engine->GetKey(olc::DOWN).bPressed)
         {
-          PlaySound(hoverPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 1)
           {
             menuOption = 0;
@@ -256,7 +254,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
         if(engine->GetKey(olc::UP).bPressed)
         {
-          PlaySound(hoverPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 0)
           {
             menuOption = 1;
@@ -269,7 +267,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
         if(engine->GetKey(olc::ENTER).bPressed)
         {
-          PlaySound(selectPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 0){
             pauseMenuEnabled = false;
             mainMenuEnabled = true;
@@ -289,7 +287,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
         
         if(engine->GetKey(olc::DOWN).bPressed)
         {
-          PlaySound(hoverPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 1)
           {
             menuOption = 0;
@@ -302,7 +300,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
         if(engine->GetKey(olc::UP).bPressed)
         {
-          PlaySound(hoverPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 0)
           {
             menuOption = 1;
@@ -315,7 +313,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
         if(engine->GetKey(olc::ENTER).bPressed)
         {
-          PlaySound(selectPath, NULL, SND_ASYNC);
+          PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
           if(menuOption == 0){
             collisions->gameEnded = false;
             mainMenuEnabled = true;
