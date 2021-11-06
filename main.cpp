@@ -30,9 +30,16 @@ public:
   {
     mainMenu = new MainMenu;
     player = new Player;
-    //lobby = new Lobby;
     floorCount = 2;
     collisions = new Collisions;
+  }
+
+  ~GameManager()
+  {
+    for(auto i : floors)
+    {
+      delete i;
+    }
   }
 
 private:
@@ -172,8 +179,7 @@ private:
       }
       else
       {
-      currentFloor++;
-      delete floors.at(currentFloor -1);
+        currentFloor++;
       }
     }
 
