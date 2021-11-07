@@ -10,6 +10,7 @@ Lobby::Lobby(int count)
     room->runeTile = new olc::Decal(room->runeTileSprite);
     room->scroll = new olc::Sprite("public/scroll.png");
     room->scrollDecal = new olc::Decal(room->scroll);
+    room->roomEnriched = false;
     room->setUpScrollAnimations();
 }
 

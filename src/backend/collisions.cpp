@@ -90,19 +90,17 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                                 if(i.type == "path")
                                 {
                                     player->playerInv.pathScroll = true;
-                                    std::cout<<"picked up path";
                                 }
                                 if(i.type == "dash")
                                 {
                                     player->playerInv.dashScroll = true;
-                                    std::cout<<"picked up dash";
                                 }
                                 if(i.type == "speed")
                                 {
                                     player->playerSpeed = 70.0f;
                                     player->playerInv.speedScroll = true;
-                                    std::cout<<"picked up speed";
                                 }
+                                
                             }
                             i.pickedUp = true;
                         }
@@ -128,19 +126,17 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                                 if(i.type == "path")
                                 {
                                     player->playerInv.pathScroll = true;
-                                    std::cout<<"picked up path";
                                 }
                                 if(i.type == "dash")
                                 {
                                     player->playerInv.dashScroll = true;
-                                    std::cout<<"picked up dash";
                                 }
                                 if(i.type == "speed")
                                 {
                                     player->playerSpeed = 70.0f;
                                     player->playerInv.speedScroll = true;
-                                    std::cout<<"picked up speed";
                                 }
+                               
                             }
                             i.pickedUp = true;
                         }
@@ -166,18 +162,15 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                                 if(i.type == "path")
                                 {
                                     player->playerInv.pathScroll = true;
-                                    std::cout<<"picked up path";
                                 }
                                 if(i.type == "dash")
                                 {
                                     player->playerInv.dashScroll = true;
-                                    std::cout<<"picked up dash";
                                 }
                                 if(i.type == "speed")
                                 {
                                     player->playerSpeed = 70.0f;
                                     player->playerInv.speedScroll = true;
-                                    std::cout<<"picked up speed";
                                 }
                             }
                             i.pickedUp = true;
@@ -203,19 +196,17 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                                 if(i.type == "path")
                                 {
                                     player->playerInv.pathScroll = true;
-                                    std::cout<<"picked up path";
                                 }
                                 if(i.type == "dash")
                                 {
                                     player->playerInv.dashScroll = true;
-                                    std::cout<<"picked up dash";
                                 }
                                 if(i.type == "speed")
                                 {
                                     player->playerInv.speedScroll = true;
                                     player->playerSpeed = 70.0f;
-                                    std::cout<<"picked up speed";
                                 }
+                                
                             }
                             i.pickedUp = true;
                         }
