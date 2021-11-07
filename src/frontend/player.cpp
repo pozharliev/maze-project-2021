@@ -19,6 +19,9 @@ void Player::innitPlayer()
   playerInv.runes = 0;
 
   setUpAnimations();
+
+  playerVignette = new olc::Sprite("public/PlayerVignette.png");
+  playerVignetteDecal = new olc::Decal(playerVignette);
 }
 
 void Player::setUpAnimations()
@@ -170,8 +173,13 @@ void Player::movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapse
   }
 
 void Player::drawPlayer(olc::PixelGameEngine* engine, float elapsedTime)
-  {
-    //olc::vf2d playerSize = {25.0f, 25.0f};
-    //engine->DrawCircle(playerX, playerY, playerRadius, olc::RED); - Disabled for debugging purposes
-    Animator->Draw(elapsedTime, {playerX-11.0f, playerY-20.0f});
-  }
+{
+  //olc::vf2d playerSize = {25.0f, 25.0f};
+  //engine->DrawCircle(playerX, playerY, playerRadius, olc::RED); - Disabled for debugging purposes
+  Animator->Draw(elapsedTime, {playerX-11.0f, playerY-20.0f});
+}
+
+void Player::drawPlayerVignette(olc::PixelGameEngine* engine)
+{
+  engine->DrawDecal({playerX - playerVignette->width / 2, playerY - playerVignette->height / 2}, playerVignetteDecal);
+}

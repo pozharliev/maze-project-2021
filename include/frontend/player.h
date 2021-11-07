@@ -34,6 +34,8 @@ public:
 
     olc::Renderable* playerAnimSpritesheet;
     olc::AnimatedSprite* Animator;
+    olc::Sprite* playerVignette;
+    olc::Decal* playerVignetteDecal;
 
 private:
     // PlayerAnimator* playerAnimator;
@@ -52,6 +54,8 @@ public:
     void movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime);
 
     void drawPlayer(olc::PixelGameEngine *engine, float elapsedTime);
+    
+    void drawPlayerVignette(olc::PixelGameEngine *engine);
 
     void getInput();
 };
