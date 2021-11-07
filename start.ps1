@@ -55,7 +55,11 @@ function Get-Developers {
     Write-Host "1. Go Back."
     Write-Host "2. Exit."
 
+    
+
     $Option = Read-Host "Your option"
+
+    Clear-Host
 
     switch($Option)
     {
