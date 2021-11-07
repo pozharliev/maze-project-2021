@@ -17,7 +17,7 @@ function Get-Options {
     Write-Host "4. Exit.`n"
 }
 
-function Compile-AndRun {
+function Get-Compilation {
     make
 }
 
@@ -33,7 +33,7 @@ function ExecuteOptions {
     param($ExecutionOption)
     switch ($ExecutionOption)
     {
-        1 {Compile-AndRun; break}
+        1 {Get-Compilation; break}
         2 {Get-Instructions; break}
         3 {Get-Info; break}
         4 {Exit}
