@@ -143,11 +143,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "path", false});
-                        std::cout<<"push";
                     }
                     for(auto i : items_vec)
                     {
-                        std::cout<<i.pickedUp<<std::endl;
                         if(i.x == x && i.y == y && !i.pickedUp)
                         {
                             engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
@@ -161,11 +159,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "dash", false});
-                        std::cout<<"push";
                     }
                     for(auto i : items_vec)
                     {
-                        std::cout<<i.pickedUp<<std::endl;
                         if(i.x == x && i.y == y && !i.pickedUp)
                         {
                             engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
@@ -179,11 +175,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "speed", false});
-                        std::cout<<"push";
                     }
                     for(auto i : items_vec)
                     {
-                        std::cout<<i.pickedUp<<std::endl;
                         if(i.x == x && i.y == y && !i.pickedUp)
                         {
                             engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
@@ -219,11 +213,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "path", false});
-                        std::cout<<"push";
                     }
                     for(auto i : items_vec)
                     {
-                        std::cout<<i.pickedUp<<std::endl;
                         if(i.x == x && i.y == y && !i.pickedUp)
                         {
                             engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
@@ -237,11 +229,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "dash", false});
-                        std::cout<<"push";
                     }
                     for(auto i : items_vec)
                     {
-                        std::cout<<i.pickedUp<<std::endl;
                         if(i.x == x && i.y == y && !i.pickedUp)
                         {
                             engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
@@ -255,11 +245,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "speed", false});
-                        std::cout<<"push";
                     }
                     for(auto i : items_vec)
                     {
-                        std::cout<<i.pickedUp<<std::endl;
                         if(i.x == x && i.y == y && !i.pickedUp)
                         {
                             engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);

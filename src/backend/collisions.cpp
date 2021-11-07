@@ -82,13 +82,13 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                 {
                     if(mazeOrientation == "left" && lobby->room->leftRunePickedUp == false)
                     {
-                        //Play Sound
+                        PlaySoundA("public/sfx/runePickUp.wav", NULL, SND_ASYNC);
                         lobby->room->leftRunePickedUp = true;
                         player->playerInv.runes++;
                     }
                     else if(mazeOrientation == "right" && lobby->room->rightRunePickedUp == false)
                     {
-                        //Play Sound
+                        PlaySoundA("public/sfx/runePickUp.wav", NULL, SND_ASYNC);
                         lobby->room->rightRunePickedUp = true;
                         player->playerInv.runes++;
                     }
@@ -135,13 +135,13 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                 {
                     if(mazeOrientation == "left" && lobby->room->leftRunePickedUp == false)
                     {
-                        //Play Sound
+                        PlaySoundA("public/sfx/runePickUp.wav", NULL, SND_ASYNC);
                         lobby->room->leftRunePickedUp = true;
                         player->playerInv.runes++;
                     }
                     else if(mazeOrientation == "right" && lobby->room->rightRunePickedUp == false)
                     {
-                        //Play Sound
+                        PlaySoundA("public/sfx/runePickUp.wav", NULL, SND_ASYNC);
                         lobby->room->rightRunePickedUp = true;
                         player->playerInv.runes++;
                     }
@@ -188,13 +188,13 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                 {
                     if(mazeOrientation == "left" && lobby->room->leftRunePickedUp == false)
                     {
-                        //Play Sound
+                        PlaySoundA("public/sfx/runePickUp.wav", NULL, SND_ASYNC);
                         lobby->room->leftRunePickedUp = true;
                         player->playerInv.runes++;
                     }
                     else if(mazeOrientation == "right" && lobby->room->rightRunePickedUp == false)
                     {
-                        //Play Sound
+                        PlaySoundA("public/sfx/runePickUp.wav", NULL, SND_ASYNC);
                         lobby->room->rightRunePickedUp = true;
                         player->playerInv.runes++;
                     }
@@ -239,13 +239,13 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                 {
                     if(mazeOrientation == "left" && lobby->room->leftRunePickedUp == false)
                     {
-                        //Play Sound
+                        PlaySoundA("public/sfx/runePickUp.wav", NULL, SND_ASYNC);
                         lobby->room->leftRunePickedUp = true;
                         player->playerInv.runes++;
                     }
                     else if(mazeOrientation == "right" && lobby->room->rightRunePickedUp == false)
                     {
-                        //Play Sound
+                        PlaySoundA("public/sfx/runePickUp.wav", NULL, SND_ASYNC);
                         lobby->room->rightRunePickedUp = true;
                         player->playerInv.runes++;
                     }
