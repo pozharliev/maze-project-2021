@@ -23,6 +23,7 @@ class Room
 
         int tileWidth;
         int tileHeight;
+        bool roomEnriched;
 
         olc::Sprite* runeSprite;
         olc::Decal* rune;
@@ -30,10 +31,20 @@ class Room
         olc::Sprite* runeTileSprite;
         olc::Decal* runeTile;
 
+        struct item{
+            int x;
+            int y;
+            std::string type;
+            bool pickedUp;
+        };
+        std::vector<item> items_vec;
+
         olc::Sprite* scroll;
         olc::Decal* scrollDecal;
         olc::Renderable* scrollAnimSpritesheet;
         olc::AnimatedSprite* scrollAnimator;
+
+        
 
     private:
         void generateRoom();

@@ -13,7 +13,7 @@ void Player::innitPlayer()
   Animator->SetSpriteSize({32, 32});
   Animator->SetSpriteScale(0.75f);
 
-  playerInv.dashScroll = true;
+  playerInv.dashScroll = false;
   playerInv.speedScroll = false;
   playerInv.pathScroll = false;
   playerInv.runes = 0;

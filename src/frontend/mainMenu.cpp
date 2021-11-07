@@ -1,6 +1,7 @@
 #include "../../include/frontend/mainMenu.h"
 
-MainMenu::~MainMenu(){
+MainMenu::~MainMenu()
+{
   delete welcomeLogo;
   delete welcomeLogoDecal;
 }
@@ -166,7 +167,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
       }
       if (menuOption == 2)
       {
-        exit(0);
+        isExit = true;
       }
     }
     }

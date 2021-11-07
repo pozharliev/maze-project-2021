@@ -11,6 +11,8 @@ class MainMenu
         std::string line;
 
     public:
+        bool isExit;
+
         bool pauseMenuEnabled;
         bool mainMenuEnabled;
         bool optionsMenuEnabled;

@@ -5,7 +5,6 @@
 #include "../frontend/lobby.h"
 #include "../frontend/player.h"
 #include "../backend/collisions.h"
-#include <vector>
 
 class GameManager : public olc::PixelGameEngine
 {

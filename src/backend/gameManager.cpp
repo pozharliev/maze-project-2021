@@ -2,18 +2,20 @@
 
 GameManager::GameManager()
 {
-    mainMenu = new MainMenu;
-    player = new Player;
-    floorCount = 2;
-    collisions = new Collisions;
+  mainMenu = new MainMenu;
+  player = new Player;
+  floorCount = 2;
+  collisions = new Collisions;
 }
 
 GameManager::~GameManager()
 {
-    for(auto i : floors)
-    {
-      delete i;
-    }
+  for(auto i : floors)
+  {
+    delete i;
+  }
+  delete cutsceneSprite;
+  delete cutscene;
 }
 
 bool GameManager::OnUserCreate()
@@ -31,6 +33,7 @@ bool GameManager::OnUserCreate()
     player->playerVelX = 0.0f;
     player->playerVelY = 0.0f;
 
+    mainMenu->isExit = false;
     mainMenu->mainMenuEnabled = true;
     mainMenu->pauseMenuEnabled = false;
     mainMenu->optionsMenuEnabled = false;
@@ -99,7 +102,7 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
       mainMenu->pressAnyKey(this);
     }
 
-    return true;
+    return !mainMenu->isExit;
 }
 
 void GameManager::Game(float fElapsedTime)

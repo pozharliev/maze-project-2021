@@ -10,26 +10,29 @@
 int main()
 {
   olc::PixelGameEngine engine;
-  GameManager gameManager;
+  GameManager* gameManager = new GameManager;
 
-  gameManager.mainMenu->saveFile.open("data/saveFile.save");
-  if (gameManager.mainMenu->saveFile.is_open())
+  gameManager->mainMenu->saveFile.open("data/saveFile.save");
+  if (gameManager->mainMenu->saveFile.is_open())
   {
-    while (getline(gameManager.mainMenu->saveFile, gameManager.mainMenu->line))
+    while (getline(gameManager->mainMenu->saveFile, gameManager->mainMenu->line))
     {
-      if (gameManager.mainMenu->line == "true")
+      if (gameManager->mainMenu->line == "true")
       {
-        gameManager.mainMenu->fullScreen = true;
+        gameManager->mainMenu->fullScreen = true;
       }
       else
       {
-        gameManager.mainMenu->fullScreen = false;
+        gameManager->mainMenu->fullScreen = false;
       }
     }
-    gameManager.mainMenu->saveFile.close();
+    gameManager->mainMenu->saveFile.close();
   }
 
-  if (gameManager.Construct(engine.ScreenWidth() * 1.5f - 46, engine.ScreenHeight() - 46, 5, 5, gameManager.mainMenu->fullScreen))
-    // if (gameManager.Construct(engine.ScreenWidth() * 1.875f - 46, engine.ScreenHeight() * 1.125 - 46, 4, 4, gameManager.mainMenu->fullScreen))
-    gameManager.Start();
+  if (gameManager->Construct(engine.ScreenWidth() * 1.5f - 46, engine.ScreenHeight() - 46, 5, 5, gameManager->mainMenu->fullScreen))
+  {
+    auto rc = gameManager->Start();
+  }
+
+  delete gameManager;
 }

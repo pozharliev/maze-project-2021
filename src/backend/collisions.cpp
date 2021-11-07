@@ -78,7 +78,32 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
         {
             if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13) + 0.4f) != ' ')
             {
-                gameEnded = true;
+                if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != '#' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13) + 0.4f) != '#')
+                {
+                    for(auto i : room->items_vec)
+                    {
+                        if(i.x == (int)(player->newPlayerPosX / 13) || i.y == (int)(player->newPlayerPosY / 13))
+                        {
+                            i.pickedUp = true;
+                            if(i.type == "path")
+                            {
+                                player->playerInv.pathScroll = true;
+                                std::cout<<"picked up path";
+                            }
+                            if(i.type == "dash")
+                            {
+                                player->playerInv.dashScroll = true;
+                                std::cout<<"picked up dash";
+                            }
+                            if(i.type == "speed")
+                            {
+                                player->playerInv.speedScroll = true;
+                                std::cout<<"picked up speed";
+                            }
+                        }
+                    }
+                 } //else { gameEnded = true; }
+                
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
@@ -86,7 +111,32 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
         {
             if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.6f, (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.6f, (int)(player->newPlayerPosY / 13) + 0.4f) != ' ')
             {
-                gameEnded = true;
+                if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != '#' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13) + 0.4f) != '#')
+                {
+                    for(auto i : room->items_vec)
+                    {
+                        if(i.x == (int)(player->newPlayerPosX / 13) || i.y == (int)(player->newPlayerPosY / 13))
+                        {
+                            i.pickedUp = true;
+                            if(i.type == "path")
+                            {
+                                player->playerInv.pathScroll = true;
+                                std::cout<<"picked up path";
+                            }
+                            if(i.type == "dash")
+                            {
+                                player->playerInv.dashScroll = true;
+                                std::cout<<"picked up dash";
+                            }
+                            if(i.type == "speed")
+                            {
+                                player->playerInv.speedScroll = true;
+                                std::cout<<"picked up speed";
+                            }
+                        }
+                    }
+                } //else { gameEnded = true; }
+
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
@@ -94,7 +144,31 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
         {
             if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.4f, (int)(player->newPlayerPosY / 13)) != ' ')
             {
-                gameEnded = true;
+                if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != '#' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13) + 0.4f) != '#')
+                {
+                    for(auto i : room->items_vec)
+                    {
+                        if(i.x == (int)(player->newPlayerPosX / 13) || i.y == (int)(player->newPlayerPosY / 13))
+                        {
+                            i.pickedUp = true;
+                            if(i.type == "path")
+                            {
+                                player->playerInv.pathScroll = true;
+                                std::cout<<"picked up path";
+                            }
+                            if(i.type == "dash")
+                            {
+                                player->playerInv.dashScroll = true;
+                                std::cout<<"picked up dash";
+                            }
+                            if(i.type == "speed")
+                            {
+                                player->playerInv.speedScroll = true;
+                                std::cout<<"picked up speed";
+                            }
+                        }
+                    }
+                 } //else { gameEnded = true; }
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
@@ -102,14 +176,34 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
         {
             if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.0f, (int)(player->newPlayerPosY / 13) + 0.5f) != ' ' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13) + 0.4f, (int)(player->newPlayerPosY / 13) + 0.6f) != ' ')
             {
-                gameEnded = true;
+                if(room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13)) != '#' || room->getTile(mazeOrientation, (int)(player->newPlayerPosX / 13), (int)(player->newPlayerPosY / 13) + 0.4f) != '#')
+                {
+                    for(auto i : room->items_vec)
+                    {
+                        if(i.x == (int)(player->newPlayerPosX / 13) || i.y == (int)(player->newPlayerPosY / 13))
+                        {
+                            i.pickedUp = true;
+                            if(i.type == "path")
+                            {
+                                player->playerInv.pathScroll = true;
+                                std::cout<<"picked up path";
+                            }
+                            if(i.type == "dash")
+                            {
+                                player->playerInv.dashScroll = true;
+                                std::cout<<"picked up dash";
+                            }
+                            if(i.type == "speed")
+                            {
+                                player->playerInv.speedScroll = true;
+                                std::cout<<"picked up speed";
+                            }
+                        }
+                    }
+                 } //else { gameEnded = true; }
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
-        
-
-        
-
-
+    
     }
 
 };
