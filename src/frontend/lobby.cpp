@@ -151,4 +151,5 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player)
 void Lobby::drawLobbyForeground(olc::PixelGameEngine* engine)
 {
     engine->DrawDecal({0, 0}, lobbyForeground);
+    engine->DrawDecal({engine->ScreenWidth() / 2 - 25, 0}, lobbyRaysDecal);
 }

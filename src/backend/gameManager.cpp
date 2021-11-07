@@ -57,6 +57,8 @@ bool GameManager::OnUserCreate()
       floors.at(i)->lobbyForeground = new olc::Decal(floors.at(i)->lobbyForegroundSprite);
       floors.at(i)->room->leftRunePickedUp = false;
       floors.at(i)->room->rightRunePickedUp = false;
+      floors.at(i)->lobbyRays = new olc::Sprite("public/rays.png");
+      floors.at(i)->lobbyRaysDecal = new olc::Decal(floors.at(i)->lobbyRays);
       // floors.at(i)->room->path = false;
     }
     currentFloor = 0;

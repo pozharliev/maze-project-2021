@@ -38,6 +38,8 @@ public:
   olc::Sprite *lobbyRoom;
   olc::Sprite *lobbyForegroundSprite;
   olc::Decal *lobbyForeground;
+  olc::Sprite *lobbyRays;
+  olc::Decal *lobbyRaysDecal;
   bool leftMazeEnter;
   bool rightMazeEnter;
   bool inLeftMaze;
