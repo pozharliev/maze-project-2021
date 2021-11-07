@@ -19,7 +19,6 @@ main: gameManager menu lobby uncheckedMaze mazeChecker room player collisions $(
 	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) gameManager.o mainMenu.o lobby.o maze.o checkedMaze.o room.o player.o collisions.o $(LIBS)
 	./$(EXECUTABLE)
 
-
 gameManager: $(SRC)/$(BE)/gameManager.cpp $(INCLUDE)/$(BE)/gameManager.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/gameManager.cpp
 
@@ -48,5 +47,5 @@ mazeChecker: $(SRC)/$(BE)/checkedMaze.cpp $(INCLUDE)/$(BE)/checkedMaze.h
 uncheckedMaze: $(SRC)/$(BE)/maze.cpp $(INCLUDE)/$(BE)/maze.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/maze.cpp
 
-clean:
+clean: 
 	rm *.exe *.o
