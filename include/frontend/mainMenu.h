@@ -16,9 +16,11 @@ class MainMenu
         bool pauseMenuEnabled;
         bool mainMenuEnabled;
         bool optionsMenuEnabled;
+        bool controllsMenuEnabled;
         int menuOption;
         bool optionsMenuEdit;
         bool mainMenuEdit;
+        bool controllsEdit;
         bool gameStarted;
         bool anyKeyPressed;
         olc::Sprite* welcomeLogo;
@@ -34,6 +36,8 @@ class MainMenu
         bool displayOptionsMenu(olc::PixelGameEngine* engine, Collisions* collisions);
 
         bool displayLoseMenu(olc::PixelGameEngine *engine, Collisions* collisions);
+
+        bool displayControllsMenu(olc::PixelGameEngine* engine, Collisions* collisions);
 
         void getMenuInput(olc::PixelGameEngine* engine, std::string menuType, Collisions* collisions);
 

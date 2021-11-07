@@ -37,6 +37,7 @@ bool GameManager::OnUserCreate()
     mainMenu->mainMenuEnabled = true;
     mainMenu->pauseMenuEnabled = false;
     mainMenu->optionsMenuEnabled = false;
+    mainMenu->controllsMenuEnabled = false;
     mainMenu->menuOption = 0;
     mainMenu->gameStarted = false;
     mainMenu->anyKeyPressed = false;
@@ -93,6 +94,11 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
         mainMenu->displayOptionsMenu(this, collisions);
       }
 
+      if (mainMenu->controllsMenuEnabled)
+      {
+        mainMenu->displayControllsMenu(this, collisions);
+      }
+
       if (collisions->gameEnded && !mainMenu->pauseMenuEnabled)
       {
         mainMenu->displayLoseMenu(this, collisions);
@@ -110,7 +116,7 @@ void GameManager::Game(float fElapsedTime)
 {
     getInput(fElapsedTime);
 
-    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !collisions->gameEnded)
+    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !mainMenu->controllsMenuEnabled && !collisions->gameEnded)
     {
       floors.at(currentFloor)->drawLobby(this, player);
       if (!player->firstPlayerMove)
@@ -152,7 +158,7 @@ void GameManager::getInput(float elapsedTime)
     {
       if(currentFloor == floorCount-1)
       {
-        //Win
+        //https://www.youtube.com/watch?v=fmN09mVQ3YE
         exit(0);
       }
       else

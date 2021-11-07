@@ -93,6 +93,21 @@ bool MainMenu::displayOptionsMenu(olc::PixelGameEngine* engine, Collisions* coll
     return true;
   }
 
+  bool MainMenu::displayControllsMenu(olc::PixelGameEngine* engine, Collisions* collisions)
+  {
+    engine->Clear(olc::BLACK);
+    engine->DrawString(engine->ScreenWidth() / 2 - 112, engine->ScreenHeight() / 2 - 80, "Move Up           'UP ARROW'", olc::WHITE);
+    engine->DrawString(engine->ScreenWidth() / 2 - 112, engine->ScreenHeight() / 2 - 55, "Move Down       'DOWN ARROW'", olc::WHITE);
+    engine->DrawString(engine->ScreenWidth() / 2 - 112, engine->ScreenHeight() / 2 - 30, "Move Left       'LEFT ARROW'"  , olc::WHITE);
+    engine->DrawString(engine->ScreenWidth() / 2 - 112, engine->ScreenHeight() / 2 - 5,  "Move Right     'RIGHT ARROW'", olc::WHITE);
+    engine->DrawString(engine->ScreenWidth() / 2 - 112, engine->ScreenHeight() / 2 + 20, "Dash                 'SHIFT'", olc::WHITE);
+    engine->DrawString(engine->ScreenWidth() / 2 - 112, engine->ScreenHeight() / 2 + 45, "Reveal Path              'E'", olc::WHITE);
+    engine->DrawString(engine->ScreenWidth() / 2 - 40, engine->ScreenHeight() / 1.1f, "-> Back", olc::DARK_GREY);
+    getMenuInput(engine, "controlls", collisions);
+    controllsEdit = true;
+    return true;
+  }
+
   bool MainMenu::displayLoseMenu(olc::PixelGameEngine* engine, Collisions* collisions)
   {
     std::string menuOptionsArr[2] = {"Back to main menu", "    Quit Game"};
@@ -174,6 +189,8 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
 
     if(menuType == "options")
     {
+        controllsEdit = false;
+
         if(engine->GetKey(olc::DOWN).bPressed)
         {
           PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
@@ -207,14 +224,14 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
               saveFile << "true";
               saveFile.close();
               fullScreen = true;
-              exit(0);
+              isExit = true;
             } else
             {
               saveFile.open ("data/saveFile.save", std::ofstream::out | std::ofstream::trunc);
               saveFile << "false";
               saveFile.close();
               fullScreen = false;
-              exit(0);
+              isExit = true;
             }
           }
 
@@ -224,8 +241,8 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
           }
 
           if(menuOption == 2){
-            // controls
-            std::cout<<"controls";
+            controllsMenuEnabled = true;
+            optionsMenuEnabled = false;
           }
 
           if(menuOption == 3){
@@ -282,6 +299,18 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
         }
     }
 
+    if(menuType == "controlls")
+    {
+
+      if(engine->GetKey(olc::ENTER).bPressed && controllsEdit)
+      {
+        PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
+        controllsMenuEnabled = false;
+        optionsMenuEnabled = true;
+        menuOption = 0;
+      }
+    }
+
     if(menuType == "lose")
     {
         mainMenuEdit = false;
@@ -315,13 +344,15 @@ void MainMenu::getMenuInput(olc::PixelGameEngine* engine, std::string menuType, 
         if(engine->GetKey(olc::ENTER).bPressed)
         {
           PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
-          if(menuOption == 0){
+          if(menuOption == 0)
+          {
             collisions->gameEnded = false;
             mainMenuEnabled = true;
             menuOption = 0;
           }
-          if(menuOption == 1){
-            exit(0);
+          if(menuOption == 1)
+          {
+            isExit = true;
           }
         }
     }
