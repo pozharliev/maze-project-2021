@@ -36,10 +36,11 @@ Rules, types of scrolls, chance etc
 * make 4.3 or higher;
 
 ## Usage
-
-```bash
+Start the ***powershell*** script by doing this:
+```powershell
 > ./start.ps1
 ```
+
 
 ## Using the binary from release
 
@@ -47,7 +48,7 @@ Some link
 
 ## Examples
 
-Some images of the script
+![Script Example](public/POWERSHELL_SCRIPT_EXAMPLE.png)
 
 
 
