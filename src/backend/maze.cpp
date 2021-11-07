@@ -1,5 +1,10 @@
 #include "../../include/backend/maze.h"
 
+/**
+ * @file maze.cpp
+ *
+ * @brief Definition of the Maze class.
+ */
 
 Maze::Maze(int width, int height)
 {
@@ -63,7 +68,7 @@ void Maze::Visit(int x, int y)
     auto rng = std::default_random_engine{rd()};
 
     // Shuffle the actions vector based on the random numbers
-    std::shuffle(std::begin(m_actions), std::end(m_actions), rng);
+    std::shuffle(m_actions.begin(), m_actions.end(), rng);
 
 
     // Iterate over every action

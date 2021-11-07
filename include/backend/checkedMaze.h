@@ -119,8 +119,10 @@ private:
     /**
     * @brief Checks every unvisited, in-bound neighbour and returns a vector of all of the neighbour(s).
     *
-    * @param x The x axis of the coordinate.
-    * @param y The y axis of the coordinate.
+    * @param x  The x axis of the coordinate.
+    * @param y  The y axis of the coordinate.
+    *
+    * @param[in] m_visitedCells
     *
     * @return std::vector<std::pair<int, int>> neighbours
     *
@@ -133,6 +135,8 @@ private:
     * @param x The x axis of the coordinate.
     * @param y The y axis of the coordinate.
     *
+    * @param[in] m_visitedCells
+    *
     * @return bool
     *
     **/
@@ -141,7 +145,7 @@ private:
     /**
     * @brief Converts 2D to 1D coordinates
     *
-    * @note Takes coordinates in (x,y) format and returns (z) format.
+    * @note Takes coordinates in (int, int) format and returns (int) format.
     *
     * @param x The x axis of the coordinate.
     * @param y The y axis of the coordinate.
