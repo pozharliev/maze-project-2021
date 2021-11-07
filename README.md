@@ -84,9 +84,10 @@ Some link
 > main.exe
 ```
 
-## **Generating the documentation: **
+## **Generating the documentation:**
 ### Make sure you have ***doxygen*** installed:
 
 ```bash
-doxygen
+> doxygen
 ```
+### **Then, open the index.html file in the docs/doxygen/html folder.**
