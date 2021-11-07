@@ -81,7 +81,7 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player)
             currentMaze = LEFT;
             if(!leftMazeEnter)
             {
-                player->playerX = abs(player->playerX - engine->ScreenWidth() + 15.0f);
+                player->playerX = abs(player->playerX - engine->ScreenWidth() + 28.0f);
                 leftMazeEnter = true;
             }
         }
@@ -91,7 +91,7 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player)
             currentMaze = RIGHT;
             if(!rightMazeEnter)
             {
-                player->playerX = abs(player->playerX - engine->ScreenWidth() + 15.0f);
+                player->playerX = abs(player->playerX - engine->ScreenWidth() + 28.0f);
                 rightMazeEnter = true;
             }
         }
@@ -127,7 +127,7 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player)
 
         rect roomRight = {{engine->ScreenWidth() - 1.0f, engine->ScreenHeight() / 2.5f}, {10.0f, 43.0f}};
         
-        rect stairCase = {{engine->ScreenWidth() / 2.30f, 5.0f}, {43.0f, 10.0f}};
+        stairCase = {{engine->ScreenWidth() / 2.30f, 5.0f}, {43.0f, 10.0f}};
 
 
         engine->DrawSprite(0, 0, lobbyRoom);

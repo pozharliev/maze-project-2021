@@ -33,6 +33,8 @@ public:
     olc::vf2d size;
   };
 
+  rect stairCase;
+
   rect r;
   bool inMaze;
   olc::Sprite *lobbyRoom;

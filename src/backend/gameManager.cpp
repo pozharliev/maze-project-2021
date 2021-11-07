@@ -4,7 +4,7 @@ GameManager::GameManager()
 {
   mainMenu = new MainMenu;
   player = new Player;
-  floorCount = 2;
+  floorCount = 3;
   collisions = new Collisions;
 }
 
@@ -82,6 +82,25 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
       else
       {
         Cutscene(fElapsedTime);
+      }
+    }
+
+    if(floors.at(currentFloor)->hallCollision(player, floors.at(currentFloor)->stairCase))
+    {
+      if(player->playerInv.runes == 2)
+      {
+        player->playerInv.runes = 0;
+        if(currentFloor == floorCount-1)
+        {
+          //Сомтаймс уин, сомтаймс лонт
+          exit(0);
+        }
+          else
+          {
+            currentFloor++;
+            player->playerX = this->ScreenWidth() / 2;
+            player->playerY = this->ScreenHeight() - 30.0f;
+          }
       }
     }
 
