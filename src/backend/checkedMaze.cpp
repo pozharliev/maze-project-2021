@@ -244,7 +244,8 @@ void CheckedMaze::checkMaze()
             // There is no solution to the maze
             if(m_nVisitedCells == m_possibleWays)
             {
-                //logger->Warning(MAZE_UNSOLVABLE);
+                logger.Warning(MAZE_UNSOLVABLE);
+
                 // Generate another maze and repeat the process until there is a solvable maze
                 CheckedMaze anotherMaze(m_mWidth, m_mHeight);
                 anotherMaze.checkMaze();

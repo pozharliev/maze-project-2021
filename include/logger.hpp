@@ -17,18 +17,93 @@ class Logger
     public:
         inline Logger();
 
-        void initLogFile();
+        /**
+        * @brief Initializes the logger file.
+        *
+        * Initializes the logger file, then checks if it was initialized and if it can be opened.
+        *
+        * @param[in] m_log The [.log] file.
+        *
+        * @param[out] stdin Either "Opened the log file" or "Couldn't open the log file".
+        *
+        * @return void
+        * */
+        inline void initLogFile();
 
+       /**
+        * @brief Logs an info message.
+        *
+        * @note The message consists of [Time] + [Info] + [Message].
+        *
+        * @param info The info message.
+        *
+        * @param[in] Logger::getTime
+        *
+        * @param[out] m_log Logs it to the [.log] file.
+        *
+        * @return void
+        * */
         inline void Info(const std::string& info);
+
+        /**
+        * @brief Logs a warning message.
+        *
+        * @note The message consists of [Time] + [Warning] + [Message].
+        *
+        * @param warning The warning message.
+        *
+        * @param[in] Logger::getTime
+        *
+        * @param[out] m_log Logs it to the [.log] file.
+        *
+        * @return void
+        * */
         inline void Warning(const std::string& warning);
+
+        /**
+        * @brief Logs an error message.
+        *
+        * @note The message consists of [Time] + [Error] + [Message].
+        *
+        * @param error The error message.
+        *
+        * @param[in] Logger::getTime
+        *
+        * @param[out] m_log Logs it to the [.log] file.
+        *
+        * @return void
+        * */
         inline void Error(const std::string& error);
 
     private:
-        std::ofstream m_log;
-        std::tm* m_time;
+        std::ofstream m_log; //!< @brief The [.log] file.
+        std::tm* m_time; //!< @brief A <ctime> variable that contains the time.
 
     private:
+         /**
+         * @brief Generates time stamps.
+         *
+         * @note Acts as a wrapper for Logger::getLogs
+         *
+         * @param[in] m_time
+         *
+         * @return std::string Complete timestamp.
+         * */
         inline std::string getTime() const;
+
+        /**
+        * @brief Returns a timestamp with a message type and the message itself.
+        *
+        * @note Returns [Time] + [Message Type] + [Message].
+        *
+        * @param[in] Logger::getTime
+        *
+        * @param message
+        *
+        * @param type
+        *
+        * @return std::string Complete message.
+        * */
         inline std::string getLogs(const std::string& type, const std::string& message) const;
 };
 
