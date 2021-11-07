@@ -50,6 +50,7 @@ bool GameManager::OnUserCreate()
       floors.at(i)->lobbyRoom = new olc::Sprite("public/lobby.png");
       floors.at(i)->lobbyForegroundSprite = new olc::Sprite("public/foreGroundLobby.png");
       floors.at(i)->lobbyForeground = new olc::Decal(floors.at(i)->lobbyForegroundSprite);
+      floors.at(i)->room->path = false;
     }
     currentFloor = 0;
 
@@ -93,9 +94,9 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
       }
 
       if (collisions->gameEnded && !mainMenu->pauseMenuEnabled)
-       {
-         mainMenu->displayLoseMenu(this, collisions);
-       }
+      {
+        mainMenu->displayLoseMenu(this, collisions);
+      }
     }
     else
     {
@@ -158,6 +159,11 @@ void GameManager::getInput(float elapsedTime)
       {
         currentFloor++;
       }
+    }
+
+    if(this->GetKey(olc::E).bPressed && player->playerInv.pathScroll)
+    {
+      floors.at(currentFloor)->room->path = !floors.at(currentFloor)->room->path;
     }
 
     //If the input is left arrow
