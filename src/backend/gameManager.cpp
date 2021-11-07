@@ -29,7 +29,7 @@ bool GameManager::OnUserCreate()
     player->playerY = ScreenHeight() / 2;
     player->playerRadius = 5.0f;
     player->playerPos = {player->playerX, player->playerY};
-    player->playerSpeed = 60.0f;
+    player->playerSpeed = 50.0f;
     player->playerVelX = 0.0f;
     player->playerVelY = 0.0f;
 
@@ -166,6 +166,7 @@ void GameManager::getInput(float elapsedTime)
 
       if(this->GetKey(olc::SHIFT).bPressed && player->playerInv.dashScroll == true)
       {
+        PlaySoundA("public/sfx/dashSFX.wav", NULL, SND_ASYNC);
         player->dashing = true;
         player->playerX -= 17.0f;
         player->Animator->SetState("dashLeft");
@@ -189,6 +190,7 @@ void GameManager::getInput(float elapsedTime)
 
       if(this->GetKey(olc::SHIFT).bPressed && player->playerInv.dashScroll == true)
       {
+        PlaySoundA("public/sfx/dashSFX.wav", NULL, SND_ASYNC);
         player->dashing = true;
         player->playerX += 17.0f;
         player->Animator->SetState("dashRight");
@@ -212,6 +214,7 @@ void GameManager::getInput(float elapsedTime)
 
       if(this->GetKey(olc::SHIFT).bPressed && player->playerInv.dashScroll == true)
       {
+        PlaySoundA("public/sfx/dashSFX.wav", NULL, SND_ASYNC);
         player->dashing = true;
         player->playerY -= 17.0f;
         player->Animator->SetState("dashUp");
@@ -236,6 +239,7 @@ void GameManager::getInput(float elapsedTime)
 
       if(this->GetKey(olc::SHIFT).bPressed && player->playerInv.dashScroll == true)
       {
+        PlaySoundA("public/sfx/dashSFX.wav", NULL, SND_ASYNC);
         player->dashing = true;
         player->playerY += 17.0f;
         player->Animator->SetState("dashDown");
@@ -266,5 +270,5 @@ void GameManager::getInput(float elapsedTime)
         mainMenu->pauseMenuEnabled = false;
       }
     }
- 
+
 }

@@ -84,22 +84,27 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                     {
                         if(i.x == (int)(player->newPlayerPosX / 13) || i.y == (int)(player->newPlayerPosY / 13))
                         {
+                            if(i.pickedUp == false)
+                            {
+                                PlaySoundA("public/sfx/scrollPickUp.wav", NULL, SND_ASYNC);
+                                if(i.type == "path")
+                                {
+                                    player->playerInv.pathScroll = true;
+                                    std::cout<<"picked up path";
+                                }
+                                if(i.type == "dash")
+                                {
+                                    player->playerInv.dashScroll = true;
+                                    std::cout<<"picked up dash";
+                                }
+                                if(i.type == "speed")
+                                {
+                                    player->playerSpeed = 70.0f;
+                                    player->playerInv.speedScroll = true;
+                                    std::cout<<"picked up speed";
+                                }
+                            }
                             i.pickedUp = true;
-                            if(i.type == "path")
-                            {
-                                player->playerInv.pathScroll = true;
-                                std::cout<<"picked up path";
-                            }
-                            if(i.type == "dash")
-                            {
-                                player->playerInv.dashScroll = true;
-                                std::cout<<"picked up dash";
-                            }
-                            if(i.type == "speed")
-                            {
-                                player->playerInv.speedScroll = true;
-                                std::cout<<"picked up speed";
-                            }
                         }
                     }
                  } //else { gameEnded = true; }
@@ -117,22 +122,27 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                     {
                         if(i.x == (int)(player->newPlayerPosX / 13) || i.y == (int)(player->newPlayerPosY / 13))
                         {
+                            if(i.pickedUp == false)
+                            {
+                                PlaySoundA("public/sfx/scrollPickUp.wav", NULL, SND_ASYNC);
+                                if(i.type == "path")
+                                {
+                                    player->playerInv.pathScroll = true;
+                                    std::cout<<"picked up path";
+                                }
+                                if(i.type == "dash")
+                                {
+                                    player->playerInv.dashScroll = true;
+                                    std::cout<<"picked up dash";
+                                }
+                                if(i.type == "speed")
+                                {
+                                    player->playerSpeed = 70.0f;
+                                    player->playerInv.speedScroll = true;
+                                    std::cout<<"picked up speed";
+                                }
+                            }
                             i.pickedUp = true;
-                            if(i.type == "path")
-                            {
-                                player->playerInv.pathScroll = true;
-                                std::cout<<"picked up path";
-                            }
-                            if(i.type == "dash")
-                            {
-                                player->playerInv.dashScroll = true;
-                                std::cout<<"picked up dash";
-                            }
-                            if(i.type == "speed")
-                            {
-                                player->playerInv.speedScroll = true;
-                                std::cout<<"picked up speed";
-                            }
                         }
                     }
                 } //else { gameEnded = true; }
@@ -150,22 +160,27 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                     {
                         if(i.x == (int)(player->newPlayerPosX / 13) || i.y == (int)(player->newPlayerPosY / 13))
                         {
+                            if(i.pickedUp == false)
+                            {
+                                PlaySoundA("public/sfx/scrollPickUp.wav", NULL, SND_ASYNC);
+                                if(i.type == "path")
+                                {
+                                    player->playerInv.pathScroll = true;
+                                    std::cout<<"picked up path";
+                                }
+                                if(i.type == "dash")
+                                {
+                                    player->playerInv.dashScroll = true;
+                                    std::cout<<"picked up dash";
+                                }
+                                if(i.type == "speed")
+                                {
+                                    player->playerSpeed = 70.0f;
+                                    player->playerInv.speedScroll = true;
+                                    std::cout<<"picked up speed";
+                                }
+                            }
                             i.pickedUp = true;
-                            if(i.type == "path")
-                            {
-                                player->playerInv.pathScroll = true;
-                                std::cout<<"picked up path";
-                            }
-                            if(i.type == "dash")
-                            {
-                                player->playerInv.dashScroll = true;
-                                std::cout<<"picked up dash";
-                            }
-                            if(i.type == "speed")
-                            {
-                                player->playerInv.speedScroll = true;
-                                std::cout<<"picked up speed";
-                            }
                         }
                     }
                  } //else { gameEnded = true; }
@@ -182,22 +197,27 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                     {
                         if(i.x == (int)(player->newPlayerPosX / 13) || i.y == (int)(player->newPlayerPosY / 13))
                         {
+                            if(i.pickedUp == false)
+                            {
+                                PlaySoundA("public/sfx/scrollPickUp.wav", NULL, SND_ASYNC);
+                                if(i.type == "path")
+                                {
+                                    player->playerInv.pathScroll = true;
+                                    std::cout<<"picked up path";
+                                }
+                                if(i.type == "dash")
+                                {
+                                    player->playerInv.dashScroll = true;
+                                    std::cout<<"picked up dash";
+                                }
+                                if(i.type == "speed")
+                                {
+                                    player->playerInv.speedScroll = true;
+                                    player->playerSpeed = 70.0f;
+                                    std::cout<<"picked up speed";
+                                }
+                            }
                             i.pickedUp = true;
-                            if(i.type == "path")
-                            {
-                                player->playerInv.pathScroll = true;
-                                std::cout<<"picked up path";
-                            }
-                            if(i.type == "dash")
-                            {
-                                player->playerInv.dashScroll = true;
-                                std::cout<<"picked up dash";
-                            }
-                            if(i.type == "speed")
-                            {
-                                player->playerInv.speedScroll = true;
-                                std::cout<<"picked up speed";
-                            }
                         }
                     }
                  } //else { gameEnded = true; }
