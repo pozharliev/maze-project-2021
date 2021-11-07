@@ -38,10 +38,6 @@ public:
     olc::Decal* playerVignetteDecal;
 
 private:
-    // PlayerAnimator* playerAnimator;
-    // olc::Sprite* currentAnimSprite;
-    // olc::Decal* currentAnim;
-    // PlayerAnimator::AnimationData animationData;
 
     void setUpAnimations();
 

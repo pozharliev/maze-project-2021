@@ -1,5 +1,13 @@
 #include "../../include/frontend/player.h"
 
+Player::~Player()
+{
+  delete Animator;
+  delete playerAnimSpritesheet;
+  delete playerVignette;
+  delete playerVignetteDecal;
+}
+
 void Player::innitPlayer()
 {
   firstPlayerMove = true;

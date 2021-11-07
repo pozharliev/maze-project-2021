@@ -16,6 +16,10 @@ GameManager::~GameManager()
   }
   delete cutsceneSprite;
   delete cutscene;
+
+  delete collisions;
+  delete player;
+  delete mainMenu;
 }
 
 bool GameManager::OnUserCreate()
@@ -51,7 +55,7 @@ bool GameManager::OnUserCreate()
       floors.at(i)->lobbyRoom = new olc::Sprite("public/lobby.png");
       floors.at(i)->lobbyForegroundSprite = new olc::Sprite("public/foreGroundLobby.png");
       floors.at(i)->lobbyForeground = new olc::Decal(floors.at(i)->lobbyForegroundSprite);
-      floors.at(i)->room->path = false;
+      // floors.at(i)->room->path = false;
     }
     currentFloor = 0;
 
@@ -167,10 +171,10 @@ void GameManager::getInput(float elapsedTime)
       }
     }
 
-    if(this->GetKey(olc::E).bPressed && player->playerInv.pathScroll)
-    {
-      floors.at(currentFloor)->room->path = !floors.at(currentFloor)->room->path;
-    }
+    // if(this->GetKey(olc::E).bPressed /*&& player->playerInv.pathScroll*/)
+    // {
+    //   floors.at(currentFloor)->room->path = !floors.at(currentFloor)->room->path;
+    // }
 
     //If the input is left arrow
     if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::LEFT)

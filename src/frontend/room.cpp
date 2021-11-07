@@ -5,7 +5,6 @@ Room::~Room()
     delete[] rightMaze;
     delete[] leftMaze;
     delete mazeTile;
-    delete pathTile;
     delete runeSprite;
     delete rune;
     delete runeTileSprite;
@@ -31,7 +30,6 @@ Room::Room(int mWidth, int mHeight)
     leftMaze->checkMaze();
 
     mazeTile = new olc::Sprite("public/tile.png");
-    pathTile = new olc::Sprite("public/betterTile.png");
 
     generateRoom();
     
@@ -87,6 +85,8 @@ void Room::generateRoom()
 
     rawMazeData.close();
 
+    leftMaze->checkedMaze[1 * mazeWidth + 1] = 'R';
+
     rawMazeData.open("data/rightRawMazeData.maze", std::ofstream::out);
 
     for (int i = 0; i < mazeHeight; i++)
@@ -106,18 +106,14 @@ void Room::generateRoom()
     }
 
     rawMazeData.close();
+
+    rightMaze->checkedMaze[(mazeHeight - 1) * mazeWidth + (mazeWidth - 1)] = 'R';
+
 }
 
 char Room::getTile(std::string mazeOrientation, int x, int y)
 {
-    if(path)
-    {
-        return (mazeOrientation == "left") ? leftMaze->mazeWithPath[y * mazeWidth + x] : rightMaze->mazeWithPath[y * mazeWidth + x];
-    }
-    else
-    {
-        return (mazeOrientation == "left") ? leftMaze->checkedMaze[y * mazeWidth + x] : rightMaze->checkedMaze[y * mazeWidth + x];
-    }
+    return (mazeOrientation == "left") ? leftMaze->checkedMaze[y * mazeWidth + x] : rightMaze->checkedMaze[y * mazeWidth + x];
 }
 
 void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
@@ -130,21 +126,20 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
             for (int y = 0; y <= mazeHeight; y++)
             {
                 char currentTile = getTile("left", x, y);
-                switch (currentTile)
+
+                if(currentTile == 'R')
                 {
-                case ' ':
-                    // engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::BLANK);
+                    engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
+                    engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f});
+                }
+
+                if(currentTile == ' ')
+                {
                     engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
-                    break;
+                }
 
-                case '#':
-                    break;
-
-                case '0':
-                    engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile);
-                    break;
-
-                case 'P':
+                if(currentTile == 'P')
+                {
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "path", false});
@@ -159,13 +154,10 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                             scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                         }
                     }
-                    if(path)
-                    {
-                        engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile);
-                    }
-                    break;
+                }
 
-                case 'D':
+                if(currentTile == 'D')
+                {
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "dash", false});
@@ -180,13 +172,10 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                             scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                         }
                     }
-                    if(path)
-                    {
-                        engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile);
-                    }
-                    break;
+                }
 
-                case 'S':
+                if(currentTile == 'S')
+                {
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "speed", false});
@@ -201,24 +190,6 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                             scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                         }
                     }
-                    if(path)
-                    {
-                        engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile);
-                    }
-                    break;
-
-                default:
-                    break;
-                }
-
-                if (x == 1 && y == mazeHeight - 1)
-                {
-                    engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
-                }
-
-                if (x == 1 && y == mazeHeight - 1)
-                {
-                    engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f});
                 }
             }
         }
@@ -230,21 +201,20 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
             for (int y = 0; y < mazeHeight; y++)
             {
                 char currentTile = getTile("right", x, y);
-                switch (currentTile)
+
+                if(currentTile == 'R')
                 {
-                case ' ':
-                    // engine->FillRect(x * tileWidth, y * tileHeight, tileWidth, tileHeight, olc::BLANK);
+                    engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
+                    engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f});
+                }
+
+                if(currentTile == ' ')
+                {
                     engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
-                    break;
+                }
 
-                case '#':
-                    break;
-
-                case '0':
-                    engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile);
-                    break;
-
-                case 'P':
+                if(currentTile == 'P')
+                {
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "path", false});
@@ -259,13 +229,10 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                             scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                         }
                     }
-                    if(path)
-                    {
-                        engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile);
-                    }
-                    break;
+                }
 
-                case 'D':
+                if(currentTile == 'D')
+                {
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "dash", false});
@@ -280,13 +247,10 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                             scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                         }
                     }
-                    if(path)
-                    {
-                        engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile);
-                    }
-                    break;
+                }
 
-                case 'S':
+                if(currentTile == 'S')
+                {
                     if(!roomEnriched)
                     {
                         items_vec.push_back({x, y, "speed", false});
@@ -294,31 +258,13 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                     }
                     for(auto i : items_vec)
                     {
+                        std::cout<<i.pickedUp<<std::endl;
                         if(i.x == x && i.y == y && !i.pickedUp)
                         {
-                            std::cout<<i.pickedUp<<std::endl;
                             engine->DrawSprite(x * tileWidth, y * tileHeight, mazeTile);
                             scrollAnimator->Draw(engine->GetElapsedTime(), {x * tileWidth, y * tileHeight});
                         }
                     }
-                    if(path)
-                    {
-                        engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile);
-                    }
-                    break;
-
-                default:
-                    break;
-                }
-
-                if (x == mazeWidth - 1 && y == mazeHeight - 1)
-                {
-                    engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
-                }
-
-                if (x == mazeWidth - 1 && y == mazeHeight - 1)
-                {
-                    engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f});
                 }
             }
         }

@@ -14,7 +14,6 @@ class Room
         float playerPosX;
         float playerPosY;
         olc::Sprite* mazeTile;
-        olc::Sprite* pathTile;
 
     public:
         Room(int mWidth, int mHeight);
@@ -24,7 +23,6 @@ class Room
         int tileWidth;
         int tileHeight;
         bool roomEnriched;
-        bool path;
 
         olc::Sprite* runeSprite;
         olc::Decal* rune;
