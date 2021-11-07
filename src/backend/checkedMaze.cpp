@@ -7,7 +7,6 @@
  * @brief Definition of the CheckedMaze class.
  */
 
-
 CheckedMaze::CheckedMaze(int width, int height)
 {
     maze = new Maze(width, height);
@@ -57,6 +56,7 @@ void CheckedMaze::fillChanceGenerator(std::vector<bool>& pathVector,
         dashVector.push_back(false);
     }
 }
+
 void CheckedMaze::shuffleGenerators(std::vector<bool>& pathVector,
                                     std::vector<bool>& speedVector,
                                     std::vector<bool>& dashVector
@@ -68,6 +68,7 @@ void CheckedMaze::shuffleGenerators(std::vector<bool>& pathVector,
     std::shuffle(speedVector.begin(), speedVector.end(), rng);
     std::shuffle(dashVector.begin(), dashVector.end(), rng);
 }
+
 void CheckedMaze::enrichMaze() {
     fillChanceGenerator(pathScrollChance, speedScrollChance, dashScrollChance);
     shuffleGenerators(pathScrollChance, speedScrollChance, dashScrollChance);
@@ -123,12 +124,14 @@ void CheckedMaze::enrichMaze() {
         }
     }
 }
+
 bool CheckedMaze::isInBound(const int& x, const int& y) const
 {
     if (!(x > 0 and x < m_mWidth))  return false;
     if (!(y > 0 and y < m_mHeight)) return false;
     return true;
 }
+
 std::vector<std::pair<int, int>> CheckedMaze::getNeighbours(const int& x, const int& y) const
 {
     std::vector<std::pair<int, int>> availableNeighbours;
@@ -150,6 +153,7 @@ std::vector<std::pair<int, int>> CheckedMaze::getNeighbours(const int& x, const 
     }
     return availableNeighbours;
 }
+
 bool CheckedMaze::searchForAlreadyVisitedCells(const int& x, const int& y) const
 {
     for (auto pair : m_visitedCells)
@@ -158,10 +162,12 @@ bool CheckedMaze::searchForAlreadyVisitedCells(const int& x, const int& y) const
     }
     return false;
 }
+
 int CheckedMaze::toIndex(const int& x, const int& y) const
 {
     return y * m_mWidth + x;
 }
+
 void CheckedMaze::fixMaze()
 {
     for (int y = 0; y < m_mHeight; y++)
@@ -175,6 +181,7 @@ void CheckedMaze::fixMaze()
         }
     }
 }
+
 void CheckedMaze::initMazeWithPath()
 {
     for (int y = 0; y < m_mHeight; y++)
@@ -185,6 +192,7 @@ void CheckedMaze::initMazeWithPath()
         }
     }
 }
+
 void CheckedMaze::initReversedMaze()
 {
     for (int y = 0; y < m_mHeight; y++)
@@ -218,16 +226,19 @@ void CheckedMaze::checkMaze()
             std::mt19937 gen(rd());
             // Define a range for the random number
             std::uniform_int_distribution<> distr(0, neighbours.size() - 1);
+
             // Get a random cell from the available neighbours
             auto nextCell = distr(gen);
             // Set the current coordinates to the random cell's
             m_x = neighbours[nextCell].first;
             m_y = neighbours[nextCell].second;
+
             // Mark the cell as a part of the solution
             maze->maze[toIndex(m_x, m_y)] = '0';
             m_visitedCells.push_back(std::make_pair(m_x, m_y));
             m_stack.push_back(std::make_pair(m_x, m_y));
             m_nVisitedCells++;
+
             // The path arrives at the end of the maze
             if((m_x == m_mWidth - 1 and m_y == m_mHeight - 1))
             {
@@ -241,6 +252,7 @@ void CheckedMaze::checkMaze()
                 printReversedMaze();
                 break;
             }
+
             // There is no solution to the maze
             if(m_nVisitedCells == m_possibleWays)
             {
@@ -252,10 +264,12 @@ void CheckedMaze::checkMaze()
                 break;
             }
         }
+
         else
         {
             // Unmark the cell
             maze->maze[toIndex(m_stack[m_stack.size() - 1].first, m_stack[m_stack.size() - 1].second)] = ' ';
+
             // Backtrack for a previous cell that has unchecked neighbours
             m_stack.pop_back();
         }
@@ -265,10 +279,12 @@ int CheckedMaze::getWidth() const
 {
     return m_mWidth;
 }
+
 int CheckedMaze::getHeight() const
 {
     return m_mHeight;
 }
+
 // Used for debugging
 void CheckedMaze::printCheckedMaze()
 {
@@ -282,6 +298,7 @@ void CheckedMaze::printCheckedMaze()
     }
     std::cout<<std::endl;
 }
+
 void CheckedMaze::printCheckedMazeWithPath()
 {
     for (int y = 0; y < m_mHeight; y++)
@@ -294,6 +311,7 @@ void CheckedMaze::printCheckedMazeWithPath()
     }
     std::cout<<std::endl;
 }
+
 void CheckedMaze::printReversedMaze()
 {
     for (int y = 0; y <m_mHeight; y++)
@@ -306,12 +324,14 @@ void CheckedMaze::printReversedMaze()
     }
     std::cout<<std::endl;
 }
+
 CheckedMaze::~CheckedMaze()
 {
     delete maze;
     delete[] mazeWithPath;
     delete[] reversedMaze;
 }
+
 // int main()
 // {
 //     CheckedMaze ch(20, 20);
