@@ -32,8 +32,9 @@ Rules, types of scrolls, chance etc
 # Setup
 ## Dependancies
 
-* g++ 10.3.0 or higher;
-* make 4.3 or higher;
+- [g++](https://gcc.gnu.org/) 10.3.0 or higher;
+- make 4.3 or higher;
+   - You can install it by using [chocolatey](https://chocolatey.org/).
 
 ## Usage
 Start the ***powershell*** script by doing this:
@@ -42,17 +43,50 @@ Start the ***powershell*** script by doing this:
 ```
 
 
+![Script Example](public/POWERSHELL_SCRIPT_EXAMPLE.png)
+![Script Developers Example](public/POWERSHELL_SCRIPT_DEVELOPERS.png)
+
+
+
+
 ## Using the binary from release
 
 Some link
-
-## Examples
-
-![Script Example](public/POWERSHELL_SCRIPT_EXAMPLE.png)
 
 
 
 # Building
 
+## **If you want to build it manually, you can do it by following these steps:**
 
+### 1. Prepare the build directory:
 
+```bash
+> mkdir build
+> cd build
+```
+
+### 2. After this, compile:
+
+```bash
+> make
+```
+
+### 3. Then, just run the exe:
+#### **On powershell or bash:**
+
+```bash
+> ./main
+```
+
+#### **On cmd(windows):**
+```bash
+> main.exe
+```
+
+## **Generating the documentation: **
+### Make sure you have ***doxygen*** installed:
+
+```bash
+doxygen
+```
