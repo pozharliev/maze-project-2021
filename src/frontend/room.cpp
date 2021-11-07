@@ -130,7 +130,7 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                 if(currentTile == 'R')
                 {
                     engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
-                    engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f});
+                    if(!leftRunePickedUp) { engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f}); }
                 }
 
                 if(currentTile == ' ')
@@ -205,7 +205,8 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                 if(currentTile == 'R')
                 {
                     engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
-                    engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f});
+                    
+                    if(!rightRunePickedUp) { engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f}); }
                 }
 
                 if(currentTile == ' ')
