@@ -15,9 +15,13 @@ LOG = logger
 
 all: main
 
-main: menu lobby uncheckedMaze mazeChecker room player collisions $(MAIN)
-	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) mainMenu.o lobby.o maze.o checkedMaze.o room.o player.o collisions.o $(LIBS)
+main: gameManager menu lobby uncheckedMaze mazeChecker room player collisions $(MAIN)
+	$(CXX) $(CXXFLAGS) -o $(EXECUTABLE) $(MAIN) gameManager.o mainMenu.o lobby.o maze.o checkedMaze.o room.o player.o collisions.o $(LIBS)
 	./$(EXECUTABLE)
+
+
+gameManager: $(SRC)/$(BE)/gameManager.cpp $(INCLUDE)/$(BE)/gameManager.h
+	$(CXX) $(CXXFLAGS) -c $(SRC)/$(BE)/gameManager.cpp
 
 menu: $(SRC)/$(FE)/mainMenu.cpp $(INCLUDE)/$(FE)/mainMenu.h
 	$(CXX) $(CXXFLAGS) -c $(SRC)/$(FE)/mainMenu.cpp
