@@ -122,6 +122,7 @@ void GameManager::Game(float fElapsedTime)
       {
         floors.at(currentFloor)->drawLobbyForeground(this);
       }
+      player->drawPlayerVignette(this);
     }
 }
 
