@@ -14,7 +14,8 @@ public:
     float playerVelX;
     float playerVelY;
     float playerRadius;
-    enum PLAYER_DIRS{
+    enum PLAYER_DIRS
+    {
         UP,
         DOWN,
         LEFT,
@@ -24,7 +25,8 @@ public:
     PLAYER_DIRS playerDir;
     bool firstPlayerMove;
     bool dashing;
-    struct inventory{
+    struct inventory
+    {
         bool speedScroll;
         bool dashScroll;
         bool pathScroll;
@@ -32,25 +34,23 @@ public:
     };
     inventory playerInv;
 
-    olc::Renderable* playerAnimSpritesheet;
-    olc::AnimatedSprite* Animator;
-    olc::Sprite* playerVignette;
-    olc::Decal* playerVignetteDecal;
+    olc::Renderable *playerAnimSpritesheet;
+    olc::AnimatedSprite *Animator;
+    olc::Sprite *playerVignette;
+    olc::Decal *playerVignetteDecal;
 
 private:
-
     void setUpAnimations();
 
 public:
-
     ~Player();
 
     void innitPlayer();
 
-    void movePlayer(olc::PixelGameEngine* engine, olc::Key dir, float elapsedTime);
+    void movePlayer(olc::PixelGameEngine *engine, olc::Key dir, float elapsedTime);
 
     void drawPlayer(olc::PixelGameEngine *engine, float elapsedTime);
-    
+
     void drawPlayerVignette(olc::PixelGameEngine *engine);
 
     void getInput();

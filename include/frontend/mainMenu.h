@@ -5,42 +5,42 @@
 
 class MainMenu
 {
-    public:
-        bool fullScreen;
-        std::fstream saveFile;
-        std::string line;
+public:
+    bool fullScreen;
+    std::fstream saveFile;
+    std::string line;
 
-    public:
-        bool isExit;
+public:
+    bool isExit;
 
-        bool pauseMenuEnabled;
-        bool mainMenuEnabled;
-        bool optionsMenuEnabled;
-        bool controllsMenuEnabled;
-        int menuOption;
-        bool optionsMenuEdit;
-        bool mainMenuEdit;
-        bool controllsEdit;
-        bool gameStarted;
-        bool anyKeyPressed;
-        bool sound;
-        olc::Sprite* welcomeLogo;
-        olc::Decal* welcomeLogoDecal;
+    bool pauseMenuEnabled;
+    bool mainMenuEnabled;
+    bool optionsMenuEnabled;
+    bool controllsMenuEnabled;
+    int menuOption;
+    bool optionsMenuEdit;
+    bool mainMenuEdit;
+    bool controllsEdit;
+    bool gameStarted;
+    bool anyKeyPressed;
+    bool sound;
+    olc::Sprite *welcomeLogo;
+    olc::Decal *welcomeLogoDecal;
 
-    public:
-        ~MainMenu();
+public:
+    ~MainMenu();
 
-        bool displayPauseMenu(olc::PixelGameEngine* engine, Collisions* collisions);
+    bool displayPauseMenu(olc::PixelGameEngine *engine, Collisions *collisions);
 
-        bool displayMainMenu(olc::PixelGameEngine* engine, Collisions* collisions);
+    bool displayMainMenu(olc::PixelGameEngine *engine, Collisions *collisions);
 
-        bool displayOptionsMenu(olc::PixelGameEngine* engine, Collisions* collisions);
+    bool displayOptionsMenu(olc::PixelGameEngine *engine, Collisions *collisions);
 
-        bool displayLoseMenu(olc::PixelGameEngine *engine, Collisions* collisions);
+    bool displayLoseMenu(olc::PixelGameEngine *engine, Collisions *collisions);
 
-        bool displayControllsMenu(olc::PixelGameEngine* engine, Collisions* collisions);
+    bool displayControllsMenu(olc::PixelGameEngine *engine, Collisions *collisions);
 
-        void getMenuInput(olc::PixelGameEngine* engine, std::string menuType, Collisions* collisions);
+    void getMenuInput(olc::PixelGameEngine *engine, std::string menuType, Collisions *collisions);
 
-        bool pressAnyKey(olc::PixelGameEngine* engine);
+    bool pressAnyKey(olc::PixelGameEngine *engine);
 };

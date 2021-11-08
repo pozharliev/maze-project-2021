@@ -194,10 +194,6 @@ void GameManager::Cutscene(float fElapsedTime)
         DrawDecal({0.0f - player->playerX, 0.0f - player->playerY}, cutscene);
         player->playerPos = {player->playerX, player->playerY};
         player->playerSpeed = 30.0f;
-        // if (!player->firstPlayerMove)
-        // {
-        //   collisions->checkCollisions(player, lobby, room);
-        // }
         player->drawPlayer(this, fElapsedTime);
     }
 }
@@ -222,10 +218,10 @@ void GameManager::getInput(float elapsedTime)
         vignette = !vignette;
     }
 
-     if(this->GetKey(olc::E).bPressed /*&& player->playerInv.pathScroll*/)
-     {
-       floors.at(currentFloor)->room->pathEnabled = !floors.at(currentFloor)->room->pathEnabled;
-     }
+    if (this->GetKey(olc::E).bPressed /*&& player->playerInv.pathScroll*/)
+    {
+        floors.at(currentFloor)->room->pathEnabled = !floors.at(currentFloor)->room->pathEnabled;
+    }
 
     //If the input is left arrow
     if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::LEFT)

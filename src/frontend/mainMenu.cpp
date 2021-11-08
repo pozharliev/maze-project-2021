@@ -364,7 +364,7 @@ void MainMenu::getMenuInput(olc::PixelGameEngine *engine, std::string menuType, 
             {
                 PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
             }
-                isExit = true;
+            isExit = true;
         }
     }
 }

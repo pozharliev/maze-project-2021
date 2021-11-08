@@ -10,31 +10,30 @@ class GameManager : public olc::PixelGameEngine
 {
 
 public:
-  MainMenu *mainMenu;
-  Player *player;
-  Collisions *collisions;
-  std::vector<Lobby*> floors;
-  int floorCount;
-  int currentFloor;
-  olc::Sprite* cutsceneSprite;
-  olc::Decal* cutscene;
-  bool inCutscene;
-  bool vignette;
+    MainMenu *mainMenu;
+    Player *player;
+    Collisions *collisions;
+    std::vector<Lobby *> floors;
+    int floorCount;
+    int currentFloor;
+    olc::Sprite *cutsceneSprite;
+    olc::Decal *cutscene;
+    bool inCutscene;
+    bool vignette;
 
 public:
-  GameManager();
+    GameManager();
 
-  ~GameManager();
+    ~GameManager();
 
 private:
-  bool OnUserCreate() override;
+    bool OnUserCreate() override;
 
-  bool OnUserUpdate(float fElapsedTime) override;
+    bool OnUserUpdate(float fElapsedTime) override;
 
-  void Game(float fElapsedTime);
+    void Game(float fElapsedTime);
 
-  void Cutscene(float fElapsedTime);
+    void Cutscene(float fElapsedTime);
 
-  void getInput(float elapsedTime);
-
+    void getInput(float elapsedTime);
 };
