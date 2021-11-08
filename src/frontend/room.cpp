@@ -8,7 +8,6 @@ Room::~Room()
     delete runeSprite;
     delete rune;
     delete runeTileSprite;
-    delete runeTile;
     delete scroll;
     delete scrollDecal;
     delete scrollAnimSpritesheet;
@@ -129,7 +128,7 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 
                 if(currentTile == 'R')
                 {
-                    engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
+                    engine->DrawSprite({x * tileWidth, y * tileHeight}, runeTileSprite);
                     if(!leftRunePickedUp) { engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f}); }
                 }
 
@@ -198,7 +197,7 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 
                 if(currentTile == 'R')
                 {
-                    engine->DrawDecal({x * tileWidth, y * tileHeight}, runeTile);
+                    engine->DrawSprite({x * tileWidth, y * tileHeight}, runeTileSprite);
                     
                     if(!rightRunePickedUp) { engine->DrawDecal({x * tileWidth + 1.5f, y * tileHeight}, rune, {0.55f, 0.55f}); }
                 }

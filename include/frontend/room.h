@@ -30,7 +30,6 @@ class Room
         bool rightRunePickedUp;
 
         olc::Sprite* runeTileSprite;
-        olc::Decal* runeTile;
 
         struct item{
             int x;

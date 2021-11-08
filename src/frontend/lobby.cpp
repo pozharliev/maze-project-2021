@@ -7,7 +7,6 @@ Lobby::Lobby(int count)
     room->runeSprite = new olc::Sprite("public/rune.png");
     room->rune = new olc::Decal(room->runeSprite);
     room->runeTileSprite = new olc::Sprite("public/rune_tile.png");
-    room->runeTile = new olc::Decal(room->runeTileSprite);
     room->scroll = new olc::Sprite("public/scroll.png");
     room->scrollDecal = new olc::Decal(room->scroll);
     room->roomEnriched = false;
