@@ -27,6 +27,8 @@ public:
     bool sound;
     olc::Sprite *welcomeLogo;
     olc::Decal *welcomeLogoDecal;
+    olc::Sprite *winScrollSprite;
+    olc::Decal *winScroll;
 
 public:
     ~MainMenu();

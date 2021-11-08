@@ -4,6 +4,8 @@ MainMenu::~MainMenu()
 {
     delete welcomeLogo;
     delete welcomeLogoDecal;
+    delete winScrollSprite;
+    delete winScroll;
 }
 
 bool MainMenu::pressAnyKey(olc::PixelGameEngine *engine)
@@ -22,10 +24,13 @@ bool MainMenu::pressAnyKey(olc::PixelGameEngine *engine)
 
 bool MainMenu::displayPauseMenu(olc::PixelGameEngine *engine, Collisions *collisions)
 {
+    //Set up menu options
     std::string menuOptionsArr[2] = {"Continue", "Quit To Menu"};
     engine->Clear(olc::BLACK);
+    //Give left spacing
     int spacing = -16;
 
+    //Go through every menu option
     for (int i = 0; i < 2; i++)
     {
         if (i == menuOption)
@@ -40,6 +45,7 @@ bool MainMenu::displayPauseMenu(olc::PixelGameEngine *engine, Collisions *collis
         spacing += 32;
     }
 
+    //Set menu type
     getMenuInput(engine, "pause", collisions);
     spacing = -16;
     return true;
@@ -47,10 +53,13 @@ bool MainMenu::displayPauseMenu(olc::PixelGameEngine *engine, Collisions *collis
 
 bool MainMenu::displayMainMenu(olc::PixelGameEngine *engine, Collisions *collisions)
 {
+    //Set up menu options
     std::string menuOptionsArr[3] = {"Start Game", "Options", "Quit Game"};
     engine->Clear(olc::BLACK);
+    //Give left spacing
     int spacing = -32;
 
+    //Go through every menu option
     for (int i = 0; i < 3; i++)
     {
         if (i == menuOption)
@@ -64,6 +73,8 @@ bool MainMenu::displayMainMenu(olc::PixelGameEngine *engine, Collisions *collisi
 
         spacing += 32;
     }
+
+    //Set menu type
     getMenuInput(engine, "main", collisions);
     mainMenuEdit = true;
     spacing = -32;
@@ -141,7 +152,7 @@ bool MainMenu::displayLoseMenu(olc::PixelGameEngine *engine, Collisions *collisi
 bool MainMenu::displayWinMenu(olc::PixelGameEngine *engine, Collisions *collisions)
 {
     engine->Clear(olc::BLACK);
-    engine->DrawString(engine->ScreenWidth() / 2 - 72.0f, engine->ScreenWidth() / 8, "You...y.WHAT, YOU JUST WON THE GAME", olc::WHITE, 1);
+    engine->DrawDecal({25.0f,15.0f }, winScroll, {0.90f,0.90f});
     engine->DrawString(engine->ScreenWidth() / 2 - 55, engine->ScreenHeight() / 1.3f, "-> Quit game...", olc::DARK_GREY);
     getMenuInput(engine, "win", collisions);
     return true;

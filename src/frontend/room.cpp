@@ -31,6 +31,7 @@ Room::Room(int mWidth, int mHeight)
 
     roomEnriched = false;
 
+    //Init maze
     rightMaze = new CheckedMaze(mazeWidth, mazeHeight);
     rightMaze->checkMaze();
     leftMaze = new CheckedMaze(mazeWidth, mazeHeight);
@@ -67,8 +68,10 @@ void Room::setUpScrollAnimations()
 void Room::generateRoom()
 {
 
+    //Create fstream log file
     rawMazeData.open("data/leftRawMazeData.maze", std::ofstream::out);
 
+    //Display the maze in the file for debbuging purposes
     for (int i = 0; i < mazeHeight; i++)
     {
         for (int j = 0; j < mazeWidth; j++)
@@ -84,13 +87,15 @@ void Room::generateRoom()
         }
         rawMazeData << '\n';
     }
-
+    //Close fstram log file
     rawMazeData.close();
 
     leftMaze->checkedMaze[1 * mazeWidth + 1] = 'R';
 
+    //Create fstream log file
     rawMazeData.open("data/rightRawMazeData.maze", std::ofstream::out);
 
+    //Display the maze in the file for debbuging purposes
     for (int i = 0; i < mazeHeight; i++)
     {
         for (int j = 0; j < mazeWidth; j++)
@@ -107,6 +112,7 @@ void Room::generateRoom()
         rawMazeData << '\n';
     }
 
+    //Close fstram log file
     rawMazeData.close();
 
     rightMaze->checkedMaze[(mazeHeight - 1) * mazeWidth + (mazeWidth - 1)] = 'R';
@@ -124,12 +130,13 @@ char Room::getPathTile(std::string mazeOrientation, int x, int y)
 
 void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 {
-
+    //Checks the room orientation and displays the maze
     if (mazeOrientation == "left")
     {
 
         engine->DrawSprite({engine->ScreenWidth() - 25.1f, (engine->ScreenHeight() / 2) - 36.0f}, platformSprite);
 
+        //Checks each tile of the maze and displays something related to the char of the tile
         for (int x = 0; x <= mazeWidth; x++)
         {
             for (int y = 0; y <= mazeHeight; y++)
@@ -307,5 +314,6 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
         }
     }
 
+    //Gives indication that there are scrolls in the room
     roomEnriched = true;
 }

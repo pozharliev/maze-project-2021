@@ -50,6 +50,8 @@ bool GameManager::OnUserCreate()
     mainMenu->gameWon = false;
     mainMenu->welcomeLogo = new olc::Sprite("public/VAVYLON_LOGO_BIG_NOBG.png");
     mainMenu->welcomeLogoDecal = new olc::Decal(mainMenu->welcomeLogo);
+    mainMenu->winScrollSprite = new olc::Sprite("public/winScroll.png");
+    mainMenu->winScroll = new olc::Decal(mainMenu->winScrollSprite);
 
     for (int i = 0; i < floorCount; i++)
     {
