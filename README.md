@@ -38,6 +38,11 @@ ___
 | Lobby     | One lobby for every two mazes(one floor). |
 | Floor     | Currenty three per game.                  |
 
+## 3. Rules
+### 1. Going outside any path in the maze results in **losing**.
+### 2. Picking up the two runes from the 2 mazes will result in going one floor up.
+### 3. Have fun!
+
 # Screenshots
 
 # Setup
@@ -98,3 +103,8 @@ Some link
 ```
 ### Then, open the index.html file in the docs/doxygen/html folder.
 - **5th option in the powershell script**
+
+# Reviews
+If you're not sold on this game yet, just listen to what our very satisfied customers have to say about it!
+## "This game is pretty cool" - Pesho
+## "Really fun to play with friends and family haha" - Also Pesho
