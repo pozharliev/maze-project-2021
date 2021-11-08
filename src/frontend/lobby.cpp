@@ -27,6 +27,7 @@ Lobby::~Lobby()
 
 void Lobby::initLobby()
 {
+    //Init lobby borders
     lobbyWidth = 32;
     lobbyHeight = 17;
 

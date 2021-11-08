@@ -24,6 +24,7 @@ GameManager::~GameManager()
 
 bool GameManager::OnUserCreate()
 {
+    //Called once at the start of the program
     cutsceneSprite = new olc::Sprite("public/Cutscene.png");
     cutscene = new olc::Decal(cutsceneSprite);
     inCutscene = false;
@@ -79,9 +80,11 @@ bool GameManager::OnUserCreate()
 
 bool GameManager::OnUserUpdate(float fElapsedTime)
 {
+    //Called every frame of the program
     floors.at(currentFloor)->room->sound = mainMenu->sound;
     Clear(olc::BLACK);
 
+    //CutScene functionality
     if (mainMenu->gameStarted)
     {
         if (!inCutscene)
@@ -94,6 +97,7 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
         }
     }
 
+    //Floor switching functionality
     if (!floors.at(currentFloor)->inMaze)
     {
         if (floors.at(currentFloor)->hallCollision(player, floors.at(currentFloor)->stairCase))
@@ -115,6 +119,7 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
         }
     }
 
+    //Menu call functionality
     if (mainMenu->anyKeyPressed)
     {
         if (mainMenu->mainMenuEnabled)
@@ -157,6 +162,7 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
 
 void GameManager::Game(float fElapsedTime)
 {
+    //Called on Start Game
     getInput(fElapsedTime);
 
     if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !mainMenu->controllsMenuEnabled && !mainMenu->gameWon && !collisions->gameEnded)
