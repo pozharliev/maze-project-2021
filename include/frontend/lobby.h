@@ -34,7 +34,7 @@ public:
   };
 
   rect stairCase;
-
+  
   rect r;
   bool inMaze;
   olc::Sprite *lobbyRoom;
