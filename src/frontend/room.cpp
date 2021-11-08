@@ -21,6 +21,7 @@ Room::~Room()
 
 Room::Room(int mWidth, int mHeight)
 {
+    //Set up imporant variables
     mazeWidth = mWidth;
     mazeHeight = mHeight;
     tileWidth = 13;
@@ -44,6 +45,7 @@ Room::Room(int mWidth, int mHeight)
 
 void Room::setUpScrollAnimations()
 {
+    //Same as the player animation state machine, creates all the states for the scrolls
     scrollAnimSpritesheet = new olc::Renderable();
     scrollAnimSpritesheet->Load("public/Scroll_Anim_Spritesheet.png");
     scrollAnimator = new olc::AnimatedSprite();
