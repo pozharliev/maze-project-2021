@@ -130,7 +130,38 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                             i.pickedUp = true;
                         }
                     }
-                 } //else { gameEnded = true; }
+                 }
+                else
+                { 
+                    if(lobby->inLeftMaze)
+                    {
+                        if(player->playerX < 310 && player->playerX > 0)
+                        {
+                            gameEnded = true;
+                        }
+                        if(player->playerX > 310)
+                        {
+                            if(player->playerY < 62 || player->playerY > 118)
+                            {
+                                gameEnded = true;
+                            }
+                        }
+                    }
+                    else if(lobby->inRightMaze)
+                    {
+                        if(player->playerX > 15)
+                        {
+                            gameEnded = true; 
+                        }
+                        if(player->playerX < 15)
+                        {
+                            if(player->playerY < 62 || player->playerY > 118)
+                            {
+                                gameEnded = true;
+                            }
+                        }
+                    }
+                }
                 
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
@@ -192,7 +223,38 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                             i.pickedUp = true;
                         }
                     }
-                } //else { gameEnded = true; }
+                }
+                else
+                { 
+                    if(lobby->inLeftMaze)
+                    {
+                        if(player->playerX < 310 && player->playerX > 0)
+                        {
+                            gameEnded = true;
+                        }
+                        if(player->playerX > 310)
+                        {
+                            if(player->playerY < 62 || player->playerY > 118)
+                            {
+                                gameEnded = true;
+                            }
+                        }
+                    }
+                    else if(lobby->inRightMaze)
+                    {
+                        if(player->playerX > 15)
+                        {
+                            gameEnded = true; 
+                        }
+                        if(player->playerX < 15)
+                        {
+                            if(player->playerY < 62 || player->playerY > 118)
+                            {
+                                gameEnded = true;
+                            }
+                        }
+                    }
+                }
 
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
@@ -253,7 +315,38 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                             i.pickedUp = true;
                         }
                     }
-                 } //else { gameEnded = true; }
+                 }
+                else
+                { 
+                    if(lobby->inLeftMaze)
+                    {
+                        if(player->playerX < 310 && player->playerX > 0)
+                        {
+                            gameEnded = true;
+                        }
+                        if(player->playerX > 310)
+                        {
+                            if(player->playerY < 62 || player->playerY > 118)
+                            {
+                                gameEnded = true;
+                            }
+                        }
+                    }
+                    else if(lobby->inRightMaze)
+                    {
+                        if(player->playerX > 15)
+                        {
+                            gameEnded = true; 
+                        }
+                        if(player->playerX < 15)
+                        {
+                            if(player->playerY < 62 || player->playerY > 118)
+                            {
+                                gameEnded = true;
+                            }
+                        }
+                    }
+                }
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
 
@@ -314,7 +407,38 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                             i.pickedUp = true;
                         }
                     }
-                 } //else { gameEnded = true; }
+                 }
+                else
+                { 
+                    if(lobby->inLeftMaze)
+                    {
+                        if(player->playerX < 310 && player->playerX > 0)
+                        {
+                            gameEnded = true;
+                        }
+                        if(player->playerX > 310)
+                        {
+                            if(player->playerY < 62 || player->playerY > 118)
+                            {
+                                gameEnded = true;
+                            }
+                        }
+                    }
+                    else if(lobby->inRightMaze)
+                    {
+                        if(player->playerX > 15)
+                        {
+                            gameEnded = true; 
+                        }
+                        if(player->playerX < 15)
+                        {
+                            if(player->playerY < 62 || player->playerY > 118)
+                            {
+                                gameEnded = true;
+                            }
+                        }
+                    }
+                }
             } else { lastCollisionDir = player->PLAYER_DIRS::NONE; }
         }
     

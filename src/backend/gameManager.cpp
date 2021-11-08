@@ -152,10 +152,12 @@ void GameManager::Game(float fElapsedTime)
     if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !mainMenu->controllsMenuEnabled && !collisions->gameEnded)
     {
         floors.at(currentFloor)->drawLobby(this, player);
+
         if (!player->firstPlayerMove)
         {
             collisions->checkCollisions(this, player, floors.at(currentFloor), floors.at(currentFloor)->room);
         }
+
         player->playerPos = {player->playerX, player->playerY};
         player->drawPlayer(this, fElapsedTime);
         if (!floors.at(currentFloor)->inMaze)
