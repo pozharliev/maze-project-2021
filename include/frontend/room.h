@@ -26,6 +26,10 @@ class Room
 
         olc::Sprite* runeSprite;
         olc::Decal* rune;
+        olc::Sprite* runeSpriteIcon;
+        olc::Decal* runeIcon;
+        olc::Sprite* scrollDashSprite;
+        olc::Decal* scrollDash;
         bool leftRunePickedUp;
         bool rightRunePickedUp;
 

@@ -12,6 +12,10 @@ Room::~Room()
     delete scrollDecal;
     delete scrollAnimSpritesheet;
     delete scrollAnimator;
+    delete runeSpriteIcon;
+    delete runeIcon;
+    delete scrollDashSprite;
+    delete scrollDash;
 }
 
 Room::Room(int mWidth, int mHeight)

@@ -19,6 +19,7 @@ public:
   olc::Sprite* cutsceneSprite;
   olc::Decal* cutscene;
   bool inCutscene;
+  bool vignette;
 
 public:
   GameManager();

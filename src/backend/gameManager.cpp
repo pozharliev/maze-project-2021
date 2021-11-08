@@ -27,6 +27,7 @@ bool GameManager::OnUserCreate()
     cutsceneSprite = new olc::Sprite("public/Cutscene.png");
     cutscene = new olc::Decal(cutsceneSprite);
     inCutscene = false;
+    vignette = true;
 
     player->innitPlayer();
     player->playerX = ScreenWidth() / 2;
@@ -161,7 +162,24 @@ void GameManager::Game(float fElapsedTime)
         {
             floors.at(currentFloor)->drawLobbyForeground(this);
         }
-        player->drawPlayerVignette(this);
+        if (vignette)
+        {
+            player->drawPlayerVignette(this);
+        }
+        this->DrawDecal({this->ScreenWidth() - 28, 4.5f}, floors.at(currentFloor)->room->runeIcon, {0.44f, 0.44f});
+        this->DrawString(this->ScreenWidth() - 14, 5, std::to_string(player->playerInv.runes), olc::WHITE, 1);
+        if (player->playerInv.dashScroll == true)
+        {
+            this->DrawDecal({5, 4.5f}, floors.at(currentFloor)->room->scrollDash, {0.22, 0.22});
+        }
+        if (player->playerInv.pathScroll == true)
+        {
+            this->DrawDecal({5, 11.5f}, floors.at(currentFloor)->room->scrollDecal, {0.22, 0.22});
+        }
+        if (player->playerInv.speedScroll == true)
+        {
+            this->DrawDecal({5, 16.5f}, floors.at(currentFloor)->room->scrollDecal, {0.22, 0.22});
+        }
     }
 }
 
@@ -189,12 +207,17 @@ void GameManager::getInput(float elapsedTime)
     {
         if (currentFloor == floorCount - 1)
         {
-            exit(0);
+            mainMenu->isExit = true;
         }
         else
         {
             currentFloor++;
         }
+    }
+
+    if (this->GetKey(olc::Q).bPressed)
+    {
+        vignette = !vignette;
     }
 
     // if(this->GetKey(olc::E).bPressed /*&& player->playerInv.pathScroll*/)

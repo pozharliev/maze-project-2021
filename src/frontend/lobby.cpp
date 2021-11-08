@@ -6,6 +6,10 @@ Lobby::Lobby(int count)
     room = new Room(24, 12);
     room->runeSprite = new olc::Sprite("public/rune.png");
     room->rune = new olc::Decal(room->runeSprite);
+    room->runeSpriteIcon = new olc::Sprite("public/runeIcon.png");
+    room->runeIcon = new olc::Decal(room->runeSpriteIcon);
+    room->scrollDashSprite = new olc::Sprite("public/scrollDash.png");
+    room->scrollDash = new olc::Decal(room->scrollDashSprite);
     room->runeTileSprite = new olc::Sprite("public/rune_tile.png");
     room->scroll = new olc::Sprite("public/scroll.png");
     room->scrollDecal = new olc::Decal(room->scroll);
@@ -130,8 +134,6 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player)
 
 
         engine->DrawSprite(0, 0, lobbyRoom);
-
-        engine->DrawRect(stairCase.pos, stairCase.size, olc::RED);
 
         if(hallCollision(player, roomLeft))
         {
