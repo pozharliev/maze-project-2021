@@ -84,7 +84,7 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player)
             currentMaze = LEFT;
             if(!leftMazeEnter)
             {
-                player->playerX = abs(player->playerX - engine->ScreenWidth() + 28.0f);
+                player->playerX = abs(player->playerX - engine->ScreenWidth() + 10.0f);
                 leftMazeEnter = true;
             }
         }
@@ -94,7 +94,7 @@ void Lobby::drawLobby(olc::PixelGameEngine* engine, Player* player)
             currentMaze = RIGHT;
             if(!rightMazeEnter)
             {
-                player->playerX = abs(player->playerX - engine->ScreenWidth() + 28.0f);
+                player->playerX = abs(player->playerX - engine->ScreenWidth() + 15.0f);
                 rightMazeEnter = true;
             }
         }

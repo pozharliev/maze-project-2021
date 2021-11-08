@@ -4,6 +4,7 @@ Room::~Room()
 {
     delete[] rightMaze;
     delete[] leftMaze;
+    delete platformSprite;
     delete mazeTile;
     delete runeSprite;
     delete rune;
@@ -31,6 +32,9 @@ Room::Room(int mWidth, int mHeight)
     rightMaze->checkMaze();
     leftMaze = new CheckedMaze(mazeWidth, mazeHeight);
     leftMaze->checkMaze();
+
+    platformSprite = new olc::Sprite("public/Maze_Platform.png");
+    platformSpriteRight = new olc::Sprite("public/Maze_Platform_Right.png");
 
     mazeTile = new olc::Sprite("public/tile.png");
 
@@ -124,6 +128,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 
     if (mazeOrientation == "left")
     {
+
+        engine->DrawSprite({engine->ScreenWidth() - 25.1f, (engine->ScreenHeight() / 2) - 36.0f}, platformSprite);
+
         for (int x = 0; x <= mazeWidth; x++)
         {
             for (int y = 0; y <= mazeHeight; y++)
@@ -193,6 +200,9 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
     }
     else
     {
+
+        engine->DrawSprite({0.0f , (engine->ScreenHeight() / 2) - 35.5f}, platformSpriteRight);
+
         for (int x = 0; x < mazeWidth; x++)
         {
             for (int y = 0; y < mazeHeight; y++)

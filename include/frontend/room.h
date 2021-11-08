@@ -24,6 +24,8 @@ class Room
         int tileHeight;
         bool roomEnriched;
 
+        olc::Sprite* platformSprite;
+        olc::Sprite* platformSpriteRight;
         olc::Sprite* runeSprite;
         olc::Decal* rune;
         olc::Sprite* runeSpriteIcon;
