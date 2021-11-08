@@ -106,5 +106,9 @@ Some link
 
 # Reviews
 If you're not sold on this game yet, just listen to what our very satisfied customers have to say about it!
-## "This game is pretty cool" - Pesho
-## "Really fun to play with friends and family haha" - Also Pesho
+
+![Vavylon Logo](public/jeff.png) "This game is pretty cool" - Lost Adventurer
+    (picture of Lost Adventurer)
+
+![Vavylon Logo](public/jeff.png) "Really fun to play with friends and family haha" - Also Lost Adventurer
+    (another picture of Lost Adventurer)
