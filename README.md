@@ -96,7 +96,7 @@ Some link
 ```
 
 ## Generating the documentation:
-### Make sure you have [doxygen](https://www.doxygen.nl/index.html) installed:
+### Make sure you have [doxygen](https://www.doxygen.nl/index.html) and [graphviz](https://graphviz.org/) installed:
 
 ```bash
 > doxygen
