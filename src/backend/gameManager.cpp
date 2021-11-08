@@ -239,7 +239,7 @@ void GameManager::getInput(float elapsedTime)
                 PlaySoundA("public/sfx/dashSFX.wav", NULL, SND_ASYNC);
             }
             player->dashing = true;
-            player->playerX -= 17.0f;
+            player->playerX -= 20.0f;
             player->Animator->SetState("dashLeft");
         }
         if (this->GetKey(olc::SHIFT).bReleased && player->playerInv.dashScroll == true)
@@ -266,7 +266,7 @@ void GameManager::getInput(float elapsedTime)
                 PlaySoundA("public/sfx/dashSFX.wav", NULL, SND_ASYNC);
             }
             player->dashing = true;
-            player->playerX += 17.0f;
+            player->playerX += 20.0f;
             player->Animator->SetState("dashRight");
         }
         if (this->GetKey(olc::SHIFT).bReleased && player->playerInv.dashScroll == true)
@@ -293,7 +293,7 @@ void GameManager::getInput(float elapsedTime)
                 PlaySoundA("public/sfx/dashSFX.wav", NULL, SND_ASYNC);
             }
             player->dashing = true;
-            player->playerY -= 17.0f;
+            player->playerY -= 20.0f;
             player->Animator->SetState("dashUp");
         }
 
@@ -321,7 +321,7 @@ void GameManager::getInput(float elapsedTime)
                 PlaySoundA("public/sfx/dashSFX.wav", NULL, SND_ASYNC);
             }
             player->dashing = true;
-            player->playerY += 17.0f;
+            player->playerY += 20.0f;
             player->Animator->SetState("dashDown");
         }
 
