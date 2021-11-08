@@ -13,5 +13,9 @@ public:
     bool gameEnded;
 
 public:
+    /**
+    * @brief Checks for collisions with the player in the lobby and the rooms.
+    * @brief Detects and manages when the player picks up a scroll.
+    **/
     void checkCollisions(olc::PixelGameEngine *engine, Player *player, Lobby *lobby, Room *room);
 };

@@ -55,16 +55,35 @@ public:
 public:
     Lobby(int count);
     ~Lobby();
+    /**
+    * @brief Returns the symbol from the lobby array on x and y coordinates.
+    **/
     char getTile(int x, int y);
 
+    /**
+    * @brief Displays the lobby.
+    **/
     void drawLobby(olc::PixelGameEngine *engine, Player *player);
 
+    /**
+    * @brief Draws the foreground of the lobby(the objects infront of the player).
+    **/
     void drawLobbyForeground(olc::PixelGameEngine *engine);
 
+    /**
+    * @brief Checks if the player is colliding with a rectangle(specifically for the doors).
+    **/
     bool hallCollision(Player *player, rect roomLeft);
 
+    /**
+    * @brief Checks if the player is colliding with a rectangle.
+    **/
     bool pointCollRect(const olc::vf2d &p, const rect &r);
 
 private:
+
+    /**
+    * @brief Sets up important variables and data for the lobby.
+    **/
     void initLobby();
 };

@@ -58,12 +58,29 @@ public:
     bool sound;
 
 private:
+    /**
+    * @brief Generates the two mazes in the room, based off of CheckedMaze class
+    * @brief and writes the data to .maze files.
+    **/
     void generateRoom();
 
 public:
     ~Room();
+    /**
+    * @brief Extracts parts of the ScrollAnimSpritesheet file and combines them in animations.
+    **/
     void setUpScrollAnimations();
+
+    /**
+    * @brief Returns the symbol from the desired maze(left or right) on x and y coordinates.
+    **/
     char getTile(std::string mazeOrientation, int x, int y);
+    /**
+    * @brief Returns the symbol from the desired solved maze(left or right) on x and y coordinates.
+    **/
     char getPathTile(std::string mazeOrientation, int x, int y);
+    /**
+    * @brief Displays the maze.
+    **/
     void DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation);
 };

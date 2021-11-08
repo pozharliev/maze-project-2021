@@ -8,8 +8,10 @@ MainMenu::~MainMenu()
 
 bool MainMenu::pressAnyKey(olc::PixelGameEngine *engine)
 {
+    //Draw the logo of the game
     engine->DrawDecal({engine->ScreenWidth() / 6.2f, engine->ScreenHeight() / 5}, welcomeLogoDecal, {0.12f, 0.12f});
     engine->DrawString(engine->ScreenWidth() / 2 - 76, engine->ScreenHeight() / 1.2f, "Press X to continue", olc::WHITE, 1);
+    //Listen for X key input
     if (engine->GetKey(olc::X).bPressed)
     {
         PlaySoundA("public/sfx/mainMenuEnterSFX.wav", NULL, SND_ASYNC);

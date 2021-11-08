@@ -10,6 +10,7 @@ Player::~Player()
 
 void Player::innitPlayer()
 {
+    //Set up important variables
     firstPlayerMove = true;
     dashing = false;
     playerAnimSpritesheet = new olc::Renderable();
@@ -34,6 +35,7 @@ void Player::innitPlayer()
 
 void Player::setUpAnimations()
 {
+//Each row is a seperate animation, the sprites for which are taken with specific cooridnates from the PlayerAnimSpritesheet file
 Animator->AddState("upIdle", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 0}} );
 
 Animator->AddState("downIdle", 0.065f, olc::AnimatedSprite::PLAY_MODE::LOOP, std::vector<olc::vi2d>{{64, 32}} );
@@ -124,12 +126,14 @@ Animator->SetState("upIdle");
 
 void Player::movePlayer(olc::PixelGameEngine *engine, olc::Key dir, float elapsedTime)
 {
+    //The handeling of the movement starts with recognizing which of the 4 move keys is pressed first
     switch (dir)
     {
     case olc::LEFT:
         firstPlayerMove = false;
         playerVelX = -playerSpeed;
         playerX += playerVelX * elapsedTime;
+        //Sets the animation state for the player to the proper direction
         if (!dashing)
         {
             Animator->SetState("left");
@@ -141,6 +145,7 @@ void Player::movePlayer(olc::PixelGameEngine *engine, olc::Key dir, float elapse
         firstPlayerMove = false;
         playerVelX = playerSpeed;
         playerX += playerVelX * elapsedTime;
+        //Sets the animation state for the player to the proper direction
         if (!dashing)
         {
             Animator->SetState("right");
@@ -152,6 +157,7 @@ void Player::movePlayer(olc::PixelGameEngine *engine, olc::Key dir, float elapse
         firstPlayerMove = false;
         playerVelY = -playerSpeed;
         playerY += playerVelY * elapsedTime;
+        //Sets the animation state for the player to the proper direction
         if (!dashing)
         {
             Animator->SetState("up");
@@ -163,6 +169,7 @@ void Player::movePlayer(olc::PixelGameEngine *engine, olc::Key dir, float elapse
         firstPlayerMove = false;
         playerVelY = playerSpeed;
         playerY += playerVelY * elapsedTime;
+        //Sets the animation state for the player to the proper direction
         if (!dashing)
         {
             Animator->SetState("down");
@@ -174,6 +181,7 @@ void Player::movePlayer(olc::PixelGameEngine *engine, olc::Key dir, float elapse
         break;
     }
 
+    //These variables hold the predicted position of the player(1 frame after the current one), used for calculating collisions
     newPlayerPosX = playerX + playerVelX * elapsedTime;
     newPlayerPosY = playerY + playerVelY * elapsedTime;
 }
@@ -185,5 +193,6 @@ void Player::drawPlayer(olc::PixelGameEngine *engine, float elapsedTime)
 
 void Player::drawPlayerVignette(olc::PixelGameEngine *engine)
 {
+    //Draws the atmoshperic fog around the player
     engine->DrawDecal({playerX - playerVignette->width / 2, playerY - playerVignette->height / 2}, playerVignetteDecal);
 }
