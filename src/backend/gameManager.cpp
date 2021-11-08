@@ -47,6 +47,7 @@ bool GameManager::OnUserCreate()
     mainMenu->gameStarted = false;
     mainMenu->anyKeyPressed = false;
     mainMenu->sound = true;
+    mainMenu->gameWon = false;
     mainMenu->welcomeLogo = new olc::Sprite("public/VAVYLON_LOGO_BIG_NOBG.png");
     mainMenu->welcomeLogoDecal = new olc::Decal(mainMenu->welcomeLogo);
 
@@ -97,8 +98,7 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
                 player->playerInv.runes = 0;
                 if (currentFloor == floorCount - 1)
                 {
-                    //Сомтаймс уин, сомтаймс лонт
-                    exit(0);
+                    mainMenu->gameWon = true;
                 }
                 else
                 {
@@ -136,6 +136,11 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
         {
             mainMenu->displayLoseMenu(this, collisions);
         }
+
+        if (mainMenu->gameWon)
+        {
+            mainMenu->displayWinMenu(this, collisions);
+        }
     }
     else
     {
@@ -149,7 +154,7 @@ void GameManager::Game(float fElapsedTime)
 {
     getInput(fElapsedTime);
 
-    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !mainMenu->controllsMenuEnabled && !collisions->gameEnded)
+    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !mainMenu->controllsMenuEnabled && !mainMenu->gameWon && !collisions->gameEnded)
     {
         floors.at(currentFloor)->drawLobby(this, player);
 
@@ -205,7 +210,7 @@ void GameManager::getInput(float elapsedTime)
     {
         if (currentFloor == floorCount - 1)
         {
-            mainMenu->isExit = true;
+            mainMenu->gameWon = true;
         }
         else
         {

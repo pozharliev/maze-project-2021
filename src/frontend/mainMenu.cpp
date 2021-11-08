@@ -138,6 +138,15 @@ bool MainMenu::displayLoseMenu(olc::PixelGameEngine *engine, Collisions *collisi
     return true;
 }
 
+bool MainMenu::displayWinMenu(olc::PixelGameEngine *engine, Collisions *collisions)
+{
+    engine->Clear(olc::BLACK);
+    engine->DrawString(engine->ScreenWidth() / 2 - 72.0f, engine->ScreenWidth() / 8, "You...y.WHAT, YOU JUST WON THE GAME", olc::WHITE, 1);
+    engine->DrawString(engine->ScreenWidth() / 2 - 55, engine->ScreenHeight() / 1.3f, "-> Quit game...", olc::DARK_GREY);
+    getMenuInput(engine, "win", collisions);
+    return true;
+}
+
 void MainMenu::getMenuInput(olc::PixelGameEngine *engine, std::string menuType, Collisions *collisions)
 {
     if (menuType == "main")
@@ -360,6 +369,18 @@ void MainMenu::getMenuInput(olc::PixelGameEngine *engine, std::string menuType, 
     {
         mainMenuEdit = false;
 
+        if (engine->GetKey(olc::ENTER).bPressed)
+        {
+            if (sound)
+            {
+                PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
+            }
+            isExit = true;
+        }
+    }
+
+    if (menuType == "win")
+    {
         if (engine->GetKey(olc::ENTER).bPressed)
         {
             if (sound)
