@@ -108,10 +108,6 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                         {
                             if(i.pickedUp == false)
                             {
-                                if (room->sound)
-                                {
-                                    PlaySoundA("public/sfx/scrollPickUp.wav", NULL, SND_ASYNC);
-                                }
                                 if(i.type == "path")
                                 {
                                     player->playerInv.pathScroll = true;
@@ -202,9 +198,6 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                             if(i.pickedUp == false)
                             {
                                 if (room->sound)
-                                {
-                                    PlaySoundA("public/sfx/scrollPickUp.wav", NULL, SND_ASYNC);
-                                }
                                 if(i.type == "path")
                                 {
                                     player->playerInv.pathScroll = true;
@@ -295,9 +288,6 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                             if(i.pickedUp == false)
                             {
                                 if (room->sound)
-                                {
-                                    PlaySoundA("public/sfx/scrollPickUp.wav", NULL, SND_ASYNC);
-                                }
                                 if(i.type == "path")
                                 {
                                     player->playerInv.pathScroll = true;
@@ -385,10 +375,6 @@ void Collisions::checkCollisions(olc::PixelGameEngine* engine, Player* player, L
                         {
                             if(i.pickedUp == false)
                             {
-                                if (room->sound)
-                                {
-                                    PlaySoundA("public/sfx/scrollPickUp.wav", NULL, SND_ASYNC);
-                                }
                                 if(i.type == "path")
                                 {
                                     player->playerInv.pathScroll = true;

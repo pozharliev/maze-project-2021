@@ -129,27 +129,10 @@ bool MainMenu::displayControllsMenu(olc::PixelGameEngine *engine, Collisions *co
 
 bool MainMenu::displayLoseMenu(olc::PixelGameEngine *engine, Collisions *collisions)
 {
-    std::string menuOptionsArr[2] = {"Back to main menu", "    Quit Game"};
     engine->Clear(olc::BLACK);
     engine->DrawString(engine->ScreenWidth() / 2 - 72.0f, engine->ScreenWidth() / 8, "You died!", olc::RED, 2);
-    int spacing = -32;
-
-    for (int i = 0; i < 2; i++)
-    {
-        if (i == menuOption)
-        {
-            engine->DrawString(engine->ScreenWidth() / 2 - 92, engine->ScreenHeight() / 1.3f + spacing, "-> " + menuOptionsArr[i], olc::DARK_GREY);
-        }
-        else
-        {
-            engine->DrawString(engine->ScreenWidth() / 2 - 68, engine->ScreenHeight() / 1.3f + spacing, menuOptionsArr[i], olc::WHITE);
-        }
-
-        spacing += 32;
-    }
+    engine->DrawString(engine->ScreenWidth() / 2 - 55, engine->ScreenHeight() / 1.3f, "-> Quit game...", olc::DARK_GREY);
     getMenuInput(engine, "lose", collisions);
-    optionsMenuEdit = true;
-    spacing = -32;
     return true;
 }
 
@@ -375,54 +358,13 @@ void MainMenu::getMenuInput(olc::PixelGameEngine *engine, std::string menuType, 
     {
         mainMenuEdit = false;
 
-        if (engine->GetKey(olc::DOWN).bPressed)
-        {
-            if (sound)
-            {
-                PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
-            }
-            if (menuOption == 1)
-            {
-                menuOption = 0;
-            }
-            else if (menuOption == 0)
-            {
-                menuOption = 1;
-            }
-        }
-
-        if (engine->GetKey(olc::UP).bPressed)
-        {
-            if (sound)
-            {
-                PlaySoundA("public/sfx/mainMenuHoverSFX.wav", NULL, SND_ASYNC);
-            }
-            if (menuOption == 0)
-            {
-                menuOption = 1;
-            }
-            else if (menuOption == 1)
-            {
-                menuOption = 0;
-            }
-        }
-
         if (engine->GetKey(olc::ENTER).bPressed)
         {
             if (sound)
             {
                 PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
             }
-            if (menuOption == 0)
-            {
-                collisions->gameEnded = false;
-                mainMenuEnabled = true;
-                menuOption = 0;
-            }
-            if (menuOption == 1)
-            {
                 isExit = true;
-            }
         }
     }
 }
