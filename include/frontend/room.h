@@ -44,7 +44,7 @@ class Room
         olc::Renderable* scrollAnimSpritesheet;
         olc::AnimatedSprite* scrollAnimator;
 
-        
+        bool sound;
 
     private:
         void generateRoom();

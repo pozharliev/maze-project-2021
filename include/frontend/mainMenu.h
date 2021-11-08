@@ -23,6 +23,7 @@ class MainMenu
         bool controllsEdit;
         bool gameStarted;
         bool anyKeyPressed;
+        bool sound;
         olc::Sprite* welcomeLogo;
         olc::Decal* welcomeLogoDecal;
 
