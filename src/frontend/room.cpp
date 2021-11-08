@@ -17,6 +17,8 @@ Room::~Room()
     delete runeIcon;
     delete scrollDashSprite;
     delete scrollDash;
+    delete scrollSpeedSprite;
+    delete scrollSpeed;
 }
 
 Room::Room(int mWidth, int mHeight)

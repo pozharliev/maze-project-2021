@@ -104,6 +104,11 @@ Some link
 ### Then, open the index.html file in the docs/doxygen/html folder.
 - **5th option in the powershell script**
 
+# Credits and Inspiration
+- **[Creator Assets for the SFX](https://www.youtube.com/channel/UCDEeP2ywYaTdO8YmvNmp-Tw)**
+- **Hyper Light Drifter for the inspiration**
+- **Dandistine for introducing us to the Pixel Game Engine essentials**
+- **And YOU for playing this game**
 # Reviews
 If you're not sold on this game yet, just listen to what our very satisfied customers have to say about it!
 

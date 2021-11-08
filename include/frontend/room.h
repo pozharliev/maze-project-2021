@@ -33,6 +33,8 @@ public:
     olc::Decal *runeIcon;
     olc::Sprite *scrollDashSprite;
     olc::Decal *scrollDash;
+    olc::Sprite *scrollSpeedSprite;
+    olc::Decal *scrollSpeed;
     bool leftRunePickedUp;
     bool rightRunePickedUp;
     bool pathEnabled;

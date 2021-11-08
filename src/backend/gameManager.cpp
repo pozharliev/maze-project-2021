@@ -180,7 +180,7 @@ void GameManager::Game(float fElapsedTime)
         }
         if (player->playerInv.speedScroll == true)
         {
-            this->DrawDecal({5, 16.5f}, floors.at(currentFloor)->room->scrollDecal, {0.22, 0.22});
+            this->DrawDecal({6, 16.5f}, floors.at(currentFloor)->room->scrollSpeed, {0.22, 0.22});
         }
     }
 }
