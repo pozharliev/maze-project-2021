@@ -41,7 +41,33 @@ function Get-Compilation {
 }
 
 function Get-Instructions {
-    Write-Host "Get instructions"
+    Get-Logo
+
+    Write-Host "1. Dependancies"
+    Write-Host "   - g++ 10.3.0 or higher;"
+    Write-Host "   - make 4.3 or higher;"
+    Write-Host "2. Compiling & Running"
+    Write-Host "    1. Run make (For compiling)"
+    Write-Host "    2. Run ./main.exe (For running)"
+    Write-Host "3. Cleaning"
+    Write-Host "   1. Automatically: "
+    Write-Host "      - make clean"
+    Write-Host "   2. Manually:"
+    Write-Host "      - rm *.exe; rm *.o`n"
+
+    Write-Host "`n1. Go Back."
+    Write-Host "2. Exit.`n"
+
+    $Option = Read-Host "Your option"
+
+    Clear-Host
+
+    switch($Option)
+    {
+        1 {Get-Options; break}
+        2 {Exit;}
+    }
+
 }
 
 function Get-Developers {
@@ -55,8 +81,6 @@ function Get-Developers {
     Write-Host "1. Go Back."
     Write-Host "2. Exit."
 
-    
-
     $Option = Read-Host "Your option"
 
     Clear-Host
@@ -69,6 +93,59 @@ function Get-Developers {
 }
 
 function Get-Info {
+    Get-Logo
+
+    Write-Host "Our project is a: " 
+    Write-Host "- highly engaging," 
+    Write-Host "- story-based,"
+    Write-Host "- rogue-like,"
+    Write-Host "- skill-based,"
+    Write-Host "- speedrun-optimized," 
+    Write-Host "- randomized game, related to the Babylon tower. `n"
+    Write-Host "It consists of a main menu, a lobby for every floor & 2 random generated mazes for each floor.`n"
+    Write-Host "Each floor has 2 mazes in it and every maze can have up to 3 types of scrolls in it. `n"
+
+    Write-Host "1. Go To Main Menu."
+    Write-Host "2. Go Next."
+    Write-Host "3. Exit.`n"
+
+    $Option = Read-Host "Your option"
+
+    Clear-Host
+
+    switch($Option)
+    {
+        1 {Get-Options; break}
+        2 {Get-Storyline; break}
+        3 {Exit;}
+    }
+}
+
+function Get-Storyline {
+    Get-Logo
+
+    Write-Host "You are a lost adventurer. It's dark, and you can't see anything.`n"
+    Write-Host "While wondering around, trying to find a way to escape the darkness,"
+    Write-Host "you come around the entrance of the famous Babylon tower."
+    Write-Host "Because the tower is famous for ligthing the way, you go in.`n"
+    Write-Host "But before you can find your way, you need to go through series of mazes."
+    Write-Host "But fear not, there are all types of scrolls left from previous adventurers to help you."
+    Write-Host "`nSolve the mazes, find all the runes and light your way!`n"
+
+    Write-Host "1. Go Back."
+    Write-Host "2. Go To Main Menu"
+    Write-Host "3. Exit.`n"
+
+    $Option = Read-Host "Your option"
+
+    Clear-Host
+
+    switch($Option)
+    {
+        1 {Get-Info; break}
+        2 {Get-Options; break}
+        3 {Exit;}
+    }
 
 }
 
