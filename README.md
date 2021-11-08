@@ -38,6 +38,11 @@ ___
 | Lobby     | One lobby for every two mazes(one floor). |
 | Floor     | Currenty three per game.                  |
 
+## 3. Rules
+### 1. Going outside any path in the maze results in **losing**.
+### 2. Picking up the two runes from the 2 mazes will result in going one floor up.
+### 3. Have fun!
+
 # Screenshots
 
 # Setup
