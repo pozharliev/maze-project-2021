@@ -37,6 +37,7 @@ Room::Room(int mWidth, int mHeight)
     platformSpriteRight = new olc::Sprite("public/Maze_Platform_Right.png");
 
     mazeTile = new olc::Sprite("public/tile.png");
+    pathTile = new olc::Sprite("public/pathTile.png");
 
     generateRoom();
     
@@ -123,6 +124,11 @@ char Room::getTile(std::string mazeOrientation, int x, int y)
     return (mazeOrientation == "left") ? leftMaze->checkedMaze[y * mazeWidth + x] : rightMaze->checkedMaze[y * mazeWidth + x];
 }
 
+char Room::getPathTile(std::string mazeOrientation, int x, int y)
+{
+    return (mazeOrientation == "left") ? leftMaze->mazeWithPath[y * mazeWidth + x] : rightMaze->mazeWithPath[y * mazeWidth + x];
+}
+
 void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
 {
 
@@ -195,6 +201,19 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                         }
                     }
                 }
+
+                if(pathEnabled)
+                {
+                    if(getPathTile("left", x, y) == '0')
+                    {
+                        if(x == 1 && y == 1)
+                        {
+                            engine->DrawSprite(x * tileWidth, y * tileHeight, runeTileSprite);
+                        } else { engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile); }
+                    }
+                }
+
+
             }
         }
     }
@@ -268,6 +287,18 @@ void Room::DrawRoom(olc::PixelGameEngine *engine, std::string mazeOrientation)
                         }
                     }
                 }
+
+                if(pathEnabled)
+                {
+                    if(getPathTile("right", x, y) == '0')
+                    {
+                        if(x == (mazeWidth - 1) && y == (mazeHeight - 1))
+                        {
+                            engine->DrawSprite(x * tileWidth, y * tileHeight, runeTileSprite);
+                        } else { engine->DrawSprite(x * tileWidth, y * tileHeight, pathTile); }
+                    }
+                }
+
             }
         }
     }

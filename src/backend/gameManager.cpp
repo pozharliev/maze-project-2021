@@ -61,7 +61,7 @@ bool GameManager::OnUserCreate()
         floors.at(i)->room->rightRunePickedUp = false;
         floors.at(i)->lobbyRays = new olc::Sprite("public/rays.png");
         floors.at(i)->lobbyRaysDecal = new olc::Decal(floors.at(i)->lobbyRays);
-        // floors.at(i)->room->path = false;
+        floors.at(i)->room->pathEnabled = false;
     }
     currentFloor = 0;
 
@@ -222,10 +222,10 @@ void GameManager::getInput(float elapsedTime)
         vignette = !vignette;
     }
 
-    // if(this->GetKey(olc::E).bPressed /*&& player->playerInv.pathScroll*/)
-    // {
-    //   floors.at(currentFloor)->room->path = !floors.at(currentFloor)->room->path;
-    // }
+     if(this->GetKey(olc::E).bPressed /*&& player->playerInv.pathScroll*/)
+     {
+       floors.at(currentFloor)->room->pathEnabled = !floors.at(currentFloor)->room->pathEnabled;
+     }
 
     //If the input is left arrow
     if (this->GetKey(olc::LEFT).bHeld && mainMenu->pauseMenuEnabled == false && mainMenu->mainMenuEnabled == false && collisions->lastCollisionDir != player->PLAYER_DIRS::LEFT)

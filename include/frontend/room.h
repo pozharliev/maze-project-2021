@@ -14,6 +14,7 @@ class Room
         float playerPosX;
         float playerPosY;
         olc::Sprite* mazeTile;
+        olc::Sprite* pathTile;
 
     public:
         Room(int mWidth, int mHeight);
@@ -34,6 +35,7 @@ class Room
         olc::Decal* scrollDash;
         bool leftRunePickedUp;
         bool rightRunePickedUp;
+        bool pathEnabled;
 
         olc::Sprite* runeTileSprite;
 
@@ -59,5 +61,6 @@ class Room
         ~Room();
         void setUpScrollAnimations();
         char getTile(std::string mazeOrientation, int x, int y);
+        char getPathTile(std::string mazeOrientation, int x, int y);
         void DrawRoom(olc::PixelGameEngine* engine, std::string mazeOrientation);
 };
