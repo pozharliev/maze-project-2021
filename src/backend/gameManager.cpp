@@ -58,6 +58,9 @@ bool GameManager::OnUserCreate()
         floors.at(i)->lobbyRoom = new olc::Sprite("public/lobby.png");
         floors.at(i)->lobbyForegroundSprite = new olc::Sprite("public/foreGroundLobby.png");
         floors.at(i)->lobbyForeground = new olc::Decal(floors.at(i)->lobbyForegroundSprite);
+        floors.at(i)->lobbyRoomUpper = new olc::Sprite("public/lobbyUpper.png");
+        floors.at(i)->lobbyForegroundUpperSprite = new olc::Sprite("public/foreGroundLobbyUpper.png");
+        floors.at(i)->lobbyForegroundUpper = new olc::Decal(floors.at(i)->lobbyForegroundUpperSprite);
         floors.at(i)->room->leftRunePickedUp = false;
         floors.at(i)->room->rightRunePickedUp = false;
         floors.at(i)->lobbyRays = new olc::Sprite("public/rays.png");
@@ -171,7 +174,7 @@ void GameManager::Game(float fElapsedTime)
         }
         if (vignette)
         {
-            player->drawPlayerVignette(this);
+            player->drawPlayerVignette(this, currentFloor);
         }
         this->DrawDecal({this->ScreenWidth() - 28, 4.5f}, floors.at(currentFloor)->room->runeIcon, {0.44f, 0.44f});
         this->DrawString(this->ScreenWidth() - 14, 5, std::to_string(player->playerInv.runes), olc::WHITE, 1);

@@ -39,6 +39,9 @@ public:
     olc::Sprite *lobbyRoom;
     olc::Sprite *lobbyForegroundSprite;
     olc::Decal *lobbyForeground;
+    olc::Sprite *lobbyRoomUpper;
+    olc::Sprite *lobbyForegroundUpperSprite;
+    olc::Decal *lobbyForegroundUpper;
     olc::Sprite *lobbyRays;
     olc::Decal *lobbyRaysDecal;
     bool leftMazeEnter;
