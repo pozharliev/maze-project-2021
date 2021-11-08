@@ -103,3 +103,8 @@ Some link
 ```
 ### Then, open the index.html file in the docs/doxygen/html folder.
 - **5th option in the powershell script**
+
+# Reviews
+If you're not sold on this game yet, just listen to what our very satisfied customers have to say about it!
+## "This game is pretty cool" - Pesho
+## "Really fun to play with friends and family haha" - Also Pesho
