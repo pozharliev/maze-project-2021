@@ -151,7 +151,7 @@ function Get-Storyline {
 
 function Get-Documentation {
     doxygen
-    ./docs\doxygen\html\index.html
+    ./docs\index.html
 
     Clear-Host
 

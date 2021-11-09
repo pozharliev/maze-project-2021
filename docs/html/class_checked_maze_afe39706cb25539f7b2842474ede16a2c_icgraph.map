@@ -1,0 +1,5 @@
+<map id="CheckedMaze::isInBound" name="CheckedMaze::isInBound">
+<area shape="rect" id="node1" title="Checks if a coordinate is in or outside the maze." alt="" coords="477,29,648,56"/>
+<area shape="rect" id="node2" href="$class_checked_maze.html#a66c268b0a5b6eff6bfdcc0bf26e7fa68" title="Checks every unvisited, in&#45;bound neighbour and returns a vector of all of the neighbour(s)." alt="" coords="233,29,429,56"/>
+<area shape="rect" id="node3" href="$class_checked_maze.html#ad2faf60731fc00809c701b1a1c3473a3" title="Recursively checks if the maze is solvable, and if it is not, generates a new one." alt="" coords="5,29,185,56"/>
+</map>

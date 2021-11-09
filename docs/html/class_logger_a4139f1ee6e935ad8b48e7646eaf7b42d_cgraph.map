@@ -1,0 +1,4 @@
+<map id="Logger::getLogs" name="Logger::getLogs">
+<area shape="rect" id="node1" title="Returns a timestamp with a message type and the message itself." alt="" coords="5,5,120,32"/>
+<area shape="rect" id="node2" href="$class_logger.html#ad1a791a5ce5c83ae40afcf00e765fc05" title="Generates time stamps." alt="" coords="168,5,283,32"/>
+</map>

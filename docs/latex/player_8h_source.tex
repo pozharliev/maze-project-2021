@@ -1,0 +1,66 @@
+\hypertarget{player_8h_source}{}\doxysection{player.\+h}
+\label{player_8h_source}\index{include/frontend/player.h@{include/frontend/player.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../backend/libs.h"{}}}
+\DoxyCodeLine{4 }
+\DoxyCodeLine{5  \textcolor{comment}{/* @file player.h}}
+\DoxyCodeLine{6 \textcolor{comment}{ *}}
+\DoxyCodeLine{7 \textcolor{comment}{ * @brief Declaration of the Player class.}}
+\DoxyCodeLine{8 \textcolor{comment}{ */}}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{14 \textcolor{keyword}{class }\mbox{\hyperlink{class_player}{Player}}}
+\DoxyCodeLine{15 \{}
+\DoxyCodeLine{16 \textcolor{keyword}{public}:}
+\DoxyCodeLine{17     \textcolor{keywordtype}{float} playerX;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{float} playerY;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{float} newPlayerPosX;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{float} newPlayerPosY;}
+\DoxyCodeLine{21     olc::vf2d playerPos;}
+\DoxyCodeLine{22     \textcolor{keywordtype}{float} playerSpeed;}
+\DoxyCodeLine{23     \textcolor{keywordtype}{float} playerVelX;}
+\DoxyCodeLine{24     \textcolor{keywordtype}{float} playerVelY;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{float} playerRadius;}
+\DoxyCodeLine{26     \textcolor{keyword}{enum} PLAYER\_DIRS}
+\DoxyCodeLine{27     \{}
+\DoxyCodeLine{28         UP,}
+\DoxyCodeLine{29         DOWN,}
+\DoxyCodeLine{30         LEFT,}
+\DoxyCodeLine{31         RIGHT,}
+\DoxyCodeLine{32         NONE}
+\DoxyCodeLine{33     \};}
+\DoxyCodeLine{34     PLAYER\_DIRS playerDir;}
+\DoxyCodeLine{35     \textcolor{keywordtype}{bool} firstPlayerMove;}
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} dashing;}
+\DoxyCodeLine{37     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_player_1_1inventory}{inventory}}}
+\DoxyCodeLine{38     \{}
+\DoxyCodeLine{39         \textcolor{keywordtype}{bool} speedScroll;}
+\DoxyCodeLine{40         \textcolor{keywordtype}{bool} dashScroll;}
+\DoxyCodeLine{41         \textcolor{keywordtype}{bool} pathScroll;}
+\DoxyCodeLine{42         \textcolor{keywordtype}{int} runes;}
+\DoxyCodeLine{43     \};}
+\DoxyCodeLine{44     \mbox{\hyperlink{struct_player_1_1inventory}{inventory}} playerInv;}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     olc::Renderable *playerAnimSpritesheet;}
+\DoxyCodeLine{47     olc::AnimatedSprite *Animator;}
+\DoxyCodeLine{48     olc::Sprite *playerVignette;}
+\DoxyCodeLine{49     olc::Decal *playerVignetteDecal;}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 \textcolor{keyword}{private}:}
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_player_a9788ddcb01f7b67c52fee41b2fe2fcc6}{setUpAnimations}}();}
+\DoxyCodeLine{56 }
+\DoxyCodeLine{57 \textcolor{keyword}{public}:}
+\DoxyCodeLine{58     \mbox{\hyperlink{class_player}{\string~Player}}();}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{63     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_player_ad43767c94b03ed4549489706de1b0244}{innitPlayer}}();}
+\DoxyCodeLine{64 }
+\DoxyCodeLine{74     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_player_a23c8e4abf033335bf8d0ba38930bce09}{movePlayer}}(olc::PixelGameEngine *engine, olc::Key dir, \textcolor{keywordtype}{float} elapsedTime);}
+\DoxyCodeLine{75     }
+\DoxyCodeLine{81     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_player_a957d2b1cbbf5ada0df3f32dcdd4290f3}{drawPlayer}}(olc::PixelGameEngine *engine, \textcolor{keywordtype}{float} elapsedTime);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{86     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_player_a762411e25e1fe1b22dd1aa991b17f0be}{drawPlayerVignette}}(olc::PixelGameEngine *engine, \textcolor{keywordtype}{int} count);}
+\DoxyCodeLine{87 \};}
+
+\end{DoxyCode}

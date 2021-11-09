@@ -1,0 +1,11 @@
+<map id="CheckedMaze::checkMaze" name="CheckedMaze::checkMaze">
+<area shape="rect" id="node1" title="Recursively checks if the maze is solvable, and if it is not, generates a new one." alt="" coords="5,145,185,172"/>
+<area shape="rect" id="node2" href="$class_checked_maze.html#a66c268b0a5b6eff6bfdcc0bf26e7fa68" title="Checks every unvisited, in&#45;bound neighbour and returns a vector of all of the neighbour(s)." alt="" coords="233,65,429,92"/>
+<area shape="rect" id="node5" href="$class_checked_maze.html#a0db23242774e0664efeda3945dc7e8a2" title="Converts 2D to 1D coordinates." alt="" coords="507,123,662,149"/>
+<area shape="rect" id="node6" href="$class_logger.html#a3b11ea8f81da0f06687741e6e85160f7" title="Logs an info message." alt="" coords="287,171,376,197"/>
+<area shape="rect" id="node9" href="$class_logger.html#ac966eee4f80868a5ed8aedfa15ab9a7c" title="Logs a warning message." alt="" coords="273,221,390,248"/>
+<area shape="rect" id="node3" href="$class_checked_maze.html#afe39706cb25539f7b2842474ede16a2c" title="Checks if a coordinate is in or outside the maze." alt="" coords="499,5,670,32"/>
+<area shape="rect" id="node4" href="$class_checked_maze.html#afe699b7a3cc52f7abc510eb8582cc281" title="Checks if a cell has been visited or not." alt="" coords="477,57,692,98"/>
+<area shape="rect" id="node7" href="$class_logger.html#a4139f1ee6e935ad8b48e7646eaf7b42d" title="Returns a timestamp with a message type and the message itself." alt="" coords="527,196,642,223"/>
+<area shape="rect" id="node8" href="$class_logger.html#ad1a791a5ce5c83ae40afcf00e765fc05" title="Generates time stamps." alt="" coords="740,196,855,223"/>
+</map>

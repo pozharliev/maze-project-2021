@@ -1,0 +1,6 @@
+<map id="Room" name="Room">
+<area shape="rect" id="node1" title=" " alt="" coords="46,199,102,225"/>
+<area shape="rect" id="node2" href="$class_checked_maze.html" title="The CheckedMaze is responsible for checking if the generated maze is correct, formatting the maze,..." alt="" coords="21,95,127,121"/>
+<area shape="rect" id="node3" href="$class_maze.html" title="The Maze class is responsible for generating a maze." alt="" coords="5,5,60,32"/>
+<area shape="rect" id="node4" href="$class_logger.html" title=" " alt="" coords="85,5,146,32"/>
+</map>

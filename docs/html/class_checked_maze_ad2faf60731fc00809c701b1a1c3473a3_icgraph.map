@@ -1,0 +1,3 @@
+<map id="CheckedMaze::checkMaze" name="CheckedMaze::checkMaze">
+<area shape="rect" id="node1" title="Recursively checks if the maze is solvable, and if it is not, generates a new one." alt="" coords="5,29,185,56"/>
+</map>

@@ -1,0 +1,57 @@
+\hypertarget{main_menu_8h_source}{}\doxysection{main\+Menu.\+h}
+\label{main_menu_8h_source}\index{include/frontend/mainMenu.h@{include/frontend/mainMenu.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../backend/libs.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../backend/collisions.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_main_menu}{MainMenu}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 \textcolor{keyword}{public}:}
+\DoxyCodeLine{9     \textcolor{keywordtype}{bool} fullScreen;}
+\DoxyCodeLine{10     std::fstream saveFile;}
+\DoxyCodeLine{11     std::string line;}
+\DoxyCodeLine{12 }
+\DoxyCodeLine{13 \textcolor{keyword}{public}:}
+\DoxyCodeLine{14     \textcolor{keywordtype}{bool} isExit;}
+\DoxyCodeLine{15 }
+\DoxyCodeLine{16     \textcolor{keywordtype}{bool} pauseMenuEnabled;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{bool} mainMenuEnabled;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{bool} optionsMenuEnabled;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{bool} controllsMenuEnabled;}
+\DoxyCodeLine{20     \textcolor{keywordtype}{int} menuOption;}
+\DoxyCodeLine{21     \textcolor{keywordtype}{bool} optionsMenuEdit;}
+\DoxyCodeLine{22     \textcolor{keywordtype}{bool} mainMenuEdit;}
+\DoxyCodeLine{23     \textcolor{keywordtype}{bool} controllsEdit;}
+\DoxyCodeLine{24     \textcolor{keywordtype}{bool} gameStarted;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{bool} gameWon;}
+\DoxyCodeLine{26     \textcolor{keywordtype}{bool} anyKeyPressed;}
+\DoxyCodeLine{27     \textcolor{keywordtype}{bool} sound;}
+\DoxyCodeLine{28     olc::Sprite *welcomeLogo;}
+\DoxyCodeLine{29     olc::Decal *welcomeLogoDecal;}
+\DoxyCodeLine{30     olc::Sprite *winScrollSprite;}
+\DoxyCodeLine{31     olc::Decal *winScroll;}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{33 \textcolor{keyword}{public}:}
+\DoxyCodeLine{34     \mbox{\hyperlink{class_main_menu}{\string~MainMenu}}();}
+\DoxyCodeLine{35 }
+\DoxyCodeLine{36     \textcolor{keywordtype}{bool} displayPauseMenu(olc::PixelGameEngine *engine, \mbox{\hyperlink{class_collisions}{Collisions}} *collisions);}
+\DoxyCodeLine{37 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} displayMainMenu(olc::PixelGameEngine *engine, \mbox{\hyperlink{class_collisions}{Collisions}} *collisions);}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40     \textcolor{keywordtype}{bool} displayOptionsMenu(olc::PixelGameEngine *engine, \mbox{\hyperlink{class_collisions}{Collisions}} *collisions);}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     \textcolor{keywordtype}{bool} displayLoseMenu(olc::PixelGameEngine *engine, \mbox{\hyperlink{class_collisions}{Collisions}} *collisions);}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{bool} displayControllsMenu(olc::PixelGameEngine *engine, \mbox{\hyperlink{class_collisions}{Collisions}} *collisions);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{46     \textcolor{keywordtype}{bool} displayWinMenu(olc::PixelGameEngine *engine, \mbox{\hyperlink{class_collisions}{Collisions}} *collisions);}
+\DoxyCodeLine{47 }
+\DoxyCodeLine{48     \textcolor{keywordtype}{void} getMenuInput(olc::PixelGameEngine *engine, std::string menuType, \mbox{\hyperlink{class_collisions}{Collisions}} *collisions);}
+\DoxyCodeLine{49 }
+\DoxyCodeLine{50     \textcolor{keywordtype}{bool} pressAnyKey(olc::PixelGameEngine *engine);}
+\DoxyCodeLine{51 \};}
+
+\end{DoxyCode}

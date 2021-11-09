@@ -1,0 +1,5 @@
+<map id="Collisions::checkCollisions" name="Collisions::checkCollisions">
+<area shape="rect" id="node1" title="Checks for collisions with the player in the lobby and the rooms." alt="" coords="452,5,629,32"/>
+<area shape="rect" id="node2" href="$class_game_manager.html#ad61a5e20b43b928ca94a284bb9e5f530" title="Contains the core logic for the game." alt="" coords="253,5,404,32"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#ae118ae32b8664d8556d314e4aabd0e0b" title="This function is called each frame." alt="" coords="5,5,205,32"/>
+</map>

@@ -1,0 +1,6 @@
+<map id="Maze::initMaze" name="Maze::initMaze">
+<area shape="rect" id="node1" title="Initializer for the maze." alt="" coords="5,31,116,57"/>
+<area shape="rect" id="node2" href="$class_maze.html#a167b904278051187ca8720ecd46f72a9" title="Recursively generates a maze, based on random decisions." alt="" coords="164,31,252,57"/>
+<area shape="rect" id="node3" href="$class_maze.html#ab2b6966ef690ab539078a48a9c29e039" title="Checks if a coordinate is in or outside the maze." alt="" coords="300,5,419,32"/>
+<area shape="rect" id="node4" href="$class_maze.html#a9f616cfe2d9915c6457cbf7ed9230a27" title="Converts 2D to 1D coordinates." alt="" coords="307,56,411,83"/>
+</map>

@@ -1,0 +1,7 @@
+<map id="Collisions::checkCollisions" name="Collisions::checkCollisions">
+<area shape="rect" id="node1" title="Checks for collisions with the player in the lobby and the rooms." alt="" coords="5,56,183,83"/>
+<area shape="rect" id="node2" href="$class_lobby.html#a427014fe2d819628168507fb2407d83b" title="Returns the symbol from the lobby array on x and y coordinates." alt="" coords="247,5,349,32"/>
+<area shape="rect" id="node3" href="$class_room.html#a9c77e6085b49b53e7090c1d573987ada" title="Returns the symbol from the desired maze(left or right) on x and y coordinates." alt="" coords="247,56,349,83"/>
+<area shape="rect" id="node4" href="$class_lobby.html#ac1d2d6af8b4aa67d2a43c5f351425e20" title="Checks if the player is colliding with a rectangle(specifically for the doors)." alt="" coords="231,107,365,133"/>
+<area shape="rect" id="node5" href="$class_lobby.html#ae2c9692389821186799e84589ce607e5" title="Checks if the player is colliding with a rectangle." alt="" coords="413,107,556,133"/>
+</map>

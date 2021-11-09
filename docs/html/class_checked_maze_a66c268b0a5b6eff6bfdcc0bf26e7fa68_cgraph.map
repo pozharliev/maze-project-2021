@@ -1,0 +1,6 @@
+<map id="CheckedMaze::getNeighbours" name="CheckedMaze::getNeighbours">
+<area shape="rect" id="node1" title="Checks every unvisited, in&#45;bound neighbour and returns a vector of all of the neighbour(s)." alt="" coords="5,64,201,91"/>
+<area shape="rect" id="node2" href="$class_checked_maze.html#afe39706cb25539f7b2842474ede16a2c" title="Checks if a coordinate is in or outside the maze." alt="" coords="271,5,442,32"/>
+<area shape="rect" id="node3" href="$class_checked_maze.html#afe699b7a3cc52f7abc510eb8582cc281" title="Checks if a cell has been visited or not." alt="" coords="249,57,464,98"/>
+<area shape="rect" id="node4" href="$class_checked_maze.html#a0db23242774e0664efeda3945dc7e8a2" title="Converts 2D to 1D coordinates." alt="" coords="279,123,434,149"/>
+</map>
