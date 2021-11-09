@@ -1,0 +1,4 @@
+<map id="Logger::Info" name="Logger::Info">
+<area shape="rect" id="node1" title="Logs an info message." alt="" coords="233,29,323,56"/>
+<area shape="rect" id="node2" href="$class_checked_maze.html#ad2faf60731fc00809c701b1a1c3473a3" title="Recursively checks if the maze is solvable, and if it is not, generates a new one." alt="" coords="5,29,185,56"/>
+</map>

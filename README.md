@@ -2,7 +2,6 @@
 
 <h1 align="center"><strong> Team VAVYLØN</strong></h1>
 
-***badges***
 ___
 
 <br>
@@ -45,8 +44,6 @@ ___
 ### 1. Going outside any path in the maze results in **losing**.
 ### 2. Picking up the two runes from the 2 mazes will result in going one floor up.
 ### 3. Have fun!
-
-# Screenshots
 
 # Setup
 ## Dependancies

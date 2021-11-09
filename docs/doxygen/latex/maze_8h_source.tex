@@ -1,0 +1,54 @@
+\hypertarget{maze_8h_source}{}\doxysection{maze.\+h}
+\label{maze_8h_source}\index{include/backend/maze.h@{include/backend/maze.h}}
+\mbox{\hyperlink{maze_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <iostream>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include <algorithm>}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{7 }
+\DoxyCodeLine{17 \textcolor{keyword}{class }\mbox{\hyperlink{class_maze}{Maze}}}
+\DoxyCodeLine{18 \{}
+\DoxyCodeLine{19     \textcolor{keyword}{public}:}
+\DoxyCodeLine{20         \mbox{\hyperlink{class_maze}{Maze}}(\textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{21 }
+\DoxyCodeLine{22         \mbox{\hyperlink{class_maze}{\string~Maze}}();}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{31         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_maze_ace2464dc984769a5a048cb7f27d6a0ed}{initMaze}}();}
+\DoxyCodeLine{32 }
+\DoxyCodeLine{38         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_maze_a210ae5ab961b8cd130c7d2bf010e1c75}{getWidth}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{45         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_maze_a275cb08cc708a067757f5b15a7a44dae}{getHeight}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{46 }
+\DoxyCodeLine{52         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_maze_abb980730acbe4b693a9399b9640e834b}{getPossibleWays}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{53 }
+\DoxyCodeLine{54     \textcolor{keyword}{public}:}
+\DoxyCodeLine{55         \textcolor{keywordtype}{char}* \mbox{\hyperlink{class_maze_a21e1bca067f0fb8f6ec42b8e6ceaf679}{maze}}; }
+\DoxyCodeLine{58 }
+\DoxyCodeLine{59     \textcolor{keyword}{private}:}
+\DoxyCodeLine{63         \textcolor{keyword}{enum} \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5}{ACTIONS}} \{}
+\DoxyCodeLine{64             \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5ad2e008a4b04be5e2d3559c70193920e7}{UP}} = 1, }
+\DoxyCodeLine{65             \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5a699ae3e1d989e9b12bd200aa86e29e9d}{RIGHT}} = 2, }
+\DoxyCodeLine{66             \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5a89ab143d020541957ab5e0e9cfdd3e23}{DOWN}} = 3, }
+\DoxyCodeLine{67             \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5aab1a1fe0274cd139b3c0116d8caf458c}{LEFT}} = 4, }
+\DoxyCodeLine{68         \};}
+\DoxyCodeLine{69 }
+\DoxyCodeLine{70         std::vector<int> \mbox{\hyperlink{class_maze_aced3d8427366d7e9fcc99be8785e870e}{m\_actions}}; }
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_maze_ad573bccc998a56afdbfba6967a6248d9}{m\_mWidth}};  }
+\DoxyCodeLine{74         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_maze_a6074a2a1d05d540fa23f6444e2e56cf8}{m\_mHeight}}; }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_maze_aafdb0466a4817dd34d8d974860191cc0}{m\_possibleWays}}; }
+\DoxyCodeLine{77 }
+\DoxyCodeLine{78     \textcolor{keyword}{private}:}
+\DoxyCodeLine{100         \textcolor{keywordtype}{void} \mbox{\hyperlink{class_maze_a167b904278051187ca8720ecd46f72a9}{Visit}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{101 }
+\DoxyCodeLine{110         \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_maze_ab2b6966ef690ab539078a48a9c29e039}{isInBound}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& y) \textcolor{keyword}{const};}
+\DoxyCodeLine{111 }
+\DoxyCodeLine{123         \textcolor{keywordtype}{int} \mbox{\hyperlink{class_maze_a9f616cfe2d9915c6457cbf7ed9230a27}{toIndex}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& y) \textcolor{keyword}{const};}
+\DoxyCodeLine{124 }
+\DoxyCodeLine{125 \};}
+
+\end{DoxyCode}

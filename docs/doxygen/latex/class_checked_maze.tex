@@ -1,0 +1,228 @@
+\hypertarget{class_checked_maze}{}\doxysection{Checked\+Maze Class Reference}
+\label{class_checked_maze}\index{CheckedMaze@{CheckedMaze}}
+
+
+The \mbox{\hyperlink{class_checked_maze}{Checked\+Maze}} is responsible for checking if the generated maze is correct, formatting the maze, and enriching it with runes.  
+
+
+
+
+{\ttfamily \#include $<$checked\+Maze.\+h$>$}
+
+
+
+Collaboration diagram for Checked\+Maze\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{class_checked_maze__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_checked_maze_ad2faf60731fc00809c701b1a1c3473a3}{check\+Maze}} ()
+\begin{DoxyCompactList}\small\item\em Recursively checks if the maze is solvable, and if it is not, generates a new one. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_checked_maze_a4e0f17faee93d1833a7ad2fbd2b90192}{get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Returns the width of the maze. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_checked_maze_a88fd49e50326bacfe255738a4a86ff8c}{get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Returns the height of the maze. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{class_checked_maze_afe39706cb25539f7b2842474ede16a2c}{is\+In\+Bound}} (const int \&x, const int \&y) const
+\begin{DoxyCompactList}\small\item\em Checks if a coordinate is in or outside the maze. \end{DoxyCompactList}\item 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ \mbox{\hyperlink{class_checked_maze_a66c268b0a5b6eff6bfdcc0bf26e7fa68}{get\+Neighbours}} (const int \&x, const int \&y) const
+\begin{DoxyCompactList}\small\item\em Checks every unvisited, in-\/bound neighbour and returns a vector of all of the neighbour(s). \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_checked_maze_afe699b7a3cc52f7abc510eb8582cc281}{search\+For\+Already\+Visited\+Cells}} (const int \&x, const int \&y) const
+\begin{DoxyCompactList}\small\item\em Checks if a cell has been visited or not. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_checked_maze_a0db23242774e0664efeda3945dc7e8a2}{to\+Index}} (const int \&x, const int \&y) const
+\begin{DoxyCompactList}\small\item\em Converts 2D to 1D coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_checked_maze_a43e7cad6e2b1297a1a7d1e0e0e0eeb09}\label{class_checked_maze_a43e7cad6e2b1297a1a7d1e0e0e0eeb09}} 
+\mbox{\hyperlink{class_maze}{Maze}} $\ast$ {\bfseries maze} = NULL
+\begin{DoxyCompactList}\small\item\em \mbox{\hyperlink{class_maze}{Maze}} class-\/variable, used for providing a generated maze. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_checked_maze_a1f0dbbf82e757389883476b5d41a1aaf}\label{class_checked_maze_a1f0dbbf82e757389883476b5d41a1aaf}} 
+int {\bfseries m\+\_\+m\+Width}
+\begin{DoxyCompactList}\small\item\em Width of the \mbox{\hyperlink{class_maze}{Maze}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_checked_maze_a3a435cc0970dbbfe372ad9abe534b0b4}\label{class_checked_maze_a3a435cc0970dbbfe372ad9abe534b0b4}} 
+int {\bfseries m\+\_\+m\+Height}
+\begin{DoxyCompactList}\small\item\em Height of the \mbox{\hyperlink{class_maze}{Maze}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_checked_maze_a048ecd055deed0d405e2553e606ea269}\label{class_checked_maze_a048ecd055deed0d405e2553e606ea269}} 
+int {\bfseries m\+\_\+possible\+Ways}
+\begin{DoxyCompactList}\small\item\em Every cell that is not a wall. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_checked_maze_aeed30dd14c6aa609250ed248e1cb6295}\label{class_checked_maze_aeed30dd14c6aa609250ed248e1cb6295}} 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ {\bfseries m\+\_\+visited\+Cells}
+\begin{DoxyCompactList}\small\item\em Stores every already-\/visited cell. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_checked_maze_aff848f132782dee451eabe371bcb0d83}\label{class_checked_maze_aff848f132782dee451eabe371bcb0d83}} 
+std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ {\bfseries m\+\_\+stack}
+\begin{DoxyCompactList}\small\item\em Vector used like a std\+::stack variable, used for backtracking. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_checked_maze_ad2faf60731fc00809c701b1a1c3473a3}\label{class_checked_maze_ad2faf60731fc00809c701b1a1c3473a3}} 
+\index{CheckedMaze@{CheckedMaze}!checkMaze@{checkMaze}}
+\index{checkMaze@{checkMaze}!CheckedMaze@{CheckedMaze}}
+\doxysubsubsection{\texorpdfstring{checkMaze()}{checkMaze()}}
+{\footnotesize\ttfamily void Checked\+Maze\+::check\+Maze (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+The function recursively checks a coordinate, that is not a wall, then chooses a random neighbour that has not been visited yet, and repeats the process until it gets to the end of the maze. ~\newline
+If there isn\textquotesingle{}t a neighbour that is unchecked, backtracks to a coordinate that has any unvisited neighbour(s) left. ~\newline
+Else if there aren\textquotesingle{}t any unchecked cells it generates a new maze and repeats the process, until there is a solvable maze.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em maze} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em checked\+Maze,maze\+With\+Path,reversed\+Maze} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_checked_maze_ad2faf60731fc00809c701b1a1c3473a3_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=215pt]{class_checked_maze_ad2faf60731fc00809c701b1a1c3473a3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_checked_maze_a88fd49e50326bacfe255738a4a86ff8c}\label{class_checked_maze_a88fd49e50326bacfe255738a4a86ff8c}} 
+\index{CheckedMaze@{CheckedMaze}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!CheckedMaze@{CheckedMaze}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily int Checked\+Maze\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_checked_maze_a66c268b0a5b6eff6bfdcc0bf26e7fa68}\label{class_checked_maze_a66c268b0a5b6eff6bfdcc0bf26e7fa68}} 
+\index{CheckedMaze@{CheckedMaze}!getNeighbours@{getNeighbours}}
+\index{getNeighbours@{getNeighbours}!CheckedMaze@{CheckedMaze}}
+\doxysubsubsection{\texorpdfstring{getNeighbours()}{getNeighbours()}}
+{\footnotesize\ttfamily std\+::vector$<$ std\+::pair$<$ int, int $>$ $>$ Checked\+Maze\+::get\+Neighbours (\begin{DoxyParamCaption}\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em x} & The x axis of the coordinate. \\
+\hline
+ & {\em y} & The y axis of the coordinate.\\
+\hline
+\mbox{\texttt{ in}}  & {\em m\+\_\+visited\+Cells} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::vector$<$std\+::pair$<$int, int$>$$>$ neighbours 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_checked_maze_a66c268b0a5b6eff6bfdcc0bf26e7fa68_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_checked_maze_a66c268b0a5b6eff6bfdcc0bf26e7fa68_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_checked_maze_a4e0f17faee93d1833a7ad2fbd2b90192}\label{class_checked_maze_a4e0f17faee93d1833a7ad2fbd2b90192}} 
+\index{CheckedMaze@{CheckedMaze}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!CheckedMaze@{CheckedMaze}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int Checked\+Maze\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_checked_maze_afe39706cb25539f7b2842474ede16a2c}\label{class_checked_maze_afe39706cb25539f7b2842474ede16a2c}} 
+\index{CheckedMaze@{CheckedMaze}!isInBound@{isInBound}}
+\index{isInBound@{isInBound}!CheckedMaze@{CheckedMaze}}
+\doxysubsubsection{\texorpdfstring{isInBound()}{isInBound()}}
+{\footnotesize\ttfamily bool Checked\+Maze\+::is\+In\+Bound (\begin{DoxyParamCaption}\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x axis \\
+\hline
+{\em y} & The y axis\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_checked_maze_afe39706cb25539f7b2842474ede16a2c_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_checked_maze_afe699b7a3cc52f7abc510eb8582cc281}\label{class_checked_maze_afe699b7a3cc52f7abc510eb8582cc281}} 
+\index{CheckedMaze@{CheckedMaze}!searchForAlreadyVisitedCells@{searchForAlreadyVisitedCells}}
+\index{searchForAlreadyVisitedCells@{searchForAlreadyVisitedCells}!CheckedMaze@{CheckedMaze}}
+\doxysubsubsection{\texorpdfstring{searchForAlreadyVisitedCells()}{searchForAlreadyVisitedCells()}}
+{\footnotesize\ttfamily bool Checked\+Maze\+::search\+For\+Already\+Visited\+Cells (\begin{DoxyParamCaption}\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em x} & The x axis of the coordinate. \\
+\hline
+ & {\em y} & The y axis of the coordinate.\\
+\hline
+\mbox{\texttt{ in}}  & {\em m\+\_\+visited\+Cells} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_checked_maze_afe699b7a3cc52f7abc510eb8582cc281_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_checked_maze_a0db23242774e0664efeda3945dc7e8a2}\label{class_checked_maze_a0db23242774e0664efeda3945dc7e8a2}} 
+\index{CheckedMaze@{CheckedMaze}!toIndex@{toIndex}}
+\index{toIndex@{toIndex}!CheckedMaze@{CheckedMaze}}
+\doxysubsubsection{\texorpdfstring{toIndex()}{toIndex()}}
+{\footnotesize\ttfamily int Checked\+Maze\+::to\+Index (\begin{DoxyParamCaption}\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyNote}{Note}
+Takes coordinates in (int, int) format and returns (int) format.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x axis of the coordinate. \\
+\hline
+{\em y} & The y axis of the coordinate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_checked_maze_a0db23242774e0664efeda3945dc7e8a2_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/backend/\mbox{\hyperlink{checked_maze_8h}{checked\+Maze.\+h}}\item 
+src/backend/\mbox{\hyperlink{checked_maze_8cpp}{checked\+Maze.\+cpp}}\end{DoxyCompactItemize}

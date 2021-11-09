@@ -1,0 +1,5 @@
+<map id="Logger::Warning" name="Logger::Warning">
+<area shape="rect" id="node1" title="Logs a warning message." alt="" coords="5,5,123,32"/>
+<area shape="rect" id="node2" href="$class_logger.html#a4139f1ee6e935ad8b48e7646eaf7b42d" title="Returns a timestamp with a message type and the message itself." alt="" coords="171,5,285,32"/>
+<area shape="rect" id="node3" href="$class_logger.html#ad1a791a5ce5c83ae40afcf00e765fc05" title="Generates time stamps." alt="" coords="333,5,448,32"/>
+</map>

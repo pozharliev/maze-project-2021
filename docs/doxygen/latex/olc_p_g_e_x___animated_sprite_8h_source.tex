@@ -1,0 +1,360 @@
+\hypertarget{olc_p_g_e_x___animated_sprite_8h_source}{}\doxysection{olc\+PGEX\+\_\+\+Animated\+Sprite.\+h}
+\label{olc_p_g_e_x___animated_sprite_8h_source}\index{libs/olcPGEX\_AnimatedSprite.h@{libs/olcPGEX\_AnimatedSprite.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    olcPGEX\_AnimatedSprite.h}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{    +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{5 \textcolor{comment}{    |         OneLoneCoder Pixel Game Engine Extension            |}}
+\DoxyCodeLine{6 \textcolor{comment}{    |                AnimatedSprites -\/ v2.0.0                         |}}
+\DoxyCodeLine{7 \textcolor{comment}{    +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{8 \textcolor{comment}{}}
+\DoxyCodeLine{9 \textcolor{comment}{    What is this?}}
+\DoxyCodeLine{10 \textcolor{comment}{    \string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{11 \textcolor{comment}{    This is an extension to the olcPixelGameEngine, which provides}}
+\DoxyCodeLine{12 \textcolor{comment}{    the ability to easily animate sprites with either a single}}
+\DoxyCodeLine{13 \textcolor{comment}{    spritesheets or individual image files for each frame.}}
+\DoxyCodeLine{14 \textcolor{comment}{}}
+\DoxyCodeLine{15 \textcolor{comment}{    Use of this extension requires the olcPGEX\_Graphics2D extension.}}
+\DoxyCodeLine{16 \textcolor{comment}{}}
+\DoxyCodeLine{17 \textcolor{comment}{    License (OLC-\/3)}}
+\DoxyCodeLine{18 \textcolor{comment}{    \string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{19 \textcolor{comment}{}}
+\DoxyCodeLine{20 \textcolor{comment}{    Copyright 2018 -\/ 2019 OneLoneCoder.com}}
+\DoxyCodeLine{21 \textcolor{comment}{}}
+\DoxyCodeLine{22 \textcolor{comment}{    Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{23 \textcolor{comment}{    modification, are permitted provided that the following conditions}}
+\DoxyCodeLine{24 \textcolor{comment}{    are met:}}
+\DoxyCodeLine{25 \textcolor{comment}{}}
+\DoxyCodeLine{26 \textcolor{comment}{    1. Redistributions or derivations of source code must retain the above}}
+\DoxyCodeLine{27 \textcolor{comment}{    copyright notice, this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{28 \textcolor{comment}{}}
+\DoxyCodeLine{29 \textcolor{comment}{    2. Redistributions or derivative works in binary form must reproduce}}
+\DoxyCodeLine{30 \textcolor{comment}{    the above copyright notice. This list of conditions and the following}}
+\DoxyCodeLine{31 \textcolor{comment}{    disclaimer must be reproduced in the documentation and/or other}}
+\DoxyCodeLine{32 \textcolor{comment}{    materials provided with the distribution.}}
+\DoxyCodeLine{33 \textcolor{comment}{}}
+\DoxyCodeLine{34 \textcolor{comment}{    3. Neither the name of the copyright holder nor the names of its}}
+\DoxyCodeLine{35 \textcolor{comment}{    contributors may be used to endorse or promote products derived}}
+\DoxyCodeLine{36 \textcolor{comment}{    from this software without specific prior written permission.}}
+\DoxyCodeLine{37 \textcolor{comment}{}}
+\DoxyCodeLine{38 \textcolor{comment}{    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS}}
+\DoxyCodeLine{39 \textcolor{comment}{    "{}AS IS"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT}}
+\DoxyCodeLine{40 \textcolor{comment}{    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR}}
+\DoxyCodeLine{41 \textcolor{comment}{    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT}}
+\DoxyCodeLine{42 \textcolor{comment}{    HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,}}
+\DoxyCodeLine{43 \textcolor{comment}{    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT}}
+\DoxyCodeLine{44 \textcolor{comment}{    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,}}
+\DoxyCodeLine{45 \textcolor{comment}{    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY}}
+\DoxyCodeLine{46 \textcolor{comment}{    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}}
+\DoxyCodeLine{47 \textcolor{comment}{    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE}}
+\DoxyCodeLine{48 \textcolor{comment}{    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{49 \textcolor{comment}{}}
+\DoxyCodeLine{50 \textcolor{comment}{    Links}}
+\DoxyCodeLine{51 \textcolor{comment}{    \string~\string~\string~\string~\string~}}
+\DoxyCodeLine{52 \textcolor{comment}{    Homepage:   https://matthewhayward.co.uk}}
+\DoxyCodeLine{53 \textcolor{comment}{}}
+\DoxyCodeLine{54 \textcolor{comment}{    Author}}
+\DoxyCodeLine{55 \textcolor{comment}{    \string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{56 \textcolor{comment}{    Matt Hayward aka SaladinAkara}}
+\DoxyCodeLine{57 \textcolor{comment}{}}
+\DoxyCodeLine{58 \textcolor{comment}{    Contributors}}
+\DoxyCodeLine{59 \textcolor{comment}{    \string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{60 \textcolor{comment}{    0xnicholasc -\/ https://github.com/0xnicholasc}}
+\DoxyCodeLine{61 \textcolor{comment}{    Moros1138 -\/ https://github.com/Moros1138}}
+\DoxyCodeLine{62 \textcolor{comment}{*/}}
+\DoxyCodeLine{63 }
+\DoxyCodeLine{64 \textcolor{preprocessor}{\#ifndef OLC\_PGEX\_ANIMATEDSPRITE}}
+\DoxyCodeLine{65 \textcolor{preprocessor}{\#define OLC\_PGEX\_ANIMATEDSPRITE}}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keyword}{namespace }olc}
+\DoxyCodeLine{68 \{}
+\DoxyCodeLine{69     \textcolor{keyword}{class }\mbox{\hyperlink{classolc_1_1_animated_sprite}{AnimatedSprite}} : \textcolor{keyword}{public} \mbox{\hyperlink{classolc_1_1_p_g_e_x}{olc::PGEX}}}
+\DoxyCodeLine{70     \{}
+\DoxyCodeLine{71         \textcolor{keyword}{public}:}
+\DoxyCodeLine{72         \textcolor{keyword}{enum class} SPRITE\_MODE \{}
+\DoxyCodeLine{73             MULTI,}
+\DoxyCodeLine{74             SINGLE}
+\DoxyCodeLine{75         \};}
+\DoxyCodeLine{76         \textcolor{keyword}{enum class} SPRITE\_TYPE \{}
+\DoxyCodeLine{77             SPRITE,}
+\DoxyCodeLine{78             DECAL}
+\DoxyCodeLine{79         \};}
+\DoxyCodeLine{80         \textcolor{keyword}{enum class} PLAY\_MODE \{}
+\DoxyCodeLine{81             LOOP,}
+\DoxyCodeLine{82             PING\_PONG}
+\DoxyCodeLine{83         \};}
+\DoxyCodeLine{84         }
+\DoxyCodeLine{85         \textcolor{keyword}{public}:}
+\DoxyCodeLine{86         \textcolor{comment}{// Set current state of sprite}}
+\DoxyCodeLine{87         \textcolor{keywordtype}{void} SetState(std::string newState);}
+\DoxyCodeLine{88         \textcolor{comment}{// Get current sprite state}}
+\DoxyCodeLine{89         std::string GetState();}
+\DoxyCodeLine{90         \textcolor{comment}{// Draw sprite}}
+\DoxyCodeLine{91         \textcolor{keywordtype}{void} Draw(\textcolor{keywordtype}{float} fElapsedTime, \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} position, uint8\_t flip = olc::Sprite::Flip::NONE, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} tint = olc::WHITE);}
+\DoxyCodeLine{92         \textcolor{comment}{// Add state for sprite in SPRITE\_MODE::MULTI with a specified frameDuration and playMode}}
+\DoxyCodeLine{93         \textcolor{keywordtype}{void} AddState(std::string stateName, \textcolor{keywordtype}{float} frameDuration, PLAY\_MODE mode, std::vector<std::string> imagePaths);}
+\DoxyCodeLine{94         \textcolor{comment}{// Add state for sprite in SPRITE\_MODE::SINGLE with a specified frameDuration and playMode}}
+\DoxyCodeLine{95         \textcolor{keywordtype}{void} AddState(std::string stateName, \textcolor{keywordtype}{float} frameDuration, PLAY\_MODE mode, std::vector<olc::vi2d> spriteLocations);}
+\DoxyCodeLine{96         \textcolor{comment}{// Add state for sprite in SPRITE\_MODE::MULTI using the default frameDuration and playMode}}
+\DoxyCodeLine{97         \textcolor{keywordtype}{void} AddState(std::string stateName, std::vector<std::string> imagePaths);}
+\DoxyCodeLine{98         \textcolor{comment}{// Add state for sprite in SPRITE\_MODE::SINGLE using the default frameDuration and playMode}}
+\DoxyCodeLine{99         \textcolor{keywordtype}{void} AddState(std::string stateName, std::vector<olc::vi2d> spriteLocations);}
+\DoxyCodeLine{100         \textcolor{comment}{// Set size of sprite}}
+\DoxyCodeLine{101         \textcolor{keywordtype}{void} SetSpriteSize(\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} size);}
+\DoxyCodeLine{102         \textcolor{comment}{// Get size of sprite}}
+\DoxyCodeLine{103         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} GetSpriteSize();}
+\DoxyCodeLine{104         \textcolor{comment}{// Set sprite scale factor}}
+\DoxyCodeLine{105         \textcolor{keywordtype}{void} SetSpriteScale(\textcolor{keywordtype}{float} scale);}
+\DoxyCodeLine{106         }
+\DoxyCodeLine{107         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{108         \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}}* GetMultiFrame(\textcolor{keywordtype}{float} fElapsedTime);}
+\DoxyCodeLine{109         \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* GetMultiRenderable(\textcolor{keywordtype}{float} fElapsedTime);}
+\DoxyCodeLine{110         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} GetSingleFrame(\textcolor{keywordtype}{float} fElapsedTime);}
+\DoxyCodeLine{111         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} GetDecalScale(uint8\_t flip);}
+\DoxyCodeLine{112         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} GetDecalPosition(\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} position, uint8\_t flip);}
+\DoxyCodeLine{113         }
+\DoxyCodeLine{114         \textcolor{keyword}{public}:}
+\DoxyCodeLine{115         \textcolor{keywordtype}{float} defaultFrameDuration = 0.1f; \textcolor{comment}{// Frame duration to be used if one is not specified otherwise}}
+\DoxyCodeLine{116         SPRITE\_MODE mode = SPRITE\_MODE::MULTI;}
+\DoxyCodeLine{117         SPRITE\_TYPE type = SPRITE\_TYPE::SPRITE;}
+\DoxyCodeLine{118         \mbox{\hyperlink{classolc_1_1_renderable}{Renderable}}* spriteSheet;}
+\DoxyCodeLine{119         }
+\DoxyCodeLine{120         \textcolor{keyword}{protected}:}
+\DoxyCodeLine{121         std::string state;}
+\DoxyCodeLine{122         std::map<std::string, std::vector<olc::Sprite*>> multiFrames;}
+\DoxyCodeLine{123         std::map<std::string, std::vector<olc::vi2d>> singleFrames;}
+\DoxyCodeLine{124         std::map<std::string, std::vector<Renderable*>> multiRenderables;}
+\DoxyCodeLine{125         std::map<std::string, float> frameDurations;}
+\DoxyCodeLine{126         std::map<std::string, PLAY\_MODE> playModes;}
+\DoxyCodeLine{127         \textcolor{keywordtype}{float} frameTimer = 0.0f, spriteScale = 1.0f;}
+\DoxyCodeLine{128         \textcolor{keywordtype}{int} currentFrame;}
+\DoxyCodeLine{129         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} spriteSize;}
+\DoxyCodeLine{130         \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}}* placeholder = \textcolor{keyword}{nullptr};}
+\DoxyCodeLine{131         \textcolor{keywordtype}{bool} playForward = \textcolor{keyword}{true};}
+\DoxyCodeLine{132     \};}
+\DoxyCodeLine{133 \}}
+\DoxyCodeLine{134 }
+\DoxyCodeLine{135 \textcolor{preprocessor}{\#ifdef OLC\_PGEX\_ANIMSPR}}
+\DoxyCodeLine{136 \textcolor{preprocessor}{\#undef OLC\_PGEX\_ANIMSPR}}
+\DoxyCodeLine{137 }
+\DoxyCodeLine{138 \textcolor{keyword}{namespace }olc}
+\DoxyCodeLine{139 \{}
+\DoxyCodeLine{140     \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}}* AnimatedSprite::GetMultiFrame(\textcolor{keywordtype}{float} fElapsedTime)}
+\DoxyCodeLine{141     \{}
+\DoxyCodeLine{142         frameTimer += fElapsedTime;}
+\DoxyCodeLine{143         }
+\DoxyCodeLine{144         \textcolor{keywordflow}{if} (frameTimer >= frameDurations[state]) \{}
+\DoxyCodeLine{145             frameTimer = 0.0f;}
+\DoxyCodeLine{146             }
+\DoxyCodeLine{147             \textcolor{keywordflow}{if} (playModes[state] == PLAY\_MODE::PING\_PONG \&\& !playForward) \{}
+\DoxyCodeLine{148                 currentFrame-\/-\/;}
+\DoxyCodeLine{149             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{150                 currentFrame++;}
+\DoxyCodeLine{151             \}}
+\DoxyCodeLine{152             }
+\DoxyCodeLine{153             \textcolor{keywordflow}{if} (currentFrame >= multiFrames[state].size()) \{}
+\DoxyCodeLine{154                 currentFrame = playModes[state] == PLAY\_MODE::LOOP}
+\DoxyCodeLine{155                     ? 0}
+\DoxyCodeLine{156                     : multiFrames[state].size() -\/ 2;}
+\DoxyCodeLine{157                 playForward = \textcolor{keyword}{false};}
+\DoxyCodeLine{158             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (currentFrame <= 0) \{}
+\DoxyCodeLine{159                 playForward = \textcolor{keyword}{true};}
+\DoxyCodeLine{160             \}}
+\DoxyCodeLine{161         \}}
+\DoxyCodeLine{162         }
+\DoxyCodeLine{163         \textcolor{keywordflow}{return} multiFrames[state][currentFrame];}
+\DoxyCodeLine{164     \}}
+\DoxyCodeLine{165     }
+\DoxyCodeLine{166     \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* AnimatedSprite::GetMultiRenderable(\textcolor{keywordtype}{float} fElapsedTime)}
+\DoxyCodeLine{167     \{}
+\DoxyCodeLine{168         frameTimer += fElapsedTime;}
+\DoxyCodeLine{169         }
+\DoxyCodeLine{170         \textcolor{keywordflow}{if} (frameTimer >= frameDurations[state]) \{}
+\DoxyCodeLine{171             frameTimer = 0.0f;}
+\DoxyCodeLine{172             }
+\DoxyCodeLine{173             \textcolor{keywordflow}{if} (playModes[state] == PLAY\_MODE::PING\_PONG \&\& !playForward) \{}
+\DoxyCodeLine{174                 currentFrame-\/-\/;}
+\DoxyCodeLine{175             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{176                 currentFrame++;}
+\DoxyCodeLine{177             \}}
+\DoxyCodeLine{178             }
+\DoxyCodeLine{179             \textcolor{keywordflow}{if} (currentFrame >= multiRenderables[state].size()) \{}
+\DoxyCodeLine{180                 currentFrame = playModes[state] == PLAY\_MODE::LOOP}
+\DoxyCodeLine{181                     ? 0}
+\DoxyCodeLine{182                     : multiRenderables[state].size() -\/ 2;}
+\DoxyCodeLine{183                 playForward = \textcolor{keyword}{false};}
+\DoxyCodeLine{184             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (currentFrame <= 0) \{}
+\DoxyCodeLine{185                 playForward = \textcolor{keyword}{true};}
+\DoxyCodeLine{186             \}}
+\DoxyCodeLine{187         \}}
+\DoxyCodeLine{188         }
+\DoxyCodeLine{189         \textcolor{keywordflow}{return} multiRenderables[state][currentFrame]-\/>Decal();}
+\DoxyCodeLine{190     \}}
+\DoxyCodeLine{191     }
+\DoxyCodeLine{192     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} AnimatedSprite::GetSingleFrame(\textcolor{keywordtype}{float} fElapsedTime)}
+\DoxyCodeLine{193     \{}
+\DoxyCodeLine{194         frameTimer += fElapsedTime;}
+\DoxyCodeLine{195         }
+\DoxyCodeLine{196         \textcolor{keywordflow}{if} (frameTimer >= frameDurations[state]) \{}
+\DoxyCodeLine{197             frameTimer = 0.0f;}
+\DoxyCodeLine{198             }
+\DoxyCodeLine{199             \textcolor{keywordflow}{if} (playModes[state] == PLAY\_MODE::PING\_PONG \&\& !playForward) \{}
+\DoxyCodeLine{200                 currentFrame-\/-\/;}
+\DoxyCodeLine{201             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{202                 currentFrame++;}
+\DoxyCodeLine{203             \}}
+\DoxyCodeLine{204             }
+\DoxyCodeLine{205             \textcolor{keywordflow}{if} (currentFrame >= singleFrames[state].size()) \{}
+\DoxyCodeLine{206                 currentFrame = playModes[state] == PLAY\_MODE::LOOP}
+\DoxyCodeLine{207                     ? 0}
+\DoxyCodeLine{208                     : singleFrames[state].size() -\/ 2;}
+\DoxyCodeLine{209                 playForward = \textcolor{keyword}{false};}
+\DoxyCodeLine{210             \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} (currentFrame <= 0) \{}
+\DoxyCodeLine{211                 playForward = \textcolor{keyword}{true};}
+\DoxyCodeLine{212             \}}
+\DoxyCodeLine{213         \}}
+\DoxyCodeLine{214         }
+\DoxyCodeLine{215         \textcolor{keywordflow}{return} singleFrames[state][currentFrame];}
+\DoxyCodeLine{216     \}}
+\DoxyCodeLine{217     }
+\DoxyCodeLine{218     \textcolor{keywordtype}{void} AnimatedSprite::SetState(std::string newState)}
+\DoxyCodeLine{219     \{}
+\DoxyCodeLine{220         \textcolor{keywordtype}{bool} stateFound = \textcolor{keyword}{false};}
+\DoxyCodeLine{221         \textcolor{keywordflow}{if} (type == SPRITE\_TYPE::SPRITE) \{}
+\DoxyCodeLine{222             \textcolor{keywordflow}{if} ((mode == SPRITE\_MODE::MULTI \&\& multiFrames.find(newState) == multiFrames.end())}
+\DoxyCodeLine{223                 || (mode == SPRITE\_MODE::SINGLE \&\& singleFrames.find(newState) == singleFrames.end())) \{}
+\DoxyCodeLine{224                 }
+\DoxyCodeLine{225                 std::cout << \textcolor{stringliteral}{"{}Error: State "{}} << newState << \textcolor{stringliteral}{"{} does not exist."{}} << std::endl;}
+\DoxyCodeLine{226                 \textcolor{keywordflow}{return};}
+\DoxyCodeLine{227             \}}
+\DoxyCodeLine{228         \} \textcolor{keywordflow}{else} \textcolor{keywordflow}{if} ((mode == SPRITE\_MODE::MULTI \&\& multiRenderables.find(newState) == multiRenderables.end())}
+\DoxyCodeLine{229                    || (mode == SPRITE\_MODE::SINGLE \&\& singleFrames.find(newState) == singleFrames.end())) \{}
+\DoxyCodeLine{230             }
+\DoxyCodeLine{231             std::cout << \textcolor{stringliteral}{"{}Error: State "{}} << newState << \textcolor{stringliteral}{"{} does not exist."{}} << std::endl;}
+\DoxyCodeLine{232             \textcolor{keywordflow}{return};}
+\DoxyCodeLine{233         \}}
+\DoxyCodeLine{234         }
+\DoxyCodeLine{235         \textcolor{keywordflow}{if} (newState != state) \{}
+\DoxyCodeLine{236             state = newState;}
+\DoxyCodeLine{237             currentFrame = 0;}
+\DoxyCodeLine{238         \}}
+\DoxyCodeLine{239     \}}
+\DoxyCodeLine{240     }
+\DoxyCodeLine{241     }
+\DoxyCodeLine{242     std::string AnimatedSprite::GetState()}
+\DoxyCodeLine{243     \{}
+\DoxyCodeLine{244         \textcolor{keywordflow}{return} state;}
+\DoxyCodeLine{245     \}}
+\DoxyCodeLine{246     }
+\DoxyCodeLine{247     \textcolor{keywordtype}{void} AnimatedSprite::AddState(std::string stateName, std::vector<std::string> imgPaths)}
+\DoxyCodeLine{248     \{}
+\DoxyCodeLine{249         AnimatedSprite::AddState(stateName, defaultFrameDuration, PLAY\_MODE::LOOP, imgPaths);}
+\DoxyCodeLine{250     \}}
+\DoxyCodeLine{251     }
+\DoxyCodeLine{252     \textcolor{keywordtype}{void} AnimatedSprite::AddState(std::string stateName, std::vector<olc::vi2d> spriteLocations)}
+\DoxyCodeLine{253     \{}
+\DoxyCodeLine{254         AnimatedSprite::AddState(stateName, defaultFrameDuration, PLAY\_MODE::LOOP, spriteLocations);}
+\DoxyCodeLine{255     \}}
+\DoxyCodeLine{256     }
+\DoxyCodeLine{257     \textcolor{keywordtype}{void} AnimatedSprite::AddState(std::string stateName, \textcolor{keywordtype}{float} frameDuration, PLAY\_MODE mode, std::vector<std::string> imgPaths)}
+\DoxyCodeLine{258     \{}
+\DoxyCodeLine{259         \textcolor{keywordflow}{for} (std::string\& path : imgPaths) \{}
+\DoxyCodeLine{260             \textcolor{keywordflow}{if} (type == SPRITE\_TYPE::SPRITE) \{}
+\DoxyCodeLine{261                 multiFrames[stateName].push\_back(\textcolor{keyword}{new} \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}}(path));}
+\DoxyCodeLine{262             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{263                 multiRenderables[stateName].push\_back(\textcolor{keyword}{new} Renderable());}
+\DoxyCodeLine{264                 multiRenderables[stateName].back()-\/>Load(path);}
+\DoxyCodeLine{265             \}}
+\DoxyCodeLine{266         \}}
+\DoxyCodeLine{267         }
+\DoxyCodeLine{268         frameDurations[stateName] = frameDuration;}
+\DoxyCodeLine{269         playModes[stateName] = mode;}
+\DoxyCodeLine{270     \}}
+\DoxyCodeLine{271     }
+\DoxyCodeLine{272     \textcolor{keywordtype}{void} AnimatedSprite::AddState(std::string stateName, \textcolor{keywordtype}{float} frameDuration, PLAY\_MODE mode, std::vector<olc::vi2d> spriteLocations)}
+\DoxyCodeLine{273     \{}
+\DoxyCodeLine{274         \textcolor{keywordflow}{for} (\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& location : spriteLocations) \{}
+\DoxyCodeLine{275             singleFrames[stateName].push\_back(location);}
+\DoxyCodeLine{276         \}}
+\DoxyCodeLine{277         }
+\DoxyCodeLine{278         frameDurations[stateName] = frameDuration;}
+\DoxyCodeLine{279         playModes[stateName] = mode;}
+\DoxyCodeLine{280     \}}
+\DoxyCodeLine{281     }
+\DoxyCodeLine{282     \textcolor{keywordtype}{void} AnimatedSprite::SetSpriteSize(\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} size)}
+\DoxyCodeLine{283     \{}
+\DoxyCodeLine{284         spriteSize = size;}
+\DoxyCodeLine{285         \textcolor{keywordflow}{if} (placeholder != \textcolor{keyword}{nullptr}) \{}
+\DoxyCodeLine{286             \textcolor{keyword}{delete} placeholder;}
+\DoxyCodeLine{287         \}}
+\DoxyCodeLine{288         placeholder = \textcolor{keyword}{new} \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}}(size.x, size.y);}
+\DoxyCodeLine{289     \}}
+\DoxyCodeLine{290     }
+\DoxyCodeLine{291     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} AnimatedSprite::GetSpriteSize()}
+\DoxyCodeLine{292     \{}
+\DoxyCodeLine{293         \textcolor{keywordflow}{return} spriteSize;}
+\DoxyCodeLine{294     \}}
+\DoxyCodeLine{295     }
+\DoxyCodeLine{296     \textcolor{keywordtype}{void} AnimatedSprite::SetSpriteScale(\textcolor{keywordtype}{float} scale)}
+\DoxyCodeLine{297     \{}
+\DoxyCodeLine{298         \textcolor{keywordflow}{if} (scale <= 0.0f) \{}
+\DoxyCodeLine{299             spriteScale = 1.0f;}
+\DoxyCodeLine{300         \}}
+\DoxyCodeLine{301         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{302             spriteScale = scale;}
+\DoxyCodeLine{303         \}}
+\DoxyCodeLine{304     \}}
+\DoxyCodeLine{305     }
+\DoxyCodeLine{306     \textcolor{keywordtype}{void} AnimatedSprite::Draw(\textcolor{keywordtype}{float} fElapsedTime, \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} position, uint8\_t flip, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} tint)}
+\DoxyCodeLine{307     \{}
+\DoxyCodeLine{308         \textcolor{keywordflow}{if} (mode == SPRITE\_MODE::MULTI) \{}
+\DoxyCodeLine{309             \textcolor{keywordflow}{if} (type == SPRITE\_TYPE::SPRITE) \{}
+\DoxyCodeLine{310                 pge-\/>DrawSprite(position, GetMultiFrame(fElapsedTime), spriteScale, flip);}
+\DoxyCodeLine{311             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{312                 pge-\/>DrawDecal(GetDecalPosition(position, flip), GetMultiRenderable(fElapsedTime), GetDecalScale(flip), tint);}
+\DoxyCodeLine{313             \}}
+\DoxyCodeLine{314         \}}
+\DoxyCodeLine{315         \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{316             \textcolor{keywordflow}{if} (type == SPRITE\_TYPE::SPRITE) \{}
+\DoxyCodeLine{317                 pge-\/>DrawPartialSprite(position, spriteSheet-\/>Sprite(), GetSingleFrame(fElapsedTime), spriteSize, spriteScale, flip);}
+\DoxyCodeLine{318             \} \textcolor{keywordflow}{else} \{}
+\DoxyCodeLine{319                 pge-\/>DrawPartialDecal(GetDecalPosition(position, flip), spriteSheet-\/>Decal(), GetSingleFrame(fElapsedTime), spriteSize, GetDecalScale(flip), tint);}
+\DoxyCodeLine{320             \}}
+\DoxyCodeLine{321         \}}
+\DoxyCodeLine{322     \}}
+\DoxyCodeLine{323     }
+\DoxyCodeLine{324     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} AnimatedSprite::GetDecalScale(uint8\_t flip)}
+\DoxyCodeLine{325     \{}
+\DoxyCodeLine{326         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} scale = \{ (float)spriteScale, (\textcolor{keywordtype}{float})spriteScale \};}
+\DoxyCodeLine{327         }
+\DoxyCodeLine{328         \textcolor{keywordflow}{if} (flip == olc::Sprite::Flip::HORIZ) \{}
+\DoxyCodeLine{329             \textcolor{keywordflow}{return} \{ -\/(scale.x), scale.y \};}
+\DoxyCodeLine{330         \}}
+\DoxyCodeLine{331         }
+\DoxyCodeLine{332         \textcolor{keywordflow}{if} (flip == olc::Sprite::Flip::VERT) \{}
+\DoxyCodeLine{333             \textcolor{keywordflow}{return} \{ scale.x, -\/scale.y \};}
+\DoxyCodeLine{334         \}}
+\DoxyCodeLine{335         }
+\DoxyCodeLine{336         \textcolor{keywordflow}{return} scale;}
+\DoxyCodeLine{337     \}}
+\DoxyCodeLine{338     }
+\DoxyCodeLine{339     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} AnimatedSprite::GetDecalPosition(\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} position, uint8\_t flip)}
+\DoxyCodeLine{340     \{}
+\DoxyCodeLine{341         \textcolor{keywordflow}{if} (flip == olc::Sprite::Flip::HORIZ) \{}
+\DoxyCodeLine{342             \textcolor{keywordflow}{return} \{ position.x + (spriteSize.x * spriteScale), position.y \};}
+\DoxyCodeLine{343         \}}
+\DoxyCodeLine{344         }
+\DoxyCodeLine{345         \textcolor{keywordflow}{if} (flip == olc::Sprite::Flip::VERT) \{}
+\DoxyCodeLine{346             \textcolor{keywordflow}{return} \{ position.x, position.y + (spriteSize.y * spriteScale) \};}
+\DoxyCodeLine{347         \}}
+\DoxyCodeLine{348         }
+\DoxyCodeLine{349         \textcolor{keywordflow}{return} position;}
+\DoxyCodeLine{350     \}}
+\DoxyCodeLine{351 \}}
+\DoxyCodeLine{352 }
+\DoxyCodeLine{353 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{354 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

@@ -1,0 +1,77 @@
+\hypertarget{lobby_8h_source}{}\doxysection{lobby.\+h}
+\label{lobby_8h_source}\index{include/frontend/lobby.h@{include/frontend/lobby.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../backend/libs.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../frontend/player.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../frontend/room.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_lobby}{Lobby}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 }
+\DoxyCodeLine{10 \textcolor{keyword}{private}:}
+\DoxyCodeLine{11     \textcolor{keywordtype}{int} lobbyWidth;}
+\DoxyCodeLine{12     \textcolor{keywordtype}{int} lobbyHeight;}
+\DoxyCodeLine{13     std::string lobbyRawData;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15     \textcolor{keywordtype}{int} tileWidth;}
+\DoxyCodeLine{16     \textcolor{keywordtype}{int} tileHeight;}
+\DoxyCodeLine{17 }
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} visibleTilesX;}
+\DoxyCodeLine{19     \textcolor{keywordtype}{int} visibleTilesY;}
+\DoxyCodeLine{20 }
+\DoxyCodeLine{21     \textcolor{keywordtype}{int} mazePlayerPosX;}
+\DoxyCodeLine{22     \textcolor{keywordtype}{int} mazePlayerPosY;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_room}{Room}} *room;}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \textcolor{keywordtype}{int} thisLobbyCount;}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_lobby_1_1rect}{rect}}}
+\DoxyCodeLine{30     \{}
+\DoxyCodeLine{31         olc::vf2d pos;}
+\DoxyCodeLine{32         olc::vf2d size;}
+\DoxyCodeLine{33     \};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{35     \mbox{\hyperlink{struct_lobby_1_1rect}{rect}} stairCase;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \mbox{\hyperlink{struct_lobby_1_1rect}{rect}} r;}
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} inMaze;}
+\DoxyCodeLine{39     olc::Sprite *lobbyRoom;}
+\DoxyCodeLine{40     olc::Sprite *lobbyForegroundSprite;}
+\DoxyCodeLine{41     olc::Decal *lobbyForeground;}
+\DoxyCodeLine{42     olc::Sprite *lobbyRays;}
+\DoxyCodeLine{43     olc::Decal *lobbyRaysDecal;}
+\DoxyCodeLine{44     \textcolor{keywordtype}{bool} leftMazeEnter;}
+\DoxyCodeLine{45     \textcolor{keywordtype}{bool} rightMazeEnter;}
+\DoxyCodeLine{46     \textcolor{keywordtype}{bool} inLeftMaze;}
+\DoxyCodeLine{47     \textcolor{keywordtype}{bool} inRightMaze;}
+\DoxyCodeLine{48     \textcolor{keyword}{enum} MAZE\_TYPE}
+\DoxyCodeLine{49     \{}
+\DoxyCodeLine{50         LEFT,}
+\DoxyCodeLine{51         RIGHT}
+\DoxyCodeLine{52     \};}
+\DoxyCodeLine{53     MAZE\_TYPE currentMaze;}
+\DoxyCodeLine{54 }
+\DoxyCodeLine{55 \textcolor{keyword}{public}:}
+\DoxyCodeLine{56     \mbox{\hyperlink{class_lobby}{Lobby}}(\textcolor{keywordtype}{int} count);}
+\DoxyCodeLine{57     \mbox{\hyperlink{class_lobby}{\string~Lobby}}();}
+\DoxyCodeLine{61     \textcolor{keywordtype}{char} \mbox{\hyperlink{class_lobby_a427014fe2d819628168507fb2407d83b}{getTile}}(\textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{62 }
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lobby_aca919772273a9179590280f85ab9718f}{drawLobby}}(olc::PixelGameEngine *engine, \mbox{\hyperlink{class_player}{Player}} *player);}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{71     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lobby_a121bb884ea00604f4668559df76b8fd4}{drawLobbyForeground}}(olc::PixelGameEngine *engine);}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{76     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_lobby_ac1d2d6af8b4aa67d2a43c5f351425e20}{hallCollision}}(\mbox{\hyperlink{class_player}{Player}} *player, rect roomLeft);}
+\DoxyCodeLine{77 }
+\DoxyCodeLine{81     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_lobby_ae2c9692389821186799e84589ce607e5}{pointCollRect}}(\textcolor{keyword}{const} olc::vf2d \&p, \textcolor{keyword}{const} rect \&r);}
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{keyword}{private}:}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{88     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_lobby_afb8a12547f58429c4d077da8debb0878}{initLobby}}();}
+\DoxyCodeLine{89 \};}
+
+\end{DoxyCode}

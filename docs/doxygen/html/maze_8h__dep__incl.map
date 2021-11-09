@@ -1,0 +1,11 @@
+<map id="include/backend/maze.h" name="include/backend/maze.h">
+<area shape="rect" id="node1" title="Declaration of the Maze class." alt="" coords="305,5,467,32"/>
+<area shape="rect" id="node2" href="$checked_maze_8h.html" title="Declaration of the CheckedMaze class." alt="" coords="136,80,348,107"/>
+<area shape="rect" id="node8" href="$checked_maze_8cpp.html" title="Definition of the CheckedMaze class." alt="" coords="285,155,487,181"/>
+<area shape="rect" id="node9" href="$maze_8cpp.html" title="Definition of the Maze class." alt="" coords="423,80,578,107"/>
+<area shape="rect" id="node3" href="$room_8h_source.html" title=" " alt="" coords="103,155,261,181"/>
+<area shape="rect" id="node4" href="$lobby_8h_source.html" title=" " alt="" coords="103,229,261,256"/>
+<area shape="rect" id="node5" href="$collisions_8h_source.html" title=" " alt="" coords="24,304,209,331"/>
+<area shape="rect" id="node6" href="$game_manager_8h_source.html" title=" " alt="" coords="10,453,223,480"/>
+<area shape="rect" id="node7" href="$main_menu_8h_source.html" title=" " alt="" coords="23,379,211,405"/>
+</map>

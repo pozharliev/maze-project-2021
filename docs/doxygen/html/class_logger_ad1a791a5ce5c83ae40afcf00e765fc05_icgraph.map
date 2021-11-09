@@ -1,0 +1,8 @@
+<map id="Logger::getTime" name="Logger::getTime">
+<area shape="rect" id="node1" title="Generates time stamps." alt="" coords="561,56,676,83"/>
+<area shape="rect" id="node2" href="$class_logger.html#a4139f1ee6e935ad8b48e7646eaf7b42d" title="Returns a timestamp with a message type and the message itself." alt="" coords="399,56,513,83"/>
+<area shape="rect" id="node3" href="$class_logger.html#aa40d222d0523fed5cac51fee5c0aedf4" title="Logs an error message." alt="" coords="243,5,341,32"/>
+<area shape="rect" id="node4" href="$class_logger.html#a3b11ea8f81da0f06687741e6e85160f7" title="Logs an info message." alt="" coords="247,56,337,83"/>
+<area shape="rect" id="node6" href="$class_logger.html#ac966eee4f80868a5ed8aedfa15ab9a7c" title="Logs a warning message." alt="" coords="233,107,351,133"/>
+<area shape="rect" id="node5" href="$class_checked_maze.html#ad2faf60731fc00809c701b1a1c3473a3" title="Recursively checks if the maze is solvable, and if it is not, generates a new one." alt="" coords="5,81,185,108"/>
+</map>

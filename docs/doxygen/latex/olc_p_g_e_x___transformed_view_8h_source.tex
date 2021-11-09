@@ -1,0 +1,660 @@
+\hypertarget{olc_p_g_e_x___transformed_view_8h_source}{}\doxysection{olc\+PGEX\+\_\+\+Transformed\+View.\+h}
+\label{olc_p_g_e_x___transformed_view_8h_source}\index{libs/olcPGEX\_TransformedView.h@{libs/olcPGEX\_TransformedView.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{comment}{/*}}
+\DoxyCodeLine{2 \textcolor{comment}{    olcPGEX\_TransformedView.h}}
+\DoxyCodeLine{3 \textcolor{comment}{}}
+\DoxyCodeLine{4 \textcolor{comment}{    +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{5 \textcolor{comment}{    |         OneLoneCoder Pixel Game Engine Extension            |}}
+\DoxyCodeLine{6 \textcolor{comment}{    |                 Transformed View v1.01                      |}}
+\DoxyCodeLine{7 \textcolor{comment}{    +-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/-\/+}}
+\DoxyCodeLine{8 \textcolor{comment}{}}
+\DoxyCodeLine{9 \textcolor{comment}{    NOTE: UNDER ACTIVE DEVELOPMENT -\/ THERE ARE BUGS/GLITCHES}}
+\DoxyCodeLine{10 \textcolor{comment}{}}
+\DoxyCodeLine{11 \textcolor{comment}{    What is this?}}
+\DoxyCodeLine{12 \textcolor{comment}{    \string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{13 \textcolor{comment}{    This extension provides drawing routines that are compatible with}}
+\DoxyCodeLine{14 \textcolor{comment}{    changeable world and screen spaces. For example you can pan and}}
+\DoxyCodeLine{15 \textcolor{comment}{    zoom, and all PGE drawing routines will automatically adopt the current}}
+\DoxyCodeLine{16 \textcolor{comment}{    world scales and offsets.}}
+\DoxyCodeLine{17 \textcolor{comment}{}}
+\DoxyCodeLine{18 \textcolor{comment}{    License (OLC-\/3)}}
+\DoxyCodeLine{19 \textcolor{comment}{    \string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{20 \textcolor{comment}{}}
+\DoxyCodeLine{21 \textcolor{comment}{    Copyright 2018 -\/ 2021 OneLoneCoder.com}}
+\DoxyCodeLine{22 \textcolor{comment}{}}
+\DoxyCodeLine{23 \textcolor{comment}{    Redistribution and use in source and binary forms, with or without}}
+\DoxyCodeLine{24 \textcolor{comment}{    modification, are permitted provided that the following conditions}}
+\DoxyCodeLine{25 \textcolor{comment}{    are met:}}
+\DoxyCodeLine{26 \textcolor{comment}{}}
+\DoxyCodeLine{27 \textcolor{comment}{    1. Redistributions or derivations of source code must retain the above}}
+\DoxyCodeLine{28 \textcolor{comment}{    copyright notice, this list of conditions and the following disclaimer.}}
+\DoxyCodeLine{29 \textcolor{comment}{}}
+\DoxyCodeLine{30 \textcolor{comment}{    2. Redistributions or derivative works in binary form must reproduce}}
+\DoxyCodeLine{31 \textcolor{comment}{    the above copyright notice. This list of conditions and the following}}
+\DoxyCodeLine{32 \textcolor{comment}{    disclaimer must be reproduced in the documentation and/or other}}
+\DoxyCodeLine{33 \textcolor{comment}{    materials provided with the distribution.}}
+\DoxyCodeLine{34 \textcolor{comment}{}}
+\DoxyCodeLine{35 \textcolor{comment}{    3. Neither the name of the copyright holder nor the names of its}}
+\DoxyCodeLine{36 \textcolor{comment}{    contributors may be used to endorse or promote products derived}}
+\DoxyCodeLine{37 \textcolor{comment}{    from this software without specific prior written permission.}}
+\DoxyCodeLine{38 \textcolor{comment}{}}
+\DoxyCodeLine{39 \textcolor{comment}{    THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS}}
+\DoxyCodeLine{40 \textcolor{comment}{    "{}AS IS"{} AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT}}
+\DoxyCodeLine{41 \textcolor{comment}{    LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR}}
+\DoxyCodeLine{42 \textcolor{comment}{    A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT}}
+\DoxyCodeLine{43 \textcolor{comment}{    HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,}}
+\DoxyCodeLine{44 \textcolor{comment}{    SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT}}
+\DoxyCodeLine{45 \textcolor{comment}{    LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,}}
+\DoxyCodeLine{46 \textcolor{comment}{    DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY}}
+\DoxyCodeLine{47 \textcolor{comment}{    THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT}}
+\DoxyCodeLine{48 \textcolor{comment}{    (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE}}
+\DoxyCodeLine{49 \textcolor{comment}{    OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.}}
+\DoxyCodeLine{50 \textcolor{comment}{}}
+\DoxyCodeLine{51 \textcolor{comment}{    Links}}
+\DoxyCodeLine{52 \textcolor{comment}{    \string~\string~\string~\string~\string~}}
+\DoxyCodeLine{53 \textcolor{comment}{    YouTube:    https://www.youtube.com/javidx9}}
+\DoxyCodeLine{54 \textcolor{comment}{    Discord:    https://discord.gg/WhwHUMV}}
+\DoxyCodeLine{55 \textcolor{comment}{    Twitter:    https://www.twitter.com/javidx9}}
+\DoxyCodeLine{56 \textcolor{comment}{    Twitch:     https://www.twitch.tv/javidx9}}
+\DoxyCodeLine{57 \textcolor{comment}{    GitHub:     https://www.github.com/onelonecoder}}
+\DoxyCodeLine{58 \textcolor{comment}{    Homepage:   https://www.onelonecoder.com}}
+\DoxyCodeLine{59 \textcolor{comment}{}}
+\DoxyCodeLine{60 \textcolor{comment}{    Author}}
+\DoxyCodeLine{61 \textcolor{comment}{    \string~\string~\string~\string~\string~\string~}}
+\DoxyCodeLine{62 \textcolor{comment}{    David Barr, aka javidx9, ©OneLoneCoder 2019, 2020, 2021}}
+\DoxyCodeLine{63 \textcolor{comment}{}}
+\DoxyCodeLine{64 \textcolor{comment}{    Revisions:}}
+\DoxyCodeLine{65 \textcolor{comment}{    1.00:   Initial Release}}
+\DoxyCodeLine{66 \textcolor{comment}{        1.01:   DrawLine bug fix, thanks Fern}}
+\DoxyCodeLine{67 \textcolor{comment}{*/}}
+\DoxyCodeLine{68 }
+\DoxyCodeLine{69 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{70 \textcolor{preprocessor}{\#ifndef OLC\_PGEX\_TRANSFORMEDVIEW\_H}}
+\DoxyCodeLine{71 \textcolor{preprocessor}{\#define OLC\_PGEX\_TRANSFORMEDVIEW\_H}}
+\DoxyCodeLine{72 }
+\DoxyCodeLine{73 \textcolor{preprocessor}{\#include "{}olcPixelGameEngine.h"{}}}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{75 }
+\DoxyCodeLine{76 }
+\DoxyCodeLine{77 \textcolor{keyword}{namespace }olc}
+\DoxyCodeLine{78 \{}
+\DoxyCodeLine{79     \textcolor{keyword}{class }\mbox{\hyperlink{classolc_1_1_transformed_view}{TransformedView}} : \textcolor{keyword}{public} \mbox{\hyperlink{classolc_1_1_p_g_e_x}{olc::PGEX}}}
+\DoxyCodeLine{80     \{}
+\DoxyCodeLine{81     \textcolor{keyword}{public}:}
+\DoxyCodeLine{82         \mbox{\hyperlink{classolc_1_1_transformed_view}{TransformedView}}() = \textcolor{keywordflow}{default};}
+\DoxyCodeLine{83         \textcolor{keyword}{virtual} \textcolor{keywordtype}{void} Initialise(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vViewArea, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vPixelScale = \{ 1.0f, 1.0f \});}
+\DoxyCodeLine{84 }
+\DoxyCodeLine{85     \textcolor{keyword}{public}:}
+\DoxyCodeLine{86         \textcolor{keywordtype}{void} SetWorldOffset(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vOffset);}
+\DoxyCodeLine{87         \textcolor{keywordtype}{void} MoveWorldOffset(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vDeltaOffset);}
+\DoxyCodeLine{88         \textcolor{keywordtype}{void} SetWorldScale(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vScale);}
+\DoxyCodeLine{89         \textcolor{keywordtype}{void} SetViewArea(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vViewArea);}
+\DoxyCodeLine{90         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} GetWorldTL() \textcolor{keyword}{const};}
+\DoxyCodeLine{91         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} GetWorldBR() \textcolor{keyword}{const};}
+\DoxyCodeLine{92         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} GetWorldVisibleArea() \textcolor{keyword}{const};}
+\DoxyCodeLine{93         \textcolor{keywordtype}{void} ZoomAtScreenPos(\textcolor{keyword}{const} \textcolor{keywordtype}{float} fDeltaZoom, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos);}
+\DoxyCodeLine{94         \textcolor{keywordtype}{void} SetZoom(\textcolor{keyword}{const} \textcolor{keywordtype}{float} fZoom, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos);}
+\DoxyCodeLine{95         \textcolor{keywordtype}{void} StartPan(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos);}
+\DoxyCodeLine{96         \textcolor{keywordtype}{void} UpdatePan(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos);}
+\DoxyCodeLine{97         \textcolor{keywordtype}{void} EndPan(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos);}
+\DoxyCodeLine{98         \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& GetWorldOffset() \textcolor{keyword}{const};}
+\DoxyCodeLine{99         \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& GetWorldScale() \textcolor{keyword}{const};}
+\DoxyCodeLine{100         \textcolor{keyword}{virtual} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} WorldToScreen(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vWorldPos) \textcolor{keyword}{const};}
+\DoxyCodeLine{101         \textcolor{keyword}{virtual} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} ScreenToWorld(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vScreenPos) \textcolor{keyword}{const};}
+\DoxyCodeLine{102         \textcolor{keyword}{virtual} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} ScaleToWorld(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vScreenSize) \textcolor{keyword}{const};}
+\DoxyCodeLine{103         \textcolor{keyword}{virtual} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} ScaleToScreen(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vWorldSize) \textcolor{keyword}{const};}
+\DoxyCodeLine{104         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} IsPointVisible(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vPos) \textcolor{keyword}{const};}
+\DoxyCodeLine{105         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} IsRectVisible(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vPos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vSize) \textcolor{keyword}{const};}
+\DoxyCodeLine{106         }
+\DoxyCodeLine{107     \textcolor{keyword}{protected}:}
+\DoxyCodeLine{108         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} m\_vWorldOffset = \{ 0.0f, 0.0f \};}
+\DoxyCodeLine{109         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} m\_vWorldScale = \{ 1.0f, 1.0f \};}
+\DoxyCodeLine{110         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} m\_vRecipPixel = \{ 1.0f, 1.0f \};}
+\DoxyCodeLine{111         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} m\_vPixelScale = \{ 1.0f, 1.0f \};}
+\DoxyCodeLine{112         \textcolor{keywordtype}{bool} m\_bPanning = \textcolor{keyword}{false};}
+\DoxyCodeLine{113         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} m\_vStartPan = \{ 0.0f, 0.0f \};}
+\DoxyCodeLine{114         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} m\_vViewArea;}
+\DoxyCodeLine{115 }
+\DoxyCodeLine{116     \textcolor{keyword}{public}: \textcolor{comment}{// Hopefully, these should look familiar!}}
+\DoxyCodeLine{117         \textcolor{comment}{// Plots a single point}}
+\DoxyCodeLine{118         \textcolor{keyword}{virtual} \textcolor{keywordtype}{bool} Draw(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{119         \textcolor{keywordtype}{bool} Draw(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);      }
+\DoxyCodeLine{120         \textcolor{comment}{// Draws a line from (x1,y1) to (x2,y2)}}
+\DoxyCodeLine{121         \textcolor{keywordtype}{void} DrawLine(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE, uint32\_t pattern = 0xFFFFFFFF);}
+\DoxyCodeLine{122         \textcolor{keywordtype}{void} DrawLine(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos1, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos2, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE, uint32\_t pattern = 0xFFFFFFFF);}
+\DoxyCodeLine{123         \textcolor{comment}{// Draws a circle located at (x,y) with radius}}
+\DoxyCodeLine{124         \textcolor{keywordtype}{void} DrawCircle(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} radius, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE, uint8\_t mask = 0xFF);}
+\DoxyCodeLine{125         \textcolor{keywordtype}{void} DrawCircle(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keywordtype}{float} radius, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE, uint8\_t mask = 0xFF);}
+\DoxyCodeLine{126         \textcolor{comment}{// Fills a circle located at (x,y) with radius}}
+\DoxyCodeLine{127         \textcolor{keywordtype}{void} FillCircle(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} radius, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{128         \textcolor{keywordtype}{void} FillCircle(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keywordtype}{float} radius, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{129         \textcolor{comment}{// Draws a rectangle at (x,y) to (x+w,y+h)}}
+\DoxyCodeLine{130         \textcolor{keywordtype}{void} DrawRect(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} w, \textcolor{keywordtype}{float} h, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{131         \textcolor{keywordtype}{void} DrawRect(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& size, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{132         \textcolor{comment}{// Fills a rectangle at (x,y) to (x+w,y+h)}}
+\DoxyCodeLine{133         \textcolor{keywordtype}{void} FillRect(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} w, \textcolor{keywordtype}{float} h, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{134         \textcolor{keywordtype}{void} FillRect(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& size, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{135         \textcolor{comment}{// Draws a triangle between points (x1,y1), (x2,y2) and (x3,y3)}}
+\DoxyCodeLine{136         \textcolor{keywordtype}{void} DrawTriangle(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{float} x3, \textcolor{keywordtype}{float} y3, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{137         \textcolor{keywordtype}{void} DrawTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos1, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos2, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos3, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{138         \textcolor{comment}{// Flat fills a triangle between points (x1,y1), (x2,y2) and (x3,y3)}}
+\DoxyCodeLine{139         \textcolor{keywordtype}{void} FillTriangle(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{float} x3, \textcolor{keywordtype}{float} y3, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{140         \textcolor{keywordtype}{void} FillTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos1, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos2, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos3, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p = olc::WHITE);}
+\DoxyCodeLine{141         \textcolor{comment}{// Draws an entire sprite at location (x,y)}}
+\DoxyCodeLine{142         \textcolor{keywordtype}{void} DrawSprite(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}}* sprite, \textcolor{keywordtype}{float} scalex = 1, \textcolor{keywordtype}{float} scaley = 1, uint8\_t flip = olc::Sprite::NONE);}
+\DoxyCodeLine{143         \textcolor{keywordtype}{void} DrawSprite(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}}* sprite, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale = \{ 1.0f, 1.0f \}, uint8\_t flip = olc::Sprite::NONE);}
+\DoxyCodeLine{144         \textcolor{comment}{// Draws an area of a sprite at location (x,y), where the}}
+\DoxyCodeLine{145         \textcolor{comment}{// selected area is (ox,oy) to (ox+w,oy+h)}}
+\DoxyCodeLine{146         \textcolor{keywordtype}{void} DrawPartialSprite(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \mbox{\hyperlink{classolc_1_1_sprite}{Sprite}}* sprite, int32\_t ox, int32\_t oy, int32\_t w, int32\_t h, \textcolor{keywordtype}{float} scalex = 1, \textcolor{keywordtype}{float} scaley = 1, uint8\_t flip = olc::Sprite::NONE);}
+\DoxyCodeLine{147         \textcolor{keywordtype}{void} DrawPartialSprite(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \mbox{\hyperlink{classolc_1_1_sprite}{Sprite}}* sprite, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& sourcepos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale = \{ 1.0f, 1.0f \}, uint8\_t flip = olc::Sprite::NONE);}
+\DoxyCodeLine{148         \textcolor{keywordtype}{void} DrawString(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keyword}{const} std::string\& sText, \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} col, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale);}
+\DoxyCodeLine{149         \textcolor{keywordtype}{void} DrawString(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} std::string\& sText, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{Pixel}} col, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale);}
+\DoxyCodeLine{150 }
+\DoxyCodeLine{151         }
+\DoxyCodeLine{152         \textcolor{comment}{// Draws a whole decal, with optional scale and tinting}}
+\DoxyCodeLine{153         \textcolor{keywordtype}{void} DrawDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale = \{ 1.0f,1.0f \}, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{154         \textcolor{comment}{// Draws a region of a decal, with optional scale and tinting}}
+\DoxyCodeLine{155         \textcolor{keywordtype}{void} DrawPartialDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale = \{ 1.0f,1.0f \}, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{156         \textcolor{keywordtype}{void} DrawPartialDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& size, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{157         \textcolor{comment}{// Draws fully user controlled 4 vertices, pos(pixels), uv(pixels), colours}}
+\DoxyCodeLine{158         \textcolor{keywordtype}{void} DrawExplicitDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}* pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}* uv, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}* col, uint32\_t elements = 4);}
+\DoxyCodeLine{160         \textcolor{keywordtype}{void} DrawWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(\&pos)[4], \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{161         \textcolor{keywordtype}{void} DrawWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}* pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{162         \textcolor{keywordtype}{void} DrawWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} std::array<olc::vf2d, 4>\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{164         \textcolor{keywordtype}{void} DrawPartialWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(\&pos)[4], \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{165         \textcolor{keywordtype}{void} DrawPartialWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}* pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{166         \textcolor{keywordtype}{void} DrawPartialWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} std::array<olc::vf2d, 4>\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{168         \textcolor{keywordtype}{void} DrawRotatedDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \textcolor{keywordtype}{float} fAngle, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& center = \{ 0.0f, 0.0f \}, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale = \{ 1.0f,1.0f \}, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{169         \textcolor{keywordtype}{void} DrawPartialRotatedDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \textcolor{keywordtype}{float} fAngle, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& center, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale = \{ 1.0f, 1.0f \}, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint = olc::WHITE);}
+\DoxyCodeLine{170         \textcolor{comment}{// Draws a multiline string as a decal, with tiniting and scaling}}
+\DoxyCodeLine{171         \textcolor{keywordtype}{void} DrawStringDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} std::string\& sText, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} col = olc::WHITE, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale = \{ 1.0f, 1.0f \});}
+\DoxyCodeLine{172         \textcolor{keywordtype}{void} DrawStringPropDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} std::string\& sText, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} col = olc::WHITE, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale = \{ 1.0f, 1.0f \});}
+\DoxyCodeLine{173         \textcolor{comment}{// Draws a single shaded filled rectangle as a decal}}
+\DoxyCodeLine{174         \textcolor{keywordtype}{void} FillRectDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} col = olc::WHITE);}
+\DoxyCodeLine{175         \textcolor{comment}{// Draws a corner shaded rectangle as a decal}}
+\DoxyCodeLine{176         \textcolor{keywordtype}{void} GradientFillRectDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} colTL, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} colBL, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} colBR, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} colTR);}
+\DoxyCodeLine{177         \textcolor{comment}{// Draws an arbitrary convex textured polygon using GPU}}
+\DoxyCodeLine{178         \textcolor{keywordtype}{void} DrawPolygonDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} std::vector<olc::vf2d>\& pos, \textcolor{keyword}{const} std::vector<olc::vf2d>\& uv, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} tint = olc::WHITE);}
+\DoxyCodeLine{179 }
+\DoxyCodeLine{180     \};}
+\DoxyCodeLine{181 }
+\DoxyCodeLine{182     \textcolor{keyword}{class }\mbox{\hyperlink{classolc_1_1_tile_transformed_view}{TileTransformedView}} : \textcolor{keyword}{public} \mbox{\hyperlink{classolc_1_1_transformed_view}{TransformedView}}}
+\DoxyCodeLine{183     \{}
+\DoxyCodeLine{184     \textcolor{keyword}{public}:}
+\DoxyCodeLine{185         \mbox{\hyperlink{classolc_1_1_tile_transformed_view}{TileTransformedView}}() = \textcolor{keywordflow}{default}; }
+\DoxyCodeLine{186         \mbox{\hyperlink{classolc_1_1_tile_transformed_view}{TileTransformedView}}(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vViewArea, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vTileSize);}
+\DoxyCodeLine{187     }
+\DoxyCodeLine{188     \textcolor{keyword}{public}:}
+\DoxyCodeLine{189         \textcolor{keywordtype}{void} SetRangeX(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} bRanged, \textcolor{keyword}{const} int32\_t nMin = 0, \textcolor{keyword}{const} int32\_t nMax = 0);}
+\DoxyCodeLine{190         \textcolor{keywordtype}{void} SetRangeY(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} bRanged, \textcolor{keyword}{const} int32\_t nMin = 0, \textcolor{keyword}{const} int32\_t nMax = 0);}
+\DoxyCodeLine{191         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} GetTopLeftTile() \textcolor{keyword}{const};}
+\DoxyCodeLine{192         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} GetBottomRightTile() \textcolor{keyword}{const};}
+\DoxyCodeLine{193         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} GetVisibleTiles() \textcolor{keyword}{const};}
+\DoxyCodeLine{194         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} GetTileUnderScreenPos(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos) \textcolor{keyword}{const};}
+\DoxyCodeLine{195         \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} GetTileOffset() \textcolor{keyword}{const};}
+\DoxyCodeLine{196         }
+\DoxyCodeLine{197     \textcolor{keyword}{private}:}
+\DoxyCodeLine{198         \textcolor{keywordtype}{bool} m\_bRangedX = \textcolor{keyword}{false};}
+\DoxyCodeLine{199         int32\_t m\_nMinRangeX = 0;}
+\DoxyCodeLine{200         int32\_t m\_nMaxRangeX = 0;}
+\DoxyCodeLine{201         \textcolor{keywordtype}{bool} m\_bRangedY = \textcolor{keyword}{false};}
+\DoxyCodeLine{202         int32\_t m\_nMinRangeY = 0;}
+\DoxyCodeLine{203         int32\_t m\_nMaxRangeY = 0;}
+\DoxyCodeLine{204     \};}
+\DoxyCodeLine{205 \}}
+\DoxyCodeLine{206 }
+\DoxyCodeLine{207 \textcolor{preprocessor}{\#ifdef OLC\_PGEX\_TRANSFORMEDVIEW}}
+\DoxyCodeLine{208 \textcolor{preprocessor}{\#undef OLC\_PGEX\_TRANSFORMEDVIEW}}
+\DoxyCodeLine{209 }
+\DoxyCodeLine{210 \textcolor{keyword}{namespace }olc}
+\DoxyCodeLine{211 \{}
+\DoxyCodeLine{212 }
+\DoxyCodeLine{213     \textcolor{keywordtype}{void} TransformedView::Initialise(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vViewArea, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vPixelScale)}
+\DoxyCodeLine{214     \{}
+\DoxyCodeLine{215         SetViewArea(vViewArea);}
+\DoxyCodeLine{216         SetWorldScale(vPixelScale);}
+\DoxyCodeLine{217         m\_vPixelScale = vPixelScale;}
+\DoxyCodeLine{218         m\_vRecipPixel = 1.0f / m\_vPixelScale;}
+\DoxyCodeLine{219     \}}
+\DoxyCodeLine{220 }
+\DoxyCodeLine{221     \textcolor{keywordtype}{void} TransformedView::SetWorldOffset(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vOffset)}
+\DoxyCodeLine{222     \{}
+\DoxyCodeLine{223         m\_vWorldOffset = vOffset;}
+\DoxyCodeLine{224     \}}
+\DoxyCodeLine{225 }
+\DoxyCodeLine{226     \textcolor{keywordtype}{void} TransformedView::MoveWorldOffset(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vDeltaOffset)}
+\DoxyCodeLine{227     \{}
+\DoxyCodeLine{228         m\_vWorldOffset += vDeltaOffset;}
+\DoxyCodeLine{229     \}}
+\DoxyCodeLine{230 }
+\DoxyCodeLine{231     \textcolor{keywordtype}{void} TransformedView::SetWorldScale(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vScale)}
+\DoxyCodeLine{232     \{}
+\DoxyCodeLine{233         m\_vWorldScale = vScale;}
+\DoxyCodeLine{234     \}}
+\DoxyCodeLine{235 }
+\DoxyCodeLine{236     \textcolor{keywordtype}{void} TransformedView::SetViewArea(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vViewArea)}
+\DoxyCodeLine{237     \{}
+\DoxyCodeLine{238         m\_vViewArea = vViewArea;}
+\DoxyCodeLine{239     \}}
+\DoxyCodeLine{240 }
+\DoxyCodeLine{241     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} TransformedView::GetWorldTL()\textcolor{keyword}{ const}}
+\DoxyCodeLine{242 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{243         \textcolor{keywordflow}{return} ScreenToWorld(\{ 0,0 \});}
+\DoxyCodeLine{244     \}}
+\DoxyCodeLine{245 }
+\DoxyCodeLine{246     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} TransformedView::GetWorldBR()\textcolor{keyword}{ const}}
+\DoxyCodeLine{247 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{248         \textcolor{keywordflow}{return} TransformedView::ScreenToWorld(m\_vViewArea);}
+\DoxyCodeLine{249     \}}
+\DoxyCodeLine{250 }
+\DoxyCodeLine{251     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} TransformedView::GetWorldVisibleArea()\textcolor{keyword}{ const}}
+\DoxyCodeLine{252 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{253         \textcolor{keywordflow}{return} GetWorldBR() -\/ GetWorldTL();}
+\DoxyCodeLine{254     \}}
+\DoxyCodeLine{255 }
+\DoxyCodeLine{256     \textcolor{keywordtype}{void} TransformedView::ZoomAtScreenPos(\textcolor{keyword}{const} \textcolor{keywordtype}{float} fDeltaZoom, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos)}
+\DoxyCodeLine{257     \{}
+\DoxyCodeLine{258         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vOffsetBeforeZoom = ScreenToWorld(vPos);}
+\DoxyCodeLine{259         m\_vWorldScale *= fDeltaZoom;}
+\DoxyCodeLine{260         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vOffsetAfterZoom = ScreenToWorld(vPos);}
+\DoxyCodeLine{261         m\_vWorldOffset += vOffsetBeforeZoom -\/ vOffsetAfterZoom;}
+\DoxyCodeLine{262     \}}
+\DoxyCodeLine{263 }
+\DoxyCodeLine{264     \textcolor{keywordtype}{void} TransformedView::SetZoom(\textcolor{keyword}{const} \textcolor{keywordtype}{float} fZoom, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos)}
+\DoxyCodeLine{265     \{}
+\DoxyCodeLine{266         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vOffsetBeforeZoom = ScreenToWorld(vPos);}
+\DoxyCodeLine{267         m\_vWorldScale = \{ fZoom, fZoom \};}
+\DoxyCodeLine{268         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vOffsetAfterZoom = ScreenToWorld(vPos);}
+\DoxyCodeLine{269         m\_vWorldOffset += vOffsetBeforeZoom -\/ vOffsetAfterZoom;}
+\DoxyCodeLine{270     \}}
+\DoxyCodeLine{271 }
+\DoxyCodeLine{272     \textcolor{keywordtype}{void} TransformedView::StartPan(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos)}
+\DoxyCodeLine{273     \{}
+\DoxyCodeLine{274         m\_bPanning = \textcolor{keyword}{true};}
+\DoxyCodeLine{275         m\_vStartPan = \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(vPos);}
+\DoxyCodeLine{276     \}}
+\DoxyCodeLine{277 }
+\DoxyCodeLine{278     \textcolor{keywordtype}{void} TransformedView::UpdatePan(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos)}
+\DoxyCodeLine{279     \{}
+\DoxyCodeLine{280         \textcolor{keywordflow}{if} (m\_bPanning)}
+\DoxyCodeLine{281         \{}
+\DoxyCodeLine{282             m\_vWorldOffset -\/= (\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(vPos) -\/ m\_vStartPan) / m\_vWorldScale;}
+\DoxyCodeLine{283             m\_vStartPan = \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(vPos);}
+\DoxyCodeLine{284         \}}
+\DoxyCodeLine{285     \}}
+\DoxyCodeLine{286 }
+\DoxyCodeLine{287     \textcolor{keywordtype}{void} TransformedView::EndPan(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos)}
+\DoxyCodeLine{288     \{}
+\DoxyCodeLine{289         UpdatePan(vPos);}
+\DoxyCodeLine{290         m\_bPanning = \textcolor{keyword}{false};}
+\DoxyCodeLine{291     \}}
+\DoxyCodeLine{292 }
+\DoxyCodeLine{293     \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& TransformedView::GetWorldOffset()\textcolor{keyword}{ const}}
+\DoxyCodeLine{294 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{295         \textcolor{keywordflow}{return} m\_vWorldOffset;}
+\DoxyCodeLine{296     \}}
+\DoxyCodeLine{297 }
+\DoxyCodeLine{298     \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& TransformedView::GetWorldScale()\textcolor{keyword}{ const}}
+\DoxyCodeLine{299 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{300         \textcolor{keywordflow}{return} m\_vWorldScale;}
+\DoxyCodeLine{301     \}}
+\DoxyCodeLine{302 }
+\DoxyCodeLine{303     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} TransformedView::WorldToScreen(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vWorldPos)\textcolor{keyword}{ const}}
+\DoxyCodeLine{304 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{305         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vFloat = ((vWorldPos -\/ m\_vWorldOffset) * m\_vWorldScale);}
+\DoxyCodeLine{306         vFloat = \{ std::floor(vFloat.x), std::floor(vFloat.y) \};}
+\DoxyCodeLine{307         \textcolor{keywordflow}{return} vFloat;}
+\DoxyCodeLine{308     \}}
+\DoxyCodeLine{309 }
+\DoxyCodeLine{310     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} TransformedView::ScreenToWorld(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vScreenPos)\textcolor{keyword}{ const}}
+\DoxyCodeLine{311 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{312         \textcolor{keywordflow}{return} (\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(vScreenPos) / m\_vWorldScale) + m\_vWorldOffset;}
+\DoxyCodeLine{313     \}}
+\DoxyCodeLine{314 }
+\DoxyCodeLine{315     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} TransformedView::ScaleToWorld(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vScreenSize)\textcolor{keyword}{ const}}
+\DoxyCodeLine{316 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{317         \textcolor{keywordflow}{return} (\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(vScreenSize) / m\_vWorldScale);}
+\DoxyCodeLine{318     \}}
+\DoxyCodeLine{319 }
+\DoxyCodeLine{320     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} TransformedView::ScaleToScreen(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vWorldSize)\textcolor{keyword}{ const}}
+\DoxyCodeLine{321 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{322         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vFloat = vWorldSize * m\_vWorldScale;     }
+\DoxyCodeLine{323         \textcolor{keywordflow}{return} vFloat.floor();}
+\DoxyCodeLine{324     \}}
+\DoxyCodeLine{325 }
+\DoxyCodeLine{326     \textcolor{keywordtype}{bool} TransformedView::IsPointVisible(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& vPos)\textcolor{keyword}{ const}}
+\DoxyCodeLine{327 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{328         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} vScreen = WorldToScreen(vPos);}
+\DoxyCodeLine{329         \textcolor{keywordflow}{return} vScreen.x >= 0 \&\& vScreen.x < m\_vViewArea.x\&\& vScreen.y >= 0 \&\& vScreen.y < m\_vViewArea.y;}
+\DoxyCodeLine{330     \}}
+\DoxyCodeLine{331 }
+\DoxyCodeLine{332     \textcolor{keywordtype}{bool} TransformedView::IsRectVisible(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vPos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& vSize)\textcolor{keyword}{ const}}
+\DoxyCodeLine{333 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{334         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} vScreenPos = WorldToScreen(vPos);}
+\DoxyCodeLine{335         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} vScreenSize = vSize * m\_vWorldScale;}
+\DoxyCodeLine{336         \textcolor{keywordflow}{return} (vScreenPos.x < 0 + m\_vViewArea.x \&\& vScreenPos.x + vScreenSize.x > 0 \&\& vScreenPos.y < m\_vViewArea.y\&\& vScreenPos.y + vScreenSize.y > 0);}
+\DoxyCodeLine{337     \}}
+\DoxyCodeLine{338 }
+\DoxyCodeLine{339     \textcolor{keywordtype}{bool} TransformedView::Draw(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{340     \{}
+\DoxyCodeLine{341         \textcolor{keywordflow}{return} Draw(\{ x, y \}, p);}
+\DoxyCodeLine{342     \}}
+\DoxyCodeLine{343 }
+\DoxyCodeLine{344     \textcolor{keywordtype}{bool} TransformedView::Draw(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{345     \{}
+\DoxyCodeLine{346         \textcolor{keywordflow}{return} pge-\/>Draw(WorldToScreen(pos), p);}
+\DoxyCodeLine{347     \}}
+\DoxyCodeLine{348     }
+\DoxyCodeLine{349     \textcolor{keywordtype}{void} TransformedView::DrawLine(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p, uint32\_t pattern)}
+\DoxyCodeLine{350     \{}
+\DoxyCodeLine{351         DrawLine(\{ x1, y1 \}, \{ x2, y2 \}, p, pattern);}
+\DoxyCodeLine{352     \}}
+\DoxyCodeLine{353 }
+\DoxyCodeLine{354     \textcolor{keywordtype}{void} TransformedView::DrawLine(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos1, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos2, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p, uint32\_t pattern)}
+\DoxyCodeLine{355     \{}
+\DoxyCodeLine{356         pge-\/>DrawLine(WorldToScreen(pos1), WorldToScreen(pos2), p, pattern);}
+\DoxyCodeLine{357     \}}
+\DoxyCodeLine{358     }
+\DoxyCodeLine{359     \textcolor{keywordtype}{void} TransformedView::DrawCircle(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} radius, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p, uint8\_t mask)}
+\DoxyCodeLine{360     \{}
+\DoxyCodeLine{361         DrawCircle(\{ x,y \}, radius, p, mask);}
+\DoxyCodeLine{362     \}}
+\DoxyCodeLine{363 }
+\DoxyCodeLine{364     \textcolor{keywordtype}{void} TransformedView::DrawCircle(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keywordtype}{float} radius, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p, uint8\_t mask)}
+\DoxyCodeLine{365     \{}
+\DoxyCodeLine{366         pge-\/>DrawCircle(WorldToScreen(pos), int32\_t(radius * m\_vWorldScale.x), p, mask);}
+\DoxyCodeLine{367     \}}
+\DoxyCodeLine{368 }
+\DoxyCodeLine{369     \textcolor{keywordtype}{void} TransformedView::FillCircle(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} radius, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{370     \{}
+\DoxyCodeLine{371         FillCircle(\{ x,y \}, radius, p);}
+\DoxyCodeLine{372     \}}
+\DoxyCodeLine{373 }
+\DoxyCodeLine{374     \textcolor{keywordtype}{void} TransformedView::FillCircle(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keywordtype}{float} radius, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{375     \{}
+\DoxyCodeLine{376         pge-\/>FillCircle(WorldToScreen(pos), int32\_t(radius * m\_vWorldScale.x), p);}
+\DoxyCodeLine{377     \}}
+\DoxyCodeLine{378 }
+\DoxyCodeLine{379     \textcolor{keywordtype}{void} TransformedView::DrawRect(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} w, \textcolor{keywordtype}{float} h, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{380     \{}
+\DoxyCodeLine{381         DrawRect(\{ x, y \}, \{ w, h \}, p);}
+\DoxyCodeLine{382     \}}
+\DoxyCodeLine{383 }
+\DoxyCodeLine{384     \textcolor{keywordtype}{void} TransformedView::DrawRect(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& size, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{385     \{}
+\DoxyCodeLine{386         pge-\/>DrawRect(WorldToScreen(pos), ((size * m\_vWorldScale) + \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(0.5f, 0.5f)).floor(), p);}
+\DoxyCodeLine{387     \}}
+\DoxyCodeLine{388     }
+\DoxyCodeLine{389     \textcolor{keywordtype}{void} TransformedView::FillRect(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keywordtype}{float} w, \textcolor{keywordtype}{float} h, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{390     \{}
+\DoxyCodeLine{391         FillRect(\{ x, y \}, \{ w, h \}, p);}
+\DoxyCodeLine{392     \}}
+\DoxyCodeLine{393 }
+\DoxyCodeLine{394     \textcolor{keywordtype}{void} TransformedView::FillRect(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& size, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{395     \{}
+\DoxyCodeLine{396         pge-\/>FillRect(WorldToScreen(pos), size * m\_vWorldScale, p);}
+\DoxyCodeLine{397     \}}
+\DoxyCodeLine{398     }
+\DoxyCodeLine{399     \textcolor{keywordtype}{void} TransformedView::DrawTriangle(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{float} x3, \textcolor{keywordtype}{float} y3, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{400     \{}
+\DoxyCodeLine{401         DrawTriangle(\{ x1, y1 \}, \{ x2, y2 \}, \{ x3, y3 \}, p);}
+\DoxyCodeLine{402     \}}
+\DoxyCodeLine{403 }
+\DoxyCodeLine{404     \textcolor{keywordtype}{void} TransformedView::DrawTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos1, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos2, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos3, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{405     \{}
+\DoxyCodeLine{406         pge-\/>DrawTriangle(WorldToScreen(pos1), WorldToScreen(pos2), WorldToScreen(pos3), p);}
+\DoxyCodeLine{407     \}}
+\DoxyCodeLine{408     }
+\DoxyCodeLine{409     \textcolor{keywordtype}{void} TransformedView::FillTriangle(\textcolor{keywordtype}{float} x1, \textcolor{keywordtype}{float} y1, \textcolor{keywordtype}{float} x2, \textcolor{keywordtype}{float} y2, \textcolor{keywordtype}{float} x3, \textcolor{keywordtype}{float} y3, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{410     \{}
+\DoxyCodeLine{411         FillTriangle(\{ x1, y1 \}, \{ x2, y2 \}, \{ x3, y3 \}, p);}
+\DoxyCodeLine{412     \}}
+\DoxyCodeLine{413 }
+\DoxyCodeLine{414     \textcolor{keywordtype}{void} TransformedView::FillTriangle(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos1, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos2, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos3, \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} p)}
+\DoxyCodeLine{415     \{}
+\DoxyCodeLine{416         pge-\/>FillTriangle(WorldToScreen(pos1), WorldToScreen(pos2), WorldToScreen(pos3), p);}
+\DoxyCodeLine{417     \}}
+\DoxyCodeLine{418 }
+\DoxyCodeLine{419     \textcolor{keywordtype}{void} TransformedView::DrawSprite(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}}* sprite, \textcolor{keywordtype}{float} scalex, \textcolor{keywordtype}{float} scaley, uint8\_t flip)}
+\DoxyCodeLine{420     \{}
+\DoxyCodeLine{421         DrawSprite(\{ x, y \}, sprite, \{ scalex, scaley \}, flip);}
+\DoxyCodeLine{422     \}}
+\DoxyCodeLine{423 }
+\DoxyCodeLine{424     \textcolor{keywordtype}{void} TransformedView::DrawSprite(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \mbox{\hyperlink{classolc_1_1_sprite}{olc::Sprite}} * sprite, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& scale, uint8\_t flip)}
+\DoxyCodeLine{425     \{}
+\DoxyCodeLine{426         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vSpriteSize = \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(\textcolor{keywordtype}{float}(sprite-\/>width), \textcolor{keywordtype}{float}(sprite-\/>height));}
+\DoxyCodeLine{427         \textcolor{keywordflow}{if} (IsRectVisible(pos, vSpriteSize * scale))}
+\DoxyCodeLine{428         \{}
+\DoxyCodeLine{429             \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vSpriteScaledSize = vSpriteSize * m\_vRecipPixel * m\_vWorldScale * scale;}
+\DoxyCodeLine{430             \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} vPixel, vStart = WorldToScreen(pos), vEnd = vSpriteScaledSize + vStart;}
+\DoxyCodeLine{431             \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vPixelStep = 1.0f / vSpriteScaledSize;}
+\DoxyCodeLine{432             \textcolor{keywordflow}{for} (vPixel.y = vStart.y; vPixel.y < vEnd.y; vPixel.y++)}
+\DoxyCodeLine{433             \{}
+\DoxyCodeLine{434                 \textcolor{keywordflow}{for} (vPixel.x = vStart.x; vPixel.x < vEnd.x; vPixel.x++)}
+\DoxyCodeLine{435                 \{}
+\DoxyCodeLine{436                     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vSample = \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(vPixel -\/ vStart) * vPixelStep;}
+\DoxyCodeLine{437                     pge-\/>Draw(vPixel, sprite-\/>Sample(vSample.x, vSample.y));}
+\DoxyCodeLine{438                 \}}
+\DoxyCodeLine{439             \}}
+\DoxyCodeLine{440         \}}
+\DoxyCodeLine{441     \}}
+\DoxyCodeLine{442 }
+\DoxyCodeLine{443 }
+\DoxyCodeLine{444     \textcolor{keywordtype}{void} TransformedView::DrawPartialSprite(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, Sprite* sprite, int32\_t ox, int32\_t oy, int32\_t w, int32\_t h, \textcolor{keywordtype}{float} scalex, \textcolor{keywordtype}{float} scaley, uint8\_t flip)}
+\DoxyCodeLine{445     \{}
+\DoxyCodeLine{446         DrawPartialSprite(\{ x,y \}, sprite, \{ ox,oy \}, \{ w, h \}, \{ scalex, scaley \}, flip);}
+\DoxyCodeLine{447     \}}
+\DoxyCodeLine{448 }
+\DoxyCodeLine{449     \textcolor{keywordtype}{void} TransformedView::DrawPartialSprite(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, Sprite* sprite, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& sourcepos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale, uint8\_t flip)}
+\DoxyCodeLine{450     \{}
+\DoxyCodeLine{451         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vSpriteSize = size;}
+\DoxyCodeLine{452         \textcolor{keywordflow}{if} (IsRectVisible(pos, size * scale))}
+\DoxyCodeLine{453         \{}
+\DoxyCodeLine{454             \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vSpriteScaledSize = \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(size) * m\_vRecipPixel * m\_vWorldScale * scale;}
+\DoxyCodeLine{455             \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vSpritePixelStep = 1.0f / \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(\textcolor{keywordtype}{float}(sprite-\/>width), \textcolor{keywordtype}{float}(sprite-\/>height));}
+\DoxyCodeLine{456             \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} vPixel, vStart = WorldToScreen(pos), vEnd = vSpriteScaledSize + vStart;}
+\DoxyCodeLine{457             \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vScreenPixelStep = 1.0f / vSpriteScaledSize;}
+\DoxyCodeLine{458 }
+\DoxyCodeLine{459             \textcolor{keywordflow}{for} (vPixel.y = vStart.y; vPixel.y < vEnd.y; vPixel.y++)}
+\DoxyCodeLine{460             \{}
+\DoxyCodeLine{461                 \textcolor{keywordflow}{for} (vPixel.x = vStart.x; vPixel.x < vEnd.x; vPixel.x++)}
+\DoxyCodeLine{462                 \{}
+\DoxyCodeLine{463                     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vSample = ((\mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(vPixel -\/ vStart) * vScreenPixelStep) * size * vSpritePixelStep) + \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(sourcepos) * vSpritePixelStep;}
+\DoxyCodeLine{464                     pge-\/>Draw(vPixel, sprite-\/>Sample(vSample.x, vSample.y));}
+\DoxyCodeLine{465                 \}}
+\DoxyCodeLine{466             \}}
+\DoxyCodeLine{467         \}}
+\DoxyCodeLine{468     \}}
+\DoxyCodeLine{469 }
+\DoxyCodeLine{470     \textcolor{keywordtype}{void} TransformedView::DrawString(\textcolor{keywordtype}{float} x, \textcolor{keywordtype}{float} y, \textcolor{keyword}{const} std::string\& sText, Pixel col, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale)}
+\DoxyCodeLine{471     \{}
+\DoxyCodeLine{472         DrawString(\{ x, y \}, sText, col, scale);}
+\DoxyCodeLine{473     \}}
+\DoxyCodeLine{474 }
+\DoxyCodeLine{475     \textcolor{keywordtype}{void} TransformedView::DrawString(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& pos, \textcolor{keyword}{const} std::string\& sText, \textcolor{keyword}{const} Pixel col, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& scale)}
+\DoxyCodeLine{476     \{}
+\DoxyCodeLine{477         \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} vOffset = \{ 0.0f, 0.0f \};}
+\DoxyCodeLine{478         Pixel::Mode m = pge-\/>GetPixelMode();}
+\DoxyCodeLine{479 }
+\DoxyCodeLine{480         \textcolor{keyword}{auto} StringPlot = [\&col](\textcolor{keyword}{const} \textcolor{keywordtype}{int} x, \textcolor{keyword}{const} \textcolor{keywordtype}{int} y, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& pSource, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& pDest)}
+\DoxyCodeLine{481         \{       }
+\DoxyCodeLine{482             \textcolor{keywordflow}{return} pSource.r > 1 ? col : pDest;}
+\DoxyCodeLine{483         \};}
+\DoxyCodeLine{484 }
+\DoxyCodeLine{485         pge-\/>SetPixelMode(StringPlot);}
+\DoxyCodeLine{486 }
+\DoxyCodeLine{487         \textcolor{keywordflow}{for} (\textcolor{keyword}{auto} c : sText)}
+\DoxyCodeLine{488         \{}
+\DoxyCodeLine{489             \textcolor{keywordflow}{if} (c == \textcolor{charliteral}{'\(\backslash\)n'})}
+\DoxyCodeLine{490             \{}
+\DoxyCodeLine{491                 vOffset.x = 0.0f; vOffset.y += 8.0f * m\_vRecipPixel.y * scale.y;}
+\DoxyCodeLine{492             \}}
+\DoxyCodeLine{493             \textcolor{keywordflow}{else}}
+\DoxyCodeLine{494             \{}
+\DoxyCodeLine{495                 int32\_t ox = ((c -\/ 32) \% 16) * 8;}
+\DoxyCodeLine{496                 int32\_t oy = ((c -\/ 32) / 16) * 8;}
+\DoxyCodeLine{497                 DrawPartialSprite(pos + vOffset, pge-\/>GetFontSprite(), \{ ox, oy \}, \{ 8, 8 \}, scale);}
+\DoxyCodeLine{498                 vOffset.x += 8.0f * m\_vRecipPixel.x * scale.x;}
+\DoxyCodeLine{499             \}}
+\DoxyCodeLine{500         \}}
+\DoxyCodeLine{501         pge-\/>SetPixelMode(m);}
+\DoxyCodeLine{502     \}}
+\DoxyCodeLine{503 }
+\DoxyCodeLine{504 }
+\DoxyCodeLine{505     \textcolor{keywordtype}{void} TransformedView::DrawDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}} * decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& scale, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} \& tint)}
+\DoxyCodeLine{506     \{}
+\DoxyCodeLine{507         pge-\/>DrawDecal(WorldToScreen(pos), decal, scale * m\_vWorldScale * m\_vRecipPixel, tint);}
+\DoxyCodeLine{508     \}}
+\DoxyCodeLine{509 }
+\DoxyCodeLine{510     \textcolor{keywordtype}{void} TransformedView::DrawPartialDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}} * decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& scale, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} \& tint)}
+\DoxyCodeLine{511     \{}
+\DoxyCodeLine{512         pge-\/>DrawPartialDecal(WorldToScreen(pos), decal, source\_pos, source\_size, scale * m\_vWorldScale * m\_vRecipPixel, tint);}
+\DoxyCodeLine{513     \}}
+\DoxyCodeLine{514 }
+\DoxyCodeLine{515     \textcolor{keywordtype}{void} TransformedView::DrawPartialDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& size, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}} * decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} \& tint)}
+\DoxyCodeLine{516     \{}
+\DoxyCodeLine{517         pge-\/>DrawPartialDecal(WorldToScreen(pos), size * m\_vWorldScale * m\_vRecipPixel, decal, source\_pos, source\_size, tint);}
+\DoxyCodeLine{518     \}}
+\DoxyCodeLine{519     }
+\DoxyCodeLine{520     \textcolor{keywordtype}{void} TransformedView::DrawExplicitDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}* pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}* uv, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}* col, uint32\_t elements)}
+\DoxyCodeLine{521     \{}
+\DoxyCodeLine{522         std::vector<olc::vf2d> vTransformed(elements);}
+\DoxyCodeLine{523         \textcolor{keywordflow}{for} (uint32\_t n = 0; n < elements; n++)}
+\DoxyCodeLine{524             vTransformed[n] = WorldToScreen(pos[n]);        }
+\DoxyCodeLine{525         pge-\/>DrawExplicitDecal(decal, vTransformed.data(), uv, col, elements);}
+\DoxyCodeLine{526     \}}
+\DoxyCodeLine{527 }
+\DoxyCodeLine{528     \textcolor{keywordtype}{void} TransformedView::DrawWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}* pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint)}
+\DoxyCodeLine{529     \{}
+\DoxyCodeLine{530         std::array<olc::vf2d, 4> vTransformed = }
+\DoxyCodeLine{531         \{ \{}
+\DoxyCodeLine{532             WorldToScreen(pos[0]), WorldToScreen(pos[1]),}
+\DoxyCodeLine{533             WorldToScreen(pos[2]), WorldToScreen(pos[3]),}
+\DoxyCodeLine{534         \} \};}
+\DoxyCodeLine{535 }
+\DoxyCodeLine{536         pge-\/>DrawWarpedDecal(decal, vTransformed, tint);}
+\DoxyCodeLine{537     \}}
+\DoxyCodeLine{538 }
+\DoxyCodeLine{539     \textcolor{keywordtype}{void} TransformedView::DrawWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(\&pos)[4], \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint)}
+\DoxyCodeLine{540     \{}
+\DoxyCodeLine{541         DrawWarpedDecal(decal, \&pos[0], tint);}
+\DoxyCodeLine{542     \}}
+\DoxyCodeLine{543 }
+\DoxyCodeLine{544     \textcolor{keywordtype}{void} TransformedView::DrawWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} std::array<olc::vf2d, 4>\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint)}
+\DoxyCodeLine{545     \{}
+\DoxyCodeLine{546         DrawWarpedDecal(decal, pos.data(), tint);}
+\DoxyCodeLine{547     \}}
+\DoxyCodeLine{548 }
+\DoxyCodeLine{549     \textcolor{keywordtype}{void} TransformedView::DrawPartialWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}(\&pos)[4], \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint)}
+\DoxyCodeLine{550     \{}
+\DoxyCodeLine{551         DrawPartialWarpedDecal(decal, \&pos[0], source\_pos, source\_size, tint);}
+\DoxyCodeLine{552     \}}
+\DoxyCodeLine{553 }
+\DoxyCodeLine{554     \textcolor{keywordtype}{void} TransformedView::DrawPartialWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}* pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint)}
+\DoxyCodeLine{555     \{}
+\DoxyCodeLine{556         std::array<olc::vf2d, 4> vTransformed =}
+\DoxyCodeLine{557         \{ \{}
+\DoxyCodeLine{558             WorldToScreen(pos[0]), WorldToScreen(pos[1]),}
+\DoxyCodeLine{559             WorldToScreen(pos[2]), WorldToScreen(pos[3]),}
+\DoxyCodeLine{560         \} \};}
+\DoxyCodeLine{561 }
+\DoxyCodeLine{562         pge-\/>DrawPartialWarpedDecal(decal, vTransformed, source\_pos, source\_size, tint);}
+\DoxyCodeLine{563     \}}
+\DoxyCodeLine{564 }
+\DoxyCodeLine{565     \textcolor{keywordtype}{void} TransformedView::DrawPartialWarpedDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} std::array<olc::vf2d, 4>\& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}}\& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}}\& tint)}
+\DoxyCodeLine{566     \{}
+\DoxyCodeLine{567         DrawPartialWarpedDecal(decal, pos.data(), source\_pos, source\_size, tint);}
+\DoxyCodeLine{568     \}}
+\DoxyCodeLine{569 }
+\DoxyCodeLine{570     \textcolor{keywordtype}{void} TransformedView::DrawRotatedDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}} * decal, \textcolor{keyword}{const} \textcolor{keywordtype}{float} fAngle, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& center, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& scale, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} \& tint)}
+\DoxyCodeLine{571     \{}
+\DoxyCodeLine{572         pge-\/>DrawRotatedDecal(WorldToScreen(pos), decal, fAngle, center, scale * m\_vWorldScale * m\_vRecipPixel, tint);}
+\DoxyCodeLine{573     \}}
+\DoxyCodeLine{574 }
+\DoxyCodeLine{575     \textcolor{keywordtype}{void} TransformedView::DrawPartialRotatedDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}} * decal, \textcolor{keyword}{const} \textcolor{keywordtype}{float} fAngle, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& center, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& source\_pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& source\_size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& scale, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} \& tint)}
+\DoxyCodeLine{576     \{}
+\DoxyCodeLine{577         pge-\/>DrawPartialRotatedDecal(WorldToScreen(pos), decal, fAngle, center, source\_pos, source\_size, scale * m\_vWorldScale * m\_vRecipPixel, tint);}
+\DoxyCodeLine{578     \}}
+\DoxyCodeLine{579     }
+\DoxyCodeLine{580     \textcolor{keywordtype}{void} TransformedView::DrawStringDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keyword}{const} std::string \& sText, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} col, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& scale)}
+\DoxyCodeLine{581     \{}
+\DoxyCodeLine{582         pge-\/>DrawStringDecal(WorldToScreen(pos), sText, col, scale * m\_vWorldScale * m\_vRecipPixel);}
+\DoxyCodeLine{583     \}}
+\DoxyCodeLine{584 }
+\DoxyCodeLine{585     \textcolor{keywordtype}{void} TransformedView::DrawStringPropDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keyword}{const} std::string \& sText, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} col, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& scale )}
+\DoxyCodeLine{586     \{}
+\DoxyCodeLine{587         pge-\/>DrawStringPropDecal(WorldToScreen(pos), sText, col, scale * m\_vWorldScale * m\_vRecipPixel);}
+\DoxyCodeLine{588     \}}
+\DoxyCodeLine{589 }
+\DoxyCodeLine{590     \textcolor{keywordtype}{void} TransformedView::FillRectDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} col)}
+\DoxyCodeLine{591     \{}
+\DoxyCodeLine{592         pge-\/>FillRectDecal(WorldToScreen(pos), (size * m\_vWorldScale).ceil(), col);}
+\DoxyCodeLine{593     \}}
+\DoxyCodeLine{594     }
+\DoxyCodeLine{595     \textcolor{keywordtype}{void} TransformedView::GradientFillRectDecal(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& pos, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vf2d}} \& size, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} colTL, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} colBL, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} colBR, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} colTR)}
+\DoxyCodeLine{596     \{}
+\DoxyCodeLine{597         pge-\/>GradientFillRectDecal(WorldToScreen(pos), size * m\_vWorldScale, colTL, colBL, colBR, colTR);}
+\DoxyCodeLine{598     \}}
+\DoxyCodeLine{599 }
+\DoxyCodeLine{600     \textcolor{keywordtype}{void} TransformedView::DrawPolygonDecal(\mbox{\hyperlink{classolc_1_1_decal}{olc::Decal}}* decal, \textcolor{keyword}{const} std::vector<olc::vf2d>\& pos, \textcolor{keyword}{const} std::vector<olc::vf2d>\& uv, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1_pixel}{olc::Pixel}} tint)}
+\DoxyCodeLine{601     \{}
+\DoxyCodeLine{602         std::vector<olc::vf2d> vTransformed(pos.size());}
+\DoxyCodeLine{603         \textcolor{keywordflow}{for} (uint32\_t n = 0; n < pos.size(); n++)}
+\DoxyCodeLine{604             vTransformed[n] = WorldToScreen(pos[n]);}
+\DoxyCodeLine{605         pge-\/>DrawPolygonDecal(decal, vTransformed, uv, tint);}
+\DoxyCodeLine{606     \}}
+\DoxyCodeLine{607 }
+\DoxyCodeLine{610 }
+\DoxyCodeLine{611 }
+\DoxyCodeLine{612     TileTransformedView::TileTransformedView(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vViewArea, \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vTileSize)      }
+\DoxyCodeLine{613     \{ }
+\DoxyCodeLine{614         Initialise(vViewArea, vTileSize);}
+\DoxyCodeLine{615     \}}
+\DoxyCodeLine{616 }
+\DoxyCodeLine{617     \textcolor{keywordtype}{void} TileTransformedView::SetRangeX(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} bRanged, \textcolor{keyword}{const} int32\_t nMin, \textcolor{keyword}{const} int32\_t nMax)}
+\DoxyCodeLine{618     \{}
+\DoxyCodeLine{619         m\_bRangedX = bRanged;}
+\DoxyCodeLine{620         m\_nMinRangeX = nMin;}
+\DoxyCodeLine{621         m\_nMaxRangeX = nMax;}
+\DoxyCodeLine{622     \}}
+\DoxyCodeLine{623 }
+\DoxyCodeLine{624     \textcolor{keywordtype}{void} TileTransformedView::SetRangeY(\textcolor{keyword}{const} \textcolor{keywordtype}{bool} bRanged, \textcolor{keyword}{const} int32\_t nMin, \textcolor{keyword}{const} int32\_t nMax)}
+\DoxyCodeLine{625     \{}
+\DoxyCodeLine{626         m\_bRangedY = bRanged;}
+\DoxyCodeLine{627         m\_nMinRangeY = nMin;}
+\DoxyCodeLine{628         m\_nMaxRangeY = nMax;}
+\DoxyCodeLine{629     \}}
+\DoxyCodeLine{630 }
+\DoxyCodeLine{631     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} TileTransformedView::GetTopLeftTile()\textcolor{keyword}{ const}}
+\DoxyCodeLine{632 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{633         \textcolor{keywordflow}{return} ScreenToWorld(\{ 0,0 \}).floor();      }
+\DoxyCodeLine{634     \}}
+\DoxyCodeLine{635 }
+\DoxyCodeLine{636     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} TileTransformedView::GetBottomRightTile()\textcolor{keyword}{ const}}
+\DoxyCodeLine{637 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{638         \textcolor{keywordflow}{return} ScreenToWorld(m\_vViewArea).ceil();}
+\DoxyCodeLine{639     \}}
+\DoxyCodeLine{640 }
+\DoxyCodeLine{641     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} TileTransformedView::GetVisibleTiles()\textcolor{keyword}{ const}}
+\DoxyCodeLine{642 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{643         \textcolor{keywordflow}{return} GetBottomRightTile() -\/ GetTopLeftTile();}
+\DoxyCodeLine{644     \}}
+\DoxyCodeLine{645 }
+\DoxyCodeLine{646     \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} TileTransformedView::GetTileUnderScreenPos(\textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}}\& vPos)\textcolor{keyword}{ const}}
+\DoxyCodeLine{647 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{648         \textcolor{keywordflow}{return} ScreenToWorld(vPos).floor();     }
+\DoxyCodeLine{649     \}}
+\DoxyCodeLine{650 }
+\DoxyCodeLine{651     \textcolor{keyword}{const} \mbox{\hyperlink{structolc_1_1v2d__generic}{olc::vi2d}} TileTransformedView::GetTileOffset()\textcolor{keyword}{ const}}
+\DoxyCodeLine{652 \textcolor{keyword}{    }\{}
+\DoxyCodeLine{653         \textcolor{keywordflow}{return} \{ int32\_t((m\_vWorldOffset.x -\/ std::floor(m\_vWorldOffset.x)) * m\_vWorldScale.x),}
+\DoxyCodeLine{654             int32\_t((m\_vWorldOffset.y -\/ std::floor(m\_vWorldOffset.y)) * m\_vWorldScale.y) \};}
+\DoxyCodeLine{655     \}}
+\DoxyCodeLine{656 \}}
+\DoxyCodeLine{657 }
+\DoxyCodeLine{658 \textcolor{preprocessor}{\#endif}}
+\DoxyCodeLine{659 \textcolor{preprocessor}{\#endif}}
+
+\end{DoxyCode}

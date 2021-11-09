@@ -1,0 +1,7 @@
+<map id="Player::movePlayer" name="Player::movePlayer">
+<area shape="rect" id="node1" title="Based on the user input, changes the position of the player and predicts the future position,..." alt="" coords="681,31,816,57"/>
+<area shape="rect" id="node2" href="$class_game_manager.html#abbbc80d06e467e7ca7bd2fb641269569" title="Listens for input from the user." alt="" coords="472,31,633,57"/>
+<area shape="rect" id="node3" href="$class_game_manager.html#af21d4e9cc7e7b71c7370414c231db5d2" title="Used for managing the custcene." alt="" coords="253,5,424,32"/>
+<area shape="rect" id="node5" href="$class_game_manager.html#ad61a5e20b43b928ca94a284bb9e5f530" title="Contains the core logic for the game." alt="" coords="263,56,414,83"/>
+<area shape="rect" id="node4" href="$class_game_manager.html#ae118ae32b8664d8556d314e4aabd0e0b" title="This function is called each frame." alt="" coords="5,31,205,57"/>
+</map>

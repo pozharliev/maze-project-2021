@@ -1,0 +1,137 @@
+\hypertarget{classolc_1_1_animated_sprite}{}\doxysection{olc\+::Animated\+Sprite Class Reference}
+\label{classolc_1_1_animated_sprite}\index{olc::AnimatedSprite@{olc::AnimatedSprite}}
+Inheritance diagram for olc\+::Animated\+Sprite\+:\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[height=2.000000cm]{classolc_1_1_animated_sprite}
+\end{center}
+\end{figure}
+\doxysubsection*{Public Types}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a3ad32eeae071bceea36d3911aa678086}\label{classolc_1_1_animated_sprite_a3ad32eeae071bceea36d3911aa678086}} 
+enum class {\bfseries SPRITE\+\_\+\+MODE} \{ {\bfseries MULTI}
+, {\bfseries SINGLE}
+ \}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ab332b33ab003fe8cb993c38edd1945c4}\label{classolc_1_1_animated_sprite_ab332b33ab003fe8cb993c38edd1945c4}} 
+enum class {\bfseries SPRITE\+\_\+\+TYPE} \{ {\bfseries SPRITE}
+, {\bfseries DECAL}
+ \}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a29f13b1aaef72a5fce42afd0b43527af}\label{classolc_1_1_animated_sprite_a29f13b1aaef72a5fce42afd0b43527af}} 
+enum class {\bfseries PLAY\+\_\+\+MODE} \{ {\bfseries LOOP}
+, {\bfseries PING\+\_\+\+PONG}
+ \}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a78af46222d867cea39de6fab29ea468c}\label{classolc_1_1_animated_sprite_a78af46222d867cea39de6fab29ea468c}} 
+void {\bfseries Set\+State} (std\+::string new\+State)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ad10914f4ffa637432517d47645488d59}\label{classolc_1_1_animated_sprite_ad10914f4ffa637432517d47645488d59}} 
+std\+::string {\bfseries Get\+State} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a85fbb93c6bddf5e848c475d91b3bb3a2}\label{classolc_1_1_animated_sprite_a85fbb93c6bddf5e848c475d91b3bb3a2}} 
+void {\bfseries Draw} (float f\+Elapsed\+Time, \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} position, uint8\+\_\+t flip=olc\+::\+Sprite\+::\+Flip\+::\+NONE, \mbox{\hyperlink{structolc_1_1_pixel}{olc\+::\+Pixel}} tint=olc\+::\+WHITE)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_adb80fa78ee7a31115fa1c2cb7883a4f1}\label{classolc_1_1_animated_sprite_adb80fa78ee7a31115fa1c2cb7883a4f1}} 
+void {\bfseries Add\+State} (std\+::string state\+Name, float frame\+Duration, PLAY\+\_\+\+MODE mode, std\+::vector$<$ std\+::string $>$ image\+Paths)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ac9add60c59b167c9b61a185528e53375}\label{classolc_1_1_animated_sprite_ac9add60c59b167c9b61a185528e53375}} 
+void {\bfseries Add\+State} (std\+::string state\+Name, float frame\+Duration, PLAY\+\_\+\+MODE mode, std\+::vector$<$ \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} $>$ sprite\+Locations)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ae7ef4da95ab56ac5d85157866657954a}\label{classolc_1_1_animated_sprite_ae7ef4da95ab56ac5d85157866657954a}} 
+void {\bfseries Add\+State} (std\+::string state\+Name, std\+::vector$<$ std\+::string $>$ image\+Paths)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ab3ce26585f55ed2669f6c94042b10dee}\label{classolc_1_1_animated_sprite_ab3ce26585f55ed2669f6c94042b10dee}} 
+void {\bfseries Add\+State} (std\+::string state\+Name, std\+::vector$<$ \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} $>$ sprite\+Locations)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a1368f9479578776ec1ba8f8a92e39f20}\label{classolc_1_1_animated_sprite_a1368f9479578776ec1ba8f8a92e39f20}} 
+void {\bfseries Set\+Sprite\+Size} (\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} size)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ab03651ec3f9cf3927ea8fc48b31051bd}\label{classolc_1_1_animated_sprite_ab03651ec3f9cf3927ea8fc48b31051bd}} 
+\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} {\bfseries Get\+Sprite\+Size} ()
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_aa66e9de8105d1a9c7f3ad67151c4a488}\label{classolc_1_1_animated_sprite_aa66e9de8105d1a9c7f3ad67151c4a488}} 
+void {\bfseries Set\+Sprite\+Scale} (float scale)
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ac725dfe36f7fe5cf300e98951b7faf2f}\label{classolc_1_1_animated_sprite_ac725dfe36f7fe5cf300e98951b7faf2f}} 
+float {\bfseries default\+Frame\+Duration} = 0.\+1f
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a94c50d217d4866840204436c307c093f}\label{classolc_1_1_animated_sprite_a94c50d217d4866840204436c307c093f}} 
+SPRITE\+\_\+\+MODE {\bfseries mode} = SPRITE\+\_\+\+MODE\+::\+MULTI
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a633f2c63d54edd014761224fc816816d}\label{classolc_1_1_animated_sprite_a633f2c63d54edd014761224fc816816d}} 
+SPRITE\+\_\+\+TYPE {\bfseries type} = SPRITE\+\_\+\+TYPE\+::\+SPRITE
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ac07a4ab718a3f29a345a0aaf94b49f5c}\label{classolc_1_1_animated_sprite_ac07a4ab718a3f29a345a0aaf94b49f5c}} 
+\mbox{\hyperlink{classolc_1_1_renderable}{Renderable}} $\ast$ {\bfseries sprite\+Sheet}
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_abb8890f9f0ff4a2f9c5872b28d02f062}\label{classolc_1_1_animated_sprite_abb8890f9f0ff4a2f9c5872b28d02f062}} 
+\mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$ {\bfseries Get\+Multi\+Frame} (float f\+Elapsed\+Time)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a87ec6e93a52711b8fe18e06021532103}\label{classolc_1_1_animated_sprite_a87ec6e93a52711b8fe18e06021532103}} 
+\mbox{\hyperlink{classolc_1_1_decal}{olc\+::\+Decal}} $\ast$ {\bfseries Get\+Multi\+Renderable} (float f\+Elapsed\+Time)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a4194fa0a3ae39ae7ee8969b23c5fedf9}\label{classolc_1_1_animated_sprite_a4194fa0a3ae39ae7ee8969b23c5fedf9}} 
+\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} {\bfseries Get\+Single\+Frame} (float f\+Elapsed\+Time)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ae7e458bc72e8c1b0edfddcd3abd8a4bb}\label{classolc_1_1_animated_sprite_ae7e458bc72e8c1b0edfddcd3abd8a4bb}} 
+\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} {\bfseries Get\+Decal\+Scale} (uint8\+\_\+t flip)
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a437086f61d82420dfea777be021e14fa}\label{classolc_1_1_animated_sprite_a437086f61d82420dfea777be021e14fa}} 
+\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} {\bfseries Get\+Decal\+Position} (\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vf2d}} position, uint8\+\_\+t flip)
+\end{DoxyCompactItemize}
+\doxysubsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a64c16223d75e345c55f6b4f29c18aa25}\label{classolc_1_1_animated_sprite_a64c16223d75e345c55f6b4f29c18aa25}} 
+std\+::string {\bfseries state}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a5b3ce5819cafcb0c0020519743e6bf69}\label{classolc_1_1_animated_sprite_a5b3ce5819cafcb0c0020519743e6bf69}} 
+std\+::map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$ $>$ $>$ {\bfseries multi\+Frames}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a7a1a8495bf12cd65200481a826cab9b9}\label{classolc_1_1_animated_sprite_a7a1a8495bf12cd65200481a826cab9b9}} 
+std\+::map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} $>$ $>$ {\bfseries single\+Frames}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a5d65e3c6aeee194bd30d40dad6d6597d}\label{classolc_1_1_animated_sprite_a5d65e3c6aeee194bd30d40dad6d6597d}} 
+std\+::map$<$ std\+::string, std\+::vector$<$ \mbox{\hyperlink{classolc_1_1_renderable}{Renderable}} $\ast$ $>$ $>$ {\bfseries multi\+Renderables}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a340bc76f1d6030e25fa890c5be2715e7}\label{classolc_1_1_animated_sprite_a340bc76f1d6030e25fa890c5be2715e7}} 
+std\+::map$<$ std\+::string, float $>$ {\bfseries frame\+Durations}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_aa6847bb133c0abdd16f144813bdc9ffe}\label{classolc_1_1_animated_sprite_aa6847bb133c0abdd16f144813bdc9ffe}} 
+std\+::map$<$ std\+::string, PLAY\+\_\+\+MODE $>$ {\bfseries play\+Modes}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a54810542cddb5b67656215644a55855e}\label{classolc_1_1_animated_sprite_a54810542cddb5b67656215644a55855e}} 
+float {\bfseries frame\+Timer} = 0.\+0f
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_abcad9e786c93fe2adb554f0a91e15910}\label{classolc_1_1_animated_sprite_abcad9e786c93fe2adb554f0a91e15910}} 
+float {\bfseries sprite\+Scale} = 1.\+0f
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_ad55ba33b2f7ae7ecba5ce4296d322cb4}\label{classolc_1_1_animated_sprite_ad55ba33b2f7ae7ecba5ce4296d322cb4}} 
+int {\bfseries current\+Frame}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a3b2eda0a246d4063caa85ff89ed71bc4}\label{classolc_1_1_animated_sprite_a3b2eda0a246d4063caa85ff89ed71bc4}} 
+\mbox{\hyperlink{structolc_1_1v2d__generic}{olc\+::vi2d}} {\bfseries sprite\+Size}
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a9e4fcb944d468c54c428dd02328f7ab4}\label{classolc_1_1_animated_sprite_a9e4fcb944d468c54c428dd02328f7ab4}} 
+\mbox{\hyperlink{classolc_1_1_sprite}{olc\+::\+Sprite}} $\ast$ {\bfseries placeholder} = nullptr
+\item 
+\mbox{\Hypertarget{classolc_1_1_animated_sprite_a878e848c37459504e9510204804aa3fa}\label{classolc_1_1_animated_sprite_a878e848c37459504e9510204804aa3fa}} 
+bool {\bfseries play\+Forward} = true
+\end{DoxyCompactItemize}
+\doxysubsection*{Additional Inherited Members}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+libs/olc\+PGEX\+\_\+\+Animated\+Sprite.\+h\end{DoxyCompactItemize}

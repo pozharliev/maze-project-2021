@@ -1,0 +1,51 @@
+\hypertarget{class_room}{}\doxysection{Room Class Reference}
+\label{class_room}\index{Room@{Room}}
+
+
+Collaboration diagram for Room\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=186pt]{class_room__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_room_1_1item}{item}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_room_a0b032873aad921d3e4a99f9c2e9f98f8}\label{class_room_a0b032873aad921d3e4a99f9c2e9f98f8}} 
+void {\bfseries set\+Up\+Scroll\+Animations} ()
+\begin{DoxyCompactList}\small\item\em Extracts parts of the Scroll\+Anim\+Spritesheet file and combines them in animations. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_a9c77e6085b49b53e7090c1d573987ada}\label{class_room_a9c77e6085b49b53e7090c1d573987ada}} 
+char {\bfseries get\+Tile} (std\+::string maze\+Orientation, int x, int y)
+\begin{DoxyCompactList}\small\item\em Returns the symbol from the desired maze(left or right) on x and y coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_abb12959093e0014d671712ba9cd64912}\label{class_room_abb12959093e0014d671712ba9cd64912}} 
+char {\bfseries get\+Path\+Tile} (std\+::string maze\+Orientation, int x, int y)
+\begin{DoxyCompactList}\small\item\em Returns the symbol from the desired solved maze(left or right) on x and y coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_room_ad656ec6a5bf5fd1c68dcf44b7b5a9c51}\label{class_room_ad656ec6a5bf5fd1c68dcf44b7b5a9c51}} 
+void {\bfseries Draw\+Room} (olc\+::\+Pixel\+Game\+Engine $\ast$engine, std\+::string maze\+Orientation)
+\begin{DoxyCompactList}\small\item\em Displays the maze. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_room_aed90ad79c5dfd925ccf27feb259845c8}{generate\+Room}} ()
+\begin{DoxyCompactList}\small\item\em Generates the two mazes in the room, based off of \mbox{\hyperlink{class_checked_maze}{Checked\+Maze}} class. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_room_aed90ad79c5dfd925ccf27feb259845c8}\label{class_room_aed90ad79c5dfd925ccf27feb259845c8}} 
+\index{Room@{Room}!generateRoom@{generateRoom}}
+\index{generateRoom@{generateRoom}!Room@{Room}}
+\doxysubsubsection{\texorpdfstring{generateRoom()}{generateRoom()}}
+{\footnotesize\ttfamily void Room\+::generate\+Room (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+and writes the data to .maze files. 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/frontend/room.\+h\item 
+src/frontend/room.\+cpp\end{DoxyCompactItemize}

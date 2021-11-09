@@ -1,0 +1,212 @@
+\hypertarget{class_logger}{}\doxysection{Logger Class Reference}
+\label{class_logger}\index{Logger@{Logger}}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_logger_aa6a42fecddf544252ce472fb0e720fcb}{init\+Log\+File}} ()
+\begin{DoxyCompactList}\small\item\em Initializes the logger file. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_a3b11ea8f81da0f06687741e6e85160f7}{Info}} (const std\+::string \&info)
+\begin{DoxyCompactList}\small\item\em Logs an info message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_ac966eee4f80868a5ed8aedfa15ab9a7c}{Warning}} (const std\+::string \&warning)
+\begin{DoxyCompactList}\small\item\em Logs a warning message. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_logger_aa40d222d0523fed5cac51fee5c0aedf4}{Error}} (const std\+::string \&error)
+\begin{DoxyCompactList}\small\item\em Logs an error message. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+std\+::string \mbox{\hyperlink{class_logger_ad1a791a5ce5c83ae40afcf00e765fc05}{get\+Time}} () const
+\begin{DoxyCompactList}\small\item\em Generates time stamps. \end{DoxyCompactList}\item 
+std\+::string \mbox{\hyperlink{class_logger_a4139f1ee6e935ad8b48e7646eaf7b42d}{get\+Logs}} (const std\+::string \&type, const std\+::string \&message) const
+\begin{DoxyCompactList}\small\item\em Returns a timestamp with a message type and the message itself. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_logger_a903f2a3e65935e2d02aab4f7aece4e20}\label{class_logger_a903f2a3e65935e2d02aab4f7aece4e20}} 
+std\+::ofstream {\bfseries m\+\_\+log}
+\begin{DoxyCompactList}\small\item\em The \mbox{[}.log\mbox{]} file. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_logger_aa55461a05b19efaa4f4b6aa14f06773d}\label{class_logger_aa55461a05b19efaa4f4b6aa14f06773d}} 
+std\+::tm $\ast$ {\bfseries m\+\_\+time}
+\begin{DoxyCompactList}\small\item\em A $<$ctime$>$ variable that contains the time. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_logger_aa40d222d0523fed5cac51fee5c0aedf4}\label{class_logger_aa40d222d0523fed5cac51fee5c0aedf4}} 
+\index{Logger@{Logger}!Error@{Error}}
+\index{Error@{Error}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Error()}{Error()}}
+{\footnotesize\ttfamily void Logger\+::\+Error (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{error }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyNote}{Note}
+The message consists of \mbox{[}Time\mbox{]} + \mbox{[}Error\mbox{]} + \mbox{[}Message\mbox{]}.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em error} & The error message.\\
+\hline
+\mbox{\texttt{ in}}  & {\em \mbox{\hyperlink{class_logger_ad1a791a5ce5c83ae40afcf00e765fc05}{Logger\+::get\+Time}}} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em m\+\_\+log} & Logs it to the \mbox{[}.log\mbox{]} file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_logger_aa40d222d0523fed5cac51fee5c0aedf4_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_logger_a4139f1ee6e935ad8b48e7646eaf7b42d}\label{class_logger_a4139f1ee6e935ad8b48e7646eaf7b42d}} 
+\index{Logger@{Logger}!getLogs@{getLogs}}
+\index{getLogs@{getLogs}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{getLogs()}{getLogs()}}
+{\footnotesize\ttfamily std\+::string Logger\+::get\+Logs (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{type,  }\item[{const std\+::string \&}]{message }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\begin{DoxyNote}{Note}
+Returns \mbox{[}Time\mbox{]} + \mbox{[}Message Type\mbox{]} + \mbox{[}Message\mbox{]}.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em \mbox{\hyperlink{class_logger_ad1a791a5ce5c83ae40afcf00e765fc05}{Logger\+::get\+Time}}} & \\
+\hline
+ & {\em message} & \\
+\hline
+ & {\em type} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string Complete message. 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=288pt]{class_logger_a4139f1ee6e935ad8b48e7646eaf7b42d_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_logger_a4139f1ee6e935ad8b48e7646eaf7b42d_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_logger_ad1a791a5ce5c83ae40afcf00e765fc05}\label{class_logger_ad1a791a5ce5c83ae40afcf00e765fc05}} 
+\index{Logger@{Logger}!getTime@{getTime}}
+\index{getTime@{getTime}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{getTime()}{getTime()}}
+{\footnotesize\ttfamily std\+::string Logger\+::get\+Time (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [private]}}
+
+\begin{DoxyNote}{Note}
+Acts as a wrapper for \mbox{\hyperlink{class_logger_a4139f1ee6e935ad8b48e7646eaf7b42d}{Logger\+::get\+Logs}}
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em m\+\_\+time} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+std\+::string Complete timestamp. 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_logger_ad1a791a5ce5c83ae40afcf00e765fc05_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_logger_a3b11ea8f81da0f06687741e6e85160f7}\label{class_logger_a3b11ea8f81da0f06687741e6e85160f7}} 
+\index{Logger@{Logger}!Info@{Info}}
+\index{Info@{Info}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Info()}{Info()}}
+{\footnotesize\ttfamily void Logger\+::\+Info (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{info }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyNote}{Note}
+The message consists of \mbox{[}Time\mbox{]} + \mbox{[}Info\mbox{]} + \mbox{[}Message\mbox{]}.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em info} & The info message.\\
+\hline
+\mbox{\texttt{ in}}  & {\em \mbox{\hyperlink{class_logger_ad1a791a5ce5c83ae40afcf00e765fc05}{Logger\+::get\+Time}}} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em m\+\_\+log} & Logs it to the \mbox{[}.log\mbox{]} file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_logger_a3b11ea8f81da0f06687741e6e85160f7_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=318pt]{class_logger_a3b11ea8f81da0f06687741e6e85160f7_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_logger_aa6a42fecddf544252ce472fb0e720fcb}\label{class_logger_aa6a42fecddf544252ce472fb0e720fcb}} 
+\index{Logger@{Logger}!initLogFile@{initLogFile}}
+\index{initLogFile@{initLogFile}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{initLogFile()}{initLogFile()}}
+{\footnotesize\ttfamily void Logger\+::init\+Log\+File (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+Initializes the logger file, then checks if it was initialized and if it can be opened.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em m\+\_\+log} & The \mbox{[}.log\mbox{]} file.\\
+\hline
+\mbox{\texttt{ out}}  & {\em stdin} & Either \char`\"{}\+Opened the log file\char`\"{} or \char`\"{}\+Couldn\textquotesingle{}t open the log file\char`\"{}.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_logger_ac966eee4f80868a5ed8aedfa15ab9a7c}\label{class_logger_ac966eee4f80868a5ed8aedfa15ab9a7c}} 
+\index{Logger@{Logger}!Warning@{Warning}}
+\index{Warning@{Warning}!Logger@{Logger}}
+\doxysubsubsection{\texorpdfstring{Warning()}{Warning()}}
+{\footnotesize\ttfamily void Logger\+::\+Warning (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{warning }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+\begin{DoxyNote}{Note}
+The message consists of \mbox{[}Time\mbox{]} + \mbox{[}Warning\mbox{]} + \mbox{[}Message\mbox{]}.
+\end{DoxyNote}
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em warning} & The warning message.\\
+\hline
+\mbox{\texttt{ in}}  & {\em \mbox{\hyperlink{class_logger_ad1a791a5ce5c83ae40afcf00e765fc05}{Logger\+::get\+Time}}} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em m\+\_\+log} & Logs it to the \mbox{[}.log\mbox{]} file.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_logger_ac966eee4f80868a5ed8aedfa15ab9a7c_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=339pt]{class_logger_ac966eee4f80868a5ed8aedfa15ab9a7c_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+include/logger.\+hpp\end{DoxyCompactItemize}

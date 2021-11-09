@@ -1,0 +1,102 @@
+\hypertarget{checked_maze_8h_source}{}\doxysection{checked\+Maze.\+h}
+\label{checked_maze_8h_source}\index{include/backend/checkedMaze.h@{include/backend/checkedMaze.h}}
+\mbox{\hyperlink{checked_maze_8h}{Go to the documentation of this file.}}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include <vector>}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include <random>}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#define PATH\_SCROLL\_CHANCE 20}}
+\DoxyCodeLine{8 \textcolor{preprocessor}{\#define SPEED\_SCROLL\_CHANCE 40}}
+\DoxyCodeLine{9 \textcolor{preprocessor}{\#define DASH\_SCROLL\_CHANCE 70}}
+\DoxyCodeLine{10 }
+\DoxyCodeLine{11 \textcolor{preprocessor}{\#include "{}../logger.hpp"{}}}
+\DoxyCodeLine{12 \textcolor{preprocessor}{\#include "{}\mbox{\hyperlink{maze_8h}{maze.h}}"{}}}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{24 \textcolor{keyword}{class }\mbox{\hyperlink{class_checked_maze}{CheckedMaze}}}
+\DoxyCodeLine{25 \{}
+\DoxyCodeLine{26 \textcolor{keyword}{public}:}
+\DoxyCodeLine{27     \mbox{\hyperlink{class_checked_maze}{CheckedMaze}}(\textcolor{keywordtype}{int} width, \textcolor{keywordtype}{int} height);}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29     \mbox{\hyperlink{class_checked_maze}{\string~CheckedMaze}}();}
+\DoxyCodeLine{30 }
+\DoxyCodeLine{31     \textcolor{comment}{// Solvable checked maze returned by the program}}
+\DoxyCodeLine{32     \textcolor{keywordtype}{char}* checkedMaze;}
+\DoxyCodeLine{33 }
+\DoxyCodeLine{34     \textcolor{comment}{// Checked maze but with an optimal path in it}}
+\DoxyCodeLine{35     \textcolor{keywordtype}{char}* mazeWithPath;}
+\DoxyCodeLine{36 }
+\DoxyCodeLine{37     \textcolor{keywordtype}{char}* reversedMaze;}
+\DoxyCodeLine{38 }
+\DoxyCodeLine{39 \textcolor{keyword}{public}:}
+\DoxyCodeLine{59     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_checked_maze_ad2faf60731fc00809c701b1a1c3473a3}{checkMaze}}();}
+\DoxyCodeLine{60 }
+\DoxyCodeLine{61     \textcolor{comment}{// Used for debugging purposes}}
+\DoxyCodeLine{62     \textcolor{keywordtype}{void} printCheckedMazeWithPath();}
+\DoxyCodeLine{63     \textcolor{comment}{// Used for debugging purposes}}
+\DoxyCodeLine{64     \textcolor{keywordtype}{void} printCheckedMaze();}
+\DoxyCodeLine{65     \textcolor{comment}{// Used for debugging purposes}}
+\DoxyCodeLine{66     \textcolor{keywordtype}{void} printReversedMaze();}
+\DoxyCodeLine{67 }
+\DoxyCodeLine{73     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_checked_maze_a4e0f17faee93d1833a7ad2fbd2b90192}{getWidth}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{74 }
+\DoxyCodeLine{80     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_checked_maze_a88fd49e50326bacfe255738a4a86ff8c}{getHeight}}() \textcolor{keyword}{const};}
+\DoxyCodeLine{81 }
+\DoxyCodeLine{82 }
+\DoxyCodeLine{83 \textcolor{keyword}{private}:}
+\DoxyCodeLine{84     \mbox{\hyperlink{class_maze}{Maze}}* \mbox{\hyperlink{class_checked_maze_a43e7cad6e2b1297a1a7d1e0e0e0eeb09}{maze}} = NULL; }
+\DoxyCodeLine{85 }
+\DoxyCodeLine{86     \mbox{\hyperlink{class_logger}{Logger}} logger;}
+\DoxyCodeLine{87 }
+\DoxyCodeLine{88     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_checked_maze_a1f0dbbf82e757389883476b5d41a1aaf}{m\_mWidth}}; }
+\DoxyCodeLine{89     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_checked_maze_a3a435cc0970dbbfe372ad9abe534b0b4}{m\_mHeight}}; }
+\DoxyCodeLine{90 }
+\DoxyCodeLine{91     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_checked_maze_a048ecd055deed0d405e2553e606ea269}{m\_possibleWays}}; }
+\DoxyCodeLine{92 }
+\DoxyCodeLine{93     \textcolor{comment}{// Current coordinates}}
+\DoxyCodeLine{94     \textcolor{keywordtype}{int} m\_x; }
+\DoxyCodeLine{95     \textcolor{keywordtype}{int} m\_y; }
+\DoxyCodeLine{96 }
+\DoxyCodeLine{97     \textcolor{comment}{// Number of already visited cells}}
+\DoxyCodeLine{98     \textcolor{keywordtype}{int} m\_nVisitedCells;}
+\DoxyCodeLine{99 }
+\DoxyCodeLine{100     std::vector<std::pair<int, int>> \mbox{\hyperlink{class_checked_maze_aeed30dd14c6aa609250ed248e1cb6295}{m\_visitedCells}}; }
+\DoxyCodeLine{101 }
+\DoxyCodeLine{102     std::vector<std::pair<int, int>> \mbox{\hyperlink{class_checked_maze_aff848f132782dee451eabe371bcb0d83}{m\_stack}}; }
+\DoxyCodeLine{103 }
+\DoxyCodeLine{104     std::vector<bool> pathScrollChance;}
+\DoxyCodeLine{105     std::vector<bool> speedScrollChance;}
+\DoxyCodeLine{106     std::vector<bool> dashScrollChance;}
+\DoxyCodeLine{107 }
+\DoxyCodeLine{108 \textcolor{keyword}{private}:}
+\DoxyCodeLine{117     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_checked_maze_afe39706cb25539f7b2842474ede16a2c}{isInBound}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& y) \textcolor{keyword}{const};}
+\DoxyCodeLine{118 }
+\DoxyCodeLine{130     std::vector<std::pair<int, int>> \mbox{\hyperlink{class_checked_maze_a66c268b0a5b6eff6bfdcc0bf26e7fa68}{getNeighbours}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& y) \textcolor{keyword}{const};}
+\DoxyCodeLine{131 }
+\DoxyCodeLine{143     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_checked_maze_afe699b7a3cc52f7abc510eb8582cc281}{searchForAlreadyVisitedCells}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& y) \textcolor{keyword}{const};}
+\DoxyCodeLine{144 }
+\DoxyCodeLine{156     \textcolor{keywordtype}{int} \mbox{\hyperlink{class_checked_maze_a0db23242774e0664efeda3945dc7e8a2}{toIndex}}(\textcolor{keyword}{const} \textcolor{keywordtype}{int}\& x, \textcolor{keyword}{const} \textcolor{keywordtype}{int}\& y) \textcolor{keyword}{const};}
+\DoxyCodeLine{157 }
+\DoxyCodeLine{158     \textcolor{comment}{// Removes the markings in the maze and replaces them with '0'}}
+\DoxyCodeLine{159     \textcolor{keywordtype}{void} fixMaze();}
+\DoxyCodeLine{160 }
+\DoxyCodeLine{161     \textcolor{comment}{// Copies the initial maze with its path into a new public variable}}
+\DoxyCodeLine{162     \textcolor{keywordtype}{void} initMazeWithPath();}
+\DoxyCodeLine{163 }
+\DoxyCodeLine{164     \textcolor{comment}{// Copies the checked maze and reverses it}}
+\DoxyCodeLine{165     \textcolor{keywordtype}{void} initReversedMaze();}
+\DoxyCodeLine{166 }
+\DoxyCodeLine{167     \textcolor{keywordtype}{void} fillChanceGenerator(std::vector<bool>\& pathVector,}
+\DoxyCodeLine{168                              std::vector<bool>\& speedVector,}
+\DoxyCodeLine{169                              std::vector<bool>\& dashVector);}
+\DoxyCodeLine{170 }
+\DoxyCodeLine{171     \textcolor{keywordtype}{void} shuffleGenerators(std::vector<bool>\& pathVector,}
+\DoxyCodeLine{172                            std::vector<bool>\& speedVector,}
+\DoxyCodeLine{173                            std::vector<bool>\& dashVector);}
+\DoxyCodeLine{174 }
+\DoxyCodeLine{175     \textcolor{keywordtype}{void} enrichMaze();}
+\DoxyCodeLine{176 \};}
+
+\end{DoxyCode}

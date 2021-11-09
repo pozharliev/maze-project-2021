@@ -1,0 +1,4 @@
+<map id="Player" name="Player">
+<area shape="rect" id="node1" title="The Player class handles everything connected to the player, without the collisions." alt="" coords="35,95,94,121"/>
+<area shape="rect" id="node2" href="$struct_player_1_1inventory.html" title=" " alt="" coords="5,5,124,32"/>
+</map>

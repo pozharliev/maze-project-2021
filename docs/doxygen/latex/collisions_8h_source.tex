@@ -1,0 +1,23 @@
+\hypertarget{collisions_8h_source}{}\doxysection{collisions.\+h}
+\label{collisions_8h_source}\index{include/backend/collisions.h@{include/backend/collisions.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}libs.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../frontend/player.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../frontend/lobby.h"{}}}
+\DoxyCodeLine{6 }
+\DoxyCodeLine{7 \textcolor{keyword}{class }\mbox{\hyperlink{class_collisions}{Collisions}}}
+\DoxyCodeLine{8 \{}
+\DoxyCodeLine{9 \textcolor{keyword}{public}:}
+\DoxyCodeLine{10     \textcolor{keywordtype}{bool} colliding;}
+\DoxyCodeLine{11     Player::PLAYER\_DIRS lastCollisionDir;}
+\DoxyCodeLine{12     std::string mazeOrientation;}
+\DoxyCodeLine{13     \textcolor{keywordtype}{bool} gameEnded;}
+\DoxyCodeLine{14 }
+\DoxyCodeLine{15 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_collisions_a8bf2bd20f953a9e1c40a7054634bd5b0}{checkCollisions}}(olc::PixelGameEngine *engine, \mbox{\hyperlink{class_player}{Player}} *player, \mbox{\hyperlink{class_lobby}{Lobby}} *lobby, \mbox{\hyperlink{class_room}{Room}} *room);}
+\DoxyCodeLine{21 \};}
+
+\end{DoxyCode}

@@ -1,0 +1,5 @@
+<map id="Logger::Error" name="Logger::Error">
+<area shape="rect" id="node1" title="Logs an error message." alt="" coords="5,5,103,32"/>
+<area shape="rect" id="node2" href="$class_logger.html#a4139f1ee6e935ad8b48e7646eaf7b42d" title="Returns a timestamp with a message type and the message itself." alt="" coords="151,5,265,32"/>
+<area shape="rect" id="node3" href="$class_logger.html#ad1a791a5ce5c83ae40afcf00e765fc05" title="Generates time stamps." alt="" coords="313,5,428,32"/>
+</map>

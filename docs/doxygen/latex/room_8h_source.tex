@@ -1,0 +1,76 @@
+\hypertarget{room_8h_source}{}\doxysection{room.\+h}
+\label{room_8h_source}\index{include/frontend/room.h@{include/frontend/room.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../backend/libs.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../backend/checkedMaze.h"{}}}
+\DoxyCodeLine{5 }
+\DoxyCodeLine{6 \textcolor{keyword}{class }\mbox{\hyperlink{class_room}{Room}}}
+\DoxyCodeLine{7 \{}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{private}:}
+\DoxyCodeLine{10     \textcolor{keywordtype}{int} mazeWidth, mazeHeight;}
+\DoxyCodeLine{11     \mbox{\hyperlink{class_checked_maze}{CheckedMaze}} *leftMaze;}
+\DoxyCodeLine{12     \mbox{\hyperlink{class_checked_maze}{CheckedMaze}} *rightMaze;}
+\DoxyCodeLine{13 }
+\DoxyCodeLine{14     \textcolor{keywordtype}{float} playerPosX;}
+\DoxyCodeLine{15     \textcolor{keywordtype}{float} playerPosY;}
+\DoxyCodeLine{16     olc::Sprite *mazeTile;}
+\DoxyCodeLine{17     olc::Sprite *pathTile;}
+\DoxyCodeLine{18 }
+\DoxyCodeLine{19 \textcolor{keyword}{public}:}
+\DoxyCodeLine{20     \mbox{\hyperlink{class_room}{Room}}(\textcolor{keywordtype}{int} mWidth, \textcolor{keywordtype}{int} mHeight);}
+\DoxyCodeLine{21     std::fstream rawMazeData;}
+\DoxyCodeLine{22     std::string line;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24     \textcolor{keywordtype}{int} tileWidth;}
+\DoxyCodeLine{25     \textcolor{keywordtype}{int} tileHeight;}
+\DoxyCodeLine{26     \textcolor{keywordtype}{bool} roomEnriched;}
+\DoxyCodeLine{27 }
+\DoxyCodeLine{28     olc::Sprite *platformSprite;}
+\DoxyCodeLine{29     olc::Sprite *platformSpriteRight;}
+\DoxyCodeLine{30     olc::Sprite *runeSprite;}
+\DoxyCodeLine{31     olc::Decal *rune;}
+\DoxyCodeLine{32     olc::Sprite *runeSpriteIcon;}
+\DoxyCodeLine{33     olc::Decal *runeIcon;}
+\DoxyCodeLine{34     olc::Sprite *scrollDashSprite;}
+\DoxyCodeLine{35     olc::Decal *scrollDash;}
+\DoxyCodeLine{36     olc::Sprite *scrollSpeedSprite;}
+\DoxyCodeLine{37     olc::Decal *scrollSpeed;}
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} leftRunePickedUp;}
+\DoxyCodeLine{39     \textcolor{keywordtype}{bool} rightRunePickedUp;}
+\DoxyCodeLine{40     \textcolor{keywordtype}{bool} pathEnabled;}
+\DoxyCodeLine{41 }
+\DoxyCodeLine{42     olc::Sprite *runeTileSprite;}
+\DoxyCodeLine{43 }
+\DoxyCodeLine{44     \textcolor{keyword}{struct }\mbox{\hyperlink{struct_room_1_1item}{item}}}
+\DoxyCodeLine{45     \{}
+\DoxyCodeLine{46         \textcolor{keywordtype}{int} x;}
+\DoxyCodeLine{47         \textcolor{keywordtype}{int} y;}
+\DoxyCodeLine{48         std::string type;}
+\DoxyCodeLine{49         \textcolor{keywordtype}{bool} pickedUp;}
+\DoxyCodeLine{50     \};}
+\DoxyCodeLine{51     std::vector<item> items\_vec;}
+\DoxyCodeLine{52 }
+\DoxyCodeLine{53     olc::Sprite *scroll;}
+\DoxyCodeLine{54     olc::Decal *scrollDecal;}
+\DoxyCodeLine{55     olc::Renderable *scrollAnimSpritesheet;}
+\DoxyCodeLine{56     olc::AnimatedSprite *scrollAnimator;}
+\DoxyCodeLine{57 }
+\DoxyCodeLine{58     \textcolor{keywordtype}{bool} sound;}
+\DoxyCodeLine{59 }
+\DoxyCodeLine{60 \textcolor{keyword}{private}:}
+\DoxyCodeLine{65     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_room_aed90ad79c5dfd925ccf27feb259845c8}{generateRoom}}();}
+\DoxyCodeLine{66 }
+\DoxyCodeLine{67 \textcolor{keyword}{public}:}
+\DoxyCodeLine{68     \mbox{\hyperlink{class_room}{\string~Room}}();}
+\DoxyCodeLine{72     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_room_a0b032873aad921d3e4a99f9c2e9f98f8}{setUpScrollAnimations}}();}
+\DoxyCodeLine{73 }
+\DoxyCodeLine{77     \textcolor{keywordtype}{char} \mbox{\hyperlink{class_room_a9c77e6085b49b53e7090c1d573987ada}{getTile}}(std::string mazeOrientation, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{81     \textcolor{keywordtype}{char} \mbox{\hyperlink{class_room_abb12959093e0014d671712ba9cd64912}{getPathTile}}(std::string mazeOrientation, \textcolor{keywordtype}{int} x, \textcolor{keywordtype}{int} y);}
+\DoxyCodeLine{85     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_room_ad656ec6a5bf5fd1c68dcf44b7b5a9c51}{DrawRoom}}(olc::PixelGameEngine *engine, std::string mazeOrientation);}
+\DoxyCodeLine{86 \};}
+
+\end{DoxyCode}

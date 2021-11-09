@@ -1,0 +1,97 @@
+\hypertarget{class_player}{}\doxysection{Player Class Reference}
+\label{class_player}\index{Player@{Player}}
+
+
+The \mbox{\hyperlink{class_player}{Player}} class handles everything connected to the player, without the collisions.  
+
+
+
+
+{\ttfamily \#include $<$player.\+h$>$}
+
+
+
+Collaboration diagram for Player\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=169pt]{class_player__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_player_1_1inventory}{inventory}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_ad43767c94b03ed4549489706de1b0244}\label{class_player_ad43767c94b03ed4549489706de1b0244}} 
+void {\bfseries innit\+Player} ()
+\begin{DoxyCompactList}\small\item\em Extracts parts of the Player\+Anim\+Spritesheet file and combines them in animations. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a23c8e4abf033335bf8d0ba38930bce09}{move\+Player}} (olc\+::\+Pixel\+Game\+Engine $\ast$engine, olc\+::\+Key dir, float elapsed\+Time)
+\begin{DoxyCompactList}\small\item\em Based on the user input, changes the position of the player and predicts the future position,. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_player_a957d2b1cbbf5ada0df3f32dcdd4290f3}{draw\+Player}} (olc\+::\+Pixel\+Game\+Engine $\ast$engine, float elapsed\+Time)
+\begin{DoxyCompactList}\small\item\em Displays the player. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_player_a492a1afeeec8ea898ae5bfbaccfa5d1b}\label{class_player_a492a1afeeec8ea898ae5bfbaccfa5d1b}} 
+void {\bfseries draw\+Player\+Vignette} (olc\+::\+Pixel\+Game\+Engine $\ast$engine)
+\begin{DoxyCompactList}\small\item\em Draws atmoshperic fog around the player. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_player_a9788ddcb01f7b67c52fee41b2fe2fcc6}\label{class_player_a9788ddcb01f7b67c52fee41b2fe2fcc6}} 
+void {\bfseries set\+Up\+Animations} ()
+\begin{DoxyCompactList}\small\item\em Extracts parts of the Player\+Anim\+Spritesheet file and combines them in animations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_player_a957d2b1cbbf5ada0df3f32dcdd4290f3}\label{class_player_a957d2b1cbbf5ada0df3f32dcdd4290f3}} 
+\index{Player@{Player}!drawPlayer@{drawPlayer}}
+\index{drawPlayer@{drawPlayer}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{drawPlayer()}{drawPlayer()}}
+{\footnotesize\ttfamily void Player\+::draw\+Player (\begin{DoxyParamCaption}\item[{olc\+::\+Pixel\+Game\+Engine $\ast$}]{engine,  }\item[{float}]{elapsed\+Time }\end{DoxyParamCaption})}
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em engine} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em elapsed\+Time} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_a957d2b1cbbf5ada0df3f32dcdd4290f3_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_player_a23c8e4abf033335bf8d0ba38930bce09}\label{class_player_a23c8e4abf033335bf8d0ba38930bce09}} 
+\index{Player@{Player}!movePlayer@{movePlayer}}
+\index{movePlayer@{movePlayer}!Player@{Player}}
+\doxysubsubsection{\texorpdfstring{movePlayer()}{movePlayer()}}
+{\footnotesize\ttfamily void Player\+::move\+Player (\begin{DoxyParamCaption}\item[{olc\+::\+Pixel\+Game\+Engine $\ast$}]{engine,  }\item[{olc\+::\+Key}]{dir,  }\item[{float}]{elapsed\+Time }\end{DoxyParamCaption})}
+
+which is later on handled by the collisions.
+
+
+\begin{DoxyParams}[1]{Parameters}
+\mbox{\texttt{ in}}  & {\em engine} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em direction} & \\
+\hline
+\mbox{\texttt{ in}}  & {\em elapsed\+Time} & \\
+\hline
+\end{DoxyParams}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_player_a23c8e4abf033335bf8d0ba38930bce09_icgraph}
+\end{center}
+\end{figure}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/frontend/player.\+h\item 
+src/frontend/player.\+cpp\end{DoxyCompactItemize}

@@ -1,0 +1,252 @@
+\hypertarget{class_maze}{}\doxysection{Maze Class Reference}
+\label{class_maze}\index{Maze@{Maze}}
+
+
+The \mbox{\hyperlink{class_maze}{Maze}} class is responsible for generating a maze.  
+
+
+
+
+{\ttfamily \#include $<$maze.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_maze_ace2464dc984769a5a048cb7f27d6a0ed}{init\+Maze}} ()
+\begin{DoxyCompactList}\small\item\em Initializer for the maze. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_a210ae5ab961b8cd130c7d2bf010e1c75}{get\+Width}} () const
+\begin{DoxyCompactList}\small\item\em Returns the width of the maze. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_a275cb08cc708a067757f5b15a7a44dae}{get\+Height}} () const
+\begin{DoxyCompactList}\small\item\em Returns the height of the maze. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_abb980730acbe4b693a9399b9640e834b}{get\+Possible\+Ways}} () const
+\begin{DoxyCompactList}\small\item\em Returns all cells that are not walls. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+char $\ast$ \mbox{\hyperlink{class_maze_a21e1bca067f0fb8f6ec42b8e6ceaf679}{maze}}
+\begin{DoxyCompactList}\small\item\em The generated maze. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Types}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5}{ACTIONS}} \{ \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5ad2e008a4b04be5e2d3559c70193920e7}{UP}} = 1
+, \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5a699ae3e1d989e9b12bd200aa86e29e9d}{RIGHT}} = 2
+, \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5a89ab143d020541957ab5e0e9cfdd3e23}{DOWN}} = 3
+, \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5aab1a1fe0274cd139b3c0116d8caf458c}{LEFT}} = 4
+ \}
+\begin{DoxyCompactList}\small\item\em Contains every possible action the algorithm take. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{class_maze_a167b904278051187ca8720ecd46f72a9}{Visit}} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Recursively generates a maze, based on random decisions. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_maze_ab2b6966ef690ab539078a48a9c29e039}{is\+In\+Bound}} (const int \&x, const int \&y) const
+\begin{DoxyCompactList}\small\item\em Checks if a coordinate is in or outside the maze. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_maze_a9f616cfe2d9915c6457cbf7ed9230a27}{to\+Index}} (const int \&x, const int \&y) const
+\begin{DoxyCompactList}\small\item\em Converts 2D to 1D coordinates. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::vector$<$ int $>$ \mbox{\hyperlink{class_maze_aced3d8427366d7e9fcc99be8785e870e}{m\+\_\+actions}}
+\begin{DoxyCompactList}\small\item\em A std\+::vector used for getting random actions. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_maze_ad573bccc998a56afdbfba6967a6248d9}\label{class_maze_ad573bccc998a56afdbfba6967a6248d9}} 
+int {\bfseries m\+\_\+m\+Width}
+\begin{DoxyCompactList}\small\item\em Width of the \mbox{\hyperlink{class_maze}{Maze}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_maze_a6074a2a1d05d540fa23f6444e2e56cf8}\label{class_maze_a6074a2a1d05d540fa23f6444e2e56cf8}} 
+int {\bfseries m\+\_\+m\+Height}
+\begin{DoxyCompactList}\small\item\em Height of the \mbox{\hyperlink{class_maze}{Maze}}. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_maze_aafdb0466a4817dd34d8d974860191cc0}\label{class_maze_aafdb0466a4817dd34d8d974860191cc0}} 
+int {\bfseries m\+\_\+possible\+Ways}
+\begin{DoxyCompactList}\small\item\em Every cell that is not a wall. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Member Enumeration Documentation}
+\mbox{\Hypertarget{class_maze_a04241a8b0dd46d9727153c3e798ad6a5}\label{class_maze_a04241a8b0dd46d9727153c3e798ad6a5}} 
+\index{Maze@{Maze}!ACTIONS@{ACTIONS}}
+\index{ACTIONS@{ACTIONS}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{ACTIONS}{ACTIONS}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5}{Maze\+::\+ACTIONS}}\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{UP@{UP}!Maze@{Maze}}\index{Maze@{Maze}!UP@{UP}}}\mbox{\Hypertarget{class_maze_a04241a8b0dd46d9727153c3e798ad6a5ad2e008a4b04be5e2d3559c70193920e7}\label{class_maze_a04241a8b0dd46d9727153c3e798ad6a5ad2e008a4b04be5e2d3559c70193920e7}} 
+UP&Add 1 to the y axis. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{RIGHT@{RIGHT}!Maze@{Maze}}\index{Maze@{Maze}!RIGHT@{RIGHT}}}\mbox{\Hypertarget{class_maze_a04241a8b0dd46d9727153c3e798ad6a5a699ae3e1d989e9b12bd200aa86e29e9d}\label{class_maze_a04241a8b0dd46d9727153c3e798ad6a5a699ae3e1d989e9b12bd200aa86e29e9d}} 
+RIGHT&Add 1 to the x axis. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{DOWN@{DOWN}!Maze@{Maze}}\index{Maze@{Maze}!DOWN@{DOWN}}}\mbox{\Hypertarget{class_maze_a04241a8b0dd46d9727153c3e798ad6a5a89ab143d020541957ab5e0e9cfdd3e23}\label{class_maze_a04241a8b0dd46d9727153c3e798ad6a5a89ab143d020541957ab5e0e9cfdd3e23}} 
+DOWN&Subtract 1 from the y axis. \\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{LEFT@{LEFT}!Maze@{Maze}}\index{Maze@{Maze}!LEFT@{LEFT}}}\mbox{\Hypertarget{class_maze_a04241a8b0dd46d9727153c3e798ad6a5aab1a1fe0274cd139b3c0116d8caf458c}\label{class_maze_a04241a8b0dd46d9727153c3e798ad6a5aab1a1fe0274cd139b3c0116d8caf458c}} 
+LEFT&Subtract 1 from the x axis. \\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{class_maze_a275cb08cc708a067757f5b15a7a44dae}\label{class_maze_a275cb08cc708a067757f5b15a7a44dae}} 
+\index{Maze@{Maze}!getHeight@{getHeight}}
+\index{getHeight@{getHeight}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{getHeight()}{getHeight()}}
+{\footnotesize\ttfamily int Maze\+::get\+Height (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_maze_abb980730acbe4b693a9399b9640e834b}\label{class_maze_abb980730acbe4b693a9399b9640e834b}} 
+\index{Maze@{Maze}!getPossibleWays@{getPossibleWays}}
+\index{getPossibleWays@{getPossibleWays}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{getPossibleWays()}{getPossibleWays()}}
+{\footnotesize\ttfamily int Maze\+::get\+Possible\+Ways (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_maze_a210ae5ab961b8cd130c7d2bf010e1c75}\label{class_maze_a210ae5ab961b8cd130c7d2bf010e1c75}} 
+\index{Maze@{Maze}!getWidth@{getWidth}}
+\index{getWidth@{getWidth}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{getWidth()}{getWidth()}}
+{\footnotesize\ttfamily int Maze\+::get\+Width (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+\mbox{\Hypertarget{class_maze_ace2464dc984769a5a048cb7f27d6a0ed}\label{class_maze_ace2464dc984769a5a048cb7f27d6a0ed}} 
+\index{Maze@{Maze}!initMaze@{initMaze}}
+\index{initMaze@{initMaze}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{initMaze()}{initMaze()}}
+{\footnotesize\ttfamily void Maze\+::init\+Maze (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+\begin{DoxyNote}{Note}
+Acts as a wrapper for the \mbox{\hyperlink{class_maze_a167b904278051187ca8720ecd46f72a9}{Maze\+::\+Visit}} function.
+\end{DoxyNote}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_maze_ace2464dc984769a5a048cb7f27d6a0ed_cgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_maze_ab2b6966ef690ab539078a48a9c29e039}\label{class_maze_ab2b6966ef690ab539078a48a9c29e039}} 
+\index{Maze@{Maze}!isInBound@{isInBound}}
+\index{isInBound@{isInBound}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{isInBound()}{isInBound()}}
+{\footnotesize\ttfamily bool Maze\+::is\+In\+Bound (\begin{DoxyParamCaption}\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x axis \\
+\hline
+{\em y} & The y axis\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+bool 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_maze_ab2b6966ef690ab539078a48a9c29e039_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_maze_a9f616cfe2d9915c6457cbf7ed9230a27}\label{class_maze_a9f616cfe2d9915c6457cbf7ed9230a27}} 
+\index{Maze@{Maze}!toIndex@{toIndex}}
+\index{toIndex@{toIndex}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{toIndex()}{toIndex()}}
+{\footnotesize\ttfamily int Maze\+::to\+Index (\begin{DoxyParamCaption}\item[{const int \&}]{x,  }\item[{const int \&}]{y }\end{DoxyParamCaption}) const\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyNote}{Note}
+Takes coordinates in (int, int) format and returns (int) format.
+\end{DoxyNote}
+
+\begin{DoxyParams}{Parameters}
+{\em x} & The x axis of the coordinate. \\
+\hline
+{\em y} & The y axis of the coordinate.\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+int 
+\end{DoxyReturn}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_maze_a9f616cfe2d9915c6457cbf7ed9230a27_icgraph}
+\end{center}
+\end{figure}
+\mbox{\Hypertarget{class_maze_a167b904278051187ca8720ecd46f72a9}\label{class_maze_a167b904278051187ca8720ecd46f72a9}} 
+\index{Maze@{Maze}!Visit@{Visit}}
+\index{Visit@{Visit}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{Visit()}{Visit()}}
+{\footnotesize\ttfamily void Maze\+::\+Visit (\begin{DoxyParamCaption}\item[{int}]{x,  }\item[{int}]{y }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [private]}}
+
+The function starts on the (1,1) coordinate. ~\newline
+Converts the current coordinate to a path from a wall, then picks a random neighbour from the unchecked-\/already neighbours, making the offset from the current cell 2 (two) cells ahead. ~\newline
+If the generated offset is not outside of the maze, it recursively visits the offset coordinates and repeats. ~\newline
+Else it chooses a different offset and repeats.
+
+
+\begin{DoxyParams}[1]{Parameters}
+ & {\em x} & The x axis of the starting coordinate. \\
+\hline
+ & {\em y} & The y axis of the starting coordinate.\\
+\hline
+\mbox{\texttt{ in}}  & {\em maze} & \\
+\hline
+\mbox{\texttt{ out}}  & {\em maze,m\+\_\+possible\+Ways} & \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+void 
+\end{DoxyReturn}
+Here is the call graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=271pt]{class_maze_a167b904278051187ca8720ecd46f72a9_cgraph}
+\end{center}
+\end{figure}
+Here is the caller graph for this function\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=265pt]{class_maze_a167b904278051187ca8720ecd46f72a9_icgraph}
+\end{center}
+\end{figure}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{class_maze_aced3d8427366d7e9fcc99be8785e870e}\label{class_maze_aced3d8427366d7e9fcc99be8785e870e}} 
+\index{Maze@{Maze}!m\_actions@{m\_actions}}
+\index{m\_actions@{m\_actions}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{m\_actions}{m\_actions}}
+{\footnotesize\ttfamily std\+::vector$<$int$>$ Maze\+::m\+\_\+actions\hspace{0.3cm}{\ttfamily [private]}}
+
+\begin{DoxyNote}{Note}
+Acts as a wrapper for the \mbox{\hyperlink{class_maze_a04241a8b0dd46d9727153c3e798ad6a5}{ACTIONS}} enum. 
+\end{DoxyNote}
+\mbox{\Hypertarget{class_maze_a21e1bca067f0fb8f6ec42b8e6ceaf679}\label{class_maze_a21e1bca067f0fb8f6ec42b8e6ceaf679}} 
+\index{Maze@{Maze}!maze@{maze}}
+\index{maze@{maze}!Maze@{Maze}}
+\doxysubsubsection{\texorpdfstring{maze}{maze}}
+{\footnotesize\ttfamily char$\ast$ Maze\+::maze}
+
+\begin{DoxyNote}{Note}
+Dynamic array. 
+
+Is walls-\/only by default. 
+\end{DoxyNote}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/backend/\mbox{\hyperlink{maze_8h}{maze.\+h}}\item 
+src/backend/\mbox{\hyperlink{maze_8cpp}{maze.\+cpp}}\end{DoxyCompactItemize}

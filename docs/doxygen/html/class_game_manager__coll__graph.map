@@ -1,0 +1,8 @@
+<map id="GameManager" name="GameManager">
+<area shape="rect" id="node1" title=" " alt="" coords="217,184,323,211"/>
+<area shape="rect" id="node2" title=" " alt="" coords="5,95,156,121"/>
+<area shape="rect" id="node3" href="$class_main_menu.html" title=" " alt="" coords="181,95,263,121"/>
+<area shape="rect" id="node4" href="$class_player.html" title="The Player class handles everything connected to the player, without the collisions." alt="" coords="287,95,346,121"/>
+<area shape="rect" id="node5" href="$struct_player_1_1inventory.html" title=" " alt="" coords="257,5,376,32"/>
+<area shape="rect" id="node6" href="$class_collisions.html" title=" " alt="" coords="371,95,449,121"/>
+</map>

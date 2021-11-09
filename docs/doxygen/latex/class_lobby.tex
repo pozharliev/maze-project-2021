@@ -1,0 +1,46 @@
+\hypertarget{class_lobby}{}\doxysection{Lobby Class Reference}
+\label{class_lobby}\index{Lobby@{Lobby}}
+
+
+Collaboration diagram for Lobby\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=236pt]{class_lobby__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsection*{Classes}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{struct_lobby_1_1rect}{rect}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lobby_a427014fe2d819628168507fb2407d83b}\label{class_lobby_a427014fe2d819628168507fb2407d83b}} 
+char {\bfseries get\+Tile} (int x, int y)
+\begin{DoxyCompactList}\small\item\em Returns the symbol from the lobby array on x and y coordinates. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lobby_aca919772273a9179590280f85ab9718f}\label{class_lobby_aca919772273a9179590280f85ab9718f}} 
+void {\bfseries draw\+Lobby} (olc\+::\+Pixel\+Game\+Engine $\ast$engine, \mbox{\hyperlink{class_player}{Player}} $\ast$player)
+\begin{DoxyCompactList}\small\item\em Displays the lobby. \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lobby_a121bb884ea00604f4668559df76b8fd4}\label{class_lobby_a121bb884ea00604f4668559df76b8fd4}} 
+void {\bfseries draw\+Lobby\+Foreground} (olc\+::\+Pixel\+Game\+Engine $\ast$engine)
+\begin{DoxyCompactList}\small\item\em Draws the foreground of the lobby(the objects infront of the player). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lobby_ac1d2d6af8b4aa67d2a43c5f351425e20}\label{class_lobby_ac1d2d6af8b4aa67d2a43c5f351425e20}} 
+bool {\bfseries hall\+Collision} (\mbox{\hyperlink{class_player}{Player}} $\ast$player, \mbox{\hyperlink{struct_lobby_1_1rect}{rect}} room\+Left)
+\begin{DoxyCompactList}\small\item\em Checks if the player is colliding with a rectangle(specifically for the doors). \end{DoxyCompactList}\item 
+\mbox{\Hypertarget{class_lobby_ae2c9692389821186799e84589ce607e5}\label{class_lobby_ae2c9692389821186799e84589ce607e5}} 
+bool {\bfseries point\+Coll\+Rect} (const olc\+::vf2d \&p, const \mbox{\hyperlink{struct_lobby_1_1rect}{rect}} \&r)
+\begin{DoxyCompactList}\small\item\em Checks if the player is colliding with a rectangle. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\Hypertarget{class_lobby_afb8a12547f58429c4d077da8debb0878}\label{class_lobby_afb8a12547f58429c4d077da8debb0878}} 
+void {\bfseries init\+Lobby} ()
+\begin{DoxyCompactList}\small\item\em Sets up important variables and data for the lobby. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+include/frontend/lobby.\+h\item 
+src/frontend/lobby.\+cpp\end{DoxyCompactItemize}

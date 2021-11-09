@@ -1,0 +1,5 @@
+<map id="Maze::toIndex" name="Maze::toIndex">
+<area shape="rect" id="node1" title="Converts 2D to 1D coordinates." alt="" coords="300,29,404,56"/>
+<area shape="rect" id="node2" href="$class_maze.html#a167b904278051187ca8720ecd46f72a9" title="Recursively generates a maze, based on random decisions." alt="" coords="164,29,252,56"/>
+<area shape="rect" id="node3" href="$class_maze.html#ace2464dc984769a5a048cb7f27d6a0ed" title="Initializer for the maze." alt="" coords="5,29,116,56"/>
+</map>

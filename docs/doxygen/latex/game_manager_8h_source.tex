@@ -1,0 +1,47 @@
+\hypertarget{game_manager_8h_source}{}\doxysection{game\+Manager.\+h}
+\label{game_manager_8h_source}\index{include/backend/gameManager.h@{include/backend/gameManager.h}}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{1 \textcolor{preprocessor}{\#pragma once}}
+\DoxyCodeLine{2 }
+\DoxyCodeLine{3 \textcolor{preprocessor}{\#include "{}../../libs/libs.h"{}}}
+\DoxyCodeLine{4 \textcolor{preprocessor}{\#include "{}../frontend/mainMenu.h"{}}}
+\DoxyCodeLine{5 \textcolor{preprocessor}{\#include "{}../frontend/lobby.h"{}}}
+\DoxyCodeLine{6 \textcolor{preprocessor}{\#include "{}../frontend/player.h"{}}}
+\DoxyCodeLine{7 \textcolor{preprocessor}{\#include "{}../backend/collisions.h"{}}}
+\DoxyCodeLine{8 }
+\DoxyCodeLine{9 \textcolor{keyword}{class }\mbox{\hyperlink{class_game_manager}{GameManager}} : \textcolor{keyword}{public} olc::PixelGameEngine}
+\DoxyCodeLine{10 \{}
+\DoxyCodeLine{11 }
+\DoxyCodeLine{12 \textcolor{keyword}{public}:}
+\DoxyCodeLine{13     \mbox{\hyperlink{class_main_menu}{MainMenu}} *mainMenu;}
+\DoxyCodeLine{14     \mbox{\hyperlink{class_player}{Player}} *player;}
+\DoxyCodeLine{15     \mbox{\hyperlink{class_collisions}{Collisions}} *collisions;}
+\DoxyCodeLine{16     std::vector<Lobby *> floors;}
+\DoxyCodeLine{17     \textcolor{keywordtype}{int} floorCount;}
+\DoxyCodeLine{18     \textcolor{keywordtype}{int} currentFloor;}
+\DoxyCodeLine{19     olc::Sprite *cutsceneSprite;}
+\DoxyCodeLine{20     olc::Decal *cutscene;}
+\DoxyCodeLine{21     \textcolor{keywordtype}{bool} inCutscene;}
+\DoxyCodeLine{22     \textcolor{keywordtype}{bool} vignette;}
+\DoxyCodeLine{23 }
+\DoxyCodeLine{24 \textcolor{keyword}{public}:}
+\DoxyCodeLine{25     \mbox{\hyperlink{class_game_manager}{GameManager}}();}
+\DoxyCodeLine{26 }
+\DoxyCodeLine{27     \mbox{\hyperlink{class_game_manager}{\string~GameManager}}();}
+\DoxyCodeLine{28 }
+\DoxyCodeLine{29 \textcolor{keyword}{private}:}
+\DoxyCodeLine{33     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_game_manager_af55c201538895221327de970d5b84105}{OnUserCreate}}() \textcolor{keyword}{override};}
+\DoxyCodeLine{34 }
+\DoxyCodeLine{38     \textcolor{keywordtype}{bool} \mbox{\hyperlink{class_game_manager_ae118ae32b8664d8556d314e4aabd0e0b}{OnUserUpdate}}(\textcolor{keywordtype}{float} fElapsedTime) \textcolor{keyword}{override};}
+\DoxyCodeLine{39 }
+\DoxyCodeLine{40 }
+\DoxyCodeLine{44     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_manager_ad61a5e20b43b928ca94a284bb9e5f530}{Game}}(\textcolor{keywordtype}{float} fElapsedTime);}
+\DoxyCodeLine{45 }
+\DoxyCodeLine{49     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_manager_af21d4e9cc7e7b71c7370414c231db5d2}{Cutscene}}(\textcolor{keywordtype}{float} fElapsedTime);}
+\DoxyCodeLine{50 }
+\DoxyCodeLine{51 }
+\DoxyCodeLine{55     \textcolor{keywordtype}{void} \mbox{\hyperlink{class_game_manager_abbbc80d06e467e7ca7bd2fb641269569}{getInput}}(\textcolor{keywordtype}{float} elapsedTime);}
+\DoxyCodeLine{56 \};}
+
+\end{DoxyCode}
