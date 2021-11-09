@@ -21,7 +21,7 @@ ___
 
 **You are a lost adventurer. It's dark, and you can't see anything. While wondering around, trying to find a way to escape the darkness, you come around the entrance of the famous Babylon tower. Because the tower is famous for ligthing the way, you go in. But before you can find your way, you need to go through series of mazes. But fear not, there are all types of scrolls left from previous adventurers to help you. Solve the mazes, find all the runes and light your way!**
 
-# [Our Code Documentation](https://abpozharliev19.github.io/maze-project-2021-docs/)
+# [Our Code Documentation](https://abpozharliev19.github.io/maze-project-2021/)
 # [Our Documentation](https://codingburgas-my.sharepoint.com/:w:/g/personal/abpozharliev19_codingburgas_bg/EY47-O5XmFBMgVWwwgxRadMBcX83ZLk5sq8qCxWRUjRgPw?e=LmoktC) 
 # [Our Presentation](https://codingburgas-my.sharepoint.com/:p:/g/personal/abpozharliev19_codingburgas_bg/EaNxadnFv4pLuw4lrnd6m6UBOYEB_UU1Ux9efTMhIsh3Gg?e=IVhpoi)
 
