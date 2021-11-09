@@ -83,5 +83,5 @@ public:
     /**
     * @brief Draws atmoshperic fog around the player.
     **/
-    void drawPlayerVignette(olc::PixelGameEngine *engine);
+    void drawPlayerVignette(olc::PixelGameEngine *engine, int count);
 };

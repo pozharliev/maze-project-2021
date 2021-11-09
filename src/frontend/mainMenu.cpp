@@ -4,6 +4,8 @@ MainMenu::~MainMenu()
 {
     delete welcomeLogo;
     delete welcomeLogoDecal;
+    delete winScrollSprite;
+    delete winScroll;
 }
 
 bool MainMenu::pressAnyKey(olc::PixelGameEngine *engine)
@@ -22,10 +24,13 @@ bool MainMenu::pressAnyKey(olc::PixelGameEngine *engine)
 
 bool MainMenu::displayPauseMenu(olc::PixelGameEngine *engine, Collisions *collisions)
 {
+    //Set up menu options
     std::string menuOptionsArr[2] = {"Continue", "Quit To Menu"};
     engine->Clear(olc::BLACK);
+    //Give left spacing
     int spacing = -16;
 
+    //Go through every menu option
     for (int i = 0; i < 2; i++)
     {
         if (i == menuOption)
@@ -40,6 +45,7 @@ bool MainMenu::displayPauseMenu(olc::PixelGameEngine *engine, Collisions *collis
         spacing += 32;
     }
 
+    //Set menu type
     getMenuInput(engine, "pause", collisions);
     spacing = -16;
     return true;
@@ -47,10 +53,13 @@ bool MainMenu::displayPauseMenu(olc::PixelGameEngine *engine, Collisions *collis
 
 bool MainMenu::displayMainMenu(olc::PixelGameEngine *engine, Collisions *collisions)
 {
+    //Set up menu options
     std::string menuOptionsArr[3] = {"Start Game", "Options", "Quit Game"};
     engine->Clear(olc::BLACK);
+    //Give left spacing
     int spacing = -32;
 
+    //Go through every menu option
     for (int i = 0; i < 3; i++)
     {
         if (i == menuOption)
@@ -64,6 +73,8 @@ bool MainMenu::displayMainMenu(olc::PixelGameEngine *engine, Collisions *collisi
 
         spacing += 32;
     }
+
+    //Set menu type
     getMenuInput(engine, "main", collisions);
     mainMenuEdit = true;
     spacing = -32;
@@ -72,10 +83,13 @@ bool MainMenu::displayMainMenu(olc::PixelGameEngine *engine, Collisions *collisi
 
 bool MainMenu::displayOptionsMenu(olc::PixelGameEngine *engine, Collisions *collisions)
 {
+    //Set up menu options
     std::string menuOptionsArr[4] = {"Full Screen", "Sound", "Controls", "Back"};
     engine->Clear(olc::BLACK);
+    //Give left spacing
     int spacing = -32;
 
+    //Go through every menu option
     for (int i = 0; i < 4; i++)
     {
         if (i == menuOption)
@@ -108,6 +122,7 @@ bool MainMenu::displayOptionsMenu(olc::PixelGameEngine *engine, Collisions *coll
 
         spacing += 32;
     }
+    //Set menu type
     getMenuInput(engine, "options", collisions);
     optionsMenuEdit = true;
     spacing = -32;
@@ -124,6 +139,7 @@ bool MainMenu::displayControllsMenu(olc::PixelGameEngine *engine, Collisions *co
     engine->DrawString(engine->ScreenWidth() / 2 - 112, engine->ScreenHeight() / 2 + 20, "Dash                 'SHIFT'", olc::WHITE);
     engine->DrawString(engine->ScreenWidth() / 2 - 112, engine->ScreenHeight() / 2 + 45, "Reveal Path              'E'", olc::WHITE);
     engine->DrawString(engine->ScreenWidth() / 2 - 40, engine->ScreenHeight() / 1.1f, "-> Back", olc::DARK_GREY);
+    //Set menu type
     getMenuInput(engine, "controlls", collisions);
     controllsEdit = true;
     return true;
@@ -134,12 +150,24 @@ bool MainMenu::displayLoseMenu(olc::PixelGameEngine *engine, Collisions *collisi
     engine->Clear(olc::BLACK);
     engine->DrawString(engine->ScreenWidth() / 2 - 72.0f, engine->ScreenWidth() / 8, "You died!", olc::RED, 2);
     engine->DrawString(engine->ScreenWidth() / 2 - 55, engine->ScreenHeight() / 1.3f, "-> Quit game...", olc::DARK_GREY);
+    //Set menu type
     getMenuInput(engine, "lose", collisions);
+    return true;
+}
+
+bool MainMenu::displayWinMenu(olc::PixelGameEngine *engine, Collisions *collisions)
+{
+    engine->Clear(olc::BLACK);
+    engine->DrawDecal({25.0f,15.0f }, winScroll, {0.90f,0.90f});
+    engine->DrawString(engine->ScreenWidth() / 2 - 55, engine->ScreenHeight() / 1.3f, "-> Quit game...", olc::DARK_GREY);
+    //Set menu type
+    getMenuInput(engine, "win", collisions);
     return true;
 }
 
 void MainMenu::getMenuInput(olc::PixelGameEngine *engine, std::string menuType, Collisions *collisions)
 {
+    //KeyPress functionality
     if (menuType == "main")
     {
         optionsMenuEdit = false;
@@ -360,6 +388,18 @@ void MainMenu::getMenuInput(olc::PixelGameEngine *engine, std::string menuType, 
     {
         mainMenuEdit = false;
 
+        if (engine->GetKey(olc::ENTER).bPressed)
+        {
+            if (sound)
+            {
+                PlaySoundA("public/sfx/mainMenuSelectSFX.wav", NULL, SND_ASYNC);
+            }
+            isExit = true;
+        }
+    }
+
+    if (menuType == "win")
+    {
         if (engine->GetKey(olc::ENTER).bPressed)
         {
             if (sound)

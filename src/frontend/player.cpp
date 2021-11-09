@@ -191,8 +191,11 @@ void Player::drawPlayer(olc::PixelGameEngine *engine, float elapsedTime)
     Animator->Draw(elapsedTime, {playerX - 11.0f, playerY - 20.0f});
 }
 
-void Player::drawPlayerVignette(olc::PixelGameEngine *engine)
+void Player::drawPlayerVignette(olc::PixelGameEngine *engine, int count)
 {
     //Draws the atmoshperic fog around the player
-    engine->DrawDecal({playerX - playerVignette->width / 2, playerY - playerVignette->height / 2}, playerVignetteDecal);
+    for(int i = 0; i <= count; i++)
+    {
+        engine->DrawDecal({playerX - playerVignette->width / 2, playerY - playerVignette->height / 2}, playerVignetteDecal);
+    }
 }

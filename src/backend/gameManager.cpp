@@ -24,6 +24,7 @@ GameManager::~GameManager()
 
 bool GameManager::OnUserCreate()
 {
+    //Called once at the start of the program
     cutsceneSprite = new olc::Sprite("public/Cutscene.png");
     cutscene = new olc::Decal(cutsceneSprite);
     inCutscene = false;
@@ -47,8 +48,11 @@ bool GameManager::OnUserCreate()
     mainMenu->gameStarted = false;
     mainMenu->anyKeyPressed = false;
     mainMenu->sound = true;
+    mainMenu->gameWon = false;
     mainMenu->welcomeLogo = new olc::Sprite("public/VAVYLON_LOGO_BIG_NOBG.png");
     mainMenu->welcomeLogoDecal = new olc::Decal(mainMenu->welcomeLogo);
+    mainMenu->winScrollSprite = new olc::Sprite("public/winScroll.png");
+    mainMenu->winScroll = new olc::Decal(mainMenu->winScrollSprite);
 
     for (int i = 0; i < floorCount; i++)
     {
@@ -57,6 +61,9 @@ bool GameManager::OnUserCreate()
         floors.at(i)->lobbyRoom = new olc::Sprite("public/lobby.png");
         floors.at(i)->lobbyForegroundSprite = new olc::Sprite("public/foreGroundLobby.png");
         floors.at(i)->lobbyForeground = new olc::Decal(floors.at(i)->lobbyForegroundSprite);
+        floors.at(i)->lobbyRoomUpper = new olc::Sprite("public/lobbyUpper.png");
+        floors.at(i)->lobbyForegroundUpperSprite = new olc::Sprite("public/foreGroundLobbyUpper.png");
+        floors.at(i)->lobbyForegroundUpper = new olc::Decal(floors.at(i)->lobbyForegroundUpperSprite);
         floors.at(i)->room->leftRunePickedUp = false;
         floors.at(i)->room->rightRunePickedUp = false;
         floors.at(i)->lobbyRays = new olc::Sprite("public/rays.png");
@@ -73,9 +80,11 @@ bool GameManager::OnUserCreate()
 
 bool GameManager::OnUserUpdate(float fElapsedTime)
 {
+    //Called every frame of the program
     floors.at(currentFloor)->room->sound = mainMenu->sound;
     Clear(olc::BLACK);
 
+    //CutScene functionality
     if (mainMenu->gameStarted)
     {
         if (!inCutscene)
@@ -88,6 +97,7 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
         }
     }
 
+    //Floor switching functionality
     if (!floors.at(currentFloor)->inMaze)
     {
         if (floors.at(currentFloor)->hallCollision(player, floors.at(currentFloor)->stairCase))
@@ -97,8 +107,7 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
                 player->playerInv.runes = 0;
                 if (currentFloor == floorCount - 1)
                 {
-                    //Сомтаймс уин, сомтаймс лонт
-                    exit(0);
+                    mainMenu->gameWon = true;
                 }
                 else
                 {
@@ -110,6 +119,7 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
         }
     }
 
+    //Menu call functionality
     if (mainMenu->anyKeyPressed)
     {
         if (mainMenu->mainMenuEnabled)
@@ -136,6 +146,11 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
         {
             mainMenu->displayLoseMenu(this, collisions);
         }
+
+        if (mainMenu->gameWon)
+        {
+            mainMenu->displayWinMenu(this, collisions);
+        }
     }
     else
     {
@@ -147,9 +162,10 @@ bool GameManager::OnUserUpdate(float fElapsedTime)
 
 void GameManager::Game(float fElapsedTime)
 {
+    //Called on Start Game
     getInput(fElapsedTime);
 
-    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !mainMenu->controllsMenuEnabled && !collisions->gameEnded)
+    if (!mainMenu->pauseMenuEnabled && !mainMenu->mainMenuEnabled && !mainMenu->optionsMenuEnabled && !mainMenu->controllsMenuEnabled && !mainMenu->gameWon && !collisions->gameEnded)
     {
         floors.at(currentFloor)->drawLobby(this, player);
 
@@ -166,7 +182,7 @@ void GameManager::Game(float fElapsedTime)
         }
         if (vignette)
         {
-            player->drawPlayerVignette(this);
+            player->drawPlayerVignette(this, currentFloor);
         }
         this->DrawDecal({this->ScreenWidth() - 28, 4.5f}, floors.at(currentFloor)->room->runeIcon, {0.44f, 0.44f});
         this->DrawString(this->ScreenWidth() - 14, 5, std::to_string(player->playerInv.runes), olc::WHITE, 1);
@@ -205,7 +221,7 @@ void GameManager::getInput(float elapsedTime)
     {
         if (currentFloor == floorCount - 1)
         {
-            mainMenu->isExit = true;
+            mainMenu->gameWon = true;
         }
         else
         {

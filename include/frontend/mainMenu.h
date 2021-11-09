@@ -22,10 +22,13 @@ public:
     bool mainMenuEdit;
     bool controllsEdit;
     bool gameStarted;
+    bool gameWon;
     bool anyKeyPressed;
     bool sound;
     olc::Sprite *welcomeLogo;
     olc::Decal *welcomeLogoDecal;
+    olc::Sprite *winScrollSprite;
+    olc::Decal *winScroll;
 
 public:
     ~MainMenu();
@@ -39,6 +42,8 @@ public:
     bool displayLoseMenu(olc::PixelGameEngine *engine, Collisions *collisions);
 
     bool displayControllsMenu(olc::PixelGameEngine *engine, Collisions *collisions);
+
+    bool displayWinMenu(olc::PixelGameEngine *engine, Collisions *collisions);
 
     void getMenuInput(olc::PixelGameEngine *engine, std::string menuType, Collisions *collisions);
 

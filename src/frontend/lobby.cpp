@@ -27,6 +27,7 @@ Lobby::~Lobby()
 
 void Lobby::initLobby()
 {
+    //Init lobby borders
     lobbyWidth = 32;
     lobbyHeight = 17;
 
@@ -113,7 +114,14 @@ void Lobby::drawLobby(olc::PixelGameEngine *engine, Player *player)
 
         stairCase = {{engine->ScreenWidth() / 2.30f, 5.0f}, {43.0f, 10.0f}};
 
-        engine->DrawSprite(0, 0, lobbyRoom);
+        if(thisLobbyCount < 1)
+        {
+            engine->DrawSprite(0, 0, lobbyRoom);
+        }
+        else
+        {
+            engine->DrawSprite(0, 0, lobbyRoomUpper);
+        }
 
         if (hallCollision(player, roomLeft))
         {
@@ -131,6 +139,13 @@ void Lobby::drawLobby(olc::PixelGameEngine *engine, Player *player)
 
 void Lobby::drawLobbyForeground(olc::PixelGameEngine *engine)
 {
-    engine->DrawDecal({0, 0}, lobbyForeground);
+    if(thisLobbyCount < 1)
+    {
+        engine->DrawDecal({0, 0}, lobbyForeground);
+    }
+    else
+    {
+        engine->DrawDecal({0, 0}, lobbyForegroundUpper);
+    }
     engine->DrawDecal({engine->ScreenWidth() / 2 - 25, 0}, lobbyRaysDecal);
 }
