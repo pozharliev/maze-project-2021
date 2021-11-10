@@ -1,4 +1,4 @@
-![Vavylon Logo](public/VAVYLON_LOGO_BIG_NOBG.png)
+![Vavylon Logo](public/VAVYLON_LOGO_BIG_BG.png)
 
 <h1 align="center"><strong> Team VAVYLØN</strong></h1>
 
